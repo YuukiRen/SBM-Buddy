@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 use App\Soal;
 use Illuminate\Http\Request;
+use App\Http\Requests\SoalRequest;
 
 class SoalController extends Controller
 {
     public function index(){
 
     }
-    public function create(SoalRequest $request){
+
+    public function create(){
+
+    }
+
+    public function store(SoalRequest $request){
         $soal = new Soal;
         $soal->pertanyaan = $request->pertanyaan;
         $soal->jawaban=$request->jawaban;
@@ -23,7 +29,7 @@ class SoalController extends Controller
         $soal->save();
         return $soal;
     }
-    public function delete(Soal $soal){
+    public function destroy(Soal $soal){
         Soal::where('id',$soal->id)->delete();
     }
     public function readSoal(Soal $soal){
