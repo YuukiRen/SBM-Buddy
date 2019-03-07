@@ -16,7 +16,7 @@ class CreatePaketsTable extends Migration
         Schema::create('pakets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('penjurusan');
-            $table->integer('kode');
+            $table->string('kode');
             $table->integer('tahun');
             $table->timestamps();
         });
