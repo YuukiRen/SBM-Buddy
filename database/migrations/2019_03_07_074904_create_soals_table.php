@@ -23,6 +23,7 @@ class CreateSoalsTable extends Migration
             $table->text('pilihanc');
             $table->text('pilihand');
             $table->text('pilihane');
+            $table->text('pembahasan');
             $table->timestamps();
         });
     }
