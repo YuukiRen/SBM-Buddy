@@ -12,14 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin');
 });
 
+Route::get('/{name}', function() {
+	return redirect('/');
+})->where('name', '[A-Za-z]+');
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-
 
 // Admin route
 Auth::routes();
