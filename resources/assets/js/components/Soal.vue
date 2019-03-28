@@ -11,11 +11,11 @@
         </div>
     </div>
     <div class="column">
-        <a class="button is-primary">
+        <a class="button is-primary" @click="openAdd">
             <span class="icon">
                   <i class="fa fa-plus"></i>
             </span>
-            <span>Tambah Soal</span>
+            <span>Tambah Paket Soal</span>
         </a>
     </div>
   </div>
@@ -23,25 +23,22 @@
   <table class="table is-hoverable is-fullwidth">
     <thead>
       <tr>
-        <th><abbr title="Kode">Kode Paket</abbr></th>
-        <th><abbr title="Tahun">Tahun</abbr></th>
-        <th><abbr title="Dikerjakan">Solved</abbr></th>
-        <th><abbr title="Terbaik">Best Score</abbr></th>
+        <th><abbr title="kode">Kode Paket</abbr></th>
+        <th><abbr title="penjurusan">Jurusan</abbr></th>
+        <th><abbr title="tahun">Tahun</abbr></th>
       </tr>
     </thead>
   
     <tbody>
       <tr>
-        <th>A1819</th>
-        <td>2018/2019</td>
-        <td>237</td>
-        <td>199</td>
+        <th>A1415</th>
+        <td>IPA</td>
+        <td>2014/2015</td>
       </tr>
       <tr>
-        <th>B1819</th>
-        <td>2018/2019</td>
-        <td>152</td>
-        <td>210</td>
+        <th>S1415</th>
+        <td>Soshum</td>
+        <td>2014/2015</td>
       </tr>
     </tbody>
   </table>
@@ -61,5 +58,27 @@
       </li>
     </ul>
   </nav>
+
+  <Add :openmodal='addActive' @closeRequest='close'></Add>
 </section>
 </template>
+
+<script>
+  let Add = require('./Add.vue');
+  export default{
+    components:{Add},
+    data(){
+      return{
+        addActive:''
+      }
+    },
+    methods:{
+      openAdd(){
+        this.addActive = 'is-active';
+      },
+      close(){
+        this.addActive = '';
+      }
+    }
+  }
+</script>
