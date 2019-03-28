@@ -51647,7 +51647,7 @@ var staticRenderFns = [
           _c("a", { attrs: { href: "https://github.com/YuukiRen" } }, [
             _vm._v("Alvin Reinaldo")
           ]),
-          _vm._v(",\n      "),
+          _vm._v(",\r\n      "),
           _c("a", { attrs: { href: "https://github.com/rafiqahsns" } }, [
             _vm._v("Rafiqah Hasna")
           ]),
@@ -51655,7 +51655,7 @@ var staticRenderFns = [
           _c("a", { attrs: { href: "https://github.com/restutriadi" } }, [
             _vm._v("Restu Triadi")
           ]),
-          _vm._v(".\n    ")
+          _vm._v(".\r\n    ")
         ]),
         _vm._v(" "),
         _c("p", [
@@ -51917,9 +51917,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['openmodal'],
+  data: function data() {
+    return {
+      list: {
+        kodePaket: '',
+        choiceJurusan: '',
+        tahunPaket: ''
+      }
+    };
+  },
+
   methods: {
     close: function close() {
       this.$emit('closeRequest');
+    },
+    save: function save() {
+      var _this = this;
+
+      axios.post('/paket', this.$data.list).then(function (response) {
+        _this.close();
+        // this.$parent.lists.push(this.$data.list)
+        _this.$parent.lists.push(response.data);
+        _this.$parent.lists.sort(function (a, b) {
+          if (a.kodePaket < b.kodePaket) {
+            return -1;
+          } else if (a.kodePaket > b.kodePaket) {
+            return 1;
+          }
+        });
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
     }
   }
 });
@@ -51946,10 +51974,118 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _vm._m(0),
+      _c("section", { staticClass: "modal-card-body" }, [
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Kode Paket")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.list.kodePaket,
+                  expression: "list.kodePaket"
+                }
+              ],
+              staticClass: "input",
+              attrs: { type: "text", placeholder: "Kode paket soal" },
+              domProps: { value: _vm.list.kodePaket },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.list, "kodePaket", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Penjurusan")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("div", { staticClass: "select" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.list.choiceJurusan,
+                      expression: "list.choiceJurusan"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.list,
+                        "choiceJurusan",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "IPA" } }, [_vm._v("IPA")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Soshum" } }, [
+                    _vm._v("Soshum")
+                  ])
+                ]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Tahun")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.list.tahunPaket,
+                  expression: "list.tahunPaket"
+                }
+              ],
+              staticClass: "input",
+              attrs: { type: "text", placeholder: "Tahun paket soal SBMPTN" },
+              domProps: { value: _vm.list.tahunPaket },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.list, "tahunPaket", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("footer", { staticClass: "modal-card-foot" }, [
-        _c("button", { staticClass: "button is-primary" }, [_vm._v("Simpan")]),
+        _c(
+          "button",
+          { staticClass: "button is-primary", on: { click: _vm.save } },
+          [_vm._v("Simpan")]
+        ),
         _vm._v(" "),
         _c("button", { staticClass: "button", on: { click: _vm.close } }, [
           _vm._v("Cancel")
@@ -51958,50 +52094,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "modal-card-body" }, [
-      _c("div", { staticClass: "field" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Kode Paket")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "control" }, [
-          _c("input", {
-            staticClass: "input",
-            attrs: { type: "text", placeholder: "Kode paket soal" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "field" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Penjurusan")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "control" }, [
-          _c("div", { staticClass: "select" }, [
-            _c("select", [
-              _c("option", [_vm._v("IPA")]),
-              _vm._v(" "),
-              _c("option", [_vm._v("Soshum")])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "field" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Tahun")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "control" }, [
-          _c("input", {
-            staticClass: "input",
-            attrs: { type: "text", placeholder: "Tahun paket soal SBMPTN" }
-          })
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
