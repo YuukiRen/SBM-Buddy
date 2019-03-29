@@ -21,6 +21,7 @@ Route::get('/{name}', function() {
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('paket', 'PaketController');
+Route::post('/getData','PaketController@getData');
 
 // Admin route
 Auth::routes();

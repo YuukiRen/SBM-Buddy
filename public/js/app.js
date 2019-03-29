@@ -51795,18 +51795,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 var Add = __webpack_require__(48);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Add: Add },
   data: function data() {
     return {
-      addActive: ''
+      addActive: '',
+      lists: {},
+      errors: {}
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.post('/getData').then(function (response) {
+      return _this.lists = response.data;
+    }).catch(function (error) {
+      return _this.errors = error.response.data.errors;
+    });
   },
 
   methods: {
@@ -52122,7 +52129,23 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(2),
+      _c("table", { staticClass: "table is-hoverable is-fullwidth" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.lists, function(item) {
+            return _c("tr", { key: item.id }, [
+              _c("th", [_vm._v(_vm._s(item.kode))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(item.penjurusan))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(item.tahun))])
+            ])
+          }),
+          0
+        )
+      ]),
       _vm._v(" "),
       _vm._m(3),
       _vm._v(" "),
@@ -52167,39 +52190,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("table", { staticClass: "table is-hoverable is-fullwidth" }, [
-      _c("thead", [
-        _c("tr", [
-          _c("th", [
-            _c("abbr", { attrs: { title: "kode" } }, [_vm._v("Kode Paket")])
-          ]),
-          _vm._v(" "),
-          _c("th", [
-            _c("abbr", { attrs: { title: "penjurusan" } }, [_vm._v("Jurusan")])
-          ]),
-          _vm._v(" "),
-          _c("th", [
-            _c("abbr", { attrs: { title: "tahun" } }, [_vm._v("Tahun")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tbody", [
-        _c("tr", [
-          _c("th", [_vm._v("A1415")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("IPA")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("2014/2015")])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [
+          _c("abbr", { attrs: { title: "kode" } }, [_vm._v("Kode Paket")])
         ]),
         _vm._v(" "),
-        _c("tr", [
-          _c("th", [_vm._v("S1415")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Soshum")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("2014/2015")])
-        ])
+        _c("th", [
+          _c("abbr", { attrs: { title: "penjurusan" } }, [_vm._v("Jurusan")])
+        ]),
+        _vm._v(" "),
+        _c("th", [_c("abbr", { attrs: { title: "tahun" } }, [_vm._v("Tahun")])])
       ])
     ])
   },
