@@ -51921,6 +51921,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['openmodal'],
@@ -51952,6 +51953,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return 1;
           }
         });
+        _this.list = "";
       }).catch(function (error) {
         return _this.errors = error.response.data.errors;
       });
@@ -52047,6 +52049,19 @@ var render = function() {
                   }
                 },
                 [
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "",
+                        selected: "",
+                        disabled: "",
+                        hidden: ""
+                      }
+                    },
+                    [_vm._v("Choose here")]
+                  ),
+                  _vm._v(" "),
                   _c("option", { attrs: { value: "IPA" } }, [_vm._v("IPA")]),
                   _vm._v(" "),
                   _c("option", { attrs: { value: "Soshum" } }, [

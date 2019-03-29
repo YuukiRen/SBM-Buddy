@@ -19,6 +19,7 @@
         <div class="control">
           <div class="select">
             <select v-model="list.choiceJurusan">
+              <option value="" selected disabled hidden>Choose here</option>
               <option value="IPA">IPA</option>
               <option value="Soshum">Soshum</option>
             </select>
@@ -70,6 +71,7 @@
                   return 1;
                 }
               })
+              this.list = ""
             })
             .catch((error) => this.errors = error.response.data.errors)
           }
