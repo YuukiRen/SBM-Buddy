@@ -51934,19 +51934,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     save: function save() {
       var _this = this;
 
+      console.log(this.$data.list);
       axios.post('/paket', this.$data.list).then(function (response) {
-        _this.close();
-        // this.$parent.lists.push(this.$data.list)
-        _this.$parent.lists.push(response.data);
-        _this.$parent.lists.sort(function (a, b) {
-          if (a.kodePaket < b.kodePaket) {
-            return -1;
-          } else if (a.kodePaket > b.kodePaket) {
-            return 1;
-          }
-        });
+        return _this.close();
       }).catch(function (error) {
-        return _this.errors = error.response.data.errors;
+        return console.log(error);
       });
     }
   }

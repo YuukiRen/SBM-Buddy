@@ -57,21 +57,9 @@
             this.$emit('closeRequest')
           },
           save(){
-            axios.post('/paket',this.$data.list)
-            .then((response)=>{
-              this.close()
-              // this.$parent.lists.push(this.$data.list)
-              this.$parent.lists.push(response.data)
-              this.$parent.lists.sort(function(a,b){
-                if(a.kodePaket<b.kodePaket){
-                  return -1;
-                }
-                else if(a.kodePaket>b.kodePaket){
-                  return 1;
-                }
-              })
-            })
-            .catch((error) => this.errors = error.response.data.errors)
+            console.log(this.$data.list)
+            axios.post('/paket',this.$data.list).then((response)=>this.close())
+            .catch((error)=>console.log(error))
           }
         }
     }

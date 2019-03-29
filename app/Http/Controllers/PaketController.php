@@ -37,9 +37,9 @@ class PaketController extends Controller
     public function store(PaketRequest $request)
     {
         $paket = new Paket;
-        $paket->penjurusan = $request->penjurusan;
-        $paket->kode = $request->kode;
-        $paket->tahun = $request->tahun;
+        $paket->penjurusan = $request->choiceJurusan;
+        $paket->kode = $request->kodePaket;
+        $paket->tahun = $request->tahunPaket;
         $paket->save();
         return $paket;
     }
@@ -76,9 +76,9 @@ class PaketController extends Controller
     public function update(PaketRequest $request)
     {
         $paket = Paket::find($request->id);
-        $paket->penjurusan = $request->penjurusan;
-        $paket->kode = $request->kode;
-        $paket->tahun = $request->tahun;
+        $paket->penjurusan = $request->choiceJurusan;
+        $paket->kode = $request->kodePaket;
+        $paket->tahun = $request->tahunPaket;
         $paket->save();
         return $request->all();
     }
