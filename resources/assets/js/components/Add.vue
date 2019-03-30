@@ -77,9 +77,9 @@
               this.list.kodePaket = ''
               this.list.choiceJurusan = ''
               this.list.tahunPaket = ''
-              this.processing = false
             })
               .catch((error) => this.errors = error.response.data.errors)
+              this.processing = false
           }
         }
     }

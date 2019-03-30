@@ -35,9 +35,9 @@ class JurusanController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function getData()
+    public function getData(Request $request)
     {
-        return Jurusan::orderBy('passing_grade','DESC')->get();
+        return Jurusan::where('univ',$request->univ)->orderBy('passing_grade','DESC')->get();
     }
 
     public function store(JurusanRequest $request)

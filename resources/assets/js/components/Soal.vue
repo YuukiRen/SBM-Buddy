@@ -70,7 +70,7 @@
         errors:{}
       }
     },
-    created(){
+    mounted(){
       axios.post('/getData')
         .then((response)=>this.lists = response.data)
         .catch((error) => this.errors = error.response.data.errors)

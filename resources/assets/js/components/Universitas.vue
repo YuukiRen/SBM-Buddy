@@ -5,12 +5,13 @@
         <div class="field">
             <label class="label">Pilih Universitas</label>
             <div class="select">
-                <select>
-                    <option value="UI">Universitas Indonesia</option>
-                    <option value="ITB">Institut Teknologi Bandung</option>
-                    <option value="UGM">Universitas Gadjah Mada</option>
-                    <option value="IPB">Institut Pertanian Bogor</option>
-                </select>
+                <select v-model="dt.univ" @change = updateTable(this.value)>
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="Institut Pertanian Bogor">Institut Pertanian Bogor</option>
+                    <option value="Universitas Indonesia">Universitas Indonesia</option>
+                    <option value="Institut Teknologi Bandung">Institut Teknologi Bandung</option>
+                    <option value="Universitas Gadjah Mada">Universitas Gadjah Mada</option>
+            </select>
             </div>
         </div>
     </div>
@@ -41,8 +42,8 @@
       </tr>
     </thead>
     <tbody>
-        <tr v-for="item, key in lists"
-        :key="item.id">
+        <tr v-for="item in lists"
+          :key="item.id">
             <td>{{item.nama_jurusan}}</td>
             <td>{{item.passing_grade}}</td>
             <td>
@@ -88,17 +89,20 @@
         addActive : '',
         updateActive : '',
         lists:{},
+        dt:{
+          univ:''
+        },
         errors:{}
       }
-    },
-    created(){
-      axios.post('/getUniv')
-        .then((response)=>this.lists = response.data)
-        .catch((error) => this.errors = error.response.data.errors)
     },
     methods:{
       openAddUniv(){
         this.addActive = 'is-active';
+      },
+      updateTable(event){
+        axios.post('/getUniv',this.$data.dt)
+          .then((response)=>this.lists = response.data)
+          .catch((error) => this.errors = error.response.data.errors)
       },
       del(key,id){
             if(confirm("Apakah anda yakin akan menghapus jurusan ini?")){

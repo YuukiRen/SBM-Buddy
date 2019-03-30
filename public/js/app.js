@@ -51806,7 +51806,7 @@ var Add = __webpack_require__(48);
       errors: {}
     };
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this = this;
 
     axios.post('/getData').then(function (response) {
@@ -51961,10 +51961,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.list.kodePaket = '';
         _this.list.choiceJurusan = '';
         _this.list.tahunPaket = '';
-        _this.processing = false;
       }).catch(function (error) {
         return _this.errors = error.response.data.errors;
       });
+      this.processing = false;
     }
   }
 });
@@ -52577,6 +52577,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 var Add = __webpack_require__(56);
 var Update = __webpack_require__(59);
@@ -52587,22 +52588,25 @@ var Update = __webpack_require__(59);
       addActive: '',
       updateActive: '',
       lists: {},
+      dt: {
+        univ: ''
+      },
       errors: {}
     };
-  },
-  created: function created() {
-    var _this = this;
-
-    axios.post('/getUniv').then(function (response) {
-      return _this.lists = response.data;
-    }).catch(function (error) {
-      return _this.errors = error.response.data.errors;
-    });
   },
 
   methods: {
     openAddUniv: function openAddUniv() {
       this.addActive = 'is-active';
+    },
+    updateTable: function updateTable(event) {
+      var _this = this;
+
+      axios.post('/getUniv', this.$data.dt).then(function (response) {
+        return _this.lists = response.data;
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
     },
     del: function del(key, id) {
       var _this2 = this;
@@ -53258,9 +53262,91 @@ var render = function() {
     { staticClass: "section" },
     [
       _c("div", { staticClass: "columns" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "column" }, [
+          _c("div", { staticClass: "field" }, [
+            _c("label", { staticClass: "label" }, [
+              _vm._v("Pilih Universitas")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "select" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.dt.univ,
+                      expression: "dt.univ"
+                    }
+                  ],
+                  on: {
+                    change: [
+                      function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.dt,
+                          "univ",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                      function($event) {
+                        return _vm.updateTable(this.value)
+                      }
+                    ]
+                  }
+                },
+                [
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "",
+                        selected: "",
+                        disabled: "",
+                        hidden: ""
+                      }
+                    },
+                    [_vm._v("Choose here")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Institut Pertanian Bogor" } },
+                    [_vm._v("Institut Pertanian Bogor")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Universitas Indonesia" } }, [
+                    _vm._v("Universitas Indonesia")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Institut Teknologi Bandung" } },
+                    [_vm._v("Institut Teknologi Bandung")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Universitas Gadjah Mada" } },
+                    [_vm._v("Universitas Gadjah Mada")]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]),
         _vm._v(" "),
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "column" }, [
           _c(
@@ -53269,17 +53355,17 @@ var render = function() {
               staticClass: "button is-primary",
               on: { click: _vm.openAddUniv }
             },
-            [_vm._m(2), _vm._v(" "), _c("span", [_vm._v("Tambah Jurusan")])]
+            [_vm._m(1), _vm._v(" "), _c("span", [_vm._v("Tambah Jurusan")])]
           )
         ])
       ]),
       _vm._v(" "),
       _c("table", { staticClass: "table is-hoverable is-fullwidth" }, [
-        _vm._m(3),
+        _vm._m(2),
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.lists, function(item, key) {
+          _vm._l(_vm.lists, function(item) {
             return _c("tr", { key: item.id }, [
               _c("td", [_vm._v(_vm._s(item.nama_jurusan))]),
               _vm._v(" "),
@@ -53291,7 +53377,7 @@ var render = function() {
                     staticClass: "fa fa-edit has-text-primary",
                     on: {
                       click: function($event) {
-                        return _vm.openUpdate(key)
+                        return _vm.openUpdate(_vm.key)
                       }
                     }
                   })
@@ -53303,7 +53389,7 @@ var render = function() {
                     attrs: { "aria-hidden": "true" },
                     on: {
                       click: function($event) {
-                        return _vm.del(key, item.id)
+                        return _vm.del(_vm.key, item.id)
                       }
                     }
                   })
@@ -53315,7 +53401,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(4),
+      _vm._m(3),
       _vm._v(" "),
       _c("Add", {
         attrs: { openmodal: _vm.addActive },
@@ -53331,36 +53417,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column" }, [
-      _c("div", { staticClass: "field" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Pilih Universitas")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "select" }, [
-          _c("select", [
-            _c("option", { attrs: { value: "UI" } }, [
-              _vm._v("Universitas Indonesia")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "ITB" } }, [
-              _vm._v("Institut Teknologi Bandung")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "UGM" } }, [
-              _vm._v("Universitas Gadjah Mada")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "IPB" } }, [
-              _vm._v("Institut Pertanian Bogor")
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
