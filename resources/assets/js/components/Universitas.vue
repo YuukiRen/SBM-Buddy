@@ -41,16 +41,16 @@
       </tr>
     </thead>
     <tbody>
-        <tr v-for="item in lists"
+        <tr v-for="item, key in lists"
         :key="item.id">
             <td>{{item.nama_jurusan}}</td>
             <td>{{item.passing_grade}}</td>
             <td>
                 <a class="icon">
-                    <i class="fa fa-edit has-text-primary"></i>
+                    <i class="fa fa-edit has-text-primary" @click='openUpdate(key)'></i>
                 </a>
                 <a class="icon">
-                    <i class="fa fa-trash has-text-danger" aria-hidden="true"></i>
+                    <i class="fa fa-trash has-text-danger" aria-hidden="true" @click="del(key,item.id)"></i>
                 </a>
             </td>
         </tr>
@@ -74,16 +74,19 @@
   </nav>
 
 <Add :openmodal='addActive' @closeRequest='close'></Add>
+<Update :openmodal='updateActive' @closeRequest='close'></Update>
 </section>
 </template>
 
 <script>
   let Add = require('./AddUniv.vue');
+  let Update = require('./UpdateUniv.vue');
   export default{
-    components:{Add},
+    components:{Add,Update},
     data(){
       return {
         addActive : '',
+        updateActive : '',
         lists:{},
         errors:{}
       }
@@ -97,8 +100,20 @@
       openAddUniv(){
         this.addActive = 'is-active';
       },
+      del(key,id){
+            if(confirm("Apakah anda yakin akan menghapus jurusan ini?")){
+                this.loading=!this.loading
+                axios.delete(`jurusan/${id}`)
+                .then((response)=>{this.lists.splice(key,1);this.loading=!this.loading})
+                .catch((error)=>this.errors=error.response.data.errors)  
+            }
+        },
+      openUpdate(key){
+            this.$children[1].list=this.lists[key];
+            this.updateActive='is-active';
+        },
       close(){
-        this.addActive = '';
+        this.addActive = this.updateActive = '';
       }
     }
   }
