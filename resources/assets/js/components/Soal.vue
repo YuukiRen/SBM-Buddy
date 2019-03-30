@@ -30,16 +30,12 @@
     </thead>
   
     <tbody>
-      <tr>
-        <th>A1415</th>
-        <td>IPA</td>
-        <td>2014/2015</td>
-      </tr>
-      <tr>
-        <th>S1415</th>
-        <td>Soshum</td>
-        <td>2014/2015</td>
-      </tr>
+        <tr v-for="item in lists"
+        :key="item.id">
+          <th>{{item.kode}}</th>
+          <td>{{item.penjurusan}}</td>
+          <td>{{item.tahun}}</td>
+        </tr>
     </tbody>
   </table>
 
@@ -69,8 +65,15 @@
     components:{Add},
     data(){
       return{
-        addActive:''
+        addActive:'',
+        lists:{},
+        errors:{}
       }
+    },
+    created(){
+      axios.post('/getData')
+        .then((response)=>this.lists = response.data)
+        .catch((error) => this.errors = error.response.data.errors)
     },
     methods:{
       openAdd(){
