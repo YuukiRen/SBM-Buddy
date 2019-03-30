@@ -41,9 +41,10 @@
       </tr>
     </thead>
     <tbody>
-        <tr is-selected>
-            <td>Ilmu Komputer</td>
-            <td>69</td>
+        <tr v-for="item in lists"
+        :key="item.id">
+            <td>{{item.nama_jurusan}}</td>
+            <td>{{item.passing_grade}}</td>
             <td>
                 <a class="icon">
                     <i class="fa fa-edit has-text-primary"></i>
@@ -82,8 +83,15 @@
     components:{Add},
     data(){
       return {
-        addActive : ''
+        addActive : '',
+        lists:{},
+        errors:{}
       }
+    },
+    created(){
+      axios.post('/getUniv')
+        .then((response)=>this.lists = response.data)
+        .catch((error) => this.errors = error.response.data.errors)
     },
     methods:{
       openAddUniv(){

@@ -11,14 +11,14 @@
       <div class="field">
         <label class="label">Nama Jurusan</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Nama Jurusan">
+          <input class="input" type="text" placeholder="Nama Jurusan" v-model="list.nama_jurusan">
         </div>
       </div>
       <div class="field">
         <label class="label">Universitas</label>
         <div class="control">
          <div class="select">
-            <select>
+            <select v-model="list.univ">
               <option value="" selected disabled hidden>Choose here</option>
               <option value="Institut Pertanian Bogor">Institut Pertanian Bogor</option>
               <option value="Universitas Indonesia">Universitas Indonesia</option>
@@ -31,12 +31,12 @@
       <div class="field">
         <label class="label">Passing Grade</label>
         <div class="control">
-          <input class="input" type="number" placeholder="Passing Grade Jurusan">
+          <input class="input" type="number" placeholder="Passing Grade Jurusan" v-model="list.passing_grade">
         </div>
       </div>
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
+      <button class="button is-success" @click="save">Save changes</button>
       <button class="button" @click="close">Cancel</button>
     </footer>
   </div>
@@ -46,11 +46,27 @@
 <script>
     export default{
         props:['openmodal'],
-        methods:{
-          close(){
-            this.$emit('closeRequest')
-          }
+        data(){
+    return{
+      list:{
+        nama_jurusan:'',
+        univ:'',
+        passing_grade:''
+      },
+      errors:{}
+    }
+  },
+  methods:{
+        close(){
+            this.$emit('closeRequest');
+        },
+        save(){
+          axios.post('/jurusan',this.$data.list).then((response)=>{
+            this.close()
+            this.$parent.lists.push(response.data)})
+          .catch((error)=>this.errors=error.response.data.errors)
         }
+    }
     }
      
 </script>

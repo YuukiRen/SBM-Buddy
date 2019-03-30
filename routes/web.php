@@ -21,7 +21,9 @@ Route::get('/{name}', function() {
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('paket', 'PaketController');
+Route::resource('jurusan', 'JurusanController');
 Route::post('/getData','PaketController@getData');
+Route::post('/getUniv','JurusanController@getData');
 
 // Admin route
 Auth::routes();

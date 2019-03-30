@@ -34,6 +34,12 @@ class JurusanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function getData()
+    {
+        return Jurusan::orderBy('passing_grade','DESC')->get();
+    }
+
     public function store(JurusanRequest $request)
     {
         $jurusan = new Jurusan;
