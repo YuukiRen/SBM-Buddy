@@ -14048,7 +14048,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-module.exports = __webpack_require__(55);
+module.exports = __webpack_require__(56);
 
 
 /***/ }),
@@ -51647,7 +51647,7 @@ var staticRenderFns = [
           _c("a", { attrs: { href: "https://github.com/YuukiRen" } }, [
             _vm._v("Alvin Reinaldo")
           ]),
-          _vm._v(",\r\n      "),
+          _vm._v(",\n      "),
           _c("a", { attrs: { href: "https://github.com/rafiqahsns" } }, [
             _vm._v("Rafiqah Hasna")
           ]),
@@ -51655,7 +51655,7 @@ var staticRenderFns = [
           _c("a", { attrs: { href: "https://github.com/restutriadi" } }, [
             _vm._v("Restu Triadi")
           ]),
-          _vm._v(".\r\n    ")
+          _vm._v(".\n    ")
         ]),
         _vm._v(" "),
         _c("p", [
@@ -52444,7 +52444,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(66)
+var __vue_template__ = __webpack_require__(55)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52484,22 +52484,6 @@ module.exports = Component.exports
 
 /***/ }),
 /* 55 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -52515,13 +52499,39 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("section", { staticClass: "section" }, [
       _c("div", { staticClass: "columns" }, [
-        _c("div", { staticClass: "column" }),
+        _c("div", { staticClass: "column" }, [
+          _c("div", { staticClass: "field" }, [
+            _c("label", { staticClass: "label" }, [
+              _vm._v("Pilih Universitas")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "select" }, [
+              _c("select", [
+                _c("option", { attrs: { value: "UI" } }, [
+                  _vm._v("Universitas Indonesia")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "ITB" } }, [
+                  _vm._v("Institut Teknologi Bandung")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "UGM" } }, [
+                  _vm._v("Universitas Gadjah Mada")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "IPB" } }, [
+                  _vm._v("Institut Pertanian Bogor")
+                ])
+              ])
+            ])
+          ])
+        ]),
         _vm._v(" "),
-        _c("div", { staticClass: "column is-half" }, [
+        _c("div", { staticClass: "column" }, [
           _c("div", { staticClass: "control has-icons-left" }, [
             _c("input", {
               staticClass: "input",
-              attrs: { type: "text", placeholder: "Search" }
+              attrs: { type: "text", placeholder: "Cari Jurusan" }
             }),
             _vm._v(" "),
             _c("span", { staticClass: "icon is-small is-left" }, [
@@ -52531,62 +52541,121 @@ var staticRenderFns = [
               })
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column" })
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "columns" }, [
-        _c("div", { staticClass: "column" }, [
-          _c("div", { staticClass: "box" }, [
-            _c("article", { staticClass: "media" }, [
-              _c("div", { staticClass: "media-left" }, [
-                _c("figure", { staticClass: "image is-64x64" }, [
-                  _c("img", {
-                    attrs: {
-                      src: "https://bulma.io/images/placeholders/128x128.png",
-                      alt: "Image"
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "media-content" }, [
-                _c("div", { staticClass: "content" }, [
-                  _c("h2", { staticClass: "title is-4" }, [
-                    _vm._v("Universitas Indonesia")
-                  ])
-                ])
+      _c("table", { staticClass: "table is-hoverable is-fullwidth" }, [
+        _c("thead", [
+          _c("tr", [
+            _c("th", [
+              _c("abbr", { attrs: { title: "nama_jurusan" } }, [
+                _vm._v("Jurusan")
               ])
-            ])
+            ]),
+            _vm._v(" "),
+            _c("th", [
+              _c("abbr", { attrs: { title: "passing_grade" } }, [
+                _vm._v("Passing Grade")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("th")
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "column" }, [
-          _c("div", { staticClass: "box" }, [
-            _c("article", { staticClass: "media" }, [
-              _c("div", { staticClass: "media-left" }, [
-                _c("figure", { staticClass: "image is-64x64" }, [
-                  _c("img", {
-                    attrs: {
-                      src: "https://bulma.io/images/placeholders/128x128.png",
-                      alt: "Image"
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "media-content" }, [
-                _c("div", { staticClass: "content" }, [
-                  _c("h2", { staticClass: "title is-4" }, [
-                    _vm._v("Institut Pertanian Bogor")
-                  ])
-                ])
+        _c("tbody", [
+          _c("tr", { attrs: { "is-selected": "" } }, [
+            _c("td", [_vm._v("Ilmu Komputer")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("69")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("a", { staticClass: "icon" }, [
+                _c("i", { staticClass: "fa fa-edit has-text-primary" })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [_vm._v("Sistem Informasi")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("64")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("a", { staticClass: "icon" }, [
+                _c("i", { staticClass: "fa fa-edit has-text-primary" })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [_vm._v("Kedokteran")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("85")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("a", { staticClass: "icon" }, [
+                _c("i", { staticClass: "fa fa-edit has-text-primary" })
               ])
             ])
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "nav",
+        {
+          staticClass: "pagination",
+          attrs: { role: "navigation", "aria-label": "pagination" }
+        },
+        [
+          _c(
+            "a",
+            {
+              staticClass: "pagination-previous",
+              attrs: { title: "This is the first page" }
+            },
+            [_vm._v("Previous")]
+          ),
+          _vm._v(" "),
+          _c("a", { staticClass: "pagination-next" }, [_vm._v("Next page")]),
+          _vm._v(" "),
+          _c("ul", { staticClass: "pagination-list" }, [
+            _c("li", [
+              _c(
+                "a",
+                {
+                  staticClass: "pagination-link is-current",
+                  attrs: { "aria-label": "Page 1", "aria-current": "page" }
+                },
+                [_vm._v("1")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  staticClass: "pagination-link",
+                  attrs: { "aria-label": "Goto page 2" }
+                },
+                [_vm._v("2")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  staticClass: "pagination-link",
+                  attrs: { "aria-label": "Goto page 3" }
+                },
+                [_vm._v("3")]
+              )
+            ])
+          ])
+        ]
+      )
     ])
   }
 ]
@@ -52598,6 +52667,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-6c1531d6", module.exports)
   }
 }
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
