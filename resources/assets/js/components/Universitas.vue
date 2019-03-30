@@ -42,7 +42,7 @@
       </tr>
     </thead>
     <tbody>
-        <tr v-for="item in lists"
+        <tr v-for="item,key in lists"
           :key="item.id">
             <td>{{item.nama_jurusan}}</td>
             <td>{{item.passing_grade}}</td>
@@ -95,14 +95,13 @@
         errors:{}
       }
     },
-    methods:{
-      openAddUniv(){
-        this.addActive = 'is-active';
-      },
-      updateTable(event){
+    methods:{updateTable(event){
         axios.post('/getUniv',this.$data.dt)
           .then((response)=>this.lists = response.data)
           .catch((error) => this.errors = error.response.data.errors)
+      },
+      openAddUniv(){
+        this.addActive = 'is-active';
       },
       del(key,id){
             if(confirm("Apakah anda yakin akan menghapus jurusan ini?")){
@@ -113,9 +112,9 @@
             }
         },
       openUpdate(key){
-            this.$children[1].list=this.lists[key];
-            this.updateActive='is-active';
-        },
+        this.$children[1].list=this.lists[key];
+        this.updateActive='is-active';
+      },
       close(){
         this.addActive = this.updateActive = '';
       }

@@ -52596,9 +52596,6 @@ var Update = __webpack_require__(59);
   },
 
   methods: {
-    openAddUniv: function openAddUniv() {
-      this.addActive = 'is-active';
-    },
     updateTable: function updateTable(event) {
       var _this = this;
 
@@ -52607,6 +52604,9 @@ var Update = __webpack_require__(59);
       }).catch(function (error) {
         return _this.errors = error.response.data.errors;
       });
+    },
+    openAddUniv: function openAddUniv() {
+      this.addActive = 'is-active';
     },
     del: function del(key, id) {
       var _this2 = this;
@@ -53365,7 +53365,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.lists, function(item) {
+          _vm._l(_vm.lists, function(item, key) {
             return _c("tr", { key: item.id }, [
               _c("td", [_vm._v(_vm._s(item.nama_jurusan))]),
               _vm._v(" "),
@@ -53377,7 +53377,7 @@ var render = function() {
                     staticClass: "fa fa-edit has-text-primary",
                     on: {
                       click: function($event) {
-                        return _vm.openUpdate(_vm.key)
+                        return _vm.openUpdate(key)
                       }
                     }
                   })
@@ -53389,7 +53389,7 @@ var render = function() {
                     attrs: { "aria-hidden": "true" },
                     on: {
                       click: function($event) {
-                        return _vm.del(_vm.key, item.id)
+                        return _vm.del(key, item.id)
                       }
                     }
                   })

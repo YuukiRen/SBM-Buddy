@@ -45,22 +45,22 @@
 
 <script>
     export default{
-        props:['openmodal'],
-        data(){
-    return{
-      list:{ },
-      errors:{}
-    }
-  },
-  methods:{
-        close(){
-            this.$emit('closeRequest');
-        },
-        update(){
-          axios.patch(`/jurusan/${this.list.id}`,this.$data.list).then((response)=>this.close())
-          .catch((error)=>this.errors=error.response.data.errors)
+      props:['openmodal'],
+      data(){
+        return{
+          list:{},
+          errors:{}
         }
-    }
+      },
+      methods:{
+          close(){
+              this.$emit('closeRequest');
+          },
+          update(){
+            axios.patch(`/jurusan/${this.list.id}`,this.$data.list).then((response)=>this.close())
+            .catch((error)=>this.errors=error.response.data.errors)
+          }
+      }
     }
      
 </script>
