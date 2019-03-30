@@ -22,6 +22,14 @@
             </span>
         </div>
     </div>
+    <div class="column">
+        <a class="button is-primary" @click="openAddUniv">
+            <span class="icon">
+                  <i class="fa fa-plus"></i>
+            </span>
+            <span>Tambah Jurusan</span>
+        </a>
+    </div>
   </div>
 
   <table class="table is-hoverable is-fullwidth">
@@ -29,7 +37,7 @@
       <tr>
         <th><abbr title="nama_jurusan">Jurusan</abbr></th>
         <th><abbr title="passing_grade">Passing Grade</abbr></th>
-        <th></th>
+        <th><abbr title="edit">Edit</abbr></th>
       </tr>
     </thead>
     <tbody>
@@ -40,23 +48,8 @@
                 <a class="icon">
                     <i class="fa fa-edit has-text-primary"></i>
                 </a>
-            </td>
-        </tr>
-        <tr>
-            <td>Sistem Informasi</td>
-            <td>64</td>
-            <td>
                 <a class="icon">
-                    <i class="fa fa-edit has-text-primary"></i>
-                </a>
-            </td>
-        </tr>
-        <tr >
-            <td>Kedokteran</td>
-            <td>85</td>
-            <td>
-                <a class="icon">
-                    <i class="fa fa-edit has-text-primary"></i>
+                    <i class="fa fa-trash has-text-danger" aria-hidden="true"></i>
                 </a>
             </td>
         </tr>
@@ -78,5 +71,27 @@
       </li>
     </ul>
   </nav>
+
+<Add :openmodal='addActive' @closeRequest='close'></Add>
 </section>
 </template>
+
+<script>
+  let Add = require('./AddUniv.vue');
+  export default{
+    components:{Add},
+    data(){
+      return {
+        addActive : ''
+      }
+    },
+    methods:{
+      openAddUniv(){
+        this.addActive = 'is-active';
+      },
+      close(){
+        this.addActive = '';
+      }
+    }
+  }
+</script>
