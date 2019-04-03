@@ -51806,7 +51806,7 @@ var Add = __webpack_require__(48);
       errors: {}
     };
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this = this;
 
     axios.post('/getData').then(function (response) {
@@ -51931,7 +51931,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         kodePaket: '',
         choiceJurusan: '',
         tahunPaket: ''
-      }
+      },
+      errors: {},
+      processing: false
     };
   },
 
@@ -51942,21 +51944,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     save: function save() {
       var _this = this;
 
+      if (this.processing === true) {
+        return;
+      }
+      this.processing = true;
       axios.post('/paket', this.$data.list).then(function (response) {
         _this.close();
-        // this.$parent.lists.push(this.$data.list)
         _this.$parent.lists.push(response.data);
         _this.$parent.lists.sort(function (a, b) {
-          if (a.kodePaket < b.kodePaket) {
-            return -1;
-          } else if (a.kodePaket > b.kodePaket) {
+          if (a.name > b.name) {
             return 1;
+          } else if (a.name < b.name) {
+            return -1;
           }
         });
-        _this.list = "";
+        _this.list.kodePaket = '';
+        _this.list.choiceJurusan = '';
+        _this.list.tahunPaket = '';
       }).catch(function (error) {
         return _this.errors = error.response.data.errors;
       });
+      this.processing = false;
     }
   }
 });
@@ -52054,6 +52062,7 @@ var render = function() {
                     {
                       attrs: {
                         value: "",
+                        default: "",
                         selected: "",
                         disabled: "",
                         hidden: ""
@@ -52568,6 +52577,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 var Add = __webpack_require__(56);
 var Update = __webpack_require__(59);
@@ -52578,20 +52588,23 @@ var Update = __webpack_require__(59);
       addActive: '',
       updateActive: '',
       lists: {},
+      dt: {
+        univ: ''
+      },
       errors: {}
     };
   },
-  created: function created() {
-    var _this = this;
-
-    axios.post('/getUniv').then(function (response) {
-      return _this.lists = response.data;
-    }).catch(function (error) {
-      return _this.errors = error.response.data.errors;
-    });
-  },
 
   methods: {
+    updateTable: function updateTable(event) {
+      var _this = this;
+
+      axios.post('/getUniv', this.$data.dt).then(function (response) {
+        return _this.lists = response.data;
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
+    },
     openAddUniv: function openAddUniv() {
       this.addActive = 'is-active';
     },
@@ -53249,9 +53262,91 @@ var render = function() {
     { staticClass: "section" },
     [
       _c("div", { staticClass: "columns" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "column" }, [
+          _c("div", { staticClass: "field" }, [
+            _c("label", { staticClass: "label" }, [
+              _vm._v("Pilih Universitas")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "select" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.dt.univ,
+                      expression: "dt.univ"
+                    }
+                  ],
+                  on: {
+                    change: [
+                      function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.dt,
+                          "univ",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                      function($event) {
+                        return _vm.updateTable(this.value)
+                      }
+                    ]
+                  }
+                },
+                [
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "",
+                        selected: "",
+                        disabled: "",
+                        hidden: ""
+                      }
+                    },
+                    [_vm._v("Choose here")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Institut Pertanian Bogor" } },
+                    [_vm._v("Institut Pertanian Bogor")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Universitas Indonesia" } }, [
+                    _vm._v("Universitas Indonesia")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Institut Teknologi Bandung" } },
+                    [_vm._v("Institut Teknologi Bandung")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Universitas Gadjah Mada" } },
+                    [_vm._v("Universitas Gadjah Mada")]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]),
         _vm._v(" "),
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "column" }, [
           _c(
@@ -53260,13 +53355,13 @@ var render = function() {
               staticClass: "button is-primary",
               on: { click: _vm.openAddUniv }
             },
-            [_vm._m(2), _vm._v(" "), _c("span", [_vm._v("Tambah Jurusan")])]
+            [_vm._m(1), _vm._v(" "), _c("span", [_vm._v("Tambah Jurusan")])]
           )
         ])
       ]),
       _vm._v(" "),
       _c("table", { staticClass: "table is-hoverable is-fullwidth" }, [
-        _vm._m(3),
+        _vm._m(2),
         _vm._v(" "),
         _c(
           "tbody",
@@ -53306,7 +53401,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(4),
+      _vm._m(3),
       _vm._v(" "),
       _c("Add", {
         attrs: { openmodal: _vm.addActive },
@@ -53322,36 +53417,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column" }, [
-      _c("div", { staticClass: "field" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Pilih Universitas")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "select" }, [
-          _c("select", [
-            _c("option", { attrs: { value: "UI" } }, [
-              _vm._v("Universitas Indonesia")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "ITB" } }, [
-              _vm._v("Institut Teknologi Bandung")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "UGM" } }, [
-              _vm._v("Universitas Gadjah Mada")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "IPB" } }, [
-              _vm._v("Institut Pertanian Bogor")
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

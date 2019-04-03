@@ -19,7 +19,7 @@
         <div class="control">
           <div class="select">
             <select v-model="list.choiceJurusan">
-              <option value="" selected disabled hidden>Choose here</option>
+              <option value="" default selected disabled hidden>Choose here</option>
               <option value="IPA">IPA</option>
               <option value="Soshum">Soshum</option>
             </select>
@@ -50,7 +50,9 @@
               kodePaket:'',
               choiceJurusan:'',
               tahunPaket:''
-            }
+            },
+            errors:{},
+            processing:false
           }
         },
         methods:{
@@ -58,22 +60,26 @@
             this.$emit('closeRequest')
           },
           save(){
-            axios.post('/paket',this.$data.list)
-            .then((response)=>{
+            if (this.processing === true) {
+              return;
+            }             
+            this.processing = true
+            axios.post('/paket',this.$data.list).then((response)=> {
               this.close()
-              // this.$parent.lists.push(this.$data.list)
               this.$parent.lists.push(response.data)
               this.$parent.lists.sort(function(a,b){
-                if(a.kodePaket<b.kodePaket){
+                if (a.name > b.name) {
+                  return 1;
+                }else if(a.name < b.name){
                   return -1;
                 }
-                else if(a.kodePaket>b.kodePaket){
-                  return 1;
-                }
-              })
-              this.list = ""
+              })              
+              this.list.kodePaket = ''
+              this.list.choiceJurusan = ''
+              this.list.tahunPaket = ''
             })
-            .catch((error) => this.errors = error.response.data.errors)
+              .catch((error) => this.errors = error.response.data.errors)
+              this.processing = false
           }
         }
     }
