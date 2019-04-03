@@ -53491,7 +53491,7 @@ var staticRenderFns = [
             staticClass: "pagination-previous",
             attrs: { title: "This is the first page" }
           },
-          [_vm._v("Previous")]
+          [_vm._v("Previous Paging")]
         ),
         _vm._v(" "),
         _c("a", { staticClass: "pagination-next" }, [_vm._v("Next page")]),
