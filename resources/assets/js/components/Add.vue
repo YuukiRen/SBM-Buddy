@@ -34,7 +34,7 @@
       </div>
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-primary" @click="save">Simpan</button>
+      <button class="button is-primary" @click.prevent="save">Simpan</button>
       <button class="button" @click="close">Cancel</button>
     </footer>
   </div>
@@ -73,13 +73,16 @@
                 }else if(a.name < b.name){
                   return -1;
                 }
-              })              
+              })
               this.list.kodePaket = ''
               this.list.choiceJurusan = ''
               this.list.tahunPaket = ''
-            })
-              .catch((error) => this.errors = error.response.data.errors)
               this.processing = false
+            })
+              .catch((error) => {
+                this.errors = error.response.data.errors
+                this.processing = false  
+              })
           }
         }
     }

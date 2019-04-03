@@ -51961,10 +51961,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.list.kodePaket = '';
         _this.list.choiceJurusan = '';
         _this.list.tahunPaket = '';
+        _this.processing = false;
       }).catch(function (error) {
-        return _this.errors = error.response.data.errors;
+        _this.errors = error.response.data.errors;
+        _this.processing = false;
       });
-      this.processing = false;
     }
   }
 });
@@ -52114,7 +52115,15 @@ var render = function() {
       _c("footer", { staticClass: "modal-card-foot" }, [
         _c(
           "button",
-          { staticClass: "button is-primary", on: { click: _vm.save } },
+          {
+            staticClass: "button is-primary",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.save($event)
+              }
+            }
+          },
           [_vm._v("Simpan")]
         ),
         _vm._v(" "),
