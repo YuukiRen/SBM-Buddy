@@ -59,7 +59,7 @@
   </table>
 
   <nav class="pagination" role="navigation" aria-label="pagination">
-    <a class="pagination-previous" title="This is the first page">Previous</a>
+    <a class="pagination-previous" title="This is the first page">Previous Paging</a>
     <a class="pagination-next">Next page</a>
     <ul class="pagination-list">
       <li>
