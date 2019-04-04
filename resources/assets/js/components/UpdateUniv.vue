@@ -3,7 +3,7 @@
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">Tambah Jurusan</p>
+      <p class="modal-card-title">Ubah {{list.nama_jurusan}}</p>
       <button class="delete" aria-label="close" @click="close"></button>
     </header>
     <section class="modal-card-body">
@@ -36,7 +36,7 @@
       </div>
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-success" @click="save">Save changes</button>
+      <button class="button is-success" @click="update">Update</button>
       <button class="button" @click="close">Cancel</button>
     </footer>
   </div>
@@ -45,28 +45,22 @@
 
 <script>
     export default{
-        props:['openmodal'],
-        data(){
-    return{
-      list:{
-        nama_jurusan:'',
-        univ:'',
-        passing_grade:''
-      },
-      errors:{}
-    }
-  },
-  methods:{
-        close(){
-            this.$emit('closeRequest');
-        },
-        save(){
-          axios.post('/jurusan',this.$data.list).then((response)=>{
-            this.close()
-            this.$parent.lists.push(response.data)})
-          .catch((error)=>this.errors=error.response.data.errors)
+      props:['openmodal'],
+      data(){
+        return{
+          list:{},
+          errors:{}
         }
-    }
+      },
+      methods:{
+          close(){
+              this.$emit('closeRequest');
+          },
+          update(){
+            axios.patch(`/jurusan/${this.list.id}`,this.$data.list).then((response)=>this.close())
+            .catch((error)=>this.errors=error.response.data.errors)
+          }
+      }
     }
      
 </script>

@@ -51806,7 +51806,7 @@ var Add = __webpack_require__(48);
       errors: {}
     };
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this = this;
 
     axios.post('/getData').then(function (response) {
@@ -51931,7 +51931,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         kodePaket: '',
         choiceJurusan: '',
         tahunPaket: ''
-      }
+      },
+      errors: {},
+      processing: false
     };
   },
 
@@ -51942,20 +51944,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     save: function save() {
       var _this = this;
 
+      if (this.processing === true) {
+        return;
+      }
+      this.processing = true;
       axios.post('/paket', this.$data.list).then(function (response) {
         _this.close();
-        // this.$parent.lists.push(this.$data.list)
         _this.$parent.lists.push(response.data);
         _this.$parent.lists.sort(function (a, b) {
-          if (a.kodePaket < b.kodePaket) {
-            return -1;
-          } else if (a.kodePaket > b.kodePaket) {
+          if (a.name > b.name) {
             return 1;
+          } else if (a.name < b.name) {
+            return -1;
           }
         });
-        _this.list = "";
+        _this.list.kodePaket = '';
+        _this.list.choiceJurusan = '';
+        _this.list.tahunPaket = '';
+        _this.processing = false;
       }).catch(function (error) {
-        return _this.errors = error.response.data.errors;
+        _this.errors = error.response.data.errors;
+        _this.processing = false;
       });
     }
   }
@@ -52054,6 +52063,7 @@ var render = function() {
                     {
                       attrs: {
                         value: "",
+                        default: "",
                         selected: "",
                         disabled: "",
                         hidden: ""
@@ -52105,7 +52115,15 @@ var render = function() {
       _c("footer", { staticClass: "modal-card-foot" }, [
         _c(
           "button",
-          { staticClass: "button is-primary", on: { click: _vm.save } },
+          {
+            staticClass: "button is-primary",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.save($event)
+              }
+            }
+          },
           [_vm._v("Simpan")]
         ),
         _vm._v(" "),
@@ -52566,22 +52584,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 var Add = __webpack_require__(56);
+var Update = __webpack_require__(71);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { Add: Add },
+  components: { Add: Add, Update: Update },
   data: function data() {
     return {
-      addActive: ''
+      addActive: '',
+      updateActive: '',
+      lists: {},
+      dt: {
+        univ: ''
+      },
+      errors: {}
     };
   },
 
   methods: {
+    updateTable: function updateTable(event) {
+      var _this = this;
+
+      axios.post('/getUniv', this.$data.dt).then(function (response) {
+        return _this.lists = response.data;
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
+    },
     openAddUniv: function openAddUniv() {
       this.addActive = 'is-active';
     },
+    del: function del(key, id) {
+      var _this2 = this;
+
+      if (confirm("Apakah anda yakin akan menghapus jurusan ini?")) {
+        this.loading = !this.loading;
+        axios.delete('jurusan/' + id).then(function (response) {
+          _this2.lists.splice(key, 1);_this2.loading = !_this2.loading;
+        }).catch(function (error) {
+          return _this2.errors = error.response.data.errors;
+        });
+      }
+    },
+    openUpdate: function openUpdate(key) {
+      this.$children[1].list = this.lists[key];
+      this.updateActive = 'is-active';
+    },
     close: function close() {
-      this.addActive = '';
+      this.addActive = this.updateActive = '';
     }
   }
 });
@@ -52687,9 +52740,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['openmodal'],
+  data: function data() {
+    return {
+      list: {
+        nama_jurusan: '',
+        univ: '',
+        passing_grade: ''
+      },
+      errors: {}
+    };
+  },
+
   methods: {
     close: function close() {
       this.$emit('closeRequest');
+    },
+    save: function save() {
+      var _this = this;
+
+      axios.post('/jurusan', this.$data.list).then(function (response) {
+        _this.close();
+        _this.$parent.lists.push(response.data);
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
     }
   }
 });
@@ -52718,12 +52792,147 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _vm._m(0),
+      _c("section", { staticClass: "modal-card-body" }, [
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Nama Jurusan")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.list.nama_jurusan,
+                  expression: "list.nama_jurusan"
+                }
+              ],
+              staticClass: "input",
+              attrs: { type: "text", placeholder: "Nama Jurusan" },
+              domProps: { value: _vm.list.nama_jurusan },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.list, "nama_jurusan", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Universitas")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("div", { staticClass: "select" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.list.univ,
+                      expression: "list.univ"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.list,
+                        "univ",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "",
+                        selected: "",
+                        disabled: "",
+                        hidden: ""
+                      }
+                    },
+                    [_vm._v("Choose here")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Institut Pertanian Bogor" } },
+                    [_vm._v("Institut Pertanian Bogor")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Universitas Indonesia" } }, [
+                    _vm._v("Universitas Indonesia")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Institut Teknologi Bandung" } },
+                    [_vm._v("Institut Teknologi Bandung")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Universitas Gadjah Mada" } },
+                    [_vm._v("Universitas Gadjah Mada")]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Passing Grade")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.list.passing_grade,
+                  expression: "list.passing_grade"
+                }
+              ],
+              staticClass: "input",
+              attrs: { type: "number", placeholder: "Passing Grade Jurusan" },
+              domProps: { value: _vm.list.passing_grade },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.list, "passing_grade", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("footer", { staticClass: "modal-card-foot" }, [
-        _c("button", { staticClass: "button is-success" }, [
-          _vm._v("Save changes")
-        ]),
+        _c(
+          "button",
+          { staticClass: "button is-success", on: { click: _vm.save } },
+          [_vm._v("Save changes")]
+        ),
         _vm._v(" "),
         _c("button", { staticClass: "button", on: { click: _vm.close } }, [
           _vm._v("Cancel")
@@ -52732,70 +52941,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "modal-card-body" }, [
-      _c("div", { staticClass: "field" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Nama Jurusan")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "control" }, [
-          _c("input", {
-            staticClass: "input",
-            attrs: { type: "text", placeholder: "Nama Jurusan" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "field" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Universitas")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "control" }, [
-          _c("div", { staticClass: "select" }, [
-            _c("select", [
-              _c(
-                "option",
-                {
-                  attrs: { value: "", selected: "", disabled: "", hidden: "" }
-                },
-                [_vm._v("Choose here")]
-              ),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Institut Pertanian Bogor" } }, [
-                _vm._v("Institut Pertanian Bogor")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Universitas Indonesia" } }, [
-                _vm._v("Universitas Indonesia")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Institut Teknologi Bandung" } }, [
-                _vm._v("Institut Teknologi Bandung")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "Universitas Gadjah Mada" } }, [
-                _vm._v("Universitas Gadjah Mada")
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "field" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Passing Grade")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "control" }, [
-          _c("input", {
-            staticClass: "input",
-            attrs: { type: "number", placeholder: "Passing Grade Jurusan" }
-          })
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -52818,9 +52964,91 @@ var render = function() {
     { staticClass: "section" },
     [
       _c("div", { staticClass: "columns" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "column" }, [
+          _c("div", { staticClass: "field" }, [
+            _c("label", { staticClass: "label" }, [
+              _vm._v("Pilih Universitas")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "select" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.dt.univ,
+                      expression: "dt.univ"
+                    }
+                  ],
+                  on: {
+                    change: [
+                      function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.dt,
+                          "univ",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                      function($event) {
+                        return _vm.updateTable(this.value)
+                      }
+                    ]
+                  }
+                },
+                [
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "",
+                        selected: "",
+                        disabled: "",
+                        hidden: ""
+                      }
+                    },
+                    [_vm._v("Choose here")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Institut Pertanian Bogor" } },
+                    [_vm._v("Institut Pertanian Bogor")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Universitas Indonesia" } }, [
+                    _vm._v("Universitas Indonesia")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Institut Teknologi Bandung" } },
+                    [_vm._v("Institut Teknologi Bandung")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Universitas Gadjah Mada" } },
+                    [_vm._v("Universitas Gadjah Mada")]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]),
         _vm._v(" "),
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "column" }, [
           _c(
@@ -52829,17 +53057,61 @@ var render = function() {
               staticClass: "button is-primary",
               on: { click: _vm.openAddUniv }
             },
-            [_vm._m(2), _vm._v(" "), _c("span", [_vm._v("Tambah Jurusan")])]
+            [_vm._m(1), _vm._v(" "), _c("span", [_vm._v("Tambah Jurusan")])]
           )
         ])
       ]),
       _vm._v(" "),
-      _vm._m(3),
+      _c("table", { staticClass: "table is-hoverable is-fullwidth" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.lists, function(item, key) {
+            return _c("tr", { key: item.id }, [
+              _c("td", [_vm._v(_vm._s(item.nama_jurusan))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(item.passing_grade))]),
+              _vm._v(" "),
+              _c("td", [
+                _c("a", { staticClass: "icon" }, [
+                  _c("i", {
+                    staticClass: "fa fa-edit has-text-primary",
+                    on: {
+                      click: function($event) {
+                        return _vm.openUpdate(key)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("a", { staticClass: "icon" }, [
+                  _c("i", {
+                    staticClass: "fa fa-trash has-text-danger",
+                    attrs: { "aria-hidden": "true" },
+                    on: {
+                      click: function($event) {
+                        return _vm.del(key, item.id)
+                      }
+                    }
+                  })
+                ])
+              ])
+            ])
+          }),
+          0
+        )
+      ]),
       _vm._v(" "),
-      _vm._m(4),
+      _vm._m(3),
       _vm._v(" "),
       _c("Add", {
         attrs: { openmodal: _vm.addActive },
+        on: { closeRequest: _vm.close }
+      }),
+      _vm._v(" "),
+      _c("Update", {
+        attrs: { openmodal: _vm.updateActive },
         on: { closeRequest: _vm.close }
       })
     ],
@@ -52847,36 +53119,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column" }, [
-      _c("div", { staticClass: "field" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("Pilih Universitas")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "select" }, [
-          _c("select", [
-            _c("option", { attrs: { value: "UI" } }, [
-              _vm._v("Universitas Indonesia")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "ITB" } }, [
-              _vm._v("Institut Teknologi Bandung")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "UGM" } }, [
-              _vm._v("Universitas Gadjah Mada")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "IPB" } }, [
-              _vm._v("Institut Pertanian Bogor")
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -52909,44 +53151,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("table", { staticClass: "table is-hoverable is-fullwidth" }, [
-      _c("thead", [
-        _c("tr", [
-          _c("th", [
-            _c("abbr", { attrs: { title: "nama_jurusan" } }, [
-              _vm._v("Jurusan")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("th", [
-            _c("abbr", { attrs: { title: "passing_grade" } }, [
-              _vm._v("Passing Grade")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("th", [_c("abbr", { attrs: { title: "edit" } }, [_vm._v("Edit")])])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("tbody", [
-        _c("tr", { attrs: { "is-selected": "" } }, [
-          _c("td", [_vm._v("Ilmu Komputer")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("69")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("a", { staticClass: "icon" }, [
-              _c("i", { staticClass: "fa fa-edit has-text-primary" })
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "icon" }, [
-              _c("i", {
-                staticClass: "fa fa-trash has-text-danger",
-                attrs: { "aria-hidden": "true" }
-              })
-            ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [
+          _c("abbr", { attrs: { title: "nama_jurusan" } }, [_vm._v("Jurusan")])
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("abbr", { attrs: { title: "passing_grade" } }, [
+            _vm._v("Passing Grade")
           ])
-        ])
+        ]),
+        _vm._v(" "),
+        _c("th", [_c("abbr", { attrs: { title: "edit" } }, [_vm._v("Edit")])])
       ])
     ])
   },
@@ -52967,7 +53184,7 @@ var staticRenderFns = [
             staticClass: "pagination-previous",
             attrs: { title: "This is the first page" }
           },
-          [_vm._v("Previous")]
+          [_vm._v("Previous Paging")]
         ),
         _vm._v(" "),
         _c("a", { staticClass: "pagination-next" }, [_vm._v("Next page")]),
@@ -53024,6 +53241,323 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(72)
+/* template */
+var __vue_template__ = __webpack_require__(73)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/UpdateUniv.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-04949034", Component.options)
+  } else {
+    hotAPI.reload("data-v-04949034", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['openmodal'],
+  data: function data() {
+    return {
+      list: {},
+      errors: {}
+    };
+  },
+
+  methods: {
+    close: function close() {
+      this.$emit('closeRequest');
+    },
+    update: function update() {
+      var _this = this;
+
+      axios.patch('/jurusan/' + this.list.id, this.$data.list).then(function (response) {
+        return _this.close();
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal", class: _vm.openmodal }, [
+    _c("div", { staticClass: "modal-background" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal-card" }, [
+      _c("header", { staticClass: "modal-card-head" }, [
+        _c("p", { staticClass: "modal-card-title" }, [
+          _vm._v("Ubah " + _vm._s(_vm.list.nama_jurusan))
+        ]),
+        _vm._v(" "),
+        _c("button", {
+          staticClass: "delete",
+          attrs: { "aria-label": "close" },
+          on: { click: _vm.close }
+        })
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "modal-card-body" }, [
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Nama Jurusan")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.list.nama_jurusan,
+                  expression: "list.nama_jurusan"
+                }
+              ],
+              staticClass: "input",
+              attrs: { type: "text", placeholder: "Nama Jurusan" },
+              domProps: { value: _vm.list.nama_jurusan },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.list, "nama_jurusan", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Universitas")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("div", { staticClass: "select" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.list.univ,
+                      expression: "list.univ"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.list,
+                        "univ",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "",
+                        selected: "",
+                        disabled: "",
+                        hidden: ""
+                      }
+                    },
+                    [_vm._v("Choose here")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Institut Pertanian Bogor" } },
+                    [_vm._v("Institut Pertanian Bogor")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Universitas Indonesia" } }, [
+                    _vm._v("Universitas Indonesia")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Institut Teknologi Bandung" } },
+                    [_vm._v("Institut Teknologi Bandung")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "Universitas Gadjah Mada" } },
+                    [_vm._v("Universitas Gadjah Mada")]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Passing Grade")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.list.passing_grade,
+                  expression: "list.passing_grade"
+                }
+              ],
+              staticClass: "input",
+              attrs: { type: "number", placeholder: "Passing Grade Jurusan" },
+              domProps: { value: _vm.list.passing_grade },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.list, "passing_grade", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("footer", { staticClass: "modal-card-foot" }, [
+        _c(
+          "button",
+          { staticClass: "button is-success", on: { click: _vm.update } },
+          [_vm._v("Update")]
+        ),
+        _vm._v(" "),
+        _c("button", { staticClass: "button", on: { click: _vm.close } }, [
+          _vm._v("Cancel")
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-04949034", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

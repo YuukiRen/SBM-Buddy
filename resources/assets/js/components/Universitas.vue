@@ -5,12 +5,13 @@
         <div class="field">
             <label class="label">Pilih Universitas</label>
             <div class="select">
-                <select>
-                    <option value="UI">Universitas Indonesia</option>
-                    <option value="ITB">Institut Teknologi Bandung</option>
-                    <option value="UGM">Universitas Gadjah Mada</option>
-                    <option value="IPB">Institut Pertanian Bogor</option>
-                </select>
+                <select v-model="dt.univ" @change = updateTable(this.value)>
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="Institut Pertanian Bogor">Institut Pertanian Bogor</option>
+                    <option value="Universitas Indonesia">Universitas Indonesia</option>
+                    <option value="Institut Teknologi Bandung">Institut Teknologi Bandung</option>
+                    <option value="Universitas Gadjah Mada">Universitas Gadjah Mada</option>
+            </select>
             </div>
         </div>
     </div>
@@ -41,15 +42,16 @@
       </tr>
     </thead>
     <tbody>
-        <tr is-selected>
-            <td>Ilmu Komputer</td>
-            <td>69</td>
+        <tr v-for="item,key in lists"
+          :key="item.id">
+            <td>{{item.nama_jurusan}}</td>
+            <td>{{item.passing_grade}}</td>
             <td>
                 <a class="icon">
-                    <i class="fa fa-edit has-text-primary"></i>
+                    <i class="fa fa-edit has-text-primary" @click='openUpdate(key)'></i>
                 </a>
                 <a class="icon">
-                    <i class="fa fa-trash has-text-danger" aria-hidden="true"></i>
+                    <i class="fa fa-trash has-text-danger" aria-hidden="true" @click="del(key,item.id)"></i>
                 </a>
             </td>
         </tr>
@@ -57,7 +59,7 @@
   </table>
 
   <nav class="pagination" role="navigation" aria-label="pagination">
-    <a class="pagination-previous" title="This is the first page">Previous</a>
+    <a class="pagination-previous" title="This is the first page">Previous Paging</a>
     <a class="pagination-next">Next page</a>
     <ul class="pagination-list">
       <li>
@@ -73,24 +75,48 @@
   </nav>
 
 <Add :openmodal='addActive' @closeRequest='close'></Add>
+<Update :openmodal='updateActive' @closeRequest='close'></Update>
 </section>
 </template>
 
 <script>
   let Add = require('./AddUniv.vue');
+  let Update = require('./UpdateUniv.vue');
   export default{
-    components:{Add},
+    components:{Add,Update},
     data(){
       return {
-        addActive : ''
+        addActive : '',
+        updateActive : '',
+        lists:{},
+        dt:{
+          univ:''
+        },
+        errors:{}
       }
     },
-    methods:{
+    methods:{updateTable(event){
+        axios.post('/getUniv',this.$data.dt)
+          .then((response)=>this.lists = response.data)
+          .catch((error) => this.errors = error.response.data.errors)
+      },
       openAddUniv(){
         this.addActive = 'is-active';
       },
+      del(key,id){
+            if(confirm("Apakah anda yakin akan menghapus jurusan ini?")){
+                this.loading=!this.loading
+                axios.delete(`jurusan/${id}`)
+                .then((response)=>{this.lists.splice(key,1);this.loading=!this.loading})
+                .catch((error)=>this.errors=error.response.data.errors)  
+            }
+        },
+      openUpdate(key){
+        this.$children[1].list=this.lists[key];
+        this.updateActive='is-active';
+      },
       close(){
-        this.addActive = '';
+        this.addActive = this.updateActive = '';
       }
     }
   }
