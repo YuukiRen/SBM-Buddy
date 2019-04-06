@@ -14079,11 +14079,12 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 var Myheader = __webpack_require__(42);
 var Myfooter = __webpack_require__(44);
 
+var Paketsoal = __webpack_require__(76);
 var Soal = __webpack_require__(46);
 var Pesan = __webpack_require__(52);
 var Universitas = __webpack_require__(54);
 
-var routes = [{ path: '/soal', component: Soal }, { path: '/pesan', component: Pesan }, { path: '/universitas', component: Universitas }];
+var routes = [{ path: '/paketsoal', component: Paketsoal }, { path: '/soal', component: Soal }, { path: '/pesan', component: Pesan }, { path: '/universitas', component: Universitas }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
   //mode: 'history',
@@ -51501,8 +51502,8 @@ var render = function() {
               [
                 _c(
                   "router-link",
-                  { staticClass: "navbar-item", attrs: { to: "/soal" } },
-                  [_vm._v("Soal")]
+                  { staticClass: "navbar-item", attrs: { to: "/paketsoal" } },
+                  [_vm._v("Paket Soal")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -51781,39 +51782,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
-var Add = __webpack_require__(48);
+var Add = __webpack_require__(79);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Add: Add },
   data: function data() {
     return {
-      addActive: '',
-      lists: {},
-      errors: {}
+      addActive: ''
     };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.post('/getData').then(function (response) {
-      return _this.lists = response.data;
-    }).catch(function (error) {
-      return _this.errors = error.response.data.errors;
-    });
   },
 
   methods: {
@@ -52153,42 +52129,32 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "section",
-    { staticClass: "section" },
+    "div",
     [
-      _c("div", { staticClass: "columns" }, [
-        _c("div", { staticClass: "column" }),
+      _c("nav", { staticClass: "panel column is-offset-3 is-6" }, [
+        _c("div", { staticClass: "panel-heading" }, [
+          _vm._v("\r\n        A1314\r\n    ")
+        ]),
         _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "column" }, [
+        _c("div", { staticClass: "panel-block" }, [
           _c(
-            "a",
-            { staticClass: "button is-primary", on: { click: _vm.openAdd } },
-            [_vm._m(1), _vm._v(" "), _c("span", [_vm._v("Tambah Paket Soal")])]
+            "button",
+            {
+              staticClass: "button is-primary is-outlined is-fullwidth",
+              on: { click: _vm.openAdd }
+            },
+            [_vm._m(0), _vm._v(" "), _c("span", [_vm._v("Tambah Soal")])]
           )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("table", { staticClass: "table is-hoverable is-fullwidth" }, [
+        ]),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
         _vm._m(2),
         _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.lists, function(item) {
-            return _c("tr", { key: item.id }, [
-              _c("th", [_vm._v(_vm._s(item.kode))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.penjurusan))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.tahun))])
-            ])
-          }),
-          0
-        )
+        _vm._m(3),
+        _vm._v(" "),
+        _vm._m(4)
       ]),
-      _vm._v(" "),
-      _vm._m(3),
       _vm._v(" "),
       _c("Add", {
         attrs: { openmodal: _vm.addActive },
@@ -52203,26 +52169,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column is-half" }, [
-      _c("div", { staticClass: "control has-icons-left" }, [
-        _c("input", {
-          staticClass: "input",
-          attrs: { type: "text", placeholder: "Search" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "icon is-small is-left" }, [
-          _c("i", {
-            staticClass: "fa fa-search",
-            attrs: { "aria-hidden": "true" }
-          })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon" }, [
       _c("i", { staticClass: "fa fa-plus" })
     ])
@@ -52231,78 +52177,50 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [
-          _c("abbr", { attrs: { title: "kode" } }, [_vm._v("Kode Paket")])
-        ]),
-        _vm._v(" "),
-        _c("th", [
-          _c("abbr", { attrs: { title: "penjurusan" } }, [_vm._v("Jurusan")])
-        ]),
-        _vm._v(" "),
-        _c("th", [_c("abbr", { attrs: { title: "tahun" } }, [_vm._v("Tahun")])])
-      ])
+    return _c("p", { staticClass: "panel-tabs" }, [
+      _c("a", { staticClass: "is-active" }, [_vm._v("All")]),
+      _vm._v(" "),
+      _c("a", [_vm._v("Biologi")]),
+      _vm._v(" "),
+      _c("a", [_vm._v("Fisika")]),
+      _vm._v(" "),
+      _c("a", [_vm._v("Kimia")]),
+      _vm._v(" "),
+      _c("a", [_vm._v("Matematika")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "nav",
-      {
-        staticClass: "pagination",
-        attrs: { role: "navigation", "aria-label": "pagination" }
-      },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "pagination-previous",
-            attrs: { title: "This is the first page" }
-          },
-          [_vm._v("Previous")]
-        ),
-        _vm._v(" "),
-        _c("a", { staticClass: "pagination-next" }, [_vm._v("Next page")]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "pagination-list" }, [
-          _c("li", [
-            _c(
-              "a",
-              {
-                staticClass: "pagination-link is-current",
-                attrs: { "aria-label": "Page 1", "aria-current": "page" }
-              },
-              [_vm._v("1")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c(
-              "a",
-              {
-                staticClass: "pagination-link",
-                attrs: { "aria-label": "Goto page 2" }
-              },
-              [_vm._v("2")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c(
-              "a",
-              {
-                staticClass: "pagination-link",
-                attrs: { "aria-label": "Goto page 3" }
-              },
-              [_vm._v("3")]
-            )
-          ])
-        ])
-      ]
-    )
+    return _c("a", { staticClass: "panel-block" }, [
+      _c("span", { staticClass: "panel-icon" }, [
+        _c("i", { staticClass: "fa fa-book", attrs: { "aria-hidden": "true" } })
+      ]),
+      _vm._v("\r\n        1\r\n    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "panel-block" }, [
+      _c("span", { staticClass: "panel-icon" }, [
+        _c("i", { staticClass: "fa fa-book", attrs: { "aria-hidden": "true" } })
+      ]),
+      _vm._v("\r\n        2\r\n    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "panel-block" }, [
+      _c("span", { staticClass: "panel-icon" }, [
+        _c("i", { staticClass: "fa fa-book", attrs: { "aria-hidden": "true" } })
+      ]),
+      _vm._v("\r\n        3\r\n    ")
+    ])
   }
 ]
 render._withStripped = true
@@ -53549,6 +53467,1043 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(77)
+/* template */
+var __vue_template__ = __webpack_require__(78)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Paketsoal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c43c84ae", Component.options)
+  } else {
+    hotAPI.reload("data-v-c43c84ae", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var Add = __webpack_require__(48);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: { Add: Add },
+  data: function data() {
+    return {
+      addActive: '',
+      lists: {},
+      errors: {}
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.post('/getData').then(function (response) {
+      return _this.lists = response.data;
+    }).catch(function (error) {
+      return _this.errors = error.response.data.errors;
+    });
+  },
+
+  methods: {
+    openAdd: function openAdd() {
+      this.addActive = 'is-active';
+    },
+    close: function close() {
+      this.addActive = '';
+    }
+  }
+});
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "section",
+    { staticClass: "section" },
+    [
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column" }),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "column" }, [
+          _c(
+            "a",
+            { staticClass: "button is-primary", on: { click: _vm.openAdd } },
+            [_vm._m(1), _vm._v(" "), _c("span", [_vm._v("Tambah Paket Soal")])]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("table", { staticClass: "table is-hoverable is-fullwidth" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.lists, function(item) {
+            return _c("tr", { key: item.id }, [
+              _c("th", [_vm._v(_vm._s(item.kode))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(item.penjurusan))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(item.tahun))]),
+              _vm._v(" "),
+              _c(
+                "td",
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "icon", attrs: { to: "/soal" } },
+                    [
+                      _c("i", {
+                        staticClass: "fa fa-eye has-text-primary",
+                        attrs: { "aria-hidden": "true" }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(3, true),
+                  _vm._v(" "),
+                  _vm._m(4, true)
+                ],
+                1
+              )
+            ])
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(5),
+      _vm._v(" "),
+      _c("Add", {
+        attrs: { openmodal: _vm.addActive },
+        on: { closeRequest: _vm.close }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column is-half" }, [
+      _c("div", { staticClass: "control has-icons-left" }, [
+        _c("input", {
+          staticClass: "input",
+          attrs: { type: "text", placeholder: "Search" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "icon is-small is-left" }, [
+          _c("i", {
+            staticClass: "fa fa-search",
+            attrs: { "aria-hidden": "true" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fa fa-plus" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [
+          _c("abbr", { attrs: { title: "kode" } }, [_vm._v("Kode Paket")])
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("abbr", { attrs: { title: "penjurusan" } }, [_vm._v("Jurusan")])
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("abbr", { attrs: { title: "tahun" } }, [_vm._v("Tahun")])
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("abbr", { attrs: { title: "edit" } }, [_vm._v("Pilihan")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "icon" }, [
+      _c("i", {
+        staticClass: "fa fa-edit has-text-info",
+        attrs: { "aria-hidden": "true" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "icon" }, [
+      _c("i", {
+        staticClass: "fa fa-trash has-text-danger",
+        attrs: { "aria-hidden": "true" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "nav",
+      {
+        staticClass: "pagination",
+        attrs: { role: "navigation", "aria-label": "pagination" }
+      },
+      [
+        _c(
+          "a",
+          {
+            staticClass: "pagination-previous",
+            attrs: { title: "This is the first page" }
+          },
+          [_vm._v("Previous")]
+        ),
+        _vm._v(" "),
+        _c("a", { staticClass: "pagination-next" }, [_vm._v("Next page")]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "pagination-list" }, [
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "pagination-link is-current",
+                attrs: { "aria-label": "Page 1", "aria-current": "page" }
+              },
+              [_vm._v("1")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "pagination-link",
+                attrs: { "aria-label": "Goto page 2" }
+              },
+              [_vm._v("2")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "pagination-link",
+                attrs: { "aria-label": "Goto page 3" }
+              },
+              [_vm._v("3")]
+            )
+          ])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c43c84ae", module.exports)
+  }
+}
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(80)
+/* template */
+var __vue_template__ = __webpack_require__(81)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/AddSoal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4cce9fe1", Component.options)
+  } else {
+    hotAPI.reload("data-v-4cce9fe1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['openmodal'],
+  methods: {
+    close: function close() {
+      this.$emit('closeRequest');
+    }
+  }
+});
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal", class: _vm.openmodal }, [
+    _c("div", { staticClass: "modal-background" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal-card" }, [
+      _c("header", { staticClass: "modal-card-head" }, [
+        _c("p", { staticClass: "modal-card-title" }, [_vm._v("Tambah Soal")]),
+        _vm._v(" "),
+        _c("button", {
+          staticClass: "delete",
+          attrs: { "aria-label": "close" },
+          on: { click: _vm.close }
+        })
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("footer", { staticClass: "modal-card-foot" }, [
+        _c("button", { staticClass: "button is-primary" }, [_vm._v("Simpan")]),
+        _vm._v(" "),
+        _c("button", { staticClass: "button", on: { click: _vm.close } }, [
+          _vm._v("Cancel")
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "modal-card-body" }, [
+      _c("div", { staticClass: "field" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Mata Pelajaran")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "control" }, [
+          _c("div", { staticClass: "select" }, [
+            _c("select", [
+              _c("option", { attrs: { value: "biologi" } }, [
+                _vm._v("Biologi")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "fisika" } }, [_vm._v("Fisika")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "kimia" } }, [_vm._v("Kimia")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "matematika" } }, [
+                _vm._v("Matematika")
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Soal")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "control" }, [
+          _c("textarea", {
+            staticClass: "textarea",
+            attrs: { placeholder: "Tulis pertanyaan", rows: "10" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "file has-name is-fullwidth" }, [
+        _c("label", { staticClass: "file-label" }, [
+          _c("input", {
+            staticClass: "file-input",
+            attrs: { type: "file", name: "resume" }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-cta" }, [
+            _c("span", { staticClass: "file-icon" }, [
+              _c("i", { staticClass: "fa fa-upload" })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "file-label" }, [
+              _vm._v("\r\n              Choose a file…\r\n            ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-name" }, [
+            _vm._v(
+              "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Pilihan A")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "control" }, [
+          _c("textarea", {
+            staticClass: "textarea",
+            attrs: { placeholder: "Tulis jawaban untuk opsi A", rows: "2" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "file has-name is-fullwidth" }, [
+        _c("label", { staticClass: "file-label" }, [
+          _c("input", {
+            staticClass: "file-input",
+            attrs: { type: "file", name: "resume" }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-cta" }, [
+            _c("span", { staticClass: "file-icon" }, [
+              _c("i", { staticClass: "fa fa-upload" })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "file-label" }, [
+              _vm._v("\r\n              Choose a file…\r\n            ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-name" }, [
+            _vm._v(
+              "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Pilihan B")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "control" }, [
+          _c("textarea", {
+            staticClass: "textarea",
+            attrs: { placeholder: "Tulis jawaban untuk opsi B", rows: "2" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "file has-name is-fullwidth" }, [
+        _c("label", { staticClass: "file-label" }, [
+          _c("input", {
+            staticClass: "file-input",
+            attrs: { type: "file", name: "resume" }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-cta" }, [
+            _c("span", { staticClass: "file-icon" }, [
+              _c("i", { staticClass: "fa fa-upload" })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "file-label" }, [
+              _vm._v("\r\n              Choose a file…\r\n            ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-name" }, [
+            _vm._v(
+              "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Pilihan C")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "control" }, [
+          _c("textarea", {
+            staticClass: "textarea",
+            attrs: { placeholder: "Tulis jawaban untuk opsi C", rows: "2" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "file has-name is-fullwidth" }, [
+        _c("label", { staticClass: "file-label" }, [
+          _c("input", {
+            staticClass: "file-input",
+            attrs: { type: "file", name: "resume" }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-cta" }, [
+            _c("span", { staticClass: "file-icon" }, [
+              _c("i", { staticClass: "fa fa-upload" })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "file-label" }, [
+              _vm._v("\r\n              Choose a file…\r\n            ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-name" }, [
+            _vm._v(
+              "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Pilihan D")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "control" }, [
+          _c("textarea", {
+            staticClass: "textarea",
+            attrs: { placeholder: "Tulis jawaban untuk opsi D", rows: "2" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "file has-name is-fullwidth" }, [
+        _c("label", { staticClass: "file-label" }, [
+          _c("input", {
+            staticClass: "file-input",
+            attrs: { type: "file", name: "resume" }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-cta" }, [
+            _c("span", { staticClass: "file-icon" }, [
+              _c("i", { staticClass: "fa fa-upload" })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "file-label" }, [
+              _vm._v("\r\n              Choose a file…\r\n            ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-name" }, [
+            _vm._v(
+              "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Pilihan E")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "control" }, [
+          _c("textarea", {
+            staticClass: "textarea",
+            attrs: { placeholder: "Tulis jawaban untuk opsi E", rows: "2" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "file has-name is-fullwidth" }, [
+        _c("label", { staticClass: "file-label" }, [
+          _c("input", {
+            staticClass: "file-input",
+            attrs: { type: "file", name: "resume" }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-cta" }, [
+            _c("span", { staticClass: "file-icon" }, [
+              _c("i", { staticClass: "fa fa-upload" })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "file-label" }, [
+              _vm._v("\r\n              Choose a file…\r\n            ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-name" }, [
+            _vm._v(
+              "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Kunci Jawaban")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "control" }, [
+          _c("label", { staticClass: "radio" }, [
+            _c("input", { attrs: { type: "radio", name: "a" } }),
+            _vm._v("\r\n            A\r\n          ")
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio" }, [
+            _c("input", { attrs: { type: "radio", name: "b" } }),
+            _vm._v("\r\n            B\r\n          ")
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio" }, [
+            _c("input", { attrs: { type: "radio", name: "c" } }),
+            _vm._v("\r\n            C\r\n          ")
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio" }, [
+            _c("input", { attrs: { type: "radio", name: "d" } }),
+            _vm._v("\r\n            D\r\n          ")
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio" }, [
+            _c("input", { attrs: { type: "radio", name: "e" } }),
+            _vm._v("\r\n            E\r\n          ")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Pembahasan")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "control" }, [
+          _c("textarea", {
+            staticClass: "textarea",
+            attrs: { placeholder: "Tulis pembahasan", rows: "10" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "file has-name is-fullwidth" }, [
+        _c("label", { staticClass: "file-label" }, [
+          _c("input", {
+            staticClass: "file-input",
+            attrs: { type: "file", name: "resume" }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-cta" }, [
+            _c("span", { staticClass: "file-icon" }, [
+              _c("i", { staticClass: "fa fa-upload" })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "file-label" }, [
+              _vm._v("\r\n              Choose a file…\r\n            ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "file-name" }, [
+            _vm._v(
+              "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("br")
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4cce9fe1", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

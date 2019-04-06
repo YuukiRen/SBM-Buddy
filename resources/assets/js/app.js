@@ -17,12 +17,14 @@ Vue.use(VueRouter)
 let Myheader = require('./components/Myheader.vue');
 let Myfooter = require('./components/Myfooter.vue');
 
+let Paketsoal = require('./components/Paketsoal.vue');
 let Soal = require('./components/Soal.vue');
 let Pesan = require('./components/Pesan.vue');
 let Universitas = require('./components/Universitas.vue');
 
 
 const routes = [
+  { path: '/paketsoal', component: Paketsoal },
   { path: '/soal', component: Soal },
   { path: '/pesan', component: Pesan },
   { path: '/universitas', component: Universitas }

@@ -16,7 +16,7 @@
         </div>
         <div id="navbarMenuHeroA" class="navbar-menu">
           <div class="navbar-end">
-            <router-link to="/soal" class="navbar-item">Soal</router-link>
+            <router-link to="/paketsoal" class="navbar-item">Paket Soal</router-link>
             <router-link to="/pesan" class="navbar-item">Pesan</router-link>
             <router-link to="/universitas" class="navbar-item">Universitas</router-link>
             <span class="navbar-item">
