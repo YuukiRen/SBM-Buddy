@@ -1,79 +1,58 @@
 <template>
-<section class="section">
-  <div class="columns">
-    <div class="column"></div>
-    <div class="column is-half">
-        <div class="control has-icons-left">
-            <input class="input" type="text" placeholder="Search">
-            <span class="icon is-small is-left">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </span>
-        </div>
+<div>
+  <nav class="panel column is-offset-3 is-6">
+    <div class="panel-heading">
+        A1314
     </div>
-    <div class="column">
-        <a class="button is-primary" @click="openAdd">
-            <span class="icon">
-                  <i class="fa fa-plus"></i>
-            </span>
-            <span>Tambah Paket Soal</span>
-        </a>
+    <div class="panel-block">
+        <button class="button is-primary is-outlined is-fullwidth" @click="openAdd">
+                <span class="icon">
+                    <i class="fa fa-plus"></i>
+                </span>
+                <span>Tambah Soal</span>
+            </button>
     </div>
-  </div>
+    
+    <p class="panel-tabs">
+    <a class="is-active">All</a>
+    <a>Biologi</a>
+    <a>Fisika</a>
+    <a>Kimia</a>
+    <a>Matematika</a>
+  </p>
 
-  <table class="table is-hoverable is-fullwidth">
-    <thead>
-      <tr>
-        <th><abbr title="kode">Kode Paket</abbr></th>
-        <th><abbr title="penjurusan">Jurusan</abbr></th>
-        <th><abbr title="tahun">Tahun</abbr></th>
-      </tr>
-    </thead>
-  
-    <tbody>
-        <tr v-for="item in lists"
-        :key="item.id">
-          <th>{{item.kode}}</th>
-          <td>{{item.penjurusan}}</td>
-          <td>{{item.tahun}}</td>
-        </tr>
-    </tbody>
-  </table>
-
-  <nav class="pagination" role="navigation" aria-label="pagination">
-    <a class="pagination-previous" title="This is the first page">Previous</a>
-    <a class="pagination-next">Next page</a>
-    <ul class="pagination-list">
-      <li>
-        <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
-      </li>
-      <li>
-        <a class="pagination-link" aria-label="Goto page 2">2</a>
-      </li>
-      <li>
-        <a class="pagination-link" aria-label="Goto page 3">3</a>
-      </li>
-    </ul>
+    <a class="panel-block">
+        <span class="panel-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+        </span>
+        1
+    </a>
+    <a class="panel-block">
+        <span class="panel-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+        </span>
+        2
+    </a>
+    <a class="panel-block">
+        <span class="panel-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+        </span>
+        3
+    </a>
   </nav>
 
   <Add :openmodal='addActive' @closeRequest='close'></Add>
-</section>
+</div>
 </template>
 
 <script>
-  let Add = require('./Add.vue');
+  let Add = require('./AddSoal.vue');
   export default{
     components:{Add},
     data(){
       return{
-        addActive:'',
-        lists:{},
-        errors:{}
+        addActive:''
       }
-    },
-    mounted(){
-      axios.post('/getData')
-        .then((response)=>this.lists = response.data)
-        .catch((error) => this.errors = error.response.data.errors)
     },
     methods:{
       openAdd(){
