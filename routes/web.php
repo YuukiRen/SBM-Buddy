@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('admin');
 });
 
-Route::get('/{name}', function() {
-	return redirect('/');
-})->where('name', '[A-Za-z]+');
+// Route::get('/{name}', function() {
+// 	return redirect('/');
+// })->where('name', '[A-Za-z]+');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('paket', 'PaketController');
