@@ -9,7 +9,7 @@
             <th scope="col">Id</th>
             <th scope="col">Nom</th>
             <th scope="col">Email</th>
-            <th scope="col">Date d'inscription</th>
+            <th scope="col">Registration date</th>
         </tr>
         <tr v-for="user in users" v-bind:key="user.id" style="margin-bottom: 5px;">
             <th scope="row">{{ user.id }}</th>

@@ -13,11 +13,6 @@ let Universitas = require('./admin/Universitas.vue');
 
 // Routes
 const routes = [
-  
-    { path: '/paketsoal', component: Paketsoal },
-    { path: '/soal', component: Soal },
-    { path: '/pesan', component: Pesan },
-    { path: '/universitas', component: Universitas },
     {
       path: '/',
       name: 'home',
@@ -56,6 +51,38 @@ const routes = [
       path: '/admin',
       name: 'admin.dashboard',
       component: AdminDashboard,
+      meta: {
+        auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+      }
+    },
+    {
+      path: '/soal',
+      name: 'soal',
+      component: Soal,
+      meta: {
+        auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+      }
+    },
+    {
+      path: '/pesan',
+      name: 'pesan',
+      component: Pesan,
+      meta: {
+        auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+      }
+    },
+    {
+      path: '/universitas',
+      name: 'universitas',
+      component: Universitas,
+      meta: {
+        auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
+      }
+    },
+    {
+      path: '/paketsoal',
+      name: 'paketsoal',
+      component: Paketsoal,
       meta: {
         auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
       }

@@ -3,7 +3,7 @@
         <header id="header">
             <h1>
                 <router-link :to="{name: 'home'}">
-                    Laravel Vue SPA
+                    SBM Buddy
                 </router-link>
             </h1>
             <navigationMenu></navigationMenu>
@@ -14,7 +14,7 @@
     </div>
 </template>
 <script>
-  import navigationMenu from './components/Menu.vue'
+  import navigationMenu from './components/Myheader.vue'
   export default {
     data() {
       return {
