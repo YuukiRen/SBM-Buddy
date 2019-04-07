@@ -57885,10 +57885,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -57915,24 +57911,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "main" } }, [
-    _c(
-      "header",
-      { attrs: { id: "header" } },
-      [
-        _c(
-          "h1",
-          [
-            _c("router-link", { attrs: { to: { name: "home" } } }, [
-              _vm._v("\n                SBM Buddy\n            ")
-            ])
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("navigationMenu")
-      ],
-      1
-    ),
+    _c("header", { attrs: { id: "header" } }, [_c("navigationMenu")], 1),
     _vm._v(" "),
     _c("div", { attrs: { id: "content" } }, [_c("router-view")], 1)
   ])
@@ -58464,6 +58443,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -58515,7 +58497,27 @@ var render = function() {
   return _c("section", { staticClass: "hero is-link is-bold" }, [
     _c("nav", { staticClass: "navbar" }, [
       _c("div", { staticClass: "container" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "navbar-brand" }, [
+          _c(
+            "a",
+            { staticClass: "navbar-item" },
+            [
+              _c("router-link", { attrs: { to: { name: "home" } } }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "https://previews.dropbox.com/p/thumb/AAYfsxxo3PoiAe6TMkLkpF0kz9-paJm3sqQAdXQsFvM0cFRQ4ebJrDJHJtPejZS5fYn0jz472CbuRzecppPzbFQL5jThYw9f6JecUQACExdQ0OhqtKcyKzZerBTszOtoFJ7xNLzBnAXcWjQl5DvDDVqPhxR3_Vi6l0XdTQXFxKZ0V5ZD7Y7QPcunt29tNyrzVY25JeRb3d7EqWvvL0vg9mNO1UOlOwcsKgUb5PrtB_U_eDvD8GJwCALsWIGxuyxJTFlNIxRweM8eB_dnKZbFmu34u3BOylV6QaCcA05xsqUuThyUylk2oE6jiShDEIYkVVWXWaingaRY4iqIoJZphUPy/p.png?size_mode=5",
+                    height: "100",
+                    alt: "Logo"
+                  }
+                })
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._m(0)
+        ]),
         _vm._v(" "),
         _c(
           "div",
@@ -58634,26 +58636,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "navbar-brand" }, [
-      _c("a", { staticClass: "navbar-item" }, [
-        _c("img", {
-          attrs: {
-            src:
-              "https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png",
-            alt: "Logo"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "span",
-        {
-          staticClass: "navbar-burger burger",
-          attrs: { "data-target": "navbarMenuHeroA" }
-        },
-        [_c("span"), _vm._v(" "), _c("span"), _vm._v(" "), _c("span")]
-      )
-    ])
+    return _c(
+      "span",
+      {
+        staticClass: "navbar-burger burger",
+        attrs: { "data-target": "navbarMenuHeroA" }
+      },
+      [_c("span"), _vm._v(" "), _c("span"), _vm._v(" "), _c("span")]
+    )
   },
   function() {
     var _vm = this

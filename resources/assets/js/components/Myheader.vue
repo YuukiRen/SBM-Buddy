@@ -6,7 +6,10 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item">
-            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png" alt="Logo">
+            <router-link :to="{name: 'home'}">
+              <img src="https://previews.dropbox.com/p/thumb/AAYfsxxo3PoiAe6TMkLkpF0kz9-paJm3sqQAdXQsFvM0cFRQ4ebJrDJHJtPejZS5fYn0jz472CbuRzecppPzbFQL5jThYw9f6JecUQACExdQ0OhqtKcyKzZerBTszOtoFJ7xNLzBnAXcWjQl5DvDDVqPhxR3_Vi6l0XdTQXFxKZ0V5ZD7Y7QPcunt29tNyrzVY25JeRb3d7EqWvvL0vg9mNO1UOlOwcsKgUb5PrtB_U_eDvD8GJwCALsWIGxuyxJTFlNIxRweM8eB_dnKZbFmu34u3BOylV6QaCcA05xsqUuThyUylk2oE6jiShDEIYkVVWXWaingaRY4iqIoJZphUPy/p.png?size_mode=5" height="100" alt="Logo">
+            </router-link>
+            
           </a>
           <span class="navbar-burger burger" data-target="navbarMenuHeroA">
             <span></span>
