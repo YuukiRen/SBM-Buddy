@@ -24,7 +24,7 @@
                 <span class="icon">
                   <i class="fa fa-sign-out"></i>
                 </span>
-                <span>Log Out</span>
+                <span>Siswa</span>
               </a>
             </span>
           </div>
