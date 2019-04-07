@@ -42425,7 +42425,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(60)
+var __vue_script__ = null
 /* template */
 var __vue_template__ = __webpack_require__(61)
 /* template functional */
@@ -42466,35 +42466,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 60 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      //
-    };
-  },
-
-  components: {
-    //
-  }
-});
-
-/***/ }),
+/* 60 */,
 /* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -42509,12 +42481,158 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "card card-default" }, [
-        _c("div", { staticClass: "card-header" }, [_vm._v("Dashboard")]),
+    return _c("section", [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-content" }, [
+          _c("p", { staticClass: "title" }, [
+            _vm._v("\n      Halo, Siswa!\n    ")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "subtitle" }, [
+            _vm._v(
+              "\n      Selamat datang kembali. Ayo semangat berlatih!\n    "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "columns is-vcentered" }, [
+        _c("div", { staticClass: "column" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-image" }, [
+              _c("figure", { staticClass: "image is-4by3" }, [
+                _c("img", {
+                  attrs: {
+                    src: "https://bulma.io/images/placeholders/1280x960.png",
+                    alt: "Placeholder image"
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-content" }, [
+              _c("div", { staticClass: "media" }, [
+                _c("div", { staticClass: "media-content" }, [
+                  _c("p", { staticClass: "title is-4" }, [_vm._v("Pemanasan")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v(
+                  "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                            "
+                ),
+                _c("br"),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("div", { staticClass: "buttons has-addons is-centered" }, [
+                  _c("a", { staticClass: "button is-primary" }, [
+                    _vm._v("Mulai berlatih")
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _vm._v("\n            welcome\n        ")
+        _c("div", { staticClass: "column" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-image" }, [
+              _c("figure", { staticClass: "image is-4by3" }, [
+                _c("img", {
+                  attrs: {
+                    src: "https://bulma.io/images/placeholders/1280x960.png",
+                    alt: "Placeholder image"
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-content" }, [
+              _c("div", { staticClass: "media" }, [
+                _c("div", { staticClass: "media-content" }, [
+                  _c("p", { staticClass: "title is-4" }, [_vm._v("Try Out")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v(
+                  "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                            "
+                ),
+                _c("br"),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("div", { staticClass: "buttons has-addons is-centered" }, [
+                  _c("a", { staticClass: "button is-primary" }, [
+                    _vm._v("Mulai Try Out")
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-image" }, [
+              _c("figure", { staticClass: "image is-4by3" }, [
+                _c("img", {
+                  attrs: {
+                    src: "https://bulma.io/images/placeholders/1280x960.png",
+                    alt: "Placeholder image"
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-content" }, [
+              _c("div", { staticClass: "media" }, [
+                _c("div", { staticClass: "media-content" }, [
+                  _c("p", { staticClass: "title is-4" }, [
+                    _vm._v("My Progress")
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" }, [
+                _vm._v(
+                  "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                            "
+                ),
+                _c("br"),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("div", { staticClass: "buttons has-addons is-centered" }, [
+                  _c("a", { staticClass: "button is-primary" }, [
+                    _vm._v("Lihat Progress")
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("article", { staticClass: "message is-link" }, [
+        _c("div", { staticClass: "message-header" }, [
+          _c("p", [_vm._v("Pengumuman")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "message-body" }, [
+          _vm._v(
+            "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+          ),
+          _c("strong", [_vm._v("Pellentesque risus mi")]),
+          _vm._v(
+            ", tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum "
+          ),
+          _c("a", [_vm._v("felis venenatis")]),
+          _vm._v(" efficitur. Aenean ac "),
+          _c("em", [_vm._v("eleifend lacus")]),
+          _vm._v(
+            ", in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.\n            "
+          )
         ])
       ])
     ])
@@ -58507,7 +58625,6 @@ var render = function() {
                   attrs: {
                     src:
                       "https://previews.dropbox.com/p/thumb/AAYfsxxo3PoiAe6TMkLkpF0kz9-paJm3sqQAdXQsFvM0cFRQ4ebJrDJHJtPejZS5fYn0jz472CbuRzecppPzbFQL5jThYw9f6JecUQACExdQ0OhqtKcyKzZerBTszOtoFJ7xNLzBnAXcWjQl5DvDDVqPhxR3_Vi6l0XdTQXFxKZ0V5ZD7Y7QPcunt29tNyrzVY25JeRb3d7EqWvvL0vg9mNO1UOlOwcsKgUb5PrtB_U_eDvD8GJwCALsWIGxuyxJTFlNIxRweM8eB_dnKZbFmu34u3BOylV6QaCcA05xsqUuThyUylk2oE6jiShDEIYkVVWXWaingaRY4iqIoJZphUPy/p.png?size_mode=5",
-                    height: "100",
                     alt: "Logo"
                   }
                 })
@@ -58553,7 +58670,7 @@ var render = function() {
             _vm._l(_vm.routes.user, function(route, key) {
               return _vm.$auth.check(1)
                 ? _c(
-                    "li",
+                    "div",
                     { key: route.path },
                     [
                       _c(
