@@ -1,23 +1,20 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href=" {{ asset('css/app.css') }} ">
+</head>
+<body>
+    <div id="app">
+        <Myheaders></Myheaders>
+        <div class="container">
+            <router-view></router-view>
         </div>
+        <Myfooter></Myfooter>
     </div>
-</div>
-@endsection
+    <script src=" {{ asset('js/app.js') }} "></script>
+</body>
+</html>

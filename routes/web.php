@@ -12,12 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('admin');
+    return view('welhom');
 });
 
+<<<<<<< HEAD
 //Route::get('/{name}', function() {
 //	return redirect('/');
 //})->where('name', '[A-Za-z]+');
+=======
+// Route to handle page reload in Vue except for api routes
+Route::get('/{any?}', function (){
+    return view('welhom');
+})->where('any', '^(?!api\/)[\/\w\.-]*');
+>>>>>>> 826ca314037d1bdc82722bb39524b3afbb8541c8
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('paket', 'PaketController');

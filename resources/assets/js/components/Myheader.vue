@@ -6,7 +6,10 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item">
-            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png" alt="Logo">
+            <router-link :to="{name: 'home'}">
+              <img src="https://previews.dropbox.com/p/thumb/AAYfsxxo3PoiAe6TMkLkpF0kz9-paJm3sqQAdXQsFvM0cFRQ4ebJrDJHJtPejZS5fYn0jz472CbuRzecppPzbFQL5jThYw9f6JecUQACExdQ0OhqtKcyKzZerBTszOtoFJ7xNLzBnAXcWjQl5DvDDVqPhxR3_Vi6l0XdTQXFxKZ0V5ZD7Y7QPcunt29tNyrzVY25JeRb3d7EqWvvL0vg9mNO1UOlOwcsKgUb5PrtB_U_eDvD8GJwCALsWIGxuyxJTFlNIxRweM8eB_dnKZbFmu34u3BOylV6QaCcA05xsqUuThyUylk2oE6jiShDEIYkVVWXWaingaRY4iqIoJZphUPy/p.png?size_mode=5" alt="Logo">
+            </router-link>
+            
           </a>
           <span class="navbar-burger burger" data-target="navbarMenuHeroA">
             <span></span>
@@ -15,52 +18,88 @@
           </span>
         </div>
         <div id="navbarMenuHeroA" class="navbar-menu">
-          <div class="navbar-end">
-            <router-link to="/paketsoal" class="navbar-item">Paket Soal</router-link>
-            <router-link to="/pesan" class="navbar-item">Pesan</router-link>
-            <router-link to="/universitas" class="navbar-item">Universitas</router-link>
-            <span class="navbar-item">
-              <a class="button is-link is-inverted">
-                <span class="icon">
-                  <i class="fa fa-sign-out"></i>
-                </span>
-                <span>Log Out</span>
-              </a>
-            </span>
+          <!--UNLOGGED-->
+          <div class="navbar-end" v-if="!$auth.check()" v-for="(route, key) in routes.unlogged" v-bind:key="route.path">
+              <router-link  :to="{ name : route.path }" :key="key" class="navbar-item">
+                  {{route.name}}
+              </router-link>
+          </div>
+          <!--LOGGED USER-->
+          <div v-if="$auth.check(1)" v-for="(route, key) in routes.user" v-bind:key="route.path">
+              <router-link  :to="{ name : route.path }" :key="key" class="navbar-item">
+                  {{route.name}}
+              </router-link>
+          </div>
+          <!--LOGGED ADMIN-->
+          <div v-if="$auth.check(2)" v-for="(route, key) in routes.admin" v-bind:key="route.path">
+              <router-link  :to="{ name : route.path }" :key="key" class="navbar-item">
+                  {{route.name}}
+              </router-link>
+          </div>
+          <!--LOGOUT-->
+          <div v-if="$auth.check()">
+              <span class="navbar-item">
+                <a href="#" @click.prevent="$auth.logout()" class="button is-link is-inverted">
+                  <span class="icon">
+                    <i class="fa fa-sign-out"></i>
+                  </span>
+                  <span>Log Out</span>
+                </a>
+              </span>
           </div>
         </div>
       </div>
     </nav>
 </section>
-<!--
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png" alt="SBM-Buddy: Free, open source, & modern place to learn" width="112" height="28">
-    </a>
-
-    <div class="navbar-menu is-active">
-      <router-link to="/soal" class="navbar-item">Soal</router-link>
-      <router-link to="/pesan" class="navbar-item">Pesan</router-link>
-      <router-link to="/universitas" class="navbar-item">Universitas</router-link>
-    </div>
-
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-link">
-            <strong>Log Out</strong>
-          </a>
-        </div>
-      </div>
-    </div>
-</nav>
--->
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        routes: {
+          // UNLOGGED
+          unlogged: [
+            {
+              name: 'Register',
+              path: 'register'
+            },
+            {
+              name: 'Login',
+              path: 'login'
+            }
+          ],
+          // LOGGED USER
+          user: [
+            {
+              name: 'Dashboard',
+              path: 'dashboard'
+            }
+          ],
+          // LOGGED ADMIN
+          admin: [
+            {
+              name: 'Dashboard',
+              path: 'admin.dashboard'
+            },
+            {
+              name: 'Paket Soal',
+              path: 'paketsoal'
+            },
+            {
+              name: 'Pesan',
+              path: 'pesan'
+            },
+            {
+              name: 'Universitas',
+              path: 'universitas'
+            }
+          ]
+        }
+      }
+    },
+    mounted() {
+      //
+    }
+  }
+</script>
