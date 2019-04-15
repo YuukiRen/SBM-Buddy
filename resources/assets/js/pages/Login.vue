@@ -7,15 +7,32 @@
                     <p>Error, can not connect with these credentials.</p>
                 </div>
                 <form autocomplete="off" @submit.prevent="login" method="post">
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="email" required>
+                    <div class="field">
+                      <p class="control has-icons-left has-icons-right">
+                        <input id="email" class="input" type="email" placeholder="Email" v-model="email" required>
+                        <span class="icon is-small is-left">
+                          <i class="fa fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                          <i class="fa fa-check"></i>
+                        </span>
+                      </p>
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" class="form-control" v-model="password" required>
+                    <div class="field">
+                      <p class="control has-icons-left">
+                        <input id="password" class="input" type="password" placeholder="Password" v-model="password" required>
+                        <span class="icon is-small is-left">
+                          <i class="fa fa-lock"></i>
+                        </span>
+                      </p>
                     </div>
-                    <button type="submit" class="btn btn-default">Connect</button>
+                    <div class="field">
+                      <p class="control">
+                        <button type="submit" class="button is-success">
+                          Login
+                        </button>
+                      </p>
+                    </div>
                 </form>
             </div>
         </div>
