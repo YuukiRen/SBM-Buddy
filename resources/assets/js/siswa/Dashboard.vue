@@ -33,7 +33,7 @@
                             <br>
                             <br>
                             <div class="buttons has-addons is-centered">
-                                <a class="button is-primary">Mulai berlatih</a>
+                                <a href='/pilihmapel' class="button is-primary">Mulai berlatih</a>
                             </div>
                         </div>
                     </div>

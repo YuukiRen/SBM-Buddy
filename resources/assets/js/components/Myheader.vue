@@ -19,10 +19,12 @@
         </div>
         <div id="navbarMenuHeroA" class="navbar-menu">
           <!--UNLOGGED-->
-          <div class="navbar-end" v-if="!$auth.check()" v-for="(route, key) in routes.unlogged" v-bind:key="route.path">
+          <div class="navbar-end">
+            <div v-if="!$auth.check()" v-for="(route, key) in routes.unlogged" v-bind:key="route.path">
               <router-link  :to="{ name : route.path }" :key="key" class="navbar-item">
                   {{route.name}}
               </router-link>
+            </div>
           </div>
           <!--LOGGED USER-->
           <div v-if="$auth.check(1)" v-for="(route, key) in routes.user" v-bind:key="route.path">
@@ -61,12 +63,12 @@
           // UNLOGGED
           unlogged: [
             {
-              name: 'Register',
-              path: 'register'
-            },
-            {
               name: 'Login',
               path: 'login'
+            },
+            {
+              name: 'Register',
+              path: 'register'
             }
           ],
           // LOGGED USER

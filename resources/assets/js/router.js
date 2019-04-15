@@ -6,6 +6,8 @@ import Login from './pages/Login'
 import Dashboard from './siswa/Dashboard'
 import AdminDashboard from './admin/Dashboard'
 
+let PilihMapel = require('./siswa/PilihMapel.vue');
+
 let Paketsoal = require('./admin/Paketsoal.vue');
 let Soal = require('./admin/Soal.vue');
 let Pesan = require('./admin/Pesan.vue');
@@ -42,6 +44,14 @@ const routes = [
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard,
+      meta: {
+        auth: true
+      }
+    },
+    {
+      path: '/pilihmapel',
+      name: 'pilihmapel',
+      component: PilihMapel,
       meta: {
         auth: true
       }
