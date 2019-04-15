@@ -43591,7 +43591,13 @@ var render = function() {
           _c(
             "a",
             { staticClass: "button is-primary", on: { click: _vm.openAdd } },
-            [_vm._m(1), _vm._v(" "), _c("span", [_vm._v("Tambah Paket Soal")])]
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("span", { staticClass: "has-text-white" }, [
+                _vm._v("Tambah Paket Soal")
+              ])
+            ]
           )
         ])
       ]),
@@ -43671,7 +43677,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon" }, [
-      _c("i", { staticClass: "fa fa-plus" })
+      _c("i", { staticClass: "fa fa-plus has-text-white" })
     ])
   },
   function() {
@@ -44582,7 +44588,13 @@ var render = function() {
               staticClass: "button is-primary is-outlined is-fullwidth",
               on: { click: _vm.openAdd }
             },
-            [_vm._m(0), _vm._v(" "), _c("span", [_vm._v("Tambah Soal")])]
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("span", { staticClass: "has-text-white" }, [
+                _vm._v("Tambah Soal")
+              ])
+            ]
           )
         ]),
         _vm._v(" "),
@@ -44609,7 +44621,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon" }, [
-      _c("i", { staticClass: "fa fa-plus" })
+      _c("i", { staticClass: "fa fa-plus has-text-white" })
     ])
   },
   function() {
@@ -45721,7 +45733,13 @@ var render = function() {
               staticClass: "button is-primary",
               on: { click: _vm.openAddUniv }
             },
-            [_vm._m(1), _vm._v(" "), _c("span", [_vm._v("Tambah Jurusan")])]
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("span", { staticClass: "has-text-white" }, [
+                _vm._v("Tambah Jurusan")
+              ])
+            ]
           )
         ])
       ]),
@@ -45808,7 +45826,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon" }, [
-      _c("i", { staticClass: "fa fa-plus" })
+      _c("i", { staticClass: "fa fa-plus has-text-white" })
     ])
   },
   function() {
