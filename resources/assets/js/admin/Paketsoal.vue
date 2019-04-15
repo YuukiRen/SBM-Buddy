@@ -13,9 +13,9 @@
     <div class="column">
         <a class="button is-primary" @click="openAdd">
             <span class="icon">
-                  <i class="fa fa-plus"></i>
+                  <i class="fa fa-plus has-text-white"></i>
             </span>
-            <span>Tambah Paket Soal</span>
+            <span class="has-text-white">Tambah Paket Soal</span>
         </a>
     </div>
   </div>
