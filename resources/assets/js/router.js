@@ -7,6 +7,8 @@ import Dashboard from './siswa/Dashboard'
 import AdminDashboard from './admin/Dashboard'
 
 let PilihMapel = require('./siswa/PilihMapel.vue');
+let Pemanasan = require('./siswa/Pemanasan.vue');
+let Pembahasan = require('./siswa/Pembahasan.vue');
 
 let Paketsoal = require('./admin/Paketsoal.vue');
 let Soal = require('./admin/Soal.vue');
@@ -44,6 +46,22 @@ const routes = [
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard,
+      meta: {
+        auth: true
+      }
+    },    
+    {
+      path: '/pembahasan',
+      name: 'pembahasan',
+      component: Pembahasan,
+      meta: {
+        auth: true
+      }
+    },
+    {
+      path: '/pemanasan',
+      name: 'pemanasan',
+      component: Pemanasan,
       meta: {
         auth: true
       }
