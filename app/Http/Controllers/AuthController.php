@@ -9,13 +9,14 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $v = Validator::make($request->all(), [
+            'name' => 'required',
             'email' => 'required|email|unique:users',
             'password'  => 'required|min:3|confirmed',
         ]);
         if ($v->fails())
         {
             return response()->json([
-                'status' => 'error',
+                'error' => 'registration_validation_error',
                 'errors' => $v->errors()
             ], 422);
         }
@@ -28,6 +29,17 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
+        $v = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password'  => 'required|min:3',
+        ]);
+        if ($v->fails())
+        {
+            return response()->json([
+                'status' => 'error',
+                'errors' => $v->errors()
+            ], 422);
+        }
         $credentials = $request->only('email', 'password');
         if ($token = $this->guard()->attempt($credentials)) {
             return response()->json(['status' => 'success'], 200)->header('Authorization', $token);

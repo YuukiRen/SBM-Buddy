@@ -26,9 +26,9 @@
     <div class="column">
         <a class="button is-primary" @click="openAddUniv">
             <span class="icon">
-                  <i class="fa fa-plus"></i>
+                  <i class="fa fa-plus has-text-white"></i>
             </span>
-            <span>Tambah Jurusan</span>
+            <span class="has-text-white">Tambah Jurusan</span>
         </a>
     </div>
   </div>

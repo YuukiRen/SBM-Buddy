@@ -8,26 +8,64 @@
                     <p v-else>Error, can not register at the moment. If the problem persists, please contact an administrator.</p>
                 </div>
                 <form autocomplete="off" @submit.prevent="register" v-if="!success" method="post">
-                    <div class="form-group" v-bind:class="{ 'has-error': has_error && errors.name }">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" class="form-control" placeholder="Name" v-model="name">
-                        <span class="help-block" v-if="has_error && errors.name">{{ errors.name }}</span>
+                    <!-- Form Username -->
+                    <div class="field">
+                      <label class="label">Username</label>
+                      <div class="control has-icons-left has-icons-right">
+                        <input class="input " v-bind:class="{ 'is-error': has_error && errors.name }" type="text" placeholder="Username Input" v-model="name">
+                        <span class="icon is-small is-left">
+                          <i class="fa fa-user"></i>
+                        </span>
+                        <!-- <span class="icon is-small is-right" >
+                          <i class="fa fa-check"></i>
+                        </span> -->
+                      </div>
+                      <p class="help is-danger" v-if="has_error && errors.name">{{errors.name}}</p>
                     </div>
-                    <div class="form-group" v-bind:class="{ 'has-error': has_error && errors.email }">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="email">
-                        <span class="help-block" v-if="has_error && errors.email">{{ errors.email }}</span>
+                    <!-- Form Email -->
+                    <div class="field">
+                      <label class="label">Email</label>
+                      <div class="control has-icons-left has-icons-right">
+                        <input class="input " v-bind:class="{ 'is-danger': has_error && errors.email }" type="email" placeholder="Email input" v-model="email">
+                        <span class="icon is-small is-left">
+                          <i class="fa fa-envelope"></i>
+                        </span>
+                        <!-- <span class="icon is-small is-right">
+                          <i class="fa fa-exclamation-triangle"></i>
+                        </span> -->
+                      </div>
+                      <p class="help is-danger" v-if="has_error && errors.email">{{ errors.email }}</p>
                     </div>
-                    <div class="form-group" v-bind:class="{ 'has-error': has_error && errors.password }">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" class="form-control" v-model="password">
-                        <span class="help-block" v-if="has_error && errors.password">{{ errors.password }}</span>
+                    <!-- Form Password -->
+                    <div class="field">
+                      <label class="label">Password</label>
+                      <p class="control has-icons-left">
+                        <input class="input " v-bind:class="{ 'is-danger': has_error && errors.password }" type="password" placeholder="Password" v-model="password">
+                        <span class="icon is-small is-left">
+                          <i class="fa fa-lock"></i>
+                        </span>
+                      </p>
+                      <p class="help is-danger" v-if="has_error && errors.password">{{ errors.password }}</p>
                     </div>
-                    <div class="form-group" v-bind:class="{ 'has-error': has_error && errors.password }">
-                        <label for="password_confirmation">Password confirmation</label>
-                        <input type="password" id="password_confirmation" class="form-control" v-model="password_confirmation">
+                    <!-- Form Conf Password -->
+                    <div class="field">
+                      <label class="label">Password Confirmation</label>
+                      <p class="control has-icons-left">
+                        <input class="input " v-bind:class="{ 'is-danger': has_error && errors.password }" type="password" placeholder="Password" v-model="password_confirmation">
+                        <span class="icon is-small is-left">
+                          <i class="fa fa-lock"></i>
+                        </span>
+                      </p>
+                      <p class="help is-danger" v-if="has_error && errors.password">{{ errors.password }}</p>
                     </div>
-                    <button type="submit" class="btn btn-default">Register</button>
+                    
+                    <div class="field">
+                      <p class="control">
+                        <button type="submit" class="button is-success">
+                          Register
+                        </button>
+                      </p>
+                    </div>
                 </form>
             </div>
         </div>

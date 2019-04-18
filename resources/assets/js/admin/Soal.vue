@@ -7,9 +7,9 @@
     <div class="panel-block">
         <button class="button is-primary is-outlined is-fullwidth" @click="openAdd">
                 <span class="icon">
-                    <i class="fa fa-plus"></i>
+                    <i class="fa fa-plus has-text-white"></i>
                 </span>
-                <span>Tambah Soal</span>
+                <span class="has-text-white">Tambah Soal</span>
             </button>
     </div>
     
