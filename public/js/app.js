@@ -41670,6 +41670,7 @@ module.exports = {
 var PilihMapel = __webpack_require__(67);
 var Pemanasan = __webpack_require__(69);
 var Pembahasan = __webpack_require__(71);
+var Progress = __webpack_require__(123);
 
 var Paketsoal = __webpack_require__(73);
 var Soal = __webpack_require__(79);
@@ -41725,6 +41726,13 @@ var routes = [{
   path: '/pilihmapel',
   name: 'pilihmapel',
   component: PilihMapel,
+  meta: {
+    auth: true
+  }
+}, {
+  path: '/progress',
+  name: 'progress',
+  component: Progress,
   meta: {
     auth: true
   }
@@ -42661,12 +42669,12 @@ var staticRenderFns = [
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-content" }, [
           _c("p", { staticClass: "title" }, [
-            _vm._v("\n      Halo, Siswa!\n    ")
+            _vm._v("\n            Halo, Siswa!\n        ")
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "subtitle" }, [
             _vm._v(
-              "\n      Selamat datang kembali. Ayo semangat berlatih!\n    "
+              "\n            Selamat datang kembali. Ayo semangat berlatih!\n        "
             )
           ])
         ])
@@ -42695,7 +42703,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("div", { staticClass: "content" }, [
                 _vm._v(
-                  "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                            "
+                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                        "
                 ),
                 _c("br"),
                 _vm._v(" "),
@@ -42738,7 +42746,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("div", { staticClass: "content" }, [
                 _vm._v(
-                  "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                            "
+                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                        "
                 ),
                 _c("br"),
                 _vm._v(" "),
@@ -42778,16 +42786,21 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("div", { staticClass: "content" }, [
                 _vm._v(
-                  "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                            "
+                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                        "
                 ),
                 _c("br"),
                 _vm._v(" "),
                 _c("br"),
                 _vm._v(" "),
                 _c("div", { staticClass: "buttons has-addons is-centered" }, [
-                  _c("a", { staticClass: "button is-primary" }, [
-                    _vm._v("Lihat Progress")
-                  ])
+                  _c(
+                    "a",
+                    {
+                      staticClass: "button is-primary",
+                      attrs: { href: "/progress" }
+                    },
+                    [_vm._v("Lihat Progress")]
+                  )
                 ])
               ])
             ])
@@ -59506,6 +59519,338 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(124)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/siswa/Progress.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7580a327", Component.options)
+  } else {
+    hotAPI.reload("data-v-7580a327", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "section" }, [
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column is-1" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "column" }, [
+          _c("div", { staticClass: "tabs" }, [
+            _c("ul", [
+              _c("li", { staticClass: "is-active" }, [
+                _c("a", [_vm._v("Harian")])
+              ]),
+              _vm._v(" "),
+              _c("li", [_c("a", [_vm._v("Mingguan")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", [_vm._v("Bulanan")])])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column is-1" }, [
+              _c("p", [_vm._v("Senin")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Selasa")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Rabu")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Kamis")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Jumat")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Sabtu")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "column is-7" }, [
+              _c(
+                "progress",
+                {
+                  staticClass: "progress is-primary",
+                  attrs: { value: "15", max: "100" }
+                },
+                [_vm._v("15%")]
+              ),
+              _vm._v(" "),
+              _c(
+                "progress",
+                {
+                  staticClass: "progress is-primary",
+                  attrs: { value: "30", max: "100" }
+                },
+                [_vm._v("30%")]
+              ),
+              _vm._v(" "),
+              _c(
+                "progress",
+                {
+                  staticClass: "progress is-primary",
+                  attrs: { value: "45", max: "100" }
+                },
+                [_vm._v("45%")]
+              ),
+              _vm._v(" "),
+              _c(
+                "progress",
+                {
+                  staticClass: "progress is-primary",
+                  attrs: { value: "60", max: "100" }
+                },
+                [_vm._v("60%")]
+              ),
+              _vm._v(" "),
+              _c(
+                "progress",
+                {
+                  staticClass: "progress is-primary",
+                  attrs: { value: "75", max: "100" }
+                },
+                [_vm._v("75%")]
+              ),
+              _vm._v(" "),
+              _c(
+                "progress",
+                {
+                  staticClass: "progress is-primary",
+                  attrs: { value: "90", max: "100" }
+                },
+                [_vm._v("90%")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("h3", [_vm._v("Detail")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "dropdown" }, [
+            _c("div", { staticClass: "dropdown-trigger" }, [
+              _c(
+                "button",
+                { staticClass: "button", attrs: { "aria-haspopup": "true" } },
+                [
+                  _c("span", [_vm._v("Hari")]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "icon is-small" }, [
+                    _c("i", {
+                      staticClass: "fa fa-angle-down",
+                      attrs: { "aria-hidden": "true" }
+                    })
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dropdown-menu" }, [
+              _c("div", { staticClass: "dropdown-content" }, [
+                _c(
+                  "a",
+                  { staticClass: "dropdown-item", attrs: { href: "#" } },
+                  [
+                    _c("label", { staticClass: "checkbox" }, [
+                      _c("input", { attrs: { type: "checkbox" } }),
+                      _vm._v(
+                        "\r\n                            Remember me\r\n                        "
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "dropdown-item", attrs: { href: "#" } },
+                  [
+                    _vm._v(
+                      "\r\n                        Selasa\r\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "dropdown-item", attrs: { href: "#" } },
+                  [
+                    _vm._v(
+                      "\r\n                        Rabu\r\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "dropdown-item", attrs: { href: "#" } },
+                  [
+                    _vm._v(
+                      "\r\n                        Kamis\r\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "dropdown-item", attrs: { href: "#" } },
+                  [
+                    _vm._v(
+                      "\r\n                        Jumat\r\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "dropdown-item", attrs: { href: "#" } },
+                  [
+                    _vm._v(
+                      "\r\n                        Sabtu\r\n                    "
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("table", { staticClass: "table" }, [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("No.")]),
+                _vm._v(" "),
+                _c("th", [
+                  _c("abbr", { attrs: { title: "kode" } }, [
+                    _vm._v("Paket Soal")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("th", [
+                  _c("abbr", { attrs: { title: "tanggal" } }, [
+                    _vm._v("Tanggal Pengerjaan")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("th", [
+                  _c("abbr", { attrs: { title: "nilai" } }, [_vm._v("Score")])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", [
+                _c("th", [_vm._v("1")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("A1314")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2 Februari 2017")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("536")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", [_vm._v("2")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("B1213")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("3 Februari 2017")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("576")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", [_vm._v("3")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("A1213")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("9 Februari 2017")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("655")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", [_vm._v("4")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("C1213")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("9 Februari 2017")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("498")])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column is-1" })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7580a327", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
