@@ -18,4 +18,7 @@ class PaketSoalController extends Controller
     public function destroy_paket($id_paket){
     	PaketSoal::where('id_paket',$id_paket)->delete();
     }
+    public function nopal(){
+        
+    }
 }

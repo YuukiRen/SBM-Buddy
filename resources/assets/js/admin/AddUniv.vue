@@ -47,26 +47,30 @@
     export default{
         props:['openmodal'],
         data(){
-    return{
-      list:{
-        nama_jurusan:'',
-        univ:'',
-        passing_grade:''
-      },
-      errors:{}
-    }
-  },
-  methods:{
-        close(){
-            this.$emit('closeRequest');
+          return{
+            list:{
+              nama_jurusan:'',
+              univ:'',
+              passing_grade:''
+            },
+            errors:{}
+          }
         },
-        save(){
-          axios.post('/jurusan',this.$data.list).then((response)=>{
-            this.close()
-            this.$parent.lists.push(response.data)})
-          .catch((error)=>this.errors=error.response.data.errors)
-        }
-    }
+        methods:{
+              close(){
+                  this.$emit('closeRequest');
+              },
+              save(){
+                axios.post('/jurusan',this.$data.list).then((response)=>{
+                  this.close()
+                  this.$parent.lists.push(response.data)
+                  this.list.nama_jurusan=''
+                  this.list.univ=''
+                  this.list.passing_grade=''
+                  })
+                .catch((error)=>this.errors=error.response.data.errors)
+              }
+          }
     }
      
 </script>
