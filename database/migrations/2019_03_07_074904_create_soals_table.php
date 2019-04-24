@@ -15,15 +15,16 @@ class CreateSoalsTable extends Migration
     {
         Schema::create('soals', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('pertanyaan');
-            $table->integer('jawaban');
+            $table->unsignedInteger('idPaket');
+            $table->string('pertanyaan');
+            $table->string('jawaban');
             $table->string('mapel');
-            $table->text('pilihana');
-            $table->text('pilihanb');
-            $table->text('pilihanc');
-            $table->text('pilihand');
-            $table->text('pilihane');
-            $table->text('pembahasan');
+            $table->string('pilihana');
+            $table->string('pilihanb');
+            $table->string('pilihanc');
+            $table->string('pilihand');
+            $table->string('pilihane');
+            $table->string('pembahasan');
             $table->timestamps();
         });
     }
