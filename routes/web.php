@@ -19,11 +19,6 @@ Route::get('/', function () {
 Route::get('/{any?}', function (){
     return view('welhom');
 })->where('any', '^(?!api\/)[\/\w\.-]*');
-<<<<<<< HEAD
-
-// Route::get('/coba','PaketController@nangis');
-=======
->>>>>>> 30debd932160195241351d585b02cd499a27a51b
 
 // Route::get('/home', 'HomeController@index')->name('home');
 // Route::resource('paket', 'PaketController');
