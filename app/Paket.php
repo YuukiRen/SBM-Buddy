@@ -12,4 +12,5 @@ class Paket extends Model
     public function getSoalIPS(){
         return $this->where("penjurusan","Soshum")->get();
     }
+    
 }
