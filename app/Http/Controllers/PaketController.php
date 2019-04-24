@@ -7,6 +7,10 @@ use App\Http\Requests\PaketRequest;
 use App\Paket;
 class PaketController extends Controller
 {
+    public function nangis(){
+        $hehe = new Paket; 
+        return $hehe->getSoalIPS();
+    }
     
     /**
      * Display a listing of the resource.
