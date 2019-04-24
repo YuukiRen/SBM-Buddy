@@ -9,6 +9,7 @@ import AdminDashboard from './admin/Dashboard'
 let PilihMapel = require('./siswa/PilihMapel.vue');
 let Pemanasan = require('./siswa/Pemanasan.vue');
 let Pembahasan = require('./siswa/Pembahasan.vue');
+let Progress = require('./siswa/Progress.vue');
 
 let Paketsoal = require('./admin/Paketsoal.vue');
 let Soal = require('./admin/Soal.vue');
@@ -70,6 +71,14 @@ const routes = [
       path: '/pilihmapel',
       name: 'pilihmapel',
       component: PilihMapel,
+      meta: {
+        auth: true
+      }
+    },
+    {
+      path: '/progress',
+      name: 'progress',
+      component: Progress,
       meta: {
         auth: true
       }

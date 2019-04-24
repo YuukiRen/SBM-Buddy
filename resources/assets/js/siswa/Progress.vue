@@ -1,0 +1,117 @@
+<template>
+<section class="section">
+    <div class="columns">
+        <div class="column is-1">
+        
+        </div>
+        <div class="column">
+            <div class="tabs">
+                <ul>
+                    <li class="is-active"><a>Harian</a></li>
+                    <li><a>Mingguan</a></li>
+                    <li><a>Bulanan</a></li>
+                </ul>
+            </div>
+
+            <div class="columns">
+                <div class="column is-1">
+                    <p>Senin</p>
+                    <p>Selasa</p>
+                    <p>Rabu</p>
+                    <p>Kamis</p>
+                    <p>Jumat</p>
+                    <p>Sabtu</p>
+                </div>
+                <div class="column is-7">
+                    <progress class="progress is-primary" value="15" max="100">15%</progress>
+                    <progress class="progress is-primary" value="30" max="100">30%</progress>
+                    <progress class="progress is-primary" value="45" max="100">45%</progress>
+                    <progress class="progress is-primary" value="60" max="100">60%</progress>
+                    <progress class="progress is-primary" value="75" max="100">75%</progress>   
+                    <progress class="progress is-primary" value="90" max="100">90%</progress>
+                </div>
+            </div>
+
+            <br>
+            <h3>Detail</h3>
+
+            <div class="dropdown">
+                <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true">
+                    <span>Hari</span>
+                    <span class="icon is-small">
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                    </button>
+                </div>
+                <div class="dropdown-menu">
+                    <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            Remember me
+                        </label>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Selasa
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Rabu
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Kamis
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Jumat
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        Sabtu
+                    </a>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th><abbr title="kode">Paket Soal</abbr></th>
+                        <th><abbr title="tanggal">Tanggal Pengerjaan</abbr></th>
+                        <th><abbr title="nilai">Score</abbr></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>1</th>
+                        <td>A1314</td>
+                        <td>2 Februari 2017</td>
+                        <td>536</td>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <td>B1213</td>
+                        <td>3 Februari 2017</td>
+                        <td>576</td>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <td>A1213</td>
+                        <td>9 Februari 2017</td>
+                        <td>655</td>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <td>C1213</td>
+                        <td>9 Februari 2017</td>
+                        <td>498</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="column is-1">
+        
+        </div>
+    </div>
+
+</section>
+</template>
