@@ -4,28 +4,41 @@ namespace App\Http\Controllers;
 use App\Soal;
 use Illuminate\Http\Request;
 use App\Http\Requests\SoalRequest;
-
+use App\Traits\SoalTrait;
 class SoalController extends Controller
 {
+    use SoalTrait;
+    public function getData(Request $request){
+        return Soal::where('idPaket',$request->id)->get();
+    }
     public function index(){
 
     }
-
+    public function TryOut(){
+        return $this->getSoalTryOut();
+    }
+    public function fisika(){
+        return $this->getSoalFisika(1);
+    }
     public function create(){
 
     }
 
     public function store(SoalRequest $request){
+        echo "Hello World";
         $soal = new Soal;
-        $soal->pertanyaan = $request->pertanyaan;
-        $soal->jawaban=$request->jawaban;
+        $soal->idPaket = $request->idPaket;
+        $soal->pertanyaan = $request->soal;
         $soal->mapel=$request->mapel;
-        $soal->pembahasan=$request->pembahasan;
-        $soal->pilihana=$request->pilihana;
-        $soal->pilihanb=$request->pilihanb;
-        $soal->pilihanc=$request->pilihanc;
-        $soal->pilihand=$request->pilihand;
-        $soal->pilihane=$request->pilihane;
+        $soal->pembahasan=$request->ans;
+        $soal->pilihana=$request->A;
+        $soal->pilihanb=$request->B;
+        $soal->pilihanc=$request->C;
+        $soal->pilihand=$request->D;
+        $soal->pilihane=$request->E;
+        $soal->jawaban = $request->ansUser;
+        echo "Done";
+        
         $soal->save();
         return $soal;
     }

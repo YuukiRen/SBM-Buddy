@@ -95,7 +95,8 @@
         errors:{}
       }
     },
-    methods:{updateTable(event){
+    methods:{
+      updateTable(event){
         axios.post('/getUniv',this.$data.dt)
           .then((response)=>this.lists = response.data)
           .catch((error) => this.errors = error.response.data.errors)

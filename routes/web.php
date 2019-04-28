@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welhom');
 });
-
+// Route::get('/coba','SoalController@tri');
 // Route to handle page reload in Vue except for api routes
 Route::get('/{any?}', function (){
     return view('welhom');

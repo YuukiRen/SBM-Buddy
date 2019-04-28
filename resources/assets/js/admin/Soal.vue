@@ -2,15 +2,15 @@
 <div>
   <nav class="panel column is-offset-3 is-6">
     <div class="panel-heading">
-        A1314
+        {{list.kode}}
     </div>
     <div class="panel-block">
         <button class="button is-primary is-outlined is-fullwidth" @click="openAdd">
-                <span class="icon">
-                    <i class="fa fa-plus has-text-white"></i>
-                </span>
-                <span class="has-text-white">Tambah Soal</span>
-            </button>
+          <span class="icon">
+              <i class="fa fa-plus has-text-white"></i>
+          </span>
+          <span class="has-text-white">Tambah Soal</span>
+        </button>
     </div>
     
     <p class="panel-tabs">
@@ -21,23 +21,11 @@
     <a>Matematika</a>
   </p>
 
-    <a class="panel-block">
+    <a class="panel-block" v-for="item,key in lists" :key="item.id">
         <span class="panel-icon">
             <i class="fa fa-book" aria-hidden="true"></i>
         </span>
-        1
-    </a>
-    <a class="panel-block">
-        <span class="panel-icon">
-            <i class="fa fa-book" aria-hidden="true"></i>
-        </span>
-        2
-    </a>
-    <a class="panel-block">
-        <span class="panel-icon">
-            <i class="fa fa-book" aria-hidden="true"></i>
-        </span>
-        3
+        {{item.pertanyaan}}
     </a>
   </nav>
 
@@ -51,11 +39,21 @@
     components:{Add},
     data(){
       return{
+        list:{},
+        lists:{},
         addActive:''
       }
     },
+    mounted(){
+        this.list = this.$route.params.pack;
+        
+        axios.post('/getSoal',this.list)
+          .then((response)=>this.lists = response.data)
+          .catch((error) => this.errors = error.response.data.errors)
+    },
     methods:{
       openAdd(){
+        this.$children[0].aidi=this.list.id;
         this.addActive = 'is-active';
       },
       close(){

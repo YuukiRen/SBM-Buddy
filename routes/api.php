@@ -35,6 +35,9 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('paket', 'PaketController');
     Route::resource('jurusan', 'JurusanController');
+    Route::resource('soal', 'SoalController');
     Route::post('/getData','PaketController@getData');
     Route::post('/getUniv','JurusanController@getData');
+    Route::post('/getSoal','SoalController@getData');
+
 });

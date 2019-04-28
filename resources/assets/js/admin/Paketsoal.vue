@@ -31,15 +31,18 @@
     </thead>
   
     <tbody>
-        <tr v-for="item in lists"
+        <tr v-for="item,key in lists"
         :key="item.id">
           <th>{{item.kode}}</th>
           <td>{{item.penjurusan}}</td>
           <td>{{item.tahun}}</td>
           <td>
-                <router-link to="/soal" class="icon">
+                <!-- <router-link to="/soal" class="icon">
                     <i class="fa fa-eye has-text-primary" aria-hidden="true"></i>
-                </router-link>
+                </router-link> -->
+                <a class="icon">
+                    <i class="fa fa-eye has-text-primary" @click='openPassing(key)'></i>
+                </a>
                 <a class="icon">
                     <i class="fa fa-edit has-text-info" aria-hidden="true"></i>
                 </a>
@@ -90,6 +93,9 @@
     methods:{
       openAdd(){
         this.addActive = 'is-active';
+      },
+      openPassing(key){
+        this.$router.push({name: "soal",params:{pack:this.lists[key]}})
       },
       close(){
         this.addActive = '';
