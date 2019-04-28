@@ -76,6 +76,10 @@
             {
               name: 'Dashboard',
               path: 'dashboard'
+            },
+            {
+              name: 'Passing Grade',
+              path: 'passingGrade'
             }
           ],
           // LOGGED ADMIN

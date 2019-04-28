@@ -43825,7 +43825,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("h3", [_vm._v("Detail")]),
           _vm._v(" "),
-          _c("div", { staticClass: "dropdown" }, [
+          _c("div", { staticClass: "dropdown is-hoverable" }, [
             _c("div", { staticClass: "dropdown-trigger" }, [
               _c(
                 "button",
@@ -43852,7 +43852,7 @@ var staticRenderFns = [
                     _c("label", { staticClass: "checkbox" }, [
                       _c("input", { attrs: { type: "checkbox" } }),
                       _vm._v(
-                        "\r\n                            Remember me\r\n                        "
+                        "\r\n                            Senin\r\n                        "
                       )
                     ])
                   ]
@@ -43862,9 +43862,12 @@ var staticRenderFns = [
                   "a",
                   { staticClass: "dropdown-item", attrs: { href: "#" } },
                   [
-                    _vm._v(
-                      "\r\n                        Selasa\r\n                    "
-                    )
+                    _c("label", { staticClass: "checkbox" }, [
+                      _c("input", { attrs: { type: "checkbox" } }),
+                      _vm._v(
+                        "\r\n                            Selasa\r\n                        "
+                      )
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -43872,9 +43875,12 @@ var staticRenderFns = [
                   "a",
                   { staticClass: "dropdown-item", attrs: { href: "#" } },
                   [
-                    _vm._v(
-                      "\r\n                        Rabu\r\n                    "
-                    )
+                    _c("label", { staticClass: "checkbox" }, [
+                      _c("input", { attrs: { type: "checkbox" } }),
+                      _vm._v(
+                        "\r\n                            Rabu\r\n                        "
+                      )
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -43882,9 +43888,12 @@ var staticRenderFns = [
                   "a",
                   { staticClass: "dropdown-item", attrs: { href: "#" } },
                   [
-                    _vm._v(
-                      "\r\n                        Kamis\r\n                    "
-                    )
+                    _c("label", { staticClass: "checkbox" }, [
+                      _c("input", { attrs: { type: "checkbox" } }),
+                      _vm._v(
+                        "\r\n                            Kamis\r\n                        "
+                      )
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -43892,9 +43901,12 @@ var staticRenderFns = [
                   "a",
                   { staticClass: "dropdown-item", attrs: { href: "#" } },
                   [
-                    _vm._v(
-                      "\r\n                        Jumat\r\n                    "
-                    )
+                    _c("label", { staticClass: "checkbox" }, [
+                      _c("input", { attrs: { type: "checkbox" } }),
+                      _vm._v(
+                        "\r\n                            Jumat\r\n                        "
+                      )
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -43902,9 +43914,12 @@ var staticRenderFns = [
                   "a",
                   { staticClass: "dropdown-item", attrs: { href: "#" } },
                   [
-                    _vm._v(
-                      "\r\n                        Sabtu\r\n                    "
-                    )
+                    _c("label", { staticClass: "checkbox" }, [
+                      _c("input", { attrs: { type: "checkbox" } }),
+                      _vm._v(
+                        "\r\n                            Sabtu\r\n                        "
+                      )
+                    ])
                   ]
                 )
               ])
@@ -59210,6 +59225,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         user: [{
           name: 'Dashboard',
           path: 'dashboard'
+        }, {
+          name: 'Passing Grade',
+          path: 'passingGrade'
         }],
         // LOGGED ADMIN
         admin: [{

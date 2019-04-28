@@ -35,7 +35,7 @@
             <br>
             <h3>Detail</h3>
 
-            <div class="dropdown">
+            <div class="dropdown is-hoverable">
                 <div class="dropdown-trigger">
                     <button class="button" aria-haspopup="true">
                     <span>Hari</span>
@@ -49,23 +49,38 @@
                     <a href="#" class="dropdown-item">
                         <label class="checkbox">
                             <input type="checkbox">
-                            Remember me
+                            Senin
                         </label>
                     </a>
                     <a href="#" class="dropdown-item">
-                        Selasa
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            Selasa
+                        </label>
                     </a>
                     <a href="#" class="dropdown-item">
-                        Rabu
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            Rabu
+                        </label>
                     </a>
                     <a href="#" class="dropdown-item">
-                        Kamis
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            Kamis
+                        </label>
                     </a>
                     <a href="#" class="dropdown-item">
-                        Jumat
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            Jumat
+                        </label>
                     </a>
                     <a href="#" class="dropdown-item">
-                        Sabtu
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            Sabtu
+                        </label>
                     </a>
                     </div>
                 </div>
