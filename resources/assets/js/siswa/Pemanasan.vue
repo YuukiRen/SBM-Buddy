@@ -22,27 +22,27 @@
           <div class="control">
             <div v-for="data in soal" v-if="no == data.id">
               <label class="radio is-size-4">
-                <input type="radio" name="rsvp">
+                <input type="radio" value="A" v-model="ans[data.id]">
                 {{data.pilihana}}
               </label>
               <br>
               <label class="radio is-size-4">
-                <input type="radio" name="rsvp">
+                <input type="radio" value="B" v-model="ans[data.id]">
                 {{data.pilihanb}}
               </label>
               <br>
               <label class="radio is-size-4">
-                <input type="radio" name="rsvp">
+                <input type="radio" value="C" v-model="ans[data.id]">
                 {{data.pilihanc}}
               </label>
               <br>
               <label class="radio is-size-4">
-                <input type="radio" name="rsvp">
+                <input type="radio" value="D" v-model="ans[data.id]">
                 {{data.pilihand}}
               </label>
               <br>
               <label class="radio is-size-4">
-                <input type="radio" name="rsvp">
+                <input type="radio" value="E" v-model="ans[data.id]">
                 {{data.pilihane}}
               </label>
             </div>
@@ -54,7 +54,7 @@
   </div>
             
   <div class="buttons level-right">
-    <a href="/pembahasan" class="button is-success">Submit all and finish</a>
+    <button class="button is-success" @click.prevent="submit">Submit all and finish</button>
   </div>
   </section>
 
@@ -62,11 +62,12 @@
 
 <script>
 export default {
-  name: 'pemanasan',
   data(){
     return {
       no: 1,
-      soal:{}  
+      soal:{},
+      ans:{},
+      lists:{}
     }
   },
   mounted(){
@@ -77,6 +78,14 @@ export default {
   methods:{
     getIndex : function(value){
       this.no = value.id
+    },
+    submit(){
+        axios.post('/soal',this.$data.ans).then((response)=>{
+            this.close()
+            this.$parent.lists.push(response.data)
+            })
+        .catch((error)=>this.errors=error.response.data.errors)
+        this.$router.push({name: "pembahasan",params:{validation:this.lists,soal:this.soal,ans:this.ans}})
     }
   }
 }
