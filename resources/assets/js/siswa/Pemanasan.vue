@@ -6,22 +6,23 @@
 
             <div class="column is-one-fifth">
                 <h3>Soal</h3>
-                <span class="button">1</span>
-                <span class="button">2</span>
-                <span class="button">3</span>
-                <span class="button">4</span>
-                <span class="button">5</span>
-                <span class="button">6</span>
-                <span class="button">7</span>
-                <span class="button">8</span>
-                <span class="button">9</span>
-                <span class="button">10</span>
-                <span class="button">11</span>
-                <span class="button">12</span>
-                <span class="button">13</span>
-                <span class="button">14</span>
-                <span class="button">15</span>
-
+                <div class="buttons">
+                    <span class="button" style="width:25px;">1</span>
+                    <span class="button" style="width:25px;">2</span>
+                    <span class="button" style="width:25px;">3</span>
+                    <span class="button" style="width:25px;">4</span>
+                    <span class="button" style="width:25px;">5</span>
+                    <span class="button" style="width:25px;">6</span>
+                    <span class="button" style="width:25px;">7</span>
+                    <span class="button" style="width:25px;">8</span>
+                    <span class="button" style="width:25px;">9</span>
+                    <span class="button" style="width:25px;">10</span>
+                    <span class="button" style="width:25px;">11</span>
+                    <span class="button" style="width:25px;">12</span>
+                    <span class="button" style="width:25px;">13</span>
+                    <span class="button" style="width:25px;">14</span>
+                    <span class="button" style="width:25px;">15</span>
+                </div>
             </div>
             <div class="column is-four-fifth">
                 <div class="card">

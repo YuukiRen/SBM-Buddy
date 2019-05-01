@@ -83,9 +83,9 @@ class PaketController extends Controller
     public function update(PaketRequest $request)
     {
         $paket = Paket::find($request->id);
-        $paket->penjurusan = $request->choiceJurusan;
-        $paket->kode = $request->kodePaket;
-        $paket->tahun = $request->tahunPaket;
+        $paket->penjurusan = $request->penjurusan;
+        $paket->kode = $request->kode;
+        $paket->tahun = $request->tahun;
         $paket->save();
         return $request->all();
     }
