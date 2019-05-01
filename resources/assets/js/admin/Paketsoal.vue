@@ -44,7 +44,7 @@
                     <i class="fa fa-eye has-text-primary" @click='openPassing(key)'></i>
                 </a>
                 <a class="icon">
-                    <i class="fa fa-edit has-text-info" aria-hidden="true"></i>
+                    <i class="fa fa-edit has-text-info" aria-hidden="true" @click='openUpdate(key)'></i>
                 </a>
                 <a class="icon">
                     <i class="fa fa-trash has-text-danger" aria-hidden="true"></i>
@@ -71,16 +71,19 @@
   </nav>
 
   <Add :openmodal='addActive' @closeRequest='close'></Add>
+  <Update :openmodal='updateActive' @closeRequest='close'></Update>
 </section>
 </template>
 
 <script>
   let Add = require('./Add.vue');
+  let Update = require('./UpdatePaket.vue');
   export default{
-    components:{Add},
+    components:{Add,Update},
     data(){
       return{
         addActive:'',
+        updateActive : '',
         lists:{},
         errors:{}
       }
@@ -98,7 +101,11 @@
         this.$router.push({name: "soal",params:{pack:this.lists[key]}})
       },
       close(){
-        this.addActive = '';
+        this.addActive = this.updateActive = '';
+      },
+      openUpdate(key){
+        this.$children[1].list=this.lists[key];
+        this.updateActive='is-active';
       }
     }
   }

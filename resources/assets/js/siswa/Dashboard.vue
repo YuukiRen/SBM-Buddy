@@ -1,7 +1,7 @@
 
 <template>
 
-    <section>
+    <section class="container">
     <div class="card">
         <div class="card-content">
             <p class="title">
