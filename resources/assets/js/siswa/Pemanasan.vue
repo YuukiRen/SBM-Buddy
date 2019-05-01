@@ -1,78 +1,108 @@
 <template>
+  <section class="container" >
+  <br><br>
+  
+  <div class="columns">
+    <div class="column is-one-fifth">
+      <h3>Soal</h3>
+      <div class="button" v-on:click="getIndex(data)" v-for="data in soal" v-model="no">
+        {{data.soalId}}
+      </div>
+    </div>
     
-    <section class="container" >
-<br><br>
-            <div class="columns">
+    <div class="column is-four-fifth">
+      <div class="card">
+        <div class="card-header title">
+          <div v-for="data in soal" v-if="no == data.soalId">
+            {{data.pertanyaan}}
+          </div>
+        </div>
 
-            <div class="column is-one-fifth">
-                <h3>Soal {{mapel}}</h3>
-                <span class="button">1</span>
-                <span class="button">2</span>
-                <span class="button">3</span>
-                <span class="button">4</span>
-                <span class="button">5</span>
-                <span class="button">6</span>
-                <span class="button">7</span>
-                <span class="button">8</span>
-                <span class="button">9</span>
-                <span class="button">10</span>
-                <span class="button">11</span>
-                <span class="button">12</span>
-                <span class="button">13</span>
-                <span class="button">14</span>
-                <span class="button">15</span>
+        <div class="card-content">
+          <div class="control">
+            <div v-for="data in soal" v-if="no == data.soalId">
+              <label class="radio is-size-4">
+                <input type="radio" name="rsvp">
+                {{data.jawabanA}}
+              </label>
+              <br>
+              <label class="radio is-size-4">
+                <input type="radio" name="rsvp">
+                {{data.jawabanB}}
+              </label>
+              <br>
+              <label class="radio is-size-4">
+                <input type="radio" name="rsvp">
+                {{data.jawabanC}}
+              </label>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+      
+      <footer class="card-footer level-right">
+        <a href="#" class="button" v-on:click="no -= 1">Prev</a>
+        <a href="#" class="button" v-on:click="no += 1">Next</a>
+      </footer>
+                
+    </div>
+  </div>
+            
+  <div class="buttons level-right">
+    <a href="/pembahasan" class="button is-success">Submit all and finish</a>
+  </div>
+  </section>
 
-            </div>
-            <div class="column is-four-fifth">
-                <div class="card">
-                <header class="card-header title">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris?
-                </header>
-                <div class="card-content">
-                    <div class="control">
-                        <label class="radio is-size-4">
-                            <input type="radio" name="rsvp">
-                            Going
-                        </label>
-                        <br>
-                        <label class="radio is-size-4">
-                            <input type="radio" name="rsvp">
-                            Not going
-                        </label>
-                        <br>
-                        <label class="radio is-size-4">
-                            <input type="radio" name="rsvp">
-                            Maybe
-                        </label>
-                        </div>
-                    <br>
-                    </div>
-                </div>
-                <footer class="card-footer level-right">
-                    <a href="#" class="button" > Prev   </a>
-                    <p> </p>
-                    <a href="#" class="button" >Next</a>
-
-                </footer>
-                </div>
-            </div>
-            <div class="buttons level-right">
-                <a href="/pembahasan" class="button is-success">Submit all and finish</a>
-            </div>
-    </section>
 </template>
 
-
 <script>
-  export default{
-    props:['mapel'],
-    data(){
-      return{
-      }
-    },
-    mounted(){
-        this.mapel = this.$route.params.mapel;
-        
-    },
+export default {
+  name: 'pemanasan',
+  data(){
+    return {
+      no: 1,
+      soal:[
+        {
+          soalId: 1,
+          pertanyaan: "alvin",
+          jawabanA: "reinaldo",
+          jawabanB: "triadi",
+          jawabanC: "hasna"
+        },
+        {
+          soalId: 2,
+          pertanyaan: "restu",
+          jawabanA: "hasna",
+          jawabanB: "triadi",
+          jawabanC: "reinaldo"
+        },
+        {
+          soalId: 3,
+          pertanyaan: "iqoh",
+          jawabanA: "reinaldo",
+          jawabanB: "triadi",
+          jawabanC: "hasna"
+        },
+        {
+          soalId: 4
+        },
+        {
+          soalId: 5
+        },
+        {
+          soalId: 6
+        },
+        {
+          soalId: 7
+        }
+      ]      
+    }
+  },
+  methods:{
+    getIndex : function(value){
+      this.no = value.soalId
+    }
   }
+}
 </script>
