@@ -12,7 +12,7 @@ class SoalController extends Controller
         return Soal::where('idPaket',$request->id)->get();
     }
     public function index(){
-
+        
     }
     public function TryOut(){
         return $this->getSoalTryOut();

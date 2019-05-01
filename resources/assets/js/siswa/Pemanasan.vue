@@ -5,7 +5,7 @@
             <div class="columns">
 
             <div class="column is-one-fifth">
-                <h3>Soal</h3>
+                <h3>Soal {{mapel}}</h3>
                 <span class="button">1</span>
                 <span class="button">2</span>
                 <span class="button">3</span>
@@ -60,5 +60,19 @@
                 <a href="/pembahasan" class="button is-success">Submit all and finish</a>
             </div>
     </section>
-
 </template>
+
+
+<script>
+  export default{
+    props:['mapel'],
+    data(){
+      return{
+      }
+    },
+    mounted(){
+        this.mapel = this.$route.params.mapel;
+        
+    },
+  }
+</script>
