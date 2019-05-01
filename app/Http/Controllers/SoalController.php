@@ -4,16 +4,22 @@ namespace App\Http\Controllers;
 use App\Soal;
 use Illuminate\Http\Request;
 use App\Http\Requests\SoalRequest;
-
+use App\Traits\SoalTrait;
 class SoalController extends Controller
 {
+    use SoalTrait;
     public function getData(Request $request){
         return Soal::where('idPaket',$request->id)->get();
     }
     public function index(){
 
     }
-
+    public function TryOut(){
+        return $this->getSoalTryOut();
+    }
+    public function fisika(){
+        return $this->getSoalFisika(1);
+    }
     public function create(){
 
     }
