@@ -11,6 +11,18 @@ class SoalController extends Controller
     public function getData(Request $request){
         return Soal::where('idPaket',$request->id)->get();
     }
+    public function checkAns(Request $request){
+        $sum = 0;
+        foreach($request->all() as $key=>$item){
+            if($item == Soal::find($key)->jawaban){
+                $sum = $sum + 4;
+            }
+            else{
+                $sum = $sum - 1;
+            }
+        }
+        return $sum;
+    }
     public function index(){
         
     }

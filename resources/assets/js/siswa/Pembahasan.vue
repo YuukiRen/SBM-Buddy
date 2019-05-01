@@ -78,13 +78,13 @@ export default {
       no: 1,
       soal:{},
       ans:{},
-      lists:{}
+      score:0
     }
   },
   mounted(){
-    this.soal = this.$route.params.soal;
-    this.ans = this.$route.params.ans;
-    this.lists = this.$route.params.lists;
+    this.soal = this.$route.params.soal
+    this.ans = this.$route.params.ans
+    this.score = this.$route.params.sum
   },
   methods:{
     getIndex : function(value){

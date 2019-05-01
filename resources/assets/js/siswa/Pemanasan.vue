@@ -67,7 +67,8 @@ export default {
       no: 1,
       soal:{},
       ans:{},
-      lists:{}
+      lists:{},
+      sum:100
     }
   },
   mounted(){
@@ -80,12 +81,11 @@ export default {
       this.no = value.id
     },
     submit(){
-        axios.post('/soal',this.$data.ans).then((response)=>{
-            this.close()
-            this.$parent.lists.push(response.data)
-            })
+        axios.post('/grading',this.$data.ans).then((response)=>{
+          this.$data.sum = response.data
+          this.$router.push({name: "pembahasan",params:{sum:this.sum,soal:this.soal,ans:this.ans}})
+        })
         .catch((error)=>this.errors=error.response.data.errors)
-        this.$router.push({name: "pembahasan",params:{validation:this.lists,soal:this.soal,ans:this.ans}})
     }
   }
 }
