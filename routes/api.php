@@ -39,5 +39,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/getData','PaketController@getData');
     Route::post('/getUniv','JurusanController@getData');
     Route::post('/getSoal','SoalController@getData');
+    
+    Route::post('/getSoalFisika','SoalController@fisika');
 
 });

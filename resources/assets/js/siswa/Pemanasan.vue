@@ -5,47 +5,51 @@
   <div class="columns">
     <div class="column is-one-fifth">
       <h3>Soal</h3>
-      <div class="button" v-on:click="getIndex(data)" v-for="data in soal" v-model="no">
-        {{data.soalId}}
+      <div class="button" v-on:click="getIndex(soal[data-1])" v-for="data in soal.length">
+        {{data}}
       </div>
     </div>
     
     <div class="column is-four-fifth">
       <div class="card">
         <div class="card-header title">
-          <div v-for="data in soal" v-if="no == data.soalId">
+          <div v-for="data in soal" v-if="no == data.id">
             {{data.pertanyaan}}
           </div>
         </div>
 
         <div class="card-content">
           <div class="control">
-            <div v-for="data in soal" v-if="no == data.soalId">
+            <div v-for="data in soal" v-if="no == data.id">
               <label class="radio is-size-4">
                 <input type="radio" name="rsvp">
-                {{data.jawabanA}}
+                {{data.pilihana}}
               </label>
               <br>
               <label class="radio is-size-4">
                 <input type="radio" name="rsvp">
-                {{data.jawabanB}}
+                {{data.pilihanb}}
               </label>
               <br>
               <label class="radio is-size-4">
                 <input type="radio" name="rsvp">
-                {{data.jawabanC}}
+                {{data.pilihanc}}
+              </label>
+              <br>
+              <label class="radio is-size-4">
+                <input type="radio" name="rsvp">
+                {{data.pilihand}}
+              </label>
+              <br>
+              <label class="radio is-size-4">
+                <input type="radio" name="rsvp">
+                {{data.pilihane}}
               </label>
             </div>
           </div>
           <br>
         </div>
-      </div>
-      
-      <footer class="card-footer level-right">
-        <a href="#" class="button" v-on:click="no -= 1">Prev</a>
-        <a href="#" class="button" v-on:click="no += 1">Next</a>
-      </footer>
-                
+      </div>                
     </div>
   </div>
             
@@ -62,46 +66,17 @@ export default {
   data(){
     return {
       no: 1,
-      soal:[
-        {
-          soalId: 1,
-          pertanyaan: "alvin",
-          jawabanA: "reinaldo",
-          jawabanB: "triadi",
-          jawabanC: "hasna"
-        },
-        {
-          soalId: 2,
-          pertanyaan: "restu",
-          jawabanA: "hasna",
-          jawabanB: "triadi",
-          jawabanC: "reinaldo"
-        },
-        {
-          soalId: 3,
-          pertanyaan: "iqoh",
-          jawabanA: "reinaldo",
-          jawabanB: "triadi",
-          jawabanC: "hasna"
-        },
-        {
-          soalId: 4
-        },
-        {
-          soalId: 5
-        },
-        {
-          soalId: 6
-        },
-        {
-          soalId: 7
-        }
-      ]      
+      soal:{}  
     }
+  },
+  mounted(){
+    axios.post('/getSoalFisika')
+        .then((response)=>this.soal = response.data)
+        .catch((error) => this.errors = error.response.data.errors)
   },
   methods:{
     getIndex : function(value){
-      this.no = value.soalId
+      this.no = value.id
     }
   }
 }

@@ -18,7 +18,7 @@ class SoalController extends Controller
         return $this->getSoalTryOut();
     }
     public function fisika(){
-        return $this->getSoalFisika(1);
+        return $this->getSoalFisika(2);
     }
     public function create(){
 
