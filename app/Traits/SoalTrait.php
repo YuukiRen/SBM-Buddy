@@ -3,6 +3,7 @@
 namespace App\Traits;
 use App\Soal;
 trait SoalTrait{
+    
     protected function getSoalMath(int $i){
         return Soal::where('mapel','matematika')->get()->random($i);
     }
@@ -16,10 +17,10 @@ trait SoalTrait{
         return Soal::where('mapel','biologi')->get()->random($i);
     }
     protected function getSoalTryOut(){
-        $fisika = $this->getSoalFisika(1);
-        $kimia = $this->getSoalKimia(1);
-        $biologi = $this->getSoalBio(1);
-        $math = $this->getSoalMath(1);
+        $fisika = $this->getSoalFisika(15);
+        $kimia = $this->getSoalKimia(15);
+        $biologi = $this->getSoalBio(15);
+        $math = $this->getSoalMath(15);
         $merged = $fisika->merge($kimia)->merge($biologi)->merge($math);
         return $merged->all();
     }

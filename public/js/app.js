@@ -43291,7 +43291,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 var Pemanasan = __webpack_require__(16);
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -43380,7 +43379,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       ans: {},
       lists: {},
       mapel: this.$route.params.mapel,
-      sum: 100
+      sum: 0
     };
   },
   mounted: function mounted() {
@@ -43670,139 +43669,132 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "section",
-    { staticClass: "container" },
-    [
-      _c("br"),
-      _c("br"),
-      _vm._v(" "),
-      _c("div", { staticClass: "columns is-vcentered" }, [
-        _c("div", { staticClass: "column" }, [
-          _c("div", { staticClass: "notification is-primary" }, [
-            _c("br"),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticStyle: { "text-align": "center" } },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass:
-                      "button title is-primary is-inverted is-outlined",
-                    attrs: {
-                      to: { name: "pemanasan", params: { mapel: "biologi" } }
-                    }
-                  },
-                  [_vm._v("\n                    BIOLOGI\n                ")]
-                )
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("br"),
+  return _c("section", { staticClass: "container" }, [
+    _c("br"),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "columns is-vcentered" }, [
+      _c("div", { staticClass: "column" }, [
+        _c("div", { staticClass: "notification is-primary" }, [
           _c("br"),
           _vm._v(" "),
-          _c("div", { staticClass: "notification is-link" }, [
-            _c("br"),
-            _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticStyle: { "text-align": "center" } },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass:
-                      "button title is-primary is-inverted is-outlined",
-                    attrs: {
-                      to: { name: "pemanasan", params: { mapel: "fisika" } }
-                    }
-                  },
-                  [_vm._v("\n                    FISIKA\n            ")]
-                )
-              ],
-              1
-            )
-          ])
+          _vm._m(0),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticStyle: { "text-align": "center" } },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass:
+                    "button title is-primary is-inverted is-outlined",
+                  attrs: {
+                    to: { name: "pemanasan", params: { mapel: "biologi" } }
+                  }
+                },
+                [_vm._v("\n                    BIOLOGI\n                ")]
+              )
+            ],
+            1
+          )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "column is-1" }),
+        _c("br"),
+        _c("br"),
         _vm._v(" "),
-        _c("div", { staticClass: "column" }, [
-          _c("div", { staticClass: "notification is-warning" }, [
-            _c("br"),
-            _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticStyle: { "text-align": "center" } },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass:
-                      "button title is-primary is-inverted is-outlined",
-                    attrs: {
-                      to: { name: "pemanasan", params: { mapel: "matematika" } }
-                    }
-                  },
-                  [_vm._v("\n                    MATEMATIKA\n                ")]
-                )
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("br"),
+        _c("div", { staticClass: "notification is-link" }, [
           _c("br"),
           _vm._v(" "),
-          _c("div", { staticClass: "notification is-danger" }, [
-            _c("br"),
-            _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticStyle: { "text-align": "center" } },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass:
-                      "button title is-primary is-inverted is-outlined",
-                    attrs: {
-                      to: { name: "pemanasan", params: { mapel: "kimia" } }
-                    }
-                  },
-                  [_vm._v("\n                    KIMIA\n                ")]
-                )
-              ],
-              1
-            )
-          ])
+          _vm._m(1),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticStyle: { "text-align": "center" } },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass:
+                    "button title is-primary is-inverted is-outlined",
+                  attrs: {
+                    to: { name: "pemanasan", params: { mapel: "fisika" } }
+                  }
+                },
+                [_vm._v("\n                    FISIKA\n            ")]
+              )
+            ],
+            1
+          )
         ])
       ]),
       _vm._v(" "),
-      _c("Pemanasan", { attrs: { mapel: _vm.mapel } })
-    ],
-    1
-  )
+      _c("div", { staticClass: "column is-1" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "column" }, [
+        _c("div", { staticClass: "notification is-warning" }, [
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticStyle: { "text-align": "center" } },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass:
+                    "button title is-primary is-inverted is-outlined",
+                  attrs: {
+                    to: { name: "pemanasan", params: { mapel: "matematika" } }
+                  }
+                },
+                [_vm._v("\n                    MATEMATIKA\n                ")]
+              )
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "notification is-danger" }, [
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(3),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticStyle: { "text-align": "center" } },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass:
+                    "button title is-primary is-inverted is-outlined",
+                  attrs: {
+                    to: { name: "pemanasan", params: { mapel: "kimia" } }
+                  }
+                },
+                [_vm._v("\n                    KIMIA\n                ")]
+              )
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -43987,6 +43979,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -44042,7 +44040,11 @@ var render = function() {
               },
               [_vm._v("\n      " + _vm._s(data) + "\n    ")]
             )
-          })
+          }),
+          _vm._v(" "),
+          _c("article", { staticClass: "message is-success" }, [
+            _c("span", [_vm._v("Total Score : " + _vm._s(this.score))])
+          ])
         ],
         2
       ),
