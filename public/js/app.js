@@ -43379,17 +43379,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       soal: {},
       ans: {},
       lists: {},
+      mapel: this.$route.params.mapel,
       sum: 100
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios.post('/getSoalFisika').then(function (response) {
-      return _this.soal = response.data;
-    }).catch(function (error) {
-      return _this.errors = error.response.data.errors;
-    });
+    if (this.mapel == 'fisika') {
+      axios.post('/getSoalFisika').then(function (response) {
+        return _this.soal = response.data;
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
+    } else if (this.mapel == 'kimia') {
+      axios.post('/getSoalKimia').then(function (response) {
+        return _this.soal = response.data;
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
+    } else if (this.mapel == 'matematika') {
+      axios.post('/getSoalMath').then(function (response) {
+        return _this.soal = response.data;
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
+    } else if (this.mapel == 'biologi') {
+      axios.post('/getSoalBiologi').then(function (response) {
+        return _this.soal = response.data;
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
+    }
   },
 
   methods: {

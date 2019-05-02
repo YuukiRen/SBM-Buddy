@@ -68,13 +68,32 @@ export default {
       soal:{},
       ans:{},
       lists:{},
+      mapel:this.$route.params.mapel,
       sum:100
     }
   },
   mounted(){
-    axios.post('/getSoalFisika')
+    if(this.mapel == 'fisika'){
+      axios.post('/getSoalFisika')
         .then((response)=>this.soal = response.data)
         .catch((error) => this.errors = error.response.data.errors)
+    }
+    else if(this.mapel == 'kimia'){
+      axios.post('/getSoalKimia')
+        .then((response)=>this.soal = response.data)
+        .catch((error) => this.errors = error.response.data.errors)
+    }
+    else if(this.mapel == 'matematika'){
+      axios.post('/getSoalMath')
+        .then((response)=>this.soal = response.data)
+        .catch((error) => this.errors = error.response.data.errors)
+    }
+    else if(this.mapel == 'biologi'){
+      axios.post('/getSoalBiologi')
+        .then((response)=>this.soal = response.data)
+        .catch((error) => this.errors = error.response.data.errors)
+    }
+    
   },
   methods:{
     getIndex : function(value){

@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         //     'role' => 1
         // ]);
         $this->call(SoalSeeder::class);
+        $this->call(IpsSoalSeeder::class);
     }
 }

@@ -44,5 +44,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/getSoal','SoalController@getData');
     
     Route::post('/getSoalFisika','SoalController@fisika');
+    Route::post('/getSoalKimia','SoalController@kimia');
+    Route::post('/getSoalBiologi','SoalController@biologi');
+    Route::post('/getSoalMath','SoalController@math');
 
 });
