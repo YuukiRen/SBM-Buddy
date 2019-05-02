@@ -16865,12 +16865,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_router__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Index__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__Index__);
+throw new Error("Cannot find module \"./components/Pagination.vue\"");
 
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 
 
 
@@ -44706,6 +44708,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var Add = __webpack_require__(80);
 var Update = __webpack_require__(83);
@@ -44718,6 +44741,37 @@ var Update = __webpack_require__(83);
       lists: {},
       errors: {}
     };
+  },
+
+  props: {
+    pagination: {
+      type: Object,
+      required: true
+    },
+    offset: {
+      type: Number,
+      default: 4
+    }
+  },
+  computed: {
+    pagesNumber: function pagesNumber() {
+      if (!this.pagination.to) {
+        return [];
+      }
+      var from = this.pagination.current_page - this.offset;
+      if (from < 1) {
+        from = 1;
+      }
+      var to = from + this.offset * 2;
+      if (to >= this.pagination.last_page) {
+        to = this.pagination.last_page;
+      }
+      var pagesArray = [];
+      for (var page = from; page <= to; page++) {
+        pagesArray.push(page);
+      }
+      return pagesArray;
+    }
   },
   mounted: function mounted() {
     var _this = this;
@@ -44742,6 +44796,10 @@ var Update = __webpack_require__(83);
     openUpdate: function openUpdate(key) {
       this.$children[1].list = this.lists[key];
       this.updateActive = 'is-active';
+    },
+    changePage: function changePage(page) {
+      this.pagination.current_page = page;
+      this.$emit('paginate');
     }
   }
 });
@@ -45439,7 +45497,90 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(4),
+      _c("vue-pagination", {
+        attrs: { pagination: _vm.lists, offset: 4 },
+        on: {
+          paginate: function($event) {
+            return _vm.getLists()
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "pagination" },
+        [
+          _vm.pagination.current_page > 1
+            ? _c("li", [
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href: "javascript:void(0)",
+                      "aria-label": "Previous"
+                    },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.changePage(_vm.pagination.current_page - 1)
+                      }
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("«")
+                    ])
+                  ]
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm._l(_vm.pagesNumber, function(page) {
+            return _c(
+              "li",
+              { class: { active: page == _vm.pagination.current_page } },
+              [
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "javascript:void(0)" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.changePage(page)
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(page))]
+                )
+              ]
+            )
+          }),
+          _vm._v(" "),
+          _vm.pagination.current_page < _vm.pagination.last_page
+            ? _c("li", [
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "javascript:void(0)", "aria-label": "Next" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.changePage(_vm.pagination.current_page + 1)
+                      }
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("»")
+                    ])
+                  ]
+                )
+              ])
+            : _vm._e()
+        ],
+        2
+      ),
       _vm._v(" "),
       _c("Add", {
         attrs: { openmodal: _vm.addActive },
@@ -45517,65 +45658,6 @@ var staticRenderFns = [
         attrs: { "aria-hidden": "true" }
       })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "nav",
-      {
-        staticClass: "pagination",
-        attrs: { role: "navigation", "aria-label": "pagination" }
-      },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "pagination-previous",
-            attrs: { title: "This is the first page" }
-          },
-          [_vm._v("Previous")]
-        ),
-        _vm._v(" "),
-        _c("a", { staticClass: "pagination-next" }, [_vm._v("Next page")]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "pagination-list" }, [
-          _c("li", [
-            _c(
-              "a",
-              {
-                staticClass: "pagination-link is-current",
-                attrs: { "aria-label": "Page 1", "aria-current": "page" }
-              },
-              [_vm._v("1")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c(
-              "a",
-              {
-                staticClass: "pagination-link",
-                attrs: { "aria-label": "Goto page 2" }
-              },
-              [_vm._v("2")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c(
-              "a",
-              {
-                staticClass: "pagination-link",
-                attrs: { "aria-label": "Goto page 3" }
-              },
-              [_vm._v("3")]
-            )
-          ])
-        ])
-      ]
-    )
   }
 ]
 render._withStripped = true
