@@ -69,7 +69,7 @@ export default {
       ans:{},
       lists:{},
       mapel:this.$route.params.mapel,
-      sum:100
+      sum:0
     }
   },
   mounted(){

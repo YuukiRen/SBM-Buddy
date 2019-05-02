@@ -8,6 +8,12 @@
       <div class="button" v-on:click="getIndex(soal[data-1])" v-for="data in soal.length">
         {{data}}
       </div>
+      
+          <article class="message is-success">
+            
+              <span>Total Score : {{this.score}}</span>
+            
+          </article>
     </div>
     
     <div class="column is-four-fifth">

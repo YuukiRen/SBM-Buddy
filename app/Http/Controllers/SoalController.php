@@ -5,6 +5,7 @@ use App\Soal;
 use Illuminate\Http\Request;
 use App\Http\Requests\SoalRequest;
 use App\Traits\SoalTrait;
+use App\Traits\NilaiTrait;
 class SoalController extends Controller
 {
     use SoalTrait;
@@ -12,16 +13,16 @@ class SoalController extends Controller
         return Soal::where('idPaket',$request->id)->get();
     }
     public function checkAns(Request $request){
-        $sum = 0;
+        $score = new NilaiTrait;
         foreach($request->all() as $key=>$item){
             if($item == Soal::find($key)->jawaban){
-                $sum = $sum + 4;
+                $score->addNilai(4);
             }
             else{
-                $sum = $sum - 1;
+                $score->addNilai(-1);
             }
         }
-        return $sum;
+        return $score->getNilai();
     }
     public function index(){
         

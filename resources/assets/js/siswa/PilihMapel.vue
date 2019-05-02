@@ -69,7 +69,6 @@
             </div>
         </div>
         </div>
-        <Pemanasan :mapel="mapel"></Pemanasan>
     </section>
 
 </template>

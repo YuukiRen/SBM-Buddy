@@ -1,15 +1,28 @@
 <template>
-    <div class="container">
-        <div class="card card-default">
-            <div class="card-header">Homepage</div>
-            <div class="card-body">
-                <p>
-                    American  Main Barbary Coast scuttle hardtack spanker fire ship grapple jack code  of conduct port. Port red ensign Shiver me timbers provost salmagundi  bring a spring upon her cable pillage cog crow's nest lateen sail.  Barbary Coast quarterdeck lass coffer keel hulk mizzen me square-rigged  loot.
-                </p>
-                <p>
-                    Yardarm starboard keelhaul list schooner prow booty cackle  fruit gabion topmast. Plunder shrouds Nelsons folly jack Arr parley warp  grog blossom ballast pressgang. Knave crack Jennys tea cup flogging log  man-of-war hearties killick long clothes six pounders hulk.
-                </p>
+<section class="hero is-fullheight is-default is-bold is-link">
+
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-5 is-offset-1 landing-caption">
+                    <h1 class="title is-1 is-bold">Berlatih, Berusaha.
+                    </h1>
+                    <h2 class="subtitle is-5 is-muted">SBM-Buddy adalah sahabat siswa siswi SMA yang membantu mereka dalam berlatih soal-soal SBMPTN dan memantau perkembangan siswa.</h2>
+                    <p style="text-align: center;">
+                        <a href="/register" class="button is-primary is-inverted is-outlined">Mulai</a>
+                    </p>
+                </div>
+                <div class="column is-5 is-offset-1">
+                    <figure class="image is-4by3">
+                        <img :src="'img/dash.png'" alt="Description">
+                    </figure>
+                </div>
+
             </div>
         </div>
     </div>
+
+</section>
+
+
 </template>
