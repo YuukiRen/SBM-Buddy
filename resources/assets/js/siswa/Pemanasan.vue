@@ -1,65 +1,111 @@
 <template>
+  <section class="container" >
+  <br><br>
+  
+  <div class="columns">
+    <div class="column is-one-fifth">
+      <h3>Soal</h3>
+      <div class="button" v-on:click="getIndex(soal[data-1])" v-for="data in soal.length">
+        {{data}}
+      </div>
+    </div>
     
-    <section class="container" >
-<br><br>
-            <div class="columns">
+    <div class="column is-four-fifth">
+      <div class="card">
+        <div class="card-header title">
+          <div v-for="data in soal" v-if="no == data.id">
+            {{data.pertanyaan}}
+          </div>
+        </div>
 
-            <div class="column is-one-fifth">
-                <h3>Soal</h3>
-                <div class="buttons">
-                    <span class="button" style="width:25px;">1</span>
-                    <span class="button" style="width:25px;">2</span>
-                    <span class="button" style="width:25px;">3</span>
-                    <span class="button" style="width:25px;">4</span>
-                    <span class="button" style="width:25px;">5</span>
-                    <span class="button" style="width:25px;">6</span>
-                    <span class="button" style="width:25px;">7</span>
-                    <span class="button" style="width:25px;">8</span>
-                    <span class="button" style="width:25px;">9</span>
-                    <span class="button" style="width:25px;">10</span>
-                    <span class="button" style="width:25px;">11</span>
-                    <span class="button" style="width:25px;">12</span>
-                    <span class="button" style="width:25px;">13</span>
-                    <span class="button" style="width:25px;">14</span>
-                    <span class="button" style="width:25px;">15</span>
-                </div>
+        <div class="card-content">
+          <div class="control">
+            <div v-for="data in soal" v-if="no == data.id">
+              <label class="radio is-size-4">
+                <input type="radio" value="A" v-model="ans[data.id]">
+                {{data.pilihana}}
+              </label>
+              <br>
+              <label class="radio is-size-4">
+                <input type="radio" value="B" v-model="ans[data.id]">
+                {{data.pilihanb}}
+              </label>
+              <br>
+              <label class="radio is-size-4">
+                <input type="radio" value="C" v-model="ans[data.id]">
+                {{data.pilihanc}}
+              </label>
+              <br>
+              <label class="radio is-size-4">
+                <input type="radio" value="D" v-model="ans[data.id]">
+                {{data.pilihand}}
+              </label>
+              <br>
+              <label class="radio is-size-4">
+                <input type="radio" value="E" v-model="ans[data.id]">
+                {{data.pilihane}}
+              </label>
             </div>
-            <div class="column is-four-fifth">
-                <div class="card">
-                <header class="card-header title">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris?
-                </header>
-                <div class="card-content">
-                    <div class="control">
-                        <label class="radio is-size-4">
-                            <input type="radio" name="rsvp">
-                            Going
-                        </label>
-                        <br>
-                        <label class="radio is-size-4">
-                            <input type="radio" name="rsvp">
-                            Not going
-                        </label>
-                        <br>
-                        <label class="radio is-size-4">
-                            <input type="radio" name="rsvp">
-                            Maybe
-                        </label>
-                        </div>
-                    <br>
-                    </div>
-                </div>
-                <footer class="card-footer level-right">
-                    <a href="#" class="button" > Prev   </a>
-                    <p> </p>
-                    <a href="#" class="button" >Next</a>
-
-                </footer>
-                </div>
-            </div>
-            <div class="buttons level-right">
-                <a href="/pembahasan" class="button is-success">Submit all and finish</a>
-            </div>
-    </section>
+          </div>
+          <br>
+        </div>
+      </div>                
+    </div>
+  </div>
+            
+  <div class="buttons level-right">
+    <button class="button is-success" @click.prevent="submit">Submit all and finish</button>
+  </div>
+  </section>
 
 </template>
+
+<script>
+export default {
+  data(){
+    return {
+      no: 1,
+      soal:{},
+      ans:{},
+      lists:{},
+      mapel:this.$route.params.mapel,
+      sum:100
+    }
+  },
+  mounted(){
+    if(this.mapel == 'fisika'){
+      axios.post('/getSoalFisika')
+        .then((response)=>this.soal = response.data)
+        .catch((error) => this.errors = error.response.data.errors)
+    }
+    else if(this.mapel == 'kimia'){
+      axios.post('/getSoalKimia')
+        .then((response)=>this.soal = response.data)
+        .catch((error) => this.errors = error.response.data.errors)
+    }
+    else if(this.mapel == 'matematika'){
+      axios.post('/getSoalMath')
+        .then((response)=>this.soal = response.data)
+        .catch((error) => this.errors = error.response.data.errors)
+    }
+    else if(this.mapel == 'biologi'){
+      axios.post('/getSoalBiologi')
+        .then((response)=>this.soal = response.data)
+        .catch((error) => this.errors = error.response.data.errors)
+    }
+    
+  },
+  methods:{
+    getIndex : function(value){
+      this.no = value.id
+    },
+    submit(){
+        axios.post('/grading',this.$data.ans).then((response)=>{
+          this.$data.sum = response.data
+          this.$router.push({name: "pembahasan",params:{sum:this.sum,soal:this.soal,ans:this.ans}})
+        })
+        .catch((error)=>this.errors=error.response.data.errors)
+    }
+  }
+}
+</script>

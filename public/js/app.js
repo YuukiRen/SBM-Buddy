@@ -43197,7 +43197,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(128)
 /* template */
 var __vue_template__ = __webpack_require__(68)
 /* template functional */
@@ -43245,14 +43245,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "container" }, [
+  return _c(
+    "section",
+    { staticClass: "container" },
+    [
       _c("br"),
       _c("br"),
       _vm._v(" "),
@@ -43261,26 +43257,28 @@ var staticRenderFns = [
           _c("div", { staticClass: "notification is-primary" }, [
             _c("br"),
             _vm._v(" "),
-            _c("nav", { staticClass: "level" }, [
-              _c("span", { staticClass: "icon level-item has-text-centered" }, [
-                _c("i", { staticClass: "fa fa-4x fa-pagelines" })
-              ]),
-              _c("br")
-            ]),
+            _vm._m(0),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _c("div", { staticStyle: { "text-align": "center" } }, [
-              _c(
-                "a",
-                {
-                  staticClass:
-                    "button title is-primary is-inverted is-outlined",
-                  attrs: { href: "pemanasan" }
-                },
-                [_vm._v("BIOLOGI")]
-              )
-            ])
+            _c(
+              "div",
+              { staticStyle: { "text-align": "center" } },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass:
+                      "button title is-primary is-inverted is-outlined",
+                    attrs: {
+                      to: { name: "pemanasan", params: { mapel: "biologi" } }
+                    }
+                  },
+                  [_vm._v("\n                    BIOLOGI\n                ")]
+                )
+              ],
+              1
+            )
           ]),
           _vm._v(" "),
           _c("br"),
@@ -43289,26 +43287,28 @@ var staticRenderFns = [
           _c("div", { staticClass: "notification is-link" }, [
             _c("br"),
             _vm._v(" "),
-            _c("nav", { staticClass: "level" }, [
-              _c("span", { staticClass: "icon level-item has-text-centered" }, [
-                _c("i", { staticClass: "fa fa-4x fa-rocket" })
-              ]),
-              _c("br")
-            ]),
+            _vm._m(1),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _c("div", { staticStyle: { "text-align": "center" } }, [
-              _c(
-                "a",
-                {
-                  staticClass:
-                    "button title is-primary is-inverted is-outlined",
-                  attrs: { href: "pemanasan" }
-                },
-                [_vm._v("FISIKA")]
-              )
-            ])
+            _c(
+              "div",
+              { staticStyle: { "text-align": "center" } },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass:
+                      "button title is-primary is-inverted is-outlined",
+                    attrs: {
+                      to: { name: "pemanasan", params: { mapel: "fisika" } }
+                    }
+                  },
+                  [_vm._v("\n                    FISIKA\n            ")]
+                )
+              ],
+              1
+            )
           ])
         ]),
         _vm._v(" "),
@@ -43318,31 +43318,28 @@ var staticRenderFns = [
           _c("div", { staticClass: "notification is-warning" }, [
             _c("br"),
             _vm._v(" "),
-            _c("nav", { staticClass: "level" }, [
-              _c(
-                "span",
-                {
-                  staticClass:
-                    "icon has-text-white level-item has-text-centered"
-                },
-                [_c("i", { staticClass: "fa fa-4x fa-calculator" })]
-              ),
-              _c("br")
-            ]),
+            _vm._m(2),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _c("div", { staticStyle: { "text-align": "center" } }, [
-              _c(
-                "a",
-                {
-                  staticClass:
-                    "button title is-primary is-inverted is-outlined",
-                  attrs: { href: "pemanasan" }
-                },
-                [_vm._v("MATEMATIKA")]
-              )
-            ])
+            _c(
+              "div",
+              { staticStyle: { "text-align": "center" } },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass:
+                      "button title is-primary is-inverted is-outlined",
+                    attrs: {
+                      to: { name: "pemanasan", params: { mapel: "matematika" } }
+                    }
+                  },
+                  [_vm._v("\n                    MATEMATIKA\n                ")]
+                )
+              ],
+              1
+            )
           ]),
           _vm._v(" "),
           _c("br"),
@@ -43351,29 +43348,82 @@ var staticRenderFns = [
           _c("div", { staticClass: "notification is-danger" }, [
             _c("br"),
             _vm._v(" "),
-            _c("nav", { staticClass: "level" }, [
-              _c("span", { staticClass: "icon level-item has-text-centered" }, [
-                _c("i", { staticClass: "fa fa-4x fa-flask" })
-              ]),
-              _c("br")
-            ]),
+            _vm._m(3),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _c("div", { staticStyle: { "text-align": "center" } }, [
-              _c(
-                "a",
-                {
-                  staticClass:
-                    "button title is-primary is-inverted is-outlined",
-                  attrs: { href: "pemanasan" }
-                },
-                [_vm._v("KIMIA")]
-              )
-            ])
+            _c(
+              "div",
+              { staticStyle: { "text-align": "center" } },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass:
+                      "button title is-primary is-inverted is-outlined",
+                    attrs: {
+                      to: { name: "pemanasan", params: { mapel: "kimia" } }
+                    }
+                  },
+                  [_vm._v("\n                    KIMIA\n                ")]
+                )
+              ],
+              1
+            )
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c("Pemanasan", { attrs: { mapel: _vm.mapel } })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "level" }, [
+      _c("span", { staticClass: "icon level-item has-text-centered" }, [
+        _c("i", { staticClass: "fa fa-4x fa-pagelines" })
+      ]),
+      _c("br")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "level" }, [
+      _c("span", { staticClass: "icon level-item has-text-centered" }, [
+        _c("i", { staticClass: "fa fa-4x fa-rocket" })
+      ]),
+      _c("br")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "level" }, [
+      _c(
+        "span",
+        { staticClass: "icon has-text-white level-item has-text-centered" },
+        [_c("i", { staticClass: "fa fa-4x fa-calculator" })]
+      ),
+      _c("br")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "level" }, [
+      _c("span", { staticClass: "icon level-item has-text-centered" }, [
+        _c("i", { staticClass: "fa fa-4x fa-flask" })
+      ]),
+      _c("br")
     ])
   }
 ]
@@ -43393,7 +43443,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(129)
 /* template */
 var __vue_template__ = __webpack_require__(70)
 /* template functional */
@@ -43441,178 +43491,221 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "container" }, [
-      _c("br"),
-      _c("br"),
-      _vm._v(" "),
-      _c("div", { staticClass: "columns" }, [
-        _c("div", { staticClass: "column is-one-fifth" }, [
+  return _c("section", { staticClass: "container" }, [
+    _c("br"),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "columns" }, [
+      _c(
+        "div",
+        { staticClass: "column is-one-fifth" },
+        [
           _c("h3", [_vm._v("Soal")]),
           _vm._v(" "),
-          _c("div", { staticClass: "buttons" }, [
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("1")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("2")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("3")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("4")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("5")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("6")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("7")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("8")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("9")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("10")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("11")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("12")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("13")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("14")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "button", staticStyle: { width: "25px" } },
-              [_vm._v("15")]
+          _vm._l(_vm.soal.length, function(data) {
+            return _c(
+              "div",
+              {
+                staticClass: "button",
+                on: {
+                  click: function($event) {
+                    return _vm.getIndex(_vm.soal[data - 1])
+                  }
+                }
+              },
+              [_vm._v("\n      " + _vm._s(data) + "\n    ")]
             )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column is-four-fifth" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("header", { staticClass: "card-header title" }, [
-              _vm._v(
-                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris?\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-content" }, [
-              _c("div", { staticClass: "control" }, [
-                _c("label", { staticClass: "radio is-size-4" }, [
-                  _c("input", { attrs: { type: "radio", name: "rsvp" } }),
-                  _vm._v(
-                    "\n                            Going\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("label", { staticClass: "radio is-size-4" }, [
-                  _c("input", { attrs: { type: "radio", name: "rsvp" } }),
-                  _vm._v(
-                    "\n                            Not going\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("label", { staticClass: "radio is-size-4" }, [
-                  _c("input", { attrs: { type: "radio", name: "rsvp" } }),
-                  _vm._v(
-                    "\n                            Maybe\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("br")
-            ])
-          ]),
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "column is-four-fifth" }, [
+        _c("div", { staticClass: "card" }, [
+          _c(
+            "div",
+            { staticClass: "card-header title" },
+            _vm._l(_vm.soal, function(data) {
+              return _vm.no == data.id
+                ? _c("div", [
+                    _vm._v(
+                      "\n          " + _vm._s(data.pertanyaan) + "\n        "
+                    )
+                  ])
+                : _vm._e()
+            }),
+            0
+          ),
           _vm._v(" "),
-          _c("footer", { staticClass: "card-footer level-right" }, [
-            _c("a", { staticClass: "button", attrs: { href: "#" } }, [
-              _vm._v(" Prev   ")
-            ]),
+          _c("div", { staticClass: "card-content" }, [
+            _c(
+              "div",
+              { staticClass: "control" },
+              _vm._l(_vm.soal, function(data) {
+                return _vm.no == data.id
+                  ? _c("div", [
+                      _c("label", { staticClass: "radio is-size-4" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.ans[data.id],
+                              expression: "ans[data.id]"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "A" },
+                          domProps: { checked: _vm._q(_vm.ans[data.id], "A") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.ans, data.id, "A")
+                            }
+                          }
+                        }),
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(data.pilihana) +
+                            "\n            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "radio is-size-4" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.ans[data.id],
+                              expression: "ans[data.id]"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "B" },
+                          domProps: { checked: _vm._q(_vm.ans[data.id], "B") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.ans, data.id, "B")
+                            }
+                          }
+                        }),
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(data.pilihanb) +
+                            "\n            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "radio is-size-4" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.ans[data.id],
+                              expression: "ans[data.id]"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "C" },
+                          domProps: { checked: _vm._q(_vm.ans[data.id], "C") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.ans, data.id, "C")
+                            }
+                          }
+                        }),
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(data.pilihanc) +
+                            "\n            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "radio is-size-4" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.ans[data.id],
+                              expression: "ans[data.id]"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "D" },
+                          domProps: { checked: _vm._q(_vm.ans[data.id], "D") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.ans, data.id, "D")
+                            }
+                          }
+                        }),
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(data.pilihand) +
+                            "\n            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "radio is-size-4" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.ans[data.id],
+                              expression: "ans[data.id]"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "E" },
+                          domProps: { checked: _vm._q(_vm.ans[data.id], "E") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.ans, data.id, "E")
+                            }
+                          }
+                        }),
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(data.pilihane) +
+                            "\n            "
+                        )
+                      ])
+                    ])
+                  : _vm._e()
+              }),
+              0
+            ),
             _vm._v(" "),
-            _c("p"),
-            _vm._v(" "),
-            _c("a", { staticClass: "button", attrs: { href: "#" } }, [
-              _vm._v("Next")
-            ])
+            _c("br")
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "buttons level-right" }, [
-        _c(
-          "a",
-          { staticClass: "button is-success", attrs: { href: "/pembahasan" } },
-          [_vm._v("Submit all and finish")]
-        )
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "buttons level-right" }, [
+      _c(
+        "button",
+        {
+          staticClass: "button is-success",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.submit($event)
+            }
+          }
+        },
+        [_vm._v("Submit all and finish")]
+      )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -43629,7 +43722,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(130)
 /* template */
 var __vue_template__ = __webpack_require__(72)
 /* template functional */
@@ -43677,123 +43770,215 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("section", { staticClass: "container" }, [
+    _c("br"),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "columns" }, [
+      _c(
+        "div",
+        { staticClass: "column is-one-fifth" },
+        [
+          _c("h3", [_vm._v("Soal")]),
+          _vm._v(" "),
+          _vm._l(_vm.soal.length, function(data) {
+            return _c(
+              "div",
+              {
+                staticClass: "button",
+                on: {
+                  click: function($event) {
+                    return _vm.getIndex(_vm.soal[data - 1])
+                  }
+                }
+              },
+              [_vm._v("\n      " + _vm._s(data) + "\n    ")]
+            )
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "column is-four-fifth" },
+        [
+          _c("div", { staticClass: "card" }, [
+            _c(
+              "div",
+              { staticClass: "card-header title" },
+              _vm._l(_vm.soal, function(data) {
+                return _vm.no == data.id
+                  ? _c("div", [
+                      _vm._v(
+                        "\n          " + _vm._s(data.pertanyaan) + "\n        "
+                      )
+                    ])
+                  : _vm._e()
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-content" }, [
+              _c(
+                "div",
+                { staticClass: "control" },
+                _vm._l(_vm.soal, function(data) {
+                  return _vm.no == data.id
+                    ? _c("div", [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "radio is-size-4",
+                            attrs: { disabled: "" }
+                          },
+                          [
+                            _vm.ans[_vm.no] == "A"
+                              ? _c("input", {
+                                  attrs: { type: "radio", checked: "" }
+                                })
+                              : _c("input", {
+                                  attrs: { type: "radio", disabled: "" }
+                                }),
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(data.pilihana) +
+                                "\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "radio is-size-4",
+                            attrs: { disabled: "" }
+                          },
+                          [
+                            _vm.ans[_vm.no] == "B"
+                              ? _c("input", {
+                                  attrs: { type: "radio", checked: "" }
+                                })
+                              : _c("input", {
+                                  attrs: { type: "radio", disabled: "" }
+                                }),
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(data.pilihanb) +
+                                "\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "radio is-size-4",
+                            attrs: { disabled: "" }
+                          },
+                          [
+                            _vm.ans[_vm.no] == "C"
+                              ? _c("input", {
+                                  attrs: { type: "radio", checked: "" }
+                                })
+                              : _c("input", {
+                                  attrs: { type: "radio", disabled: "" }
+                                }),
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(data.pilihanc) +
+                                "\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "radio is-size-4",
+                            attrs: { disabled: "" }
+                          },
+                          [
+                            _vm.ans[_vm.no] == "D"
+                              ? _c("input", {
+                                  attrs: { type: "radio", checked: "" }
+                                })
+                              : _c("input", {
+                                  attrs: { type: "radio", disabled: "" }
+                                }),
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(data.pilihand) +
+                                "\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "radio is-size-4",
+                            attrs: { disabled: "" }
+                          },
+                          [
+                            _vm.ans[_vm.no] == "E"
+                              ? _c("input", {
+                                  attrs: { type: "radio", checked: "" }
+                                })
+                              : _c("input", {
+                                  attrs: { type: "radio", disabled: "" }
+                                }),
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(data.pilihane) +
+                                "\n            "
+                            )
+                          ]
+                        )
+                      ])
+                    : _vm._e()
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _c("br")
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.soal, function(data) {
+            return _vm.no == data.id
+              ? _c("div", [
+                  _c("footer", { staticClass: "card-footer level-right" }, [
+                    _vm._v(
+                      "\n          " + _vm._s(data.pembahasan) + "\n      "
+                    )
+                  ])
+                ])
+              : _vm._e()
+          })
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "container" }, [
-      _c("br"),
-      _c("br"),
-      _vm._v(" "),
-      _c("div", { staticClass: "columns" }, [
-        _c("div", { staticClass: "column is-one-fifth" }, [
-          _c("h3", [_vm._v("Soal")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("1")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("2")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("3")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("4")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("5")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("6")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("7")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("8")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("9")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("10")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("11")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("12")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("13")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("14")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "button" }, [_vm._v("15")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column is-four-fifth" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("header", { staticClass: "card-header title" }, [
-              _vm._v(
-                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris?\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-content" }, [
-              _c("div", { staticClass: "control" }, [
-                _c("label", { staticClass: "radio is-size-4" }, [
-                  _c("input", {
-                    attrs: { type: "radio", name: "rsvp", checked: "" }
-                  }),
-                  _vm._v(
-                    "\n                            Going\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  { staticClass: "radio is-size-4", attrs: { disabled: "" } },
-                  [
-                    _c("input", {
-                      attrs: { type: "radio", name: "rsvp", disabled: "" }
-                    }),
-                    _vm._v(
-                      "\n                            Not going\n                        "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  { staticClass: "radio is-size-4", attrs: { disabled: "" } },
-                  [
-                    _c("input", {
-                      attrs: { type: "radio", name: "rsvp", disabled: "" }
-                    }),
-                    _vm._v(
-                      "\n                            Maybe\n                        "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("br")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("footer", { staticClass: "card-footer level-right" }, [
-            _vm._v(
-              "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed ante molestie, varius lacus sit amet, tempus elit. Sed tincidunt, risus ut blandit consectetur, enim urna dapibus nisl, ac rhoncus quam velit iaculis nisi. Integer vitae magna vel urna dignissim luctus. Nam pretium est eget lacus ornare, a tempus diam luctus. Nullam id lobortis est. Donec tincidunt lorem at nunc accumsan, a finibus erat fermentum. Vestibulum sed porta leo, ut molestie magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec mattis ipsum nibh, ut bibendum lorem mattis ac. Ut nec elit ullamcorper massa imperdiet vehicula. Nunc commodo quis lorem vitae bibendum. Aenean eu odio efficitur, congue odio id, volutpat enim.\n                "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "buttons level-right" }, [
-        _c("span", { staticClass: "button" }, [_vm._v("Prev")]),
-        _vm._v(" "),
-        _c("span", { staticClass: "button is-info" }, [
-          _vm._v("Finish Review")
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "button" }, [_vm._v("Next")])
-      ])
+    return _c("div", { staticClass: "buttons level-right" }, [
+      _c("button", { staticClass: "button is-info" }, [_vm._v("Finish Review")])
     ])
   }
 ]
@@ -43961,7 +44146,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("h3", [_vm._v("Detail")]),
           _vm._v(" "),
-          _c("div", { staticClass: "dropdown" }, [
+          _c("div", { staticClass: "dropdown is-hoverable" }, [
             _c("div", { staticClass: "dropdown-trigger" }, [
               _c(
                 "button",
@@ -43988,7 +44173,7 @@ var staticRenderFns = [
                     _c("label", { staticClass: "checkbox" }, [
                       _c("input", { attrs: { type: "checkbox" } }),
                       _vm._v(
-                        "\r\n                            Remember me\r\n                        "
+                        "\r\n                            Senin\r\n                        "
                       )
                     ])
                   ]
@@ -43998,9 +44183,12 @@ var staticRenderFns = [
                   "a",
                   { staticClass: "dropdown-item", attrs: { href: "#" } },
                   [
-                    _vm._v(
-                      "\r\n                        Selasa\r\n                    "
-                    )
+                    _c("label", { staticClass: "checkbox" }, [
+                      _c("input", { attrs: { type: "checkbox" } }),
+                      _vm._v(
+                        "\r\n                            Selasa\r\n                        "
+                      )
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -44008,9 +44196,12 @@ var staticRenderFns = [
                   "a",
                   { staticClass: "dropdown-item", attrs: { href: "#" } },
                   [
-                    _vm._v(
-                      "\r\n                        Rabu\r\n                    "
-                    )
+                    _c("label", { staticClass: "checkbox" }, [
+                      _c("input", { attrs: { type: "checkbox" } }),
+                      _vm._v(
+                        "\r\n                            Rabu\r\n                        "
+                      )
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -44018,9 +44209,12 @@ var staticRenderFns = [
                   "a",
                   { staticClass: "dropdown-item", attrs: { href: "#" } },
                   [
-                    _vm._v(
-                      "\r\n                        Kamis\r\n                    "
-                    )
+                    _c("label", { staticClass: "checkbox" }, [
+                      _c("input", { attrs: { type: "checkbox" } }),
+                      _vm._v(
+                        "\r\n                            Kamis\r\n                        "
+                      )
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -44028,9 +44222,12 @@ var staticRenderFns = [
                   "a",
                   { staticClass: "dropdown-item", attrs: { href: "#" } },
                   [
-                    _vm._v(
-                      "\r\n                        Jumat\r\n                    "
-                    )
+                    _c("label", { staticClass: "checkbox" }, [
+                      _c("input", { attrs: { type: "checkbox" } }),
+                      _vm._v(
+                        "\r\n                            Jumat\r\n                        "
+                      )
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -44038,9 +44235,12 @@ var staticRenderFns = [
                   "a",
                   { staticClass: "dropdown-item", attrs: { href: "#" } },
                   [
-                    _vm._v(
-                      "\r\n                        Sabtu\r\n                    "
-                    )
+                    _c("label", { staticClass: "checkbox" }, [
+                      _c("input", { attrs: { type: "checkbox" } }),
+                      _vm._v(
+                        "\r\n                            Sabtu\r\n                        "
+                      )
+                    ])
                   ]
                 )
               ])
@@ -59973,6 +60173,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         user: [{
           name: 'Dashboard',
           path: 'dashboard'
+        }, {
+          name: 'Passing Grade',
+          path: 'passingGrade'
         }],
         // LOGGED ADMIN
         admin: [{
@@ -60602,6 +60805,338 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */,
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var Pemanasan = __webpack_require__(69);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: { Pemanasan: Pemanasan },
+  data: function data() {
+    return {
+      mapel: ''
+    };
+  }
+});
+
+/***/ }),
+/* 129 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      no: 1,
+      soal: {},
+      ans: {},
+      lists: {},
+      mapel: this.$route.params.mapel,
+      sum: 100
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    if (this.mapel == 'fisika') {
+      axios.post('/getSoalFisika').then(function (response) {
+        return _this.soal = response.data;
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
+    } else if (this.mapel == 'kimia') {
+      axios.post('/getSoalKimia').then(function (response) {
+        return _this.soal = response.data;
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
+    } else if (this.mapel == 'matematika') {
+      axios.post('/getSoalMath').then(function (response) {
+        return _this.soal = response.data;
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
+    } else if (this.mapel == 'biologi') {
+      axios.post('/getSoalBiologi').then(function (response) {
+        return _this.soal = response.data;
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
+    }
+  },
+
+  methods: {
+    getIndex: function getIndex(value) {
+      this.no = value.id;
+    },
+    submit: function submit() {
+      var _this2 = this;
+
+      axios.post('/grading', this.$data.ans).then(function (response) {
+        _this2.$data.sum = response.data;
+        _this2.$router.push({ name: "pembahasan", params: { sum: _this2.sum, soal: _this2.soal, ans: _this2.ans } });
+      }).catch(function (error) {
+        return _this2.errors = error.response.data.errors;
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 130 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      no: 1,
+      soal: {},
+      ans: {},
+      score: 0
+    };
+  },
+  mounted: function mounted() {
+    this.soal = this.$route.params.soal;
+    this.ans = this.$route.params.ans;
+    this.score = this.$route.params.sum;
+  },
+
+  methods: {
+    getIndex: function getIndex(value) {
+      this.no = value.id;
+    }
+  }
+});
 
 /***/ })
 /******/ ]);

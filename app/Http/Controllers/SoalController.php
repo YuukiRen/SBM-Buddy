@@ -11,14 +11,35 @@ class SoalController extends Controller
     public function getData(Request $request){
         return Soal::where('idPaket',$request->id)->get();
     }
+    public function checkAns(Request $request){
+        $sum = 0;
+        foreach($request->all() as $key=>$item){
+            if($item == Soal::find($key)->jawaban){
+                $sum = $sum + 4;
+            }
+            else{
+                $sum = $sum - 1;
+            }
+        }
+        return $sum;
+    }
     public function index(){
-
+        
     }
     public function TryOut(){
         return $this->getSoalTryOut();
     }
     public function fisika(){
-        return $this->getSoalFisika(1);
+        return $this->getSoalFisika(15);
+    }
+    public function kimia(){
+        return $this->getSoalKimia(15);
+    }
+    public function biologi(){
+        return $this->getSoalBio(15);
+    }
+    public function math(){
+        return $this->getSoalMath(15);
     }
     public function create(){
 

@@ -36,8 +36,16 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::resource('paket', 'PaketController');
     Route::resource('jurusan', 'JurusanController');
     Route::resource('soal', 'SoalController');
+    
+    Route::post('/grading','SoalController@checkAns');
+    
     Route::post('/getData','PaketController@getData');
     Route::post('/getUniv','JurusanController@getData');
     Route::post('/getSoal','SoalController@getData');
+    
+    Route::post('/getSoalFisika','SoalController@fisika');
+    Route::post('/getSoalKimia','SoalController@kimia');
+    Route::post('/getSoalBiologi','SoalController@biologi');
+    Route::post('/getSoalMath','SoalController@math');
 
 });

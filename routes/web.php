@@ -20,6 +20,8 @@ Route::get('/{any?}', function (){
     return view('welhom');
 })->where('any', '^(?!api\/)[\/\w\.-]*');
 
+// Route::get('/coba','PaketController@nangis');
+
 // Route::get('/home', 'HomeController@index')->name('home');
 // Route::resource('paket', 'PaketController');
 // Route::resource('jurusan', 'JurusanController');

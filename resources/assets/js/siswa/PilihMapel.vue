@@ -13,7 +13,10 @@
                 </nav>
                 <br>
                 <div style="text-align: center;">
-               <a href="pemanasan" class="button title is-primary is-inverted is-outlined">BIOLOGI</a>
+                    <!-- <a href="pemanasan" class="button title is-primary is-inverted is-outlined">BIOLOGI</a> -->
+                    <router-link :to="{ name: 'pemanasan', params: { mapel: 'biologi' } }" class="button title is-primary is-inverted is-outlined">
+                        BIOLOGI
+                    </router-link>
                </div>
             </div>
             <br><br>
@@ -26,7 +29,9 @@
                 </nav>
                 <br>
                <div style="text-align: center;">
-               <a href="pemanasan" class="button title is-primary is-inverted is-outlined">FISIKA</a>
+               <router-link :to="{ name: 'pemanasan', params: { mapel: 'fisika' } }" class="button title is-primary is-inverted is-outlined">
+                        FISIKA
+                </router-link>
                </div>
             </div>
         </div>
@@ -42,7 +47,9 @@
                 </nav>
                 <br>
                <div style="text-align: center;">
-               <a href="pemanasan" class="button title is-primary is-inverted is-outlined">MATEMATIKA</a>
+                   <router-link :to="{ name: 'pemanasan', params: { mapel: 'matematika' } }" class="button title is-primary is-inverted is-outlined">
+                        MATEMATIKA
+                    </router-link>
                </div>
             </div>
             <br><br>
@@ -55,11 +62,26 @@
                 </nav>
                 <br>
                <div style="text-align: center;">
-               <a href="pemanasan" class="button title is-primary is-inverted is-outlined">KIMIA</a>
+                   <router-link :to="{ name: 'pemanasan', params: { mapel: 'kimia' } }" class="button title is-primary is-inverted is-outlined">
+                        KIMIA
+                    </router-link>
                </div>
             </div>
         </div>
         </div>
+        <Pemanasan :mapel="mapel"></Pemanasan>
     </section>
 
 </template>
+
+<script>
+  let Pemanasan = require('./Pemanasan.vue');
+  export default{
+    components:{Pemanasan},
+    data(){
+      return {
+          mapel:''
+      }
+    }
+  }
+</script>
