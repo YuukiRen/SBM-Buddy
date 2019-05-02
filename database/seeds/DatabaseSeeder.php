@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
         //     'password' => Hash::make('secret'),
         //     'role' => 1
         // ]);
-        $this->call(paketSoal::class);
+        $this->call(SoalSeeder::class);
     }
 }
