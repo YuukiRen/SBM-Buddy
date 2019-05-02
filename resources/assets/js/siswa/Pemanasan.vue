@@ -3,17 +3,22 @@
   <br><br>
   
   <div class="columns">
-    <div class="column is-one-fifth">
+    <div class="column is-0 is-one-fifth">
       <h3>Soal</h3>
-      <div class="button" v-on:click="getIndex(soal[data-1])" v-for="data in soal.length">
-        {{data}}
+      <div style="width:100%" v-for="data in soal.length">
+        <div style="float:left;width:25%" class="button is-outlined" v-on:click="getIndex(soal[data-1])" v-if="ans[soal[data-1].id]==NULL">
+          {{data}}
+        </div>
+        <div style="float:left;width:25%" class="button is-info is-outlined" v-on:click="getIndex(soal[data-1])" v-else>
+          {{data}}
+        </div>
       </div>
     </div>
     
     <div class="column is-four-fifth">
       <div class="card">
         <div class="card-header title">
-          <div v-for="data in soal" v-if="no == data.id">
+          <div v-for="data in soal" v-if="no == data.id ">
             {{data.pertanyaan}}
           </div>
         </div>

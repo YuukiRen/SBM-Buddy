@@ -16865,14 +16865,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_router__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Index__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__Index__);
-throw new Error("Cannot find module \"./components/Pagination.vue\"");
 
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
 
 
 
@@ -43446,6 +43444,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -43520,23 +43523,40 @@ var render = function() {
     _c("div", { staticClass: "columns" }, [
       _c(
         "div",
-        { staticClass: "column is-one-fifth" },
+        { staticClass: "column is-0 is-one-fifth" },
         [
           _c("h3", [_vm._v("Soal")]),
           _vm._v(" "),
           _vm._l(_vm.soal.length, function(data) {
-            return _c(
-              "div",
-              {
-                staticClass: "button",
-                on: {
-                  click: function($event) {
-                    return _vm.getIndex(_vm.soal[data - 1])
-                  }
-                }
-              },
-              [_vm._v("\n      " + _vm._s(data) + "\n    ")]
-            )
+            return _c("div", { staticStyle: { width: "100%" } }, [
+              _vm.ans[_vm.soal[data - 1].id] == _vm.NULL
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "button is-outlined",
+                      staticStyle: { float: "left", width: "25%" },
+                      on: {
+                        click: function($event) {
+                          return _vm.getIndex(_vm.soal[data - 1])
+                        }
+                      }
+                    },
+                    [_vm._v("\n        " + _vm._s(data) + "\n      ")]
+                  )
+                : _c(
+                    "div",
+                    {
+                      staticClass: "button is-info is-outlined",
+                      staticStyle: { float: "left", width: "25%" },
+                      on: {
+                        click: function($event) {
+                          return _vm.getIndex(_vm.soal[data - 1])
+                        }
+                      }
+                    },
+                    [_vm._v("\n        " + _vm._s(data) + "\n      ")]
+                  )
+            ])
           })
         ],
         2
@@ -44061,6 +44081,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -44101,26 +44168,59 @@ var render = function() {
         "div",
         { staticClass: "column is-one-fifth" },
         [
+          _c("article", { staticClass: "message is-link" }, [
+            _c("div", { staticClass: "message-header" }, [
+              _c("p", [_vm._v("Total Score : " + _vm._s(this.score))])
+            ])
+          ]),
+          _vm._v(" "),
           _c("h3", [_vm._v("Soal")]),
           _vm._v(" "),
           _vm._l(_vm.soal.length, function(data) {
-            return _c(
-              "div",
-              {
-                staticClass: "button",
-                on: {
-                  click: function($event) {
-                    return _vm.getIndex(_vm.soal[data - 1])
-                  }
-                }
-              },
-              [_vm._v("\n      " + _vm._s(data) + "\n    ")]
-            )
-          }),
-          _vm._v(" "),
-          _c("article", { staticClass: "message is-success" }, [
-            _c("span", [_vm._v("Total Score : " + _vm._s(this.score))])
-          ])
+            return _c("div", { staticStyle: { width: "100%" } }, [
+              _vm.soal[data - 1].jawaban == _vm.ans[_vm.soal[data - 1].id]
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "button is-success is-outlined",
+                      staticStyle: { float: "left", width: "25%" },
+                      on: {
+                        click: function($event) {
+                          return _vm.getIndex(_vm.soal[data - 1])
+                        }
+                      }
+                    },
+                    [_vm._v("\n        " + _vm._s(data) + "\n      ")]
+                  )
+                : _vm.ans[_vm.soal[data - 1].id] == _vm.NULL
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "button is-outlined",
+                      staticStyle: { float: "left", width: "25%" },
+                      on: {
+                        click: function($event) {
+                          return _vm.getIndex(_vm.soal[data - 1])
+                        }
+                      }
+                    },
+                    [_vm._v("\n        " + _vm._s(data) + "\n      ")]
+                  )
+                : _c(
+                    "div",
+                    {
+                      staticClass: "button is-danger is-outlined",
+                      staticStyle: { float: "left", width: "25%" },
+                      on: {
+                        click: function($event) {
+                          return _vm.getIndex(_vm.soal[data - 1])
+                        }
+                      }
+                    },
+                    [_vm._v("\n        " + _vm._s(data) + "\n      ")]
+                  )
+            ])
+          })
         ],
         2
       ),
@@ -44152,123 +44252,333 @@ var render = function() {
                 _vm._l(_vm.soal, function(data) {
                   return _vm.no == data.id
                     ? _c("div", [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "radio is-size-4",
-                            attrs: { disabled: "" }
-                          },
-                          [
-                            _vm.ans[_vm.no] == "A"
-                              ? _c("input", {
-                                  attrs: { type: "radio", checked: "" }
-                                })
-                              : _c("input", {
+                        data.jawaban == "A"
+                          ? _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "radio is-size-4 has-background-primary has-text-white",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
+                                  attrs: {
+                                    type: "radio",
+                                    checked: "",
+                                    disabled: ""
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihana) +
+                                    "\n            "
+                                )
+                              ]
+                            )
+                          : _vm.ans[_vm.no] == "A"
+                          ? _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "radio is-size-4 has-background-danger has-text-white",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
+                                  attrs: {
+                                    type: "radio",
+                                    checked: "",
+                                    disabled: ""
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihana) +
+                                    "\n            "
+                                )
+                              ]
+                            )
+                          : _c(
+                              "label",
+                              {
+                                staticClass: "radio is-size-4",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
                                   attrs: { type: "radio", disabled: "" }
                                 }),
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(data.pilihana) +
-                                "\n            "
-                            )
-                          ]
-                        ),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihana) +
+                                    "\n            "
+                                )
+                              ]
+                            ),
                         _vm._v(" "),
                         _c("br"),
                         _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "radio is-size-4",
-                            attrs: { disabled: "" }
-                          },
-                          [
-                            _vm.ans[_vm.no] == "B"
-                              ? _c("input", {
-                                  attrs: { type: "radio", checked: "" }
-                                })
-                              : _c("input", {
+                        data.jawaban == "B"
+                          ? _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "radio is-size-4 has-background-primary has-text-white",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
+                                  attrs: {
+                                    type: "radio",
+                                    checked: "",
+                                    disabled: ""
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihanb) +
+                                    "\n            "
+                                )
+                              ]
+                            )
+                          : _vm.ans[_vm.no] == "B"
+                          ? _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "radio is-size-4 has-background-danger has-text-white",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
+                                  attrs: {
+                                    type: "radio",
+                                    checked: "",
+                                    disabled: ""
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihanb) +
+                                    "\n            "
+                                )
+                              ]
+                            )
+                          : _c(
+                              "label",
+                              {
+                                staticClass: "radio is-size-4",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
                                   attrs: { type: "radio", disabled: "" }
                                 }),
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(data.pilihanb) +
-                                "\n            "
-                            )
-                          ]
-                        ),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihanb) +
+                                    "\n            "
+                                )
+                              ]
+                            ),
                         _vm._v(" "),
                         _c("br"),
                         _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "radio is-size-4",
-                            attrs: { disabled: "" }
-                          },
-                          [
-                            _vm.ans[_vm.no] == "C"
-                              ? _c("input", {
-                                  attrs: { type: "radio", checked: "" }
-                                })
-                              : _c("input", {
+                        data.jawaban == "C"
+                          ? _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "radio is-size-4 has-background-primary has-text-white",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
+                                  attrs: {
+                                    type: "radio",
+                                    checked: "",
+                                    disabled: ""
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihanc) +
+                                    "\n            "
+                                )
+                              ]
+                            )
+                          : _vm.ans[_vm.no] == "C"
+                          ? _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "radio is-size-4 has-background-danger has-text-white",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
+                                  attrs: {
+                                    type: "radio",
+                                    checked: "",
+                                    disabled: ""
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihanc) +
+                                    "\n            "
+                                )
+                              ]
+                            )
+                          : _c(
+                              "label",
+                              {
+                                staticClass: "radio is-size-4",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
                                   attrs: { type: "radio", disabled: "" }
                                 }),
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(data.pilihanc) +
-                                "\n            "
-                            )
-                          ]
-                        ),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihanc) +
+                                    "\n            "
+                                )
+                              ]
+                            ),
                         _vm._v(" "),
                         _c("br"),
                         _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "radio is-size-4",
-                            attrs: { disabled: "" }
-                          },
-                          [
-                            _vm.ans[_vm.no] == "D"
-                              ? _c("input", {
-                                  attrs: { type: "radio", checked: "" }
-                                })
-                              : _c("input", {
+                        data.jawaban == "D"
+                          ? _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "radio is-size-4 has-background-primary has-text-white",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
+                                  attrs: {
+                                    type: "radio",
+                                    checked: "",
+                                    disabled: ""
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihand) +
+                                    "\n            "
+                                )
+                              ]
+                            )
+                          : _vm.ans[_vm.no] == "D"
+                          ? _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "radio is-size-4 has-background-danger has-text-white",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
+                                  attrs: {
+                                    type: "radio",
+                                    checked: "",
+                                    disabled: ""
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihand) +
+                                    "\n            "
+                                )
+                              ]
+                            )
+                          : _c(
+                              "label",
+                              {
+                                staticClass: "radio is-size-4",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
                                   attrs: { type: "radio", disabled: "" }
                                 }),
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(data.pilihand) +
-                                "\n            "
-                            )
-                          ]
-                        ),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihand) +
+                                    "\n            "
+                                )
+                              ]
+                            ),
                         _vm._v(" "),
                         _c("br"),
                         _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "radio is-size-4",
-                            attrs: { disabled: "" }
-                          },
-                          [
-                            _vm.ans[_vm.no] == "E"
-                              ? _c("input", {
-                                  attrs: { type: "radio", checked: "" }
-                                })
-                              : _c("input", {
+                        data.jawaban == "E"
+                          ? _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "radio is-size-4 has-background-primary has-text-white",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
+                                  attrs: {
+                                    type: "radio",
+                                    checked: "",
+                                    disabled: ""
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihane) +
+                                    "\n            "
+                                )
+                              ]
+                            )
+                          : _vm.ans[_vm.no] == "E"
+                          ? _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "radio is-size-4 has-background-danger has-text-white",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
+                                  attrs: {
+                                    type: "radio",
+                                    checked: "",
+                                    disabled: ""
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihane) +
+                                    "\n            "
+                                )
+                              ]
+                            )
+                          : _c(
+                              "label",
+                              {
+                                staticClass: "radio is-size-4",
+                                attrs: { disabled: "" }
+                              },
+                              [
+                                _c("input", {
                                   attrs: { type: "radio", disabled: "" }
                                 }),
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(data.pilihane) +
-                                "\n            "
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(data.pilihane) +
+                                    "\n            "
+                                )
+                              ]
                             )
-                          ]
-                        )
                       ])
                     : _vm._e()
                 }),

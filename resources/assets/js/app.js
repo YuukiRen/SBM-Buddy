@@ -15,7 +15,6 @@ import router from './router'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from './Index'
-import VuePagination from './components/Pagination.vue';
 
 require('./bootstrap');
 // Set Vue globally
