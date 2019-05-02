@@ -1,7 +1,8 @@
 <template>
-    <div class="container">
+<section class="hero is-fullheight is-default is-bold is-link">
+    <div class="container column is-4 is-offset-4 is-link">
         <div class="card card-default">
-            <div class="card-header">Registration</div>
+            <div class="card-header title is-4 has-text-black">Registration</div>
             <div class="card-body">
                 <div class="alert alert-danger" v-if="has_error && !success">
                     <p v-if="error == 'registration_validation_error'">Validation error (s), please consult the message (s) below.</p>
@@ -12,7 +13,7 @@
                     <div class="field">
                       <label class="label">Username</label>
                       <div class="control has-icons-left has-icons-right">
-                        <input class="input " v-bind:class="{ 'is-error': has_error && errors.name }" type="text" placeholder="Username Input" v-model="name">
+                        <input class="input " v-bind:class="{ 'is-error': has_error && errors.name }" type="text" placeholder="Username" v-model="name">
                         <span class="icon is-small is-left">
                           <i class="fa fa-user"></i>
                         </span>
@@ -26,7 +27,7 @@
                     <div class="field">
                       <label class="label">Email</label>
                       <div class="control has-icons-left has-icons-right">
-                        <input class="input " v-bind:class="{ 'is-danger': has_error && errors.email }" type="email" placeholder="Email input" v-model="email">
+                        <input class="input " v-bind:class="{ 'is-danger': has_error && errors.email }" type="email" placeholder="Email" v-model="email">
                         <span class="icon is-small is-left">
                           <i class="fa fa-envelope"></i>
                         </span>
@@ -51,7 +52,7 @@
                     <div class="field">
                       <label class="label">Password Confirmation</label>
                       <p class="control has-icons-left">
-                        <input class="input " v-bind:class="{ 'is-danger': has_error && errors.password }" type="password" placeholder="Password" v-model="password_confirmation">
+                        <input class="input " v-bind:class="{ 'is-danger': has_error && errors.password }" type="password" placeholder="Retype Password" v-model="password_confirmation">
                         <span class="icon is-small is-left">
                           <i class="fa fa-lock"></i>
                         </span>
@@ -70,6 +71,7 @@
             </div>
         </div>
     </div>
+</section>
 </template>
 <script>
   export default {

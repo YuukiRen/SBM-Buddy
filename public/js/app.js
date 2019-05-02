@@ -41884,32 +41884,59 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "section",
+    { staticClass: "hero is-fullheight is-default is-bold is-link" },
+    [
+      _c("div", { staticClass: "hero-body" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "columns is-vcentered" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "column is-5 is-offset-1" }, [
+              _c("figure", { staticClass: "image is-4by3" }, [
+                _c("img", {
+                  attrs: { src: "img/dash.png", alt: "Description" }
+                })
+              ])
+            ])
+          ])
+        ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "card card-default" }, [
-        _c("div", { staticClass: "card-header" }, [_vm._v("Homepage")]),
+    return _c(
+      "div",
+      { staticClass: "column is-5 is-offset-1 landing-caption" },
+      [
+        _c("h1", { staticClass: "title is-1 is-bold" }, [
+          _vm._v("Berlatih, Berusaha.\r\n                    ")
+        ]),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("p", [
-            _vm._v(
-              "\n                American  Main Barbary Coast scuttle hardtack spanker fire ship grapple jack code  of conduct port. Port red ensign Shiver me timbers provost salmagundi  bring a spring upon her cable pillage cog crow's nest lateen sail.  Barbary Coast quarterdeck lass coffer keel hulk mizzen me square-rigged  loot.\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n                Yardarm starboard keelhaul list schooner prow booty cackle  fruit gabion topmast. Plunder shrouds Nelsons folly jack Arr parley warp  grog blossom ballast pressgang. Knave crack Jennys tea cup flogging log  man-of-war hearties killick long clothes six pounders hulk.\n            "
-            )
-          ])
+        _c("h2", { staticClass: "subtitle is-5 is-muted" }, [
+          _vm._v(
+            "SBM-Buddy adalah sahabat siswa siswi SMA yang membantu mereka dalam berlatih soal-soal SBMPTN dan memantau perkembangan siswa."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", { staticStyle: { "text-align": "center" } }, [
+          _c(
+            "a",
+            {
+              staticClass: "button is-primary is-inverted is-outlined",
+              attrs: { href: "/register" }
+            },
+            [_vm._v("Mulai")]
+          )
         ])
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -42047,6 +42074,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -42095,211 +42124,232 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "card card-default" }, [
-      _c("div", { staticClass: "card-header" }, [_vm._v("Registration")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _vm.has_error && !_vm.success
-          ? _c("div", { staticClass: "alert alert-danger" }, [
-              _vm.error == "registration_validation_error"
-                ? _c("p", [
-                    _vm._v(
-                      "Validation error (s), please consult the message (s) below."
-                    )
-                  ])
-                : _c("p", [
-                    _vm._v(
-                      "Error, can not register at the moment. If the problem persists, please contact an administrator."
-                    )
-                  ])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        !_vm.success
-          ? _c(
-              "form",
-              {
-                attrs: { autocomplete: "off", method: "post" },
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.register($event)
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "field" }, [
-                  _c("label", { staticClass: "label" }, [_vm._v("Username")]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "control has-icons-left has-icons-right" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.name,
-                            expression: "name"
-                          }
-                        ],
-                        staticClass: "input ",
-                        class: { "is-error": _vm.has_error && _vm.errors.name },
-                        attrs: { type: "text", placeholder: "Username Input" },
-                        domProps: { value: _vm.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.name = $event.target.value
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(0)
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm.has_error && _vm.errors.name
-                    ? _c("p", { staticClass: "help is-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.name))
+  return _c(
+    "section",
+    { staticClass: "hero is-fullheight is-default is-bold is-link" },
+    [
+      _c("div", { staticClass: "container column is-4 is-offset-4 is-link" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header title is-4 has-text-black" }, [
+            _vm._v("Registration")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _vm.has_error && !_vm.success
+              ? _c("div", { staticClass: "alert alert-danger" }, [
+                  _vm.error == "registration_validation_error"
+                    ? _c("p", [
+                        _vm._v(
+                          "Validation error (s), please consult the message (s) below."
+                        )
                       ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "field" }, [
-                  _c("label", { staticClass: "label" }, [_vm._v("Email")]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "control has-icons-left has-icons-right" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.email,
-                            expression: "email"
-                          }
-                        ],
-                        staticClass: "input ",
-                        class: {
-                          "is-danger": _vm.has_error && _vm.errors.email
+                    : _c("p", [
+                        _vm._v(
+                          "Error, can not register at the moment. If the problem persists, please contact an administrator."
+                        )
+                      ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.success
+              ? _c(
+                  "form",
+                  {
+                    attrs: { autocomplete: "off", method: "post" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.register($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "field" }, [
+                      _c("label", { staticClass: "label" }, [
+                        _vm._v("Username")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "control has-icons-left has-icons-right"
                         },
-                        attrs: { type: "email", placeholder: "Email input" },
-                        domProps: { value: _vm.email },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.name,
+                                expression: "name"
+                              }
+                            ],
+                            staticClass: "input ",
+                            class: {
+                              "is-error": _vm.has_error && _vm.errors.name
+                            },
+                            attrs: { type: "text", placeholder: "Username" },
+                            domProps: { value: _vm.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.name = $event.target.value
+                              }
                             }
-                            _vm.email = $event.target.value
-                          }
-                        }
-                      }),
+                          }),
+                          _vm._v(" "),
+                          _vm._m(0)
+                        ]
+                      ),
                       _vm._v(" "),
-                      _vm._m(1)
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm.has_error && _vm.errors.email
-                    ? _c("p", { staticClass: "help is-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.email))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "field" }, [
-                  _c("label", { staticClass: "label" }, [_vm._v("Password")]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "control has-icons-left" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.password,
-                          expression: "password"
-                        }
-                      ],
-                      staticClass: "input ",
-                      class: {
-                        "is-danger": _vm.has_error && _vm.errors.password
-                      },
-                      attrs: { type: "password", placeholder: "Password" },
-                      domProps: { value: _vm.password },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.password = $event.target.value
-                        }
-                      }
-                    }),
+                      _vm.has_error && _vm.errors.name
+                        ? _c("p", { staticClass: "help is-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.name))
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _vm._m(2)
-                  ]),
-                  _vm._v(" "),
-                  _vm.has_error && _vm.errors.password
-                    ? _c("p", { staticClass: "help is-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.password))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "field" }, [
-                  _c("label", { staticClass: "label" }, [
-                    _vm._v("Password Confirmation")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "control has-icons-left" }, [
-                    _c("input", {
-                      directives: [
+                    _c("div", { staticClass: "field" }, [
+                      _c("label", { staticClass: "label" }, [_vm._v("Email")]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.password_confirmation,
-                          expression: "password_confirmation"
-                        }
-                      ],
-                      staticClass: "input ",
-                      class: {
-                        "is-danger": _vm.has_error && _vm.errors.password
-                      },
-                      attrs: { type: "password", placeholder: "Password" },
-                      domProps: { value: _vm.password_confirmation },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.password_confirmation = $event.target.value
-                        }
-                      }
-                    }),
+                          staticClass: "control has-icons-left has-icons-right"
+                        },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.email,
+                                expression: "email"
+                              }
+                            ],
+                            staticClass: "input ",
+                            class: {
+                              "is-danger": _vm.has_error && _vm.errors.email
+                            },
+                            attrs: { type: "email", placeholder: "Email" },
+                            domProps: { value: _vm.email },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.email = $event.target.value
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(1)
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.has_error && _vm.errors.email
+                        ? _c("p", { staticClass: "help is-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.email))
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _vm._m(3)
-                  ]),
-                  _vm._v(" "),
-                  _vm.has_error && _vm.errors.password
-                    ? _c("p", { staticClass: "help is-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.password))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _vm._m(4)
-              ]
-            )
-          : _vm._e()
+                    _c("div", { staticClass: "field" }, [
+                      _c("label", { staticClass: "label" }, [
+                        _vm._v("Password")
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "control has-icons-left" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.password,
+                              expression: "password"
+                            }
+                          ],
+                          staticClass: "input ",
+                          class: {
+                            "is-danger": _vm.has_error && _vm.errors.password
+                          },
+                          attrs: { type: "password", placeholder: "Password" },
+                          domProps: { value: _vm.password },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.password = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(2)
+                      ]),
+                      _vm._v(" "),
+                      _vm.has_error && _vm.errors.password
+                        ? _c("p", { staticClass: "help is-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.password))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "field" }, [
+                      _c("label", { staticClass: "label" }, [
+                        _vm._v("Password Confirmation")
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "control has-icons-left" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.password_confirmation,
+                              expression: "password_confirmation"
+                            }
+                          ],
+                          staticClass: "input ",
+                          class: {
+                            "is-danger": _vm.has_error && _vm.errors.password
+                          },
+                          attrs: {
+                            type: "password",
+                            placeholder: "Retype Password"
+                          },
+                          domProps: { value: _vm.password_confirmation },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.password_confirmation = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(3)
+                      ]),
+                      _vm._v(" "),
+                      _vm.has_error && _vm.errors.password
+                        ? _c("p", { staticClass: "help is-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.password))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(4)
+                  ]
+                )
+              : _vm._e()
+          ])
+        ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -42343,7 +42393,11 @@ var staticRenderFns = [
         _c(
           "button",
           { staticClass: "button is-success", attrs: { type: "submit" } },
-          [_vm._v("\n                      Register\n                    ")]
+          [
+            _vm._v(
+              "\r\n                          Register\r\n                        "
+            )
+          ]
         )
       ])
     ])
@@ -42451,6 +42505,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -42497,109 +42555,121 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "card card-default" }, [
-      _c("div", { staticClass: "card-header" }, [_vm._v("Login")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _vm.has_error
-          ? _c("div", { staticClass: "alert alert-danger" }, [
-              _c("p", [
-                _vm._v("Error, can not connect with these credentials.")
-              ])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "form",
-          {
-            attrs: { autocomplete: "off", method: "post" },
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.login($event)
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "field" }, [
-              _c(
-                "p",
-                { staticClass: "control has-icons-left has-icons-right" },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.email,
-                        expression: "email"
-                      }
-                    ],
-                    staticClass: "input",
-                    attrs: {
-                      id: "email",
-                      type: "email",
-                      placeholder: "Email",
-                      required: ""
-                    },
-                    domProps: { value: _vm.email },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.email = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _vm._m(1)
-                ]
-              )
-            ]),
+  return _c(
+    "section",
+    { staticClass: "hero is-fullheight is-default is-bold is-link" },
+    [
+      _c("div", { staticClass: "column is-4 is-offset-4" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header title is-4 has-text-black" }, [
+            _vm._v("Login")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _vm.has_error
+              ? _c("div", { staticClass: "alert alert-danger" }, [
+                  _c("p", [
+                    _vm._v("Error, can not connect with these credentials.")
+                  ])
+                ])
+              : _vm._e(),
             _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _c("p", { staticClass: "control has-icons-left" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.password,
-                      expression: "password"
-                    }
-                  ],
-                  staticClass: "input",
-                  attrs: {
-                    id: "password",
-                    type: "password",
-                    placeholder: "Password",
-                    required: ""
-                  },
-                  domProps: { value: _vm.password },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.password = $event.target.value
-                    }
+            _c(
+              "form",
+              {
+                attrs: { autocomplete: "off", method: "post" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.login($event)
                   }
-                }),
+                }
+              },
+              [
+                _c("div", { staticClass: "field" }, [
+                  _c("label", { staticClass: "label" }, [_vm._v("Email")]),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    { staticClass: "control has-icons-left has-icons-right" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.email,
+                            expression: "email"
+                          }
+                        ],
+                        staticClass: "input",
+                        attrs: {
+                          id: "email",
+                          type: "email",
+                          placeholder: "Email",
+                          required: ""
+                        },
+                        domProps: { value: _vm.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.email = $event.target.value
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _vm._m(1)
+                    ]
+                  )
+                ]),
                 _vm._v(" "),
-                _vm._m(2)
-              ])
-            ]),
-            _vm._v(" "),
-            _vm._m(3)
-          ]
-        )
+                _c("div", { staticClass: "field" }, [
+                  _c("label", { staticClass: "label" }, [_vm._v("Password")]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "control has-icons-left" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.password,
+                          expression: "password"
+                        }
+                      ],
+                      staticClass: "input",
+                      attrs: {
+                        id: "password",
+                        type: "password",
+                        placeholder: "Password",
+                        required: ""
+                      },
+                      domProps: { value: _vm.password },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.password = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(3)
+              ]
+            )
+          ])
+        ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -42635,7 +42705,11 @@ var staticRenderFns = [
         _c(
           "button",
           { staticClass: "button is-success", attrs: { type: "submit" } },
-          [_vm._v("\n                      Login\n                    ")]
+          [
+            _vm._v(
+              "\r\n                          Login\r\n                        "
+            )
+          ]
         )
       ])
     ])
@@ -43128,7 +43202,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("section", { staticClass: "section" }, [
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "card card-default" }, [

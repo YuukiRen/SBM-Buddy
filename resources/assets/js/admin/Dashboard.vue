@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <section class="section">
         <div class="card card-default">
             <div class="card-header">Admin Dashboard</div>
             <div class="card-body">
@@ -12,7 +12,7 @@
                 <userList></userList>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 <script>
   import userList from '../components/user-list.vue'
