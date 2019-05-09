@@ -41718,6 +41718,7 @@ var PilihMapel = __webpack_require__(68);
 var Pemanasan = __webpack_require__(16);
 var Pembahasan = __webpack_require__(73);
 var Progress = __webpack_require__(76);
+var PassingGrade = __webpack_require__(132);
 
 var Paketsoal = __webpack_require__(78);
 var Soal = __webpack_require__(87);
@@ -41773,6 +41774,13 @@ var routes = [{
   path: '/pilihmapel',
   name: 'pilihmapel',
   component: PilihMapel,
+  meta: {
+    auth: true
+  }
+}, {
+  path: '/passinggrade',
+  name: 'passinggrade',
+  component: PassingGrade,
   meta: {
     auth: true
   }
@@ -43534,7 +43542,7 @@ var render = function() {
                     "div",
                     {
                       staticClass: "button is-outlined",
-                      staticStyle: { float: "left", width: "25%" },
+                      staticStyle: { float: "left", width: "15%" },
                       on: {
                         click: function($event) {
                           return _vm.getIndex(_vm.soal[data - 1])
@@ -43547,7 +43555,7 @@ var render = function() {
                     "div",
                     {
                       staticClass: "button is-info is-outlined",
-                      staticStyle: { float: "left", width: "25%" },
+                      staticStyle: { float: "left", width: "15%" },
                       on: {
                         click: function($event) {
                           return _vm.getIndex(_vm.soal[data - 1])
@@ -60764,7 +60772,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           path: 'dashboard'
         }, {
           name: 'Passing Grade',
-          path: 'passingGrade'
+          path: 'passinggrade'
         }],
         // LOGGED ADMIN
         admin: [{
@@ -61544,6 +61552,282 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     });
   }
 });
+
+/***/ }),
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(133)
+/* template */
+var __vue_template__ = __webpack_require__(134)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/siswa/PassingGrade.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-cb82d8c0", Component.options)
+  } else {
+    hotAPI.reload("data-v-cb82d8c0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 133 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      lists: {},
+      dt: {
+        univ: ''
+      }
+    };
+  },
+
+  methods: {
+    updateTable: function updateTable(event) {
+      var _this = this;
+
+      axios.post('/getUniv', this.$data.dt).then(function (response) {
+        return _this.lists = response.data;
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 134 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "section" }, [
+    _c("div", { staticClass: "columns" }, [
+      _c("div", { staticClass: "column" }, [
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Pilih Universitas")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "select" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.dt.univ,
+                    expression: "dt.univ"
+                  }
+                ],
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.dt,
+                        "univ",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    },
+                    function($event) {
+                      return _vm.updateTable(this.value)
+                    }
+                  ]
+                }
+              },
+              [
+                _c(
+                  "option",
+                  {
+                    attrs: { value: "", selected: "", disabled: "", hidden: "" }
+                  },
+                  [_vm._v("Choose here")]
+                ),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Institut Pertanian Bogor" } }, [
+                  _vm._v("Institut Pertanian Bogor")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Universitas Indonesia" } }, [
+                  _vm._v("Universitas Indonesia")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "option",
+                  { attrs: { value: "Institut Teknologi Bandung" } },
+                  [_vm._v("Institut Teknologi Bandung")]
+                ),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Universitas Gadjah Mada" } }, [
+                  _vm._v("Universitas Gadjah Mada")
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ]),
+    _vm._v(" "),
+    _c("table", { staticClass: "table is-hoverable is-fullwidth" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.lists, function(item, key) {
+          return _c("tr", { key: item.id }, [
+            _c("td", [_vm._v(_vm._s(item.nama_jurusan))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(item.passing_grade))])
+          ])
+        }),
+        0
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column is-two-fifths" }, [
+      _c("div", { staticClass: "control has-icons-left" }, [
+        _c("input", {
+          staticClass: "input",
+          attrs: { type: "text", placeholder: "Cari Jurusan" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "icon is-small is-left" }, [
+          _c("i", {
+            staticClass: "fa fa-search",
+            attrs: { "aria-hidden": "true" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [
+          _c("abbr", { attrs: { title: "nama_jurusan" } }, [_vm._v("Jurusan")])
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("abbr", { attrs: { title: "passing_grade" } }, [
+            _vm._v("Passing Grade")
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-cb82d8c0", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

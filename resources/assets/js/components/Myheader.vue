@@ -81,7 +81,7 @@
             },
             {
               name: 'Passing Grade',
-              path: 'passingGrade'
+              path: 'passinggrade'
             }
           ],
           // LOGGED ADMIN
