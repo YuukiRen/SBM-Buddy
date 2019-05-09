@@ -10,6 +10,7 @@ let PilihMapel = require('./siswa/PilihMapel.vue');
 let Pemanasan = require('./siswa/Pemanasan.vue');
 let Pembahasan = require('./siswa/Pembahasan.vue');
 let Progress = require('./siswa/Progress.vue');
+let PassingGrade = require('./siswa/PassingGrade.vue');
 
 let Paketsoal = require('./admin/Paketsoal.vue');
 let Soal = require('./admin/Soal.vue');
@@ -71,6 +72,14 @@ const routes = [
       path: '/pilihmapel',
       name: 'pilihmapel',
       component: PilihMapel,
+      meta: {
+        auth: true
+      }
+    },
+    {
+      path: '/passinggrade',
+      name: 'passinggrade',
+      component: PassingGrade,
       meta: {
         auth: true
       }

@@ -6,10 +6,10 @@
     <div class="column is-0 is-one-fifth">
       <h3>Soal</h3>
       <div style="width:100%" v-for="data in soal.length">
-        <div style="float:left;width:25%" class="button is-outlined" v-on:click="getIndex(soal[data-1])" v-if="ans[soal[data-1].id]==NULL">
+        <div style="float:left;width:15%" class="button is-outlined" v-on:click="getIndex(soal[data-1])" v-if="ans[soal[data-1].id]==NULL">
           {{data}}
         </div>
-        <div style="float:left;width:25%" class="button is-info is-outlined" v-on:click="getIndex(soal[data-1])" v-else>
+        <div style="float:left;width:15%" class="button is-info is-outlined" v-on:click="getIndex(soal[data-1])" v-else>
           {{data}}
         </div>
       </div>
