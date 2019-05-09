@@ -54,10 +54,10 @@
     </tbody>
   </table>
 
-  <vue-pagination   :pagination="lists"
+  <!-- <vue-pagination   :pagination="lists"
                     @paginate="getLists()"
                     :offset="4">
-  </vue-pagination>
+  </vue-pagination> -->
 
   <!-- <nav class="pagination" role="navigation" aria-label="pagination">
     <a class="pagination-previous" title="This is the first page">Previous</a>
@@ -75,7 +75,7 @@
     </ul>
   </nav> -->
 
-  <ul class="pagination">
+  <!-- <ul class="pagination">
       <li v-if="pagination.current_page > 1">
           <a href="javascript:void(0)" aria-label="Previous" v-on:click.prevent="changePage(pagination.current_page - 1)">
               <span aria-hidden="true">«</span>
@@ -89,7 +89,7 @@
               <span aria-hidden="true">»</span>
           </a>
       </li>
-  </ul>
+  </ul> -->
 
   <Add :openmodal='addActive' @closeRequest='close'></Add>
   <Update :openmodal='updateActive' @closeRequest='close'></Update>
@@ -109,36 +109,36 @@
         errors:{}
       }
     },
-    props: {
-      pagination: {
-          type: Object,
-          required: true
-      },
-      offset: {
-          type: Number,
-          default: 4
-      }
-    },
-    computed: {
-      pagesNumber() {
-        if (!this.pagination.to) {
-          return [];
-        }
-        let from = this.pagination.current_page - this.offset;
-        if (from < 1) {
-          from = 1;
-        }
-        let to = from + (this.offset * 2);
-        if (to >= this.pagination.last_page) {
-          to = this.pagination.last_page;
-        }
-        let pagesArray = [];
-        for (let page = from; page <= to; page++) {
-          pagesArray.push(page);
-        }
-          return pagesArray;
-      }
-    },
+    // props: {
+    //   pagination: {
+    //       type: Object,
+    //       required: true
+    //   },
+    //   offset: {
+    //       type: Number,
+    //       default: 4
+    //   }
+    // },
+    // computed: {
+    //   pagesNumber() {
+    //     if (!this.pagination.to) {
+    //       return [];
+    //     }
+    //     let from = this.pagination.current_page - this.offset;
+    //     if (from < 1) {
+    //       from = 1;
+    //     }
+    //     let to = from + (this.offset * 2);
+    //     if (to >= this.pagination.last_page) {
+    //       to = this.pagination.last_page;
+    //     }
+    //     let pagesArray = [];
+    //     for (let page = from; page <= to; page++) {
+    //       pagesArray.push(page);
+    //     }
+    //       return pagesArray;
+    //   }
+    // },
     mounted(){
       axios.post('/getData')
         .then((response)=>this.lists = response.data)
@@ -158,10 +158,10 @@
         this.$children[1].list=this.lists[key];
         this.updateActive='is-active';
       },
-      changePage(page) {
-        this.pagination.current_page = page;
-        this.$emit('paginate');
-      }
+      // changePage(page) {
+      //   this.pagination.current_page = page;
+      //   this.$emit('paginate');
+      // }
     }
   }
 </script>

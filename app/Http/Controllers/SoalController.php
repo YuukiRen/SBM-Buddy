@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 use App\Soal;
+use App\Paket;
 use Illuminate\Http\Request;
 use App\Http\Requests\SoalRequest;
 use App\Traits\SoalTrait;
+
+use Illuminate\Support\Facades\Auth;
 use App\Traits\NilaiTrait;
+use App\Rapor;
 class SoalController extends Controller
 {
     use SoalTrait;
@@ -14,7 +18,9 @@ class SoalController extends Controller
     }
     public function checkAns(Request $request){
         $score = new NilaiTrait;
+        $dt = array();
         foreach($request->all() as $key=>$item){
+            array_push($dt,Paket::find(Soal::find($key)->idPaket)->kode);
             if($item == Soal::find($key)->jawaban){
                 $score->addNilai(4);
             }
@@ -22,6 +28,11 @@ class SoalController extends Controller
                 $score->addNilai(-1);
             }
         }
+        $report = new Rapor;
+        $report->score = $score->getNilai();
+        $report->id_siswa = Auth::user()->id;
+        $report->fillPaket(array_unique($dt));
+        $report->save();
         return $score->getNilai();
     }
     public function index(){

@@ -72,12 +72,12 @@ export default {
       no: 1,
       soal:{},
       ans:{},
-      lists:{},
       mapel:this.$route.params.mapel,
       sum:0
     }
   },
   mounted(){
+    this.mapel = this.$route.params.mapel
     if(this.mapel == 'fisika'){
       axios.post('/getSoalFisika')
         .then((response)=>this.soal = response.data)

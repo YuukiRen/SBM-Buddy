@@ -19,7 +19,7 @@ class SoalSeeder extends Seeder
             'kimia',
             'biologi'
         );
-        for($i = 0;$i<30;$i++){    
+        for($i = 0;$i<15;$i++){    
             // $key = array_rand($strings);
             Soal::create([
                 'idPaket' => 1,
@@ -35,7 +35,7 @@ class SoalSeeder extends Seeder
             ]);
         }
         
-        for($i = 0;$i<30;$i++){    
+        for($i = 0;$i<15;$i++){    
             Soal::create([
                 'idPaket' => 1,
                 'pertanyaan' =>Str::random(30),
@@ -50,7 +50,7 @@ class SoalSeeder extends Seeder
             ]);
         }
         
-        for($i = 0;$i<30;$i++){    
+        for($i = 0;$i<15;$i++){    
             Soal::create([
                 'idPaket' => 1,
                 'pertanyaan' =>Str::random(30),
@@ -65,7 +65,7 @@ class SoalSeeder extends Seeder
             ]);
         }
         
-        for($i = 0;$i<30;$i++){    
+        for($i = 0;$i<15;$i++){    
             Soal::create([
                 'idPaket' => 1,
                 'pertanyaan' =>Str::random(30),
