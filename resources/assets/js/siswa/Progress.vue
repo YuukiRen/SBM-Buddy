@@ -96,29 +96,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>A1314</td>
-                        <td>2 Februari 2017</td>
-                        <td>536</td>
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <td>B1213</td>
-                        <td>3 Februari 2017</td>
-                        <td>576</td>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <td>A1213</td>
-                        <td>9 Februari 2017</td>
-                        <td>655</td>
-                    </tr>
-                    <tr>
-                        <th>4</th>
-                        <td>C1213</td>
-                        <td>9 Februari 2017</td>
-                        <td>498</td>
+                    <tr v-for="data in prog.length">
+                        <th>{{data}}</th>
+                        <td>{{prog[data-1].paketsoal}}</td>
+                        <td>{{prog[data-1].created_at}}</td>
+                        <td>{{prog[data-1].score}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -130,3 +112,21 @@
 
 </section>
 </template>
+
+<script>
+export default {
+  data(){
+    return {
+			prog:{},
+			errors:{},
+    }
+  },
+  mounted(){
+    axios.post('/getProgress')
+    .then((response)=>{
+			this.prog = response.data
+		})
+		.catch((error) => this.errors = error.response.data.errors)
+  }
+}
+</script>
