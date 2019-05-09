@@ -16,7 +16,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from './Index'
 
-
 require('./bootstrap');
 // Set Vue globally
 window.Vue = Vue

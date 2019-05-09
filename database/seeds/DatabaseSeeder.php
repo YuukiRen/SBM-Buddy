@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(SoalSeeder::class);
         $this->call(IpsSoalSeeder::class);
-    }
+        $this->call(PaketSoalSeeder::class);
+    } 
 }
