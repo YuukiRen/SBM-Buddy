@@ -16,7 +16,7 @@ class CreateRaporsTable extends Migration
         Schema::create('rapors', function (Blueprint $table) {
             $table->increments('id');
             $table->float('score');
-            $table->string('penjurusan');
+            $table->string('paketsoal');
             $table->integer('id_siswa');
             $table->timestamps();
         });

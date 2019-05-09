@@ -43456,7 +43456,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       no: 1,
       soal: {},
       ans: {},
-      lists: {},
       mapel: this.$route.params.mapel,
       sum: 0
     };
@@ -43464,6 +43463,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mounted: function mounted() {
     var _this = this;
 
+    this.mapel = this.$route.params.mapel;
     if (this.mapel == 'fisika') {
       axios.post('/getSoalFisika').then(function (response) {
         return _this.soal = response.data;
@@ -45129,36 +45129,36 @@ var Update = __webpack_require__(83);
     };
   },
 
-  props: {
-    pagination: {
-      type: Object,
-      required: true
-    },
-    offset: {
-      type: Number,
-      default: 4
-    }
-  },
-  computed: {
-    pagesNumber: function pagesNumber() {
-      if (!this.pagination.to) {
-        return [];
-      }
-      var from = this.pagination.current_page - this.offset;
-      if (from < 1) {
-        from = 1;
-      }
-      var to = from + this.offset * 2;
-      if (to >= this.pagination.last_page) {
-        to = this.pagination.last_page;
-      }
-      var pagesArray = [];
-      for (var page = from; page <= to; page++) {
-        pagesArray.push(page);
-      }
-      return pagesArray;
-    }
-  },
+  // props: {
+  //   pagination: {
+  //       type: Object,
+  //       required: true
+  //   },
+  //   offset: {
+  //       type: Number,
+  //       default: 4
+  //   }
+  // },
+  // computed: {
+  //   pagesNumber() {
+  //     if (!this.pagination.to) {
+  //       return [];
+  //     }
+  //     let from = this.pagination.current_page - this.offset;
+  //     if (from < 1) {
+  //       from = 1;
+  //     }
+  //     let to = from + (this.offset * 2);
+  //     if (to >= this.pagination.last_page) {
+  //       to = this.pagination.last_page;
+  //     }
+  //     let pagesArray = [];
+  //     for (let page = from; page <= to; page++) {
+  //       pagesArray.push(page);
+  //     }
+  //       return pagesArray;
+  //   }
+  // },
   mounted: function mounted() {
     var _this = this;
 
@@ -45182,10 +45182,6 @@ var Update = __webpack_require__(83);
     openUpdate: function openUpdate(key) {
       this.$children[1].list = this.lists[key];
       this.updateActive = 'is-active';
-    },
-    changePage: function changePage(page) {
-      this.pagination.current_page = page;
-      this.$emit('paginate');
     }
   }
 });
@@ -45882,91 +45878,6 @@ var render = function() {
           0
         )
       ]),
-      _vm._v(" "),
-      _c("vue-pagination", {
-        attrs: { pagination: _vm.lists, offset: 4 },
-        on: {
-          paginate: function($event) {
-            return _vm.getLists()
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "ul",
-        { staticClass: "pagination" },
-        [
-          _vm.pagination.current_page > 1
-            ? _c("li", [
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "javascript:void(0)",
-                      "aria-label": "Previous"
-                    },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.changePage(_vm.pagination.current_page - 1)
-                      }
-                    }
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("«")
-                    ])
-                  ]
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm._l(_vm.pagesNumber, function(page) {
-            return _c(
-              "li",
-              { class: { active: page == _vm.pagination.current_page } },
-              [
-                _c(
-                  "a",
-                  {
-                    attrs: { href: "javascript:void(0)" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.changePage(page)
-                      }
-                    }
-                  },
-                  [_vm._v(_vm._s(page))]
-                )
-              ]
-            )
-          }),
-          _vm._v(" "),
-          _vm.pagination.current_page < _vm.pagination.last_page
-            ? _c("li", [
-                _c(
-                  "a",
-                  {
-                    attrs: { href: "javascript:void(0)", "aria-label": "Next" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.changePage(_vm.pagination.current_page + 1)
-                      }
-                    }
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("»")
-                    ])
-                  ]
-                )
-              ])
-            : _vm._e()
-        ],
-        2
-      ),
       _vm._v(" "),
       _c("Add", {
         attrs: { openmodal: _vm.addActive },
