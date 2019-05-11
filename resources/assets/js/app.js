@@ -15,11 +15,18 @@ import router from './router'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from './Index'
+import moment from 'moment'
 
 require('./bootstrap');
 // Set Vue globally
 window.Vue = Vue
-
+// moment
+Vue.filter('formatDate', function(value) {
+    if (value) {
+        return moment(String(value)).format('DD/MM/YYYY')
+    }
+});
+    
 // Set Vue router
 Vue.router = router
 Vue.use(VueRouter)
@@ -27,8 +34,6 @@ Vue.use(VueRouter)
 let Myheadera = require('./admin/Myheader.vue');
 let Myheaders = require('./siswa/Myheader.vue');
 let Myfooter = require('./admin/Myfooter.vue');
-
-
 
 // Set Vue authentication
 Vue.use(VueAxios, axios)

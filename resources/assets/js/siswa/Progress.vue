@@ -99,7 +99,7 @@
                     <tr v-for="data in prog.length">
                         <th>{{data}}</th>
                         <td>{{prog[data-1].paketsoal}}</td>
-                        <td>{{prog[data-1].created_at}}</td>
+                        <td>{{prog[data-1].created_at | formatDate}}</td>
                         <td>{{prog[data-1].score}}</td>
                     </tr>
                 </tbody>
@@ -118,7 +118,8 @@ export default {
   data(){
     return {
 			prog:{},
-			errors:{},
+            errors:{},
+            yourDateString: '2018-12-24 04:19:23'
     }
   },
   mounted(){
