@@ -39,6 +39,9 @@ Route::group(['middleware' => 'auth:api'], function(){
     
     Route::post('/grading','SoalController@checkAns');
     
+    Route::post('/getUser','UserController@whoami');
+    Route::post('/updJurusan','UserController@updateJurusan');
+
     Route::post('/getProgress','RaporController@getData');
     Route::post('/getData','PaketController@getData');
     Route::post('/getUniv','JurusanController@getData');

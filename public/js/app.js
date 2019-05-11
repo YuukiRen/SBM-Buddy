@@ -58900,6 +58900,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -58908,6 +58919,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       email: '',
       password: '',
       password_confirmation: '',
+      jurusan: '',
       has_error: false,
       error: '',
       errors: {},
@@ -58923,7 +58935,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           name: app.name,
           email: app.email,
           password: app.password,
-          password_confirmation: app.password_confirmation
+          password_confirmation: app.password_confirmation,
+          jurusan: app.jurusan
         },
         success: function success() {
           app.success = true;
@@ -59161,6 +59174,81 @@ var render = function() {
                       _vm.has_error && _vm.errors.password
                         ? _c("p", { staticClass: "help is-danger" }, [
                             _vm._v(_vm._s(_vm.errors.password))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "field" }, [
+                      _c("label", { staticClass: "label" }, [
+                        _vm._v("Jurusan")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "select",
+                          class: {
+                            "is-danger": _vm.has_error && _vm.errors.jurusan
+                          }
+                        },
+                        [
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.jurusan,
+                                  expression: "jurusan"
+                                }
+                              ],
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.jurusan = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "",
+                                    selected: "",
+                                    disabled: "",
+                                    hidden: ""
+                                  }
+                                },
+                                [_vm._v("Choose here")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "IPA" } }, [
+                                _vm._v("IPA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "IPS" } }, [
+                                _vm._v("IPS")
+                              ])
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.has_error && _vm.errors.jurusan
+                        ? _c("p", { staticClass: "help is-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.jurusan))
                           ])
                         : _vm._e()
                     ]),
@@ -59555,7 +59643,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(264)
 /* template */
 var __vue_template__ = __webpack_require__(189)
 /* template functional */
@@ -59603,150 +59691,211 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("section", { staticClass: "container" }, [
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-content" }, [
+        _c("p", { staticClass: "title" }, [
+          _vm._v("\n            Halo, " + _vm._s(_vm.user.name) + "!\n        ")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "subtitle" }, [
+          _vm._v(
+            "\n            Selamat datang kembali. Ayo semangat berlatih!\n        "
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-content" }, [
+        _c("p", { staticClass: "subtitle" }, [
+          _vm._v("\n            Jurusanmu :\n        ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("div", { staticClass: "select" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.jurusan,
+                    expression: "user.jurusan"
+                  }
+                ],
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.user,
+                        "jurusan",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    },
+                    function($event) {
+                      return _vm.updateTable(this.value)
+                    }
+                  ]
+                }
+              },
+              [
+                _c(
+                  "option",
+                  {
+                    attrs: { value: "", selected: "", disabled: "", hidden: "" }
+                  },
+                  [_vm._v("Choose here")]
+                ),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "IPA" } }, [_vm._v("IPA")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "IPS" } }, [_vm._v("IPS")])
+              ]
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "container" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-content" }, [
-          _c("p", { staticClass: "title" }, [
-            _vm._v("\n            Halo, Siswa!\n        ")
+    return _c("div", { staticClass: "columns is-vcentered" }, [
+      _c("div", { staticClass: "column" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-image" }, [
+            _c("figure", { staticClass: "image is-4by3" }, [
+              _c("img", {
+                attrs: {
+                  src: "https://bulma.io/images/placeholders/1280x960.png",
+                  alt: "Placeholder image"
+                }
+              })
+            ])
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "subtitle" }, [
-            _vm._v(
-              "\n            Selamat datang kembali. Ayo semangat berlatih!\n        "
-            )
+          _c("div", { staticClass: "card-content" }, [
+            _c("div", { staticClass: "media" }, [
+              _c("div", { staticClass: "media-content" }, [
+                _c("p", { staticClass: "title is-4" }, [_vm._v("Pemanasan")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "content" }, [
+              _vm._v(
+                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                        "
+              ),
+              _c("br"),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "buttons has-addons is-centered" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "button is-primary",
+                    attrs: { href: "/pilihmapel" }
+                  },
+                  [_vm._v("Mulai berlatih")]
+                )
+              ])
+            ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "columns is-vcentered" }, [
-        _c("div", { staticClass: "column" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-image" }, [
-              _c("figure", { staticClass: "image is-4by3" }, [
-                _c("img", {
-                  attrs: {
-                    src: "https://bulma.io/images/placeholders/1280x960.png",
-                    alt: "Placeholder image"
-                  }
-                })
+      _c("div", { staticClass: "column" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-image" }, [
+            _c("figure", { staticClass: "image is-4by3" }, [
+              _c("img", {
+                attrs: {
+                  src: "https://bulma.io/images/placeholders/1280x960.png",
+                  alt: "Placeholder image"
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-content" }, [
+            _c("div", { staticClass: "media" }, [
+              _c("div", { staticClass: "media-content" }, [
+                _c("p", { staticClass: "title is-4" }, [_vm._v("Try Out")])
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-content" }, [
-              _c("div", { staticClass: "media" }, [
-                _c("div", { staticClass: "media-content" }, [
-                  _c("p", { staticClass: "title is-4" }, [_vm._v("Pemanasan")])
-                ])
-              ]),
+            _c("div", { staticClass: "content" }, [
+              _vm._v(
+                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                        "
+              ),
+              _c("br"),
               _vm._v(" "),
-              _c("div", { staticClass: "content" }, [
-                _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                        "
-                ),
-                _c("br"),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "buttons has-addons is-centered" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "button is-primary",
-                      attrs: { href: "/pilihmapel" }
-                    },
-                    [_vm._v("Mulai berlatih")]
-                  )
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "buttons has-addons is-centered" }, [
+                _c("a", { staticClass: "button is-primary" }, [
+                  _vm._v("Mulai Try Out")
                 ])
               ])
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-image" }, [
-              _c("figure", { staticClass: "image is-4by3" }, [
-                _c("img", {
-                  attrs: {
-                    src: "https://bulma.io/images/placeholders/1280x960.png",
-                    alt: "Placeholder image"
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-content" }, [
-              _c("div", { staticClass: "media" }, [
-                _c("div", { staticClass: "media-content" }, [
-                  _c("p", { staticClass: "title is-4" }, [_vm._v("Try Out")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "content" }, [
-                _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                        "
-                ),
-                _c("br"),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "buttons has-addons is-centered" }, [
-                  _c("a", { staticClass: "button is-primary" }, [
-                    _vm._v("Mulai Try Out")
-                  ])
-                ])
-              ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-image" }, [
+            _c("figure", { staticClass: "image is-4by3" }, [
+              _c("img", {
+                attrs: {
+                  src: "https://bulma.io/images/placeholders/1280x960.png",
+                  alt: "Placeholder image"
+                }
+              })
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-image" }, [
-              _c("figure", { staticClass: "image is-4by3" }, [
-                _c("img", {
-                  attrs: {
-                    src: "https://bulma.io/images/placeholders/1280x960.png",
-                    alt: "Placeholder image"
-                  }
-                })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-content" }, [
+            _c("div", { staticClass: "media" }, [
+              _c("div", { staticClass: "media-content" }, [
+                _c("p", { staticClass: "title is-4" }, [_vm._v("My Progress")])
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-content" }, [
-              _c("div", { staticClass: "media" }, [
-                _c("div", { staticClass: "media-content" }, [
-                  _c("p", { staticClass: "title is-4" }, [
-                    _vm._v("My Progress")
-                  ])
-                ])
-              ]),
+            _c("div", { staticClass: "content" }, [
+              _vm._v(
+                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                        "
+              ),
+              _c("br"),
               _vm._v(" "),
-              _c("div", { staticClass: "content" }, [
-                _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                        "
-                ),
-                _c("br"),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "buttons has-addons is-centered" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "button is-primary",
-                      attrs: { href: "/progress" }
-                    },
-                    [_vm._v("Lihat Progress")]
-                  )
-                ])
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "buttons has-addons is-centered" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "button is-primary",
+                    attrs: { href: "/progress" }
+                  },
+                  [_vm._v("Lihat Progress")]
+                )
               ])
             ])
           ])
@@ -78915,6 +79064,160 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      user: {},
+      errors: {}
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.post('/getUser').then(function (response) {
+      _this.user = response.data;
+    }).catch(function (error) {
+      return _this.errors = error.response.data.errors;
+    });
+  },
+
+  methods: {
+    updateTable: function updateTable(event) {
+      axios.post('/updJurusan', this.$data.user);
+    }
+  }
+});
 
 /***/ })
 /******/ ]);

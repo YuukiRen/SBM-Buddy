@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->integer('role')->default(1);
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('jurusan')->default('IPA');
             $table->rememberToken();
             $table->timestamps();
         });

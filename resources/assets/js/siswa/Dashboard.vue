@@ -5,11 +5,27 @@
     <div class="card">
         <div class="card-content">
             <p class="title">
-                Halo, Siswa!
+                Halo, {{user.name}}!
             </p>
             <p class="subtitle">
                 Selamat datang kembali. Ayo semangat berlatih!
             </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-content">
+            <p class="subtitle">
+                Jurusanmu :
+            </p>
+            <div class="field">
+                <div class="select">
+                <select v-model="user.jurusan" @change = updateTable(this.value)>
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="IPA">IPA</option>
+                    <option value="IPS">IPS</option>
+                </select>
+                </div>
+            </div>
         </div>
     </div>
     <div class="columns is-vcentered">
@@ -94,3 +110,26 @@
 
     </section>
 </template>
+
+<script>
+export default {
+  data(){
+    return {
+			user:{},
+            errors:{},
+    }
+  },
+  mounted(){
+    axios.post('/getUser')
+    .then((response)=>{
+			this.user = response.data
+		})
+		.catch((error) => this.errors = error.response.data.errors)
+  },
+  methods:{
+    updateTable(event){
+        axios.post('/updJurusan',this.$data.user)
+    },
+  }
+}
+</script>
