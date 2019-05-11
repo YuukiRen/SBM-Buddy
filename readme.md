@@ -24,7 +24,7 @@
 - **Brief Description :** Di dalam use case ini dijelaskan bagaimana siswa mengerjakan soal
 - **Pre-Condition :** Siswa harus register/login 
 - **Trigger :** Siswa memilih soal yang ingin dikerjakan
-    **Type :** External
+    - **Type :** External
 - **Relationship :**
     - Association : Admin
 - **Normal Flow of Events :**
@@ -46,7 +46,7 @@
 - **Brief Description :**  Di dalam use case ini dijelaskan bagaimana siswa dapat mengakses pembahasan soal
 - **Pre-Condition :** Siswa mengerjakan soal tersebut
 - **Trigger :** Siswa selesai mengerjakan soal
-    **Type :** External
+    - **Type :** External
 - **Relationship :**
     - Association : Admin
     - Include : Mengerjakan Soal
@@ -55,7 +55,6 @@
     2. Pembahasan soal ditampilkan
 - **Alternate/Exceptional Flows :**
     2E . Pembahasan belum tersedia
-
 
 ## UC3 : Melihat grafik perkembangan
 - **Importance Level :** Medium
@@ -66,7 +65,7 @@
 - **Brief Description :** Di dalam use case ini dijelaskan bagaimana siswa dapat melihat grafik perkembangan nilai
 - **Pre-Condition :** Siswa harus menyelesaikan minimal 1 set soal
 - **Trigger :** Siswa mengakses laman perkembangan
-    **Type :** External
+    - **Type :** External
 - **Normal Flow of Events :**
     1. Siswa membuka profil
     2. Siswa melihat grafik perkembangan nilai Try Out 
@@ -80,7 +79,7 @@
 - **Brief Description :**  Di dalam use case ini dijelaskan bagaimana siswa dapat melihat grafik  intensitas pengerjaan soal dalam satuan waktu.
 - **Pre-Condition :** Siswa harus menyelesaikan minimal 1 set soal
 - **Trigger :** Siswa ingin melihat sebanyak apa soal yang telah dikerjakan
-    **Type :** External
+    - **Type :** External
 - **Normal Flow of Events :**
     1. Siswa membuka profil
     2. Siswa melihat grafik grafik  intensitas pengerjaan soal dalam satuan waktu
@@ -94,7 +93,7 @@
     - Admin : Menambah/mengubah passsing grade
 - **Brief Description :**  Di dalam use case ini dijelaskan bagaimana siswa melihat passing grade program studi
 - **Trigger :** Siswa ingin melihat universitas / prodi yang direkomendasikan
-    **Type :** External
+    - **Type :** External
 - **Relationship :**
     - Association : Admin
 - **Normal Flow of Events :**
@@ -110,7 +109,7 @@
 - **Brief Description :** Di dalam use case ini dijelaskan bagaimana admin soal dapat membuat soal dan pembahasannya
 - **Pre-Condition :** User harus merupakan seorang admin
 - **Trigger :** Admin membuka laman penambahan soal
-    **Type :** External
+    - **Type :** External
 - **Normal Flow of Events :**
     1. Admin login
     2. Admin menambah paket soal baru
@@ -128,7 +127,7 @@
 - **Brief Description :** Di dalam use case ini dijelaskan bagaimana Admin merubah soal dan pembahasan dari mata pelajaran yang diujikan.
 - **Pre-Condition :** User harus merupakan seorang admin
 - **Trigger :** Terdapat kesalahan saat menginput soal 
-    **Type :** Eksternal
+    - **Type :** External
 - **Normal Flow of Events :**
     1. Admin membuka list soal ujian.
     2. Admin merubah soal dan pembahasan dari ujian yang dipilih.
@@ -142,7 +141,7 @@
 - **Brief Description :** Di dalam use case ini dijelaskan bagaimana Admin dapat menghapus paket soal atau pembahasan 
 - **Pre-Condition :** -
 - **Trigger :** Soal sudah tidak relevan lagi
-    **Type :** External
+    - **Type :** External
 - **Normal Flow of Events :**
     1. Admin membuka paket-paket soal
     2. Admin memilih paket soal yang akan dihapus
@@ -158,7 +157,7 @@
 - **Brief Description :** Di dalam use case ini dijelaskan bagaimana Admin merubah passing grade program studi di sebuah universitas.
 - **Pre-Condition :** User harus merupakan seorang admin
 - **Trigger :** Perubahan nilai passing grade dari program studi per tahun.
-    **Type :** Temporal
+    - **Type :** Temporal
 - **Normal Flow of Events :**
     1. Admin membuka list universitas.
     2. Admin memilih program studi.
@@ -174,7 +173,7 @@
 - **Brief Description :** Di dalam use case ini dijelaskan bagaimana Admin menambah program studi di sebuah universitas.
 - **Pre-Condition :** User harus merupakan seorang admin
 - **Trigger :** Universitas membuka program studi baru.
-    **Type :** External
+    - **Type :** External
 - **Normal Flow of Events :**
     1. Admin membuka list universitas.
     2. Admin menambah program studi.
@@ -189,7 +188,7 @@
 - **Brief Description :** Di dalam use case ini dijelaskan bagaimana Admin menghapus program studi di sebuah universitas.
 - **Pre-Condition :** User harus merupakan seorang admin
 - **Trigger :** Universitas menutup program studi yang ada karena alasan tertentu.
-    **Type :** External
+    - **Type :** External
 - **Normal Flow of Events :**
     1. Admin membuka list universitas.
     2. Admin menghapus program studi
