@@ -25,6 +25,9 @@
                     <option value="IPS">IPS</option>
                 </select>
                 </div>
+                <p class="subtitle">
+                    {{resp.status}}
+                </p>
             </div>
         </div>
     </div>
@@ -74,7 +77,7 @@
                             <br>
                             <br>
                             <div class="buttons has-addons is-centered">
-                                <a class="button is-primary">Mulai Try Out</a>
+                                <a href='/tryout' class="button is-primary">Mulai Try Out</a>
                             </div>
                         </div>
                     </div>
@@ -117,6 +120,7 @@ export default {
     return {
 			user:{},
             errors:{},
+            resp:{},
     }
   },
   mounted(){
@@ -128,7 +132,7 @@ export default {
   },
   methods:{
     updateTable(event){
-        axios.post('/updJurusan',this.$data.user)
+        axios.post('/updJurusan',this.$data.user).then((response)=>this.resp = response.data)
     },
   }
 }

@@ -58531,6 +58531,7 @@ module.exports = {
 
 
 var PilihMapel = __webpack_require__(196);
+var Tryout = __webpack_require__(265);
 var Pemanasan = __webpack_require__(18);
 var Pembahasan = __webpack_require__(201);
 var Progress = __webpack_require__(204);
@@ -58590,6 +58591,13 @@ var routes = [{
   path: '/pilihmapel',
   name: 'pilihmapel',
   component: PilihMapel,
+  meta: {
+    auth: true
+  }
+}, {
+  path: '/tryout',
+  name: 'Tryout',
+  component: Tryout,
   meta: {
     auth: true
   }
@@ -59764,6 +59772,12 @@ var render = function() {
                 _c("option", { attrs: { value: "IPS" } }, [_vm._v("IPS")])
               ]
             )
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "subtitle" }, [
+            _vm._v(
+              "\n                " + _vm._s(_vm.resp.status) + "\n            "
+            )
           ])
         ])
       ])
@@ -59850,9 +59864,14 @@ var staticRenderFns = [
               _c("br"),
               _vm._v(" "),
               _c("div", { staticClass: "buttons has-addons is-centered" }, [
-                _c("a", { staticClass: "button is-primary" }, [
-                  _vm._v("Mulai Try Out")
-                ])
+                _c(
+                  "a",
+                  {
+                    staticClass: "button is-primary",
+                    attrs: { href: "/tryout" }
+                  },
+                  [_vm._v("Mulai Try Out")]
+                )
               ])
             ])
           ])
@@ -79194,12 +79213,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       user: {},
-      errors: {}
+      errors: {},
+      resp: {}
     };
   },
   mounted: function mounted() {
@@ -79214,10 +79237,420 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     updateTable: function updateTable(event) {
-      axios.post('/updJurusan', this.$data.user);
+      var _this2 = this;
+
+      axios.post('/updJurusan', this.$data.user).then(function (response) {
+        return _this2.resp = response.data;
+      });
     }
   }
 });
+
+/***/ }),
+/* 265 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(266)
+/* template */
+var __vue_template__ = __webpack_require__(267)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/siswa/Tryout.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-55f0ce2d", Component.options)
+  } else {
+    hotAPI.reload("data-v-55f0ce2d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 266 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      no: 1,
+      soal: {},
+      ans: {},
+      sum: 0
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.post('/getSoalTryout').then(function (response) {
+      return _this.soal = response.data;
+    }).catch(function (error) {
+      return _this.errors = error.response.data.errors;
+    });
+  },
+
+  methods: {
+    getIndex: function getIndex(value) {
+      this.no = value.id;
+    },
+    submit: function submit() {
+      var _this2 = this;
+
+      axios.post('/grading', this.$data.ans).then(function (response) {
+        _this2.$data.sum = response.data;
+        _this2.$router.push({ name: "pembahasan", params: { sum: _this2.sum, soal: _this2.soal, ans: _this2.ans } });
+      }).catch(function (error) {
+        return _this2.errors = error.response.data.errors;
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 267 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "container" }, [
+    _c("br"),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "columns" }, [
+      _c(
+        "div",
+        { staticClass: "column is-0 is-one-fifth" },
+        [
+          _c("h3", [_vm._v("Soal")]),
+          _vm._v(" "),
+          _vm._l(_vm.soal.length, function(data) {
+            return _c("div", { staticStyle: { width: "100%" } }, [
+              _vm.ans[_vm.soal[data - 1].id] == _vm.NULL
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "button is-outlined",
+                      staticStyle: { float: "left", width: "15%" },
+                      on: {
+                        click: function($event) {
+                          return _vm.getIndex(_vm.soal[data - 1])
+                        }
+                      }
+                    },
+                    [_vm._v("\n        " + _vm._s(data) + "\n      ")]
+                  )
+                : _c(
+                    "div",
+                    {
+                      staticClass: "button is-info is-outlined",
+                      staticStyle: { float: "left", width: "15%" },
+                      on: {
+                        click: function($event) {
+                          return _vm.getIndex(_vm.soal[data - 1])
+                        }
+                      }
+                    },
+                    [_vm._v("\n        " + _vm._s(data) + "\n      ")]
+                  )
+            ])
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "column is-four-fifth" }, [
+        _c("div", { staticClass: "card" }, [
+          _c(
+            "div",
+            { staticClass: "card-header title" },
+            _vm._l(_vm.soal, function(data) {
+              return _vm.no == data.id
+                ? _c("div", [
+                    _vm._v(
+                      "\n          " + _vm._s(data.pertanyaan) + "\n        "
+                    )
+                  ])
+                : _vm._e()
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-content" }, [
+            _c(
+              "div",
+              { staticClass: "control" },
+              _vm._l(_vm.soal, function(data) {
+                return _vm.no == data.id
+                  ? _c("div", [
+                      _c("label", { staticClass: "radio is-size-4" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.ans[data.id],
+                              expression: "ans[data.id]"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "A" },
+                          domProps: { checked: _vm._q(_vm.ans[data.id], "A") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.ans, data.id, "A")
+                            }
+                          }
+                        }),
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(data.pilihana) +
+                            "\n            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "radio is-size-4" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.ans[data.id],
+                              expression: "ans[data.id]"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "B" },
+                          domProps: { checked: _vm._q(_vm.ans[data.id], "B") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.ans, data.id, "B")
+                            }
+                          }
+                        }),
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(data.pilihanb) +
+                            "\n            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "radio is-size-4" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.ans[data.id],
+                              expression: "ans[data.id]"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "C" },
+                          domProps: { checked: _vm._q(_vm.ans[data.id], "C") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.ans, data.id, "C")
+                            }
+                          }
+                        }),
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(data.pilihanc) +
+                            "\n            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "radio is-size-4" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.ans[data.id],
+                              expression: "ans[data.id]"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "D" },
+                          domProps: { checked: _vm._q(_vm.ans[data.id], "D") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.ans, data.id, "D")
+                            }
+                          }
+                        }),
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(data.pilihand) +
+                            "\n            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "radio is-size-4" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.ans[data.id],
+                              expression: "ans[data.id]"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "E" },
+                          domProps: { checked: _vm._q(_vm.ans[data.id], "E") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.ans, data.id, "E")
+                            }
+                          }
+                        }),
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(data.pilihane) +
+                            "\n            "
+                        )
+                      ])
+                    ])
+                  : _vm._e()
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c("br")
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "buttons level-right" }, [
+      _c(
+        "button",
+        {
+          staticClass: "button is-success",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.submit($event)
+            }
+          }
+        },
+        [_vm._v("Submit all and finish")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-55f0ce2d", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

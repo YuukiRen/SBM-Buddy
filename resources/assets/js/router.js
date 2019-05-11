@@ -7,6 +7,7 @@ import Dashboard from './siswa/Dashboard'
 import AdminDashboard from './admin/Dashboard'
 
 let PilihMapel = require('./siswa/PilihMapel.vue');
+let Tryout = require('./siswa/Tryout.vue');
 let Pemanasan = require('./siswa/Pemanasan.vue');
 let Pembahasan = require('./siswa/Pembahasan.vue');
 let Progress = require('./siswa/Progress.vue');
@@ -72,6 +73,14 @@ const routes = [
       path: '/pilihmapel',
       name: 'pilihmapel',
       component: PilihMapel,
+      meta: {
+        auth: true
+      }
+    },
+    {
+      path: '/tryout',
+      name: 'Tryout',
+      component: Tryout,
       meta: {
         auth: true
       }
