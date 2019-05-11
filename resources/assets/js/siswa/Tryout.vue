@@ -22,6 +22,9 @@
             {{data.pertanyaan}}
           </div>
         </div>
+        <div class="card-header" v-for="data in soal" v-if="no == data.id ">
+          {{data.mapel}}
+        </div>
 
         <div class="card-content">
           <div class="control">

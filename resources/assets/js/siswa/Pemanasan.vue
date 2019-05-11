@@ -20,6 +20,7 @@
         <div class="card-header title">
           <div v-for="data in soal" v-if="no == data.id ">
             {{data.pertanyaan}}
+            <span>{{data.mapel}}</span>
           </div>
         </div>
 

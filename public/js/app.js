@@ -60441,6 +60441,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -60563,8 +60564,9 @@ var render = function() {
               return _vm.no == data.id
                 ? _c("div", [
                     _vm._v(
-                      "\n          " + _vm._s(data.pertanyaan) + "\n        "
-                    )
+                      "\n          " + _vm._s(data.pertanyaan) + "\n          "
+                    ),
+                    _c("span", [_vm._v(_vm._s(data.mapel))])
                   ])
                 : _vm._e()
             }),
@@ -79366,6 +79368,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -79458,170 +79463,193 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "column is-four-fifth" }, [
-        _c("div", { staticClass: "card" }, [
-          _c(
-            "div",
-            { staticClass: "card-header title" },
-            _vm._l(_vm.soal, function(data) {
-              return _vm.no == data.id
-                ? _c("div", [
-                    _vm._v(
-                      "\n          " + _vm._s(data.pertanyaan) + "\n        "
-                    )
-                  ])
-                : _vm._e()
-            }),
-            0
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-content" }, [
+        _c(
+          "div",
+          { staticClass: "card" },
+          [
             _c(
               "div",
-              { staticClass: "control" },
+              { staticClass: "card-header title" },
               _vm._l(_vm.soal, function(data) {
                 return _vm.no == data.id
                   ? _c("div", [
-                      _c("label", { staticClass: "radio is-size-4" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.ans[data.id],
-                              expression: "ans[data.id]"
-                            }
-                          ],
-                          attrs: { type: "radio", value: "A" },
-                          domProps: { checked: _vm._q(_vm.ans[data.id], "A") },
-                          on: {
-                            change: function($event) {
-                              return _vm.$set(_vm.ans, data.id, "A")
-                            }
-                          }
-                        }),
-                        _vm._v(
-                          "\n              " +
-                            _vm._s(data.pilihana) +
-                            "\n            "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("label", { staticClass: "radio is-size-4" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.ans[data.id],
-                              expression: "ans[data.id]"
-                            }
-                          ],
-                          attrs: { type: "radio", value: "B" },
-                          domProps: { checked: _vm._q(_vm.ans[data.id], "B") },
-                          on: {
-                            change: function($event) {
-                              return _vm.$set(_vm.ans, data.id, "B")
-                            }
-                          }
-                        }),
-                        _vm._v(
-                          "\n              " +
-                            _vm._s(data.pilihanb) +
-                            "\n            "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("label", { staticClass: "radio is-size-4" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.ans[data.id],
-                              expression: "ans[data.id]"
-                            }
-                          ],
-                          attrs: { type: "radio", value: "C" },
-                          domProps: { checked: _vm._q(_vm.ans[data.id], "C") },
-                          on: {
-                            change: function($event) {
-                              return _vm.$set(_vm.ans, data.id, "C")
-                            }
-                          }
-                        }),
-                        _vm._v(
-                          "\n              " +
-                            _vm._s(data.pilihanc) +
-                            "\n            "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("label", { staticClass: "radio is-size-4" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.ans[data.id],
-                              expression: "ans[data.id]"
-                            }
-                          ],
-                          attrs: { type: "radio", value: "D" },
-                          domProps: { checked: _vm._q(_vm.ans[data.id], "D") },
-                          on: {
-                            change: function($event) {
-                              return _vm.$set(_vm.ans, data.id, "D")
-                            }
-                          }
-                        }),
-                        _vm._v(
-                          "\n              " +
-                            _vm._s(data.pilihand) +
-                            "\n            "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("label", { staticClass: "radio is-size-4" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.ans[data.id],
-                              expression: "ans[data.id]"
-                            }
-                          ],
-                          attrs: { type: "radio", value: "E" },
-                          domProps: { checked: _vm._q(_vm.ans[data.id], "E") },
-                          on: {
-                            change: function($event) {
-                              return _vm.$set(_vm.ans, data.id, "E")
-                            }
-                          }
-                        }),
-                        _vm._v(
-                          "\n              " +
-                            _vm._s(data.pilihane) +
-                            "\n            "
-                        )
-                      ])
+                      _vm._v(
+                        "\n          " + _vm._s(data.pertanyaan) + "\n        "
+                      )
                     ])
                   : _vm._e()
               }),
               0
             ),
             _vm._v(" "),
-            _c("br")
-          ])
-        ])
+            _vm._l(_vm.soal, function(data) {
+              return _vm.no == data.id
+                ? _c("div", { staticClass: "card-header" }, [
+                    _vm._v("\n        " + _vm._s(data.mapel) + "\n      ")
+                  ])
+                : _vm._e()
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-content" }, [
+              _c(
+                "div",
+                { staticClass: "control" },
+                _vm._l(_vm.soal, function(data) {
+                  return _vm.no == data.id
+                    ? _c("div", [
+                        _c("label", { staticClass: "radio is-size-4" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.ans[data.id],
+                                expression: "ans[data.id]"
+                              }
+                            ],
+                            attrs: { type: "radio", value: "A" },
+                            domProps: {
+                              checked: _vm._q(_vm.ans[data.id], "A")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.ans, data.id, "A")
+                              }
+                            }
+                          }),
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(data.pilihana) +
+                              "\n            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("label", { staticClass: "radio is-size-4" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.ans[data.id],
+                                expression: "ans[data.id]"
+                              }
+                            ],
+                            attrs: { type: "radio", value: "B" },
+                            domProps: {
+                              checked: _vm._q(_vm.ans[data.id], "B")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.ans, data.id, "B")
+                              }
+                            }
+                          }),
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(data.pilihanb) +
+                              "\n            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("label", { staticClass: "radio is-size-4" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.ans[data.id],
+                                expression: "ans[data.id]"
+                              }
+                            ],
+                            attrs: { type: "radio", value: "C" },
+                            domProps: {
+                              checked: _vm._q(_vm.ans[data.id], "C")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.ans, data.id, "C")
+                              }
+                            }
+                          }),
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(data.pilihanc) +
+                              "\n            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("label", { staticClass: "radio is-size-4" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.ans[data.id],
+                                expression: "ans[data.id]"
+                              }
+                            ],
+                            attrs: { type: "radio", value: "D" },
+                            domProps: {
+                              checked: _vm._q(_vm.ans[data.id], "D")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.ans, data.id, "D")
+                              }
+                            }
+                          }),
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(data.pilihand) +
+                              "\n            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("label", { staticClass: "radio is-size-4" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.ans[data.id],
+                                expression: "ans[data.id]"
+                              }
+                            ],
+                            attrs: { type: "radio", value: "E" },
+                            domProps: {
+                              checked: _vm._q(_vm.ans[data.id], "E")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.ans, data.id, "E")
+                              }
+                            }
+                          }),
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(data.pilihane) +
+                              "\n            "
+                          )
+                        ])
+                      ])
+                    : _vm._e()
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _c("br")
+            ])
+          ],
+          2
+        )
       ])
     ]),
     _vm._v(" "),
