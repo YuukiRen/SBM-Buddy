@@ -27,18 +27,14 @@
     **Type :** External
 - **Relationship :**
     - Association : Admin
-    - Include : -
-    - Extend : -
-    - Generalization : - 
 - **Normal Flow of Events :**
     1. Siswa Login
     2. Siswa memilih jenis soal yang ingin dikerjakan (Latihan/Try Out)
     3. Siswa mengerjakan soal
     4. Siswa Submit Soal
-- **Sub Flows :** -
 - **Alternate/Exceptional Flows :**
     1E. Siswa gagal login
-- **Post-Condition :** Siswa dapat mengakses pembahasan soal, grafik perkembangan dan rekomendasi prodi
+- **Post-Condition :** Siswa dapat mengakses pembahasan soal dan grafik perkembangan
 
 ## UC2 : Melihat Pembahasan Soal
 - **Importance Level :** High
@@ -54,19 +50,15 @@
 - **Relationship :**
     - Association : Admin
     - Include : Mengerjakan Soal
-    - Extend : -
-    - Generalization : - 
 - **Normal Flow of Events :**
     1. Siswa selesai mengerjakan soal
     2. Pembahasan soal ditampilkan
- 
-- **Sub Flows :** -
 - **Alternate/Exceptional Flows :**
     2E . Pembahasan belum tersedia
-- **Post-Condition :** -
+
 
 ## UC3 : Melihat grafik perkembangan
-- **Importance Level :** Middle
+- **Importance Level :** Medium
 - **Use Case Type :** Essential, System
 - **Primary Actor :** Siswa
 - **Stakeholder and Interest :** 
@@ -75,20 +67,12 @@
 - **Pre-Condition :** Siswa harus menyelesaikan minimal 1 set soal
 - **Trigger :** Siswa mengakses laman perkembangan
     **Type :** External
-- **Relationship :**
-    - Association : -
-    - Include : -
-    - Extend : -
-    - Generalization : - 
 - **Normal Flow of Events :**
     1. Siswa membuka profil
     2. Siswa melihat grafik perkembangan nilai Try Out 
-- **Sub Flows :** -
-- **Alternate/Exceptional Flows :** -   
-- **Post-Condition :** -
 
 ## UC4 : Melihat grafik intensitas pengerjaan soal
-- **Importance Level :** Middle
+- **Importance Level :** Medium
 - **Use Case Type :** Essential, System
 - **Primary Actor :** Siswa
 - **Stakeholder and Interest :** 
@@ -97,226 +81,119 @@
 - **Pre-Condition :** Siswa harus menyelesaikan minimal 1 set soal
 - **Trigger :** Siswa ingin melihat sebanyak apa soal yang telah dikerjakan
     **Type :** External
-- **Relationship :**
-    - Association : -
-    - Include : -
-    - Extend : -
-    - Generalization : - 
 - **Normal Flow of Events :**
     1. Siswa membuka profil
     2. Siswa melihat grafik grafik  intensitas pengerjaan soal dalam satuan waktu
 
-- **Sub Flows :** -
-- **Alternate/Exceptional Flows :** -
-- **Post-Condition :** -
-
-## UC :
-- **Importance Level :** 
-- **Use Case Type :** 
-- **Primary Actor :**
+## UC5 : Melihat passing grade program studi
+- **Importance Level :** Medium
+- **Use Case Type :** System, Essential
+- **Primary Actor :** Siswa
 - **Stakeholder and Interest :** 
-    - Siswa : 
-    - Admin : 
-- **Brief Description :** 
-- **Pre-Condition :**
-- **Trigger :** 
-    **Type :** 
+    - Siswa : Melihat passing grade
+    - Admin : Menambah/mengubah passsing grade
+- **Brief Description :**  Di dalam use case ini dijelaskan bagaimana siswa melihat passing grade program studi
+- **Trigger :** Siswa ingin melihat universitas / prodi yang direkomendasikan
+    **Type :** External
 - **Relationship :**
-    - Association : 
-    - Include : -
-    - Extend : -
-    - Generalization : - 
+    - Association : Admin
 - **Normal Flow of Events :**
-    1. 
-    2. 
-    3.
-    4. 
-- **Sub Flows :** -
-- **Alternate/Exceptional Flows :**
-   
-- **Post-Condition :** 
+    1. Siswa membuka profil
+    2. Siswa melihat bagian passing grade
 
-## UC :
-- **Importance Level :** 
-- **Use Case Type :** 
-- **Primary Actor :**
+## UC6 : Membuat Soal dan Pembahasan
+- **Importance Level :** High
+- **Use Case Type :** Essential
+- **Primary Actor :** Admin
 - **Stakeholder and Interest :** 
-    - Siswa : 
-    - Admin : 
-- **Brief Description :** 
-- **Pre-Condition :**
-- **Trigger :** 
-    **Type :** 
-- **Relationship :**
-    - Association : 
-    - Include : -
-    - Extend : -
-    - Generalization : - 
+    - Admin : Membuat paket soal baru
+- **Brief Description :** Di dalam use case ini dijelaskan bagaimana admin soal dapat membuat soal dan pembahasannya
+- **Pre-Condition :** User harus merupakan seorang admin
+- **Trigger :** Admin membuka laman penambahan soal
+    **Type :** External
 - **Normal Flow of Events :**
-    1. 
-    2. 
-    3.
-    4. 
-- **Sub Flows :** -
-- **Alternate/Exceptional Flows :**
-   
-- **Post-Condition :** 
+    1. Admin login
+    2. Admin menambah paket soal baru
+    3. Admin memasukkan setiap butir soal
+    4. Admin memasukkan jawaban soal tersebut
+    5. Admin memasukkan pembahasan tiap soal
+    6. Admin menyimpan soal tersebut
 
-## UC :
-- **Importance Level :** 
-- **Use Case Type :** 
-- **Primary Actor :**
+## UC7 : Merubah soal dan pembahasan
+- **Importance Level :** Low
+- **Use Case Type :** Essential
+- **Primary Actor :** Admin
 - **Stakeholder and Interest :** 
-    - Siswa : 
-    - Admin : 
-- **Brief Description :** 
-- **Pre-Condition :**
-- **Trigger :** 
-    **Type :** 
-- **Relationship :**
-    - Association : 
-    - Include : -
-    - Extend : -
-    - Generalization : - 
+    - Admin : Ingin merubah soal dan pembahasan dari mata pelajaran yang diujikan.
+- **Brief Description :** Di dalam use case ini dijelaskan bagaimana Admin merubah soal dan pembahasan dari mata pelajaran yang diujikan.
+- **Pre-Condition :** User harus merupakan seorang admin
+- **Trigger :** Terdapat kesalahan saat menginput soal 
+    **Type :** Eksternal
 - **Normal Flow of Events :**
-    1. 
-    2. 
-    3.
-    4. 
-- **Sub Flows :** -
-- **Alternate/Exceptional Flows :**
-   
-- **Post-Condition :** 
+    1. Admin membuka list soal ujian.
+    2. Admin merubah soal dan pembahasan dari ujian yang dipilih.
 
-## UC :
-- **Importance Level :** 
-- **Use Case Type :** 
-- **Primary Actor :**
+## UC8 : Menghapus soal dan pembahasan
+- **Importance Level :** Low
+- **Use Case Type :** Essential
+- **Primary Actor :** Admin
 - **Stakeholder and Interest :** 
-    - Siswa : 
-    - Admin : 
-- **Brief Description :** 
-- **Pre-Condition :**
-- **Trigger :** 
-    **Type :** 
-- **Relationship :**
-    - Association : 
-    - Include : -
-    - Extend : -
-    - Generalization : - 
+    - Admin : Menghapus paket soal
+- **Brief Description :** Di dalam use case ini dijelaskan bagaimana Admin dapat menghapus paket soal atau pembahasan 
+- **Pre-Condition :** -
+- **Trigger :** Soal sudah tidak relevan lagi
+    **Type :** External
 - **Normal Flow of Events :**
-    1. 
-    2. 
-    3.
-    4. 
-- **Sub Flows :** -
-- **Alternate/Exceptional Flows :**
-   
-- **Post-Condition :** 
+    1. Admin membuka paket-paket soal
+    2. Admin memilih paket soal yang akan dihapus
+    3. Admin menghapus soal tersebut
+    4. Admin melakukan konfirmasi penghapusan
 
-## UC :
-- **Importance Level :** 
-- **Use Case Type :** 
-- **Primary Actor :**
+## UC9 : Merubah passing grade program studi
+- **Importance Level :** Medium
+- **Use Case Type :** Essential
+- **Primary Actor :** Admin
 - **Stakeholder and Interest :** 
-    - Siswa : 
-    - Admin : 
-- **Brief Description :** 
-- **Pre-Condition :**
-- **Trigger :** 
-    **Type :** 
-- **Relationship :**
-    - Association : 
-    - Include : -
-    - Extend : -
-    - Generalization : - 
+    - Admin : Ingin memperbarui passing grade program studi di sebuah universitas.
+- **Brief Description :** Di dalam use case ini dijelaskan bagaimana Admin merubah passing grade program studi di sebuah universitas.
+- **Pre-Condition :** User harus merupakan seorang admin
+- **Trigger :** Perubahan nilai passing grade dari program studi per tahun.
+    **Type :** Temporal
 - **Normal Flow of Events :**
-    1. 
-    2. 
-    3.
-    4. 
-- **Sub Flows :** -
-- **Alternate/Exceptional Flows :**
-   
-- **Post-Condition :** 
+    1. Admin membuka list universitas.
+    2. Admin memilih program studi.
+    3. Admin merubah passing grade program studi. 
 
-## UC :
-- **Importance Level :** 
-- **Use Case Type :** 
-- **Primary Actor :**
-- **Stakeholder and Interest :** 
-    - Siswa : 
-    - Admin : 
-- **Brief Description :** 
-- **Pre-Condition :**
-- **Trigger :** 
-    **Type :** 
-- **Relationship :**
-    - Association : 
-    - Include : -
-    - Extend : -
-    - Generalization : - 
-- **Normal Flow of Events :**
-    1. 
-    2. 
-    3.
-    4. 
-- **Sub Flows :** -
-- **Alternate/Exceptional Flows :**
-   
-- **Post-Condition :** 
 
-## UC :
-- **Importance Level :** 
-- **Use Case Type :** 
-- **Primary Actor :**
+## UC10 :Menambah program studi
+- **Importance Level :** Medium
+- **Use Case Type :** Essential, System
+- **Primary Actor :** Admin
 - **Stakeholder and Interest :** 
-    - Siswa : 
-    - Admin : 
-- **Brief Description :** 
-- **Pre-Condition :**
-- **Trigger :** 
-    **Type :** 
-- **Relationship :**
-    - Association : 
-    - Include : -
-    - Extend : -
-    - Generalization : - 
+    - Admin : Ingin menambah program studi di sebuah universitas.
+- **Brief Description :** Di dalam use case ini dijelaskan bagaimana Admin menambah program studi di sebuah universitas.
+- **Pre-Condition :** User harus merupakan seorang admin
+- **Trigger :** Universitas membuka program studi baru.
+    **Type :** External
 - **Normal Flow of Events :**
-    1. 
-    2. 
-    3.
-    4. 
-- **Sub Flows :** -
-- **Alternate/Exceptional Flows :**
-   
-- **Post-Condition :** 
+    1. Admin membuka list universitas.
+    2. Admin menambah program studi.
 
-## UC :
-- **Importance Level :** 
-- **Use Case Type :** 
-- **Primary Actor :**
+
+## UC11 : Menghapus program studi
+- **Importance Level :** Low
+- **Use Case Type :** Essential, System
+- **Primary Actor :** Admin
 - **Stakeholder and Interest :** 
-    - Siswa : 
-    - Admin : 
-- **Brief Description :** 
-- **Pre-Condition :**
-- **Trigger :** 
-    **Type :** 
-- **Relationship :**
-    - Association : 
-    - Include : -
-    - Extend : -
-    - Generalization : - 
+    - Admin : Ingin menghapus program studi di sebuah universitas.
+- **Brief Description :** Di dalam use case ini dijelaskan bagaimana Admin menghapus program studi di sebuah universitas.
+- **Pre-Condition :** User harus merupakan seorang admin
+- **Trigger :** Universitas menutup program studi yang ada karena alasan tertentu.
+    **Type :** External
 - **Normal Flow of Events :**
-    1. 
-    2. 
-    3.
-    4. 
-- **Sub Flows :** -
-- **Alternate/Exceptional Flows :**
-   
-- **Post-Condition :** 
+    1. Admin membuka list universitas.
+    2. Admin menghapus program studi
+
 
 # Activity Diagram
 [`^ kembali ke atas ^`](#)
