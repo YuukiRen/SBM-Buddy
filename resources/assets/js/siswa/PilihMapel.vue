@@ -56,7 +56,7 @@
 			</nav>
 			<br>
 			<div style="text-align: center;">
-				<router-link :to="{ name: 'pemanasan', params: { mapel: 'sosio' } }" class="button title is-primary is-inverted is-outlined" style="text-decoration: none;">SOSIOLOGI</router-link>
+				<router-link :to="{ name: 'pemanasan', params: { mapel: 'sosiologi' } }" class="button title is-primary is-inverted is-outlined" style="text-decoration: none;">SOSIOLOGI</router-link>
 			</div>
 		</div>
 	</div>

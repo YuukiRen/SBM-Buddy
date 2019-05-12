@@ -44079,7 +44079,10 @@ var render = function() {
                         "button title is-primary is-inverted is-outlined",
                       staticStyle: { "text-decoration": "none" },
                       attrs: {
-                        to: { name: "pemanasan", params: { mapel: "sosio" } }
+                        to: {
+                          name: "pemanasan",
+                          params: { mapel: "sosiologi" }
+                        }
                       }
                     },
                     [_vm._v("SOSIOLOGI")]
