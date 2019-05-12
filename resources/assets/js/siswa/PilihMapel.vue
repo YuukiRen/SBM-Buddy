@@ -14,7 +14,7 @@
                 <br>
                 <div style="text-align: center;">
                     <!-- <a href="pemanasan" class="button title is-primary is-inverted is-outlined">BIOLOGI</a> -->
-                    <router-link :to="{ name: 'pemanasan', params: { mapel: 'biologi' } }" class="button title is-primary is-inverted is-outlined">
+                    <router-link :to="{ name: 'pemanasan', params: { mapel: 'biologi' } }" class="button title is-primary is-inverted is-outlined" style="text-decoration: none;">
                         BIOLOGI
                     </router-link>
                </div>
@@ -29,7 +29,7 @@
                 </nav>
                 <br>
                <div style="text-align: center;">
-               <router-link :to="{ name: 'pemanasan', params: { mapel: 'fisika' } }" class="button title is-primary is-inverted is-outlined">
+               <router-link :to="{ name: 'pemanasan', params: { mapel: 'fisika' } }" class="button title is-primary is-inverted is-outlined" style="text-decoration: none;">
                         FISIKA
                 </router-link>
                </div>
@@ -47,7 +47,7 @@
                 </nav>
                 <br>
                <div style="text-align: center;">
-                   <router-link :to="{ name: 'pemanasan', params: { mapel: 'matematika' } }" class="button title is-primary is-inverted is-outlined">
+                   <router-link :to="{ name: 'pemanasan', params: { mapel: 'matematika' } }" class="button title is-primary is-inverted is-outlined" style="text-decoration: none;">
                         MATEMATIKA
                     </router-link>
                </div>
@@ -62,7 +62,7 @@
                 </nav>
                 <br>
                <div style="text-align: center;">
-                   <router-link :to="{ name: 'pemanasan', params: { mapel: 'kimia' } }" class="button title is-primary is-inverted is-outlined">
+                   <router-link :to="{ name: 'pemanasan', params: { mapel: 'kimia' } }" class="button title is-primary is-inverted is-outlined" style="text-decoration: none;">
                         KIMIA
                     </router-link>
                </div>
