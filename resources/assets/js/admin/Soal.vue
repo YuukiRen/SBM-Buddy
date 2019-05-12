@@ -19,6 +19,7 @@
       <li v-on:click="activate(1)" v-bind:class="{ 'is-active': active_now==1 }"><a>Biologi</a></li>
       <li v-on:click="activate(2)" v-bind:class="{ 'is-active': active_now==2 }"><a>Fisika</a></li>
       <li v-on:click="activate(3)" v-bind:class="{ 'is-active': active_now==3 }"><a>Kimia</a></li>
+      <li v-on:click="activate(4)" v-bind:class="{ 'is-active': active_now==4 }"><a>Matematika</a></li>
     </ul>
   </p>
 
@@ -49,7 +50,12 @@
     },
     mounted(){
         this.list = this.$route.params.pack;
-        
+        if(this.list.penjurusan == "IPA"){
+          maps = ["biologi","fisika","kimia","matematika"]
+        }
+        else{
+          maps = ["ekonomi","sejarah","sosiologi","geografi"]
+        }
         axios.post('/getSoal',this.list)
           .then((response)=>this.lists = response.data)
           .catch((error) => this.errors = error.response.data.errors)

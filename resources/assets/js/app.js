@@ -25,7 +25,13 @@ window.Vue = Vue
 // moment
 Vue.filter('formatDate', function(value) {
     if (value) {
-        return moment(String(value)).format('DD/MM/YYYY')
+        return moment(String(value)).format('DD-MM-YYYY')
+    }
+});
+Vue.filter('dayOfWeeks', function(value) {
+    if (value) {
+        var nameWeeks = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu']
+        return nameWeeks[moment(String(value)).day()]
     }
 });
     

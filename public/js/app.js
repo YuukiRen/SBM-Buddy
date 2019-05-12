@@ -33731,7 +33731,13 @@ window.Vue = __WEBPACK_IMPORTED_MODULE_7_vue___default.a;
 // moment
 __WEBPACK_IMPORTED_MODULE_7_vue___default.a.filter('formatDate', function (value) {
     if (value) {
-        return __WEBPACK_IMPORTED_MODULE_10_moment___default()(String(value)).format('DD/MM/YYYY');
+        return __WEBPACK_IMPORTED_MODULE_10_moment___default()(String(value)).format('DD-MM-YYYY');
+    }
+});
+__WEBPACK_IMPORTED_MODULE_7_vue___default.a.filter('dayOfWeeks', function (value) {
+    if (value) {
+        var nameWeeks = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        return nameWeeks[__WEBPACK_IMPORTED_MODULE_10_moment___default()(String(value)).day()];
     }
 });
 
@@ -62298,98 +62304,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       prog: {},
       errors: {},
-      yourDateString: '2018-12-24 04:19:23'
+      weeks: [],
+      loading: false
     };
   },
   mounted: function mounted() {
     var _this = this;
 
+    if (this.loading == true) {
+      return;
+    }
+    this.loading = true;
     axios.post('/getProgress').then(function (response) {
       _this.prog = response.data;
     }).catch(function (error) {
@@ -62411,18 +62342,10 @@ var render = function() {
       _c("div", { staticClass: "column is-1" }),
       _vm._v(" "),
       _c("div", { staticClass: "column" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("h3", [_vm._v("Detail")]),
-        _vm._v(" "),
-        _vm._m(2),
+        _c("h3", [_vm._v("Details")]),
         _vm._v(" "),
         _c("table", { staticClass: "table" }, [
-          _vm._m(3),
+          _vm._m(0),
           _vm._v(" "),
           _c(
             "tbody",
@@ -62434,7 +62357,13 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [
                   _vm._v(
-                    _vm._s(_vm._f("formatDate")(_vm.prog[data - 1].created_at))
+                    _vm._s(
+                      _vm._f("dayOfWeeks")(_vm.prog[data - 1].created_at)
+                    ) +
+                      "/" +
+                      _vm._s(
+                        _vm._f("formatDate")(_vm.prog[data - 1].created_at)
+                      )
                   )
                 ]),
                 _vm._v(" "),
@@ -62451,177 +62380,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tabs" }, [
-      _c("ul", [
-        _c("li", { staticClass: "is-active" }, [_c("a", [_vm._v("Harian")])]),
-        _vm._v(" "),
-        _c("li", [_c("a", [_vm._v("Mingguan")])]),
-        _vm._v(" "),
-        _c("li", [_c("a", [_vm._v("Bulanan")])])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns" }, [
-      _c("div", { staticClass: "column is-1" }, [
-        _c("p", [_vm._v("Senin")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Selasa")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Rabu")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Kamis")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Jumat")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Sabtu")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column is-7" }, [
-        _c(
-          "progress",
-          {
-            staticClass: "progress is-primary",
-            attrs: { value: "15", max: "100" }
-          },
-          [_vm._v("15%")]
-        ),
-        _vm._v(" "),
-        _c(
-          "progress",
-          {
-            staticClass: "progress is-primary",
-            attrs: { value: "30", max: "100" }
-          },
-          [_vm._v("30%")]
-        ),
-        _vm._v(" "),
-        _c(
-          "progress",
-          {
-            staticClass: "progress is-primary",
-            attrs: { value: "45", max: "100" }
-          },
-          [_vm._v("45%")]
-        ),
-        _vm._v(" "),
-        _c(
-          "progress",
-          {
-            staticClass: "progress is-primary",
-            attrs: { value: "60", max: "100" }
-          },
-          [_vm._v("60%")]
-        ),
-        _vm._v(" "),
-        _c(
-          "progress",
-          {
-            staticClass: "progress is-primary",
-            attrs: { value: "75", max: "100" }
-          },
-          [_vm._v("75%")]
-        ),
-        _vm._v(" "),
-        _c(
-          "progress",
-          {
-            staticClass: "progress is-primary",
-            attrs: { value: "90", max: "100" }
-          },
-          [_vm._v("90%")]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "dropdown is-hoverable" }, [
-      _c("div", { staticClass: "dropdown-trigger" }, [
-        _c(
-          "button",
-          { staticClass: "button", attrs: { "aria-haspopup": "true" } },
-          [
-            _c("span", [_vm._v("Hari")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "icon is-small" }, [
-              _c("i", {
-                staticClass: "fa fa-angle-down",
-                attrs: { "aria-hidden": "true" }
-              })
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "dropdown-menu" }, [
-        _c("div", { staticClass: "dropdown-content" }, [
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _c("label", { staticClass: "checkbox" }, [
-              _c("input", { attrs: { type: "checkbox" } }),
-              _vm._v(
-                "\r\n                            Senin\r\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _c("label", { staticClass: "checkbox" }, [
-              _c("input", { attrs: { type: "checkbox" } }),
-              _vm._v(
-                "\r\n                            Selasa\r\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _c("label", { staticClass: "checkbox" }, [
-              _c("input", { attrs: { type: "checkbox" } }),
-              _vm._v(
-                "\r\n                            Rabu\r\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _c("label", { staticClass: "checkbox" }, [
-              _c("input", { attrs: { type: "checkbox" } }),
-              _vm._v(
-                "\r\n                            Kamis\r\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _c("label", { staticClass: "checkbox" }, [
-              _c("input", { attrs: { type: "checkbox" } }),
-              _vm._v(
-                "\r\n                            Jumat\r\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _c("label", { staticClass: "checkbox" }, [
-              _c("input", { attrs: { type: "checkbox" } }),
-              _vm._v(
-                "\r\n                            Sabtu\r\n                        "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -64021,6 +63779,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 var Add = __webpack_require__(225);
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -64038,7 +63797,11 @@ var Add = __webpack_require__(225);
     var _this = this;
 
     this.list = this.$route.params.pack;
-
+    if (this.list.penjurusan == "IPA") {
+      maps = ["biologi", "fisika", "kimia", "matematika"];
+    } else {
+      maps = ["ekonomi", "sejarah", "sosiologi", "geografi"];
+    }
     axios.post('/getSoal', this.list).then(function (response) {
       return _this.lists = response.data;
     }).catch(function (error) {
@@ -65126,6 +64889,19 @@ var render = function() {
                   }
                 },
                 [_c("a", [_vm._v("Kimia")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  class: { "is-active": _vm.active_now == 4 },
+                  on: {
+                    click: function($event) {
+                      return _vm.activate(4)
+                    }
+                  }
+                },
+                [_c("a", [_vm._v("Matematika")])]
               )
             ])
           ]),
