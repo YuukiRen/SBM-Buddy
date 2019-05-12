@@ -1,46 +1,13 @@
 
 <template>
     <section class="container">
-<<<<<<< HEAD
-
             <p class="title has-text-centered">
                 <br>
-                Halo, Siswa!
-=======
-    <div class="card">
-        <div class="card-content">
-            <p class="title">
                 Halo, {{user.name}}!
->>>>>>> 8acb7eca1c331bd163913c22b08728e0c8c43e3b
             </p>
             <p class="subtitle has-text-centered">
                 Selamat datang kembali. Ayo semangat berlatih!
             </p>
-<<<<<<< HEAD
-
-=======
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-content">
-            <p class="subtitle">
-                Jurusanmu :
-            </p>
-            <div class="field">
-                <div class="select">
-                <select v-model="user.jurusan" @change = updateTable(this.value)>
-                    <option value="" selected disabled hidden>Choose here</option>
-                    <option value="IPA">IPA</option>
-                    <option value="IPS">IPS</option>
-                </select>
-                </div>
-                <p class="subtitle">
-                    {{resp.status}}
-                </p>
-            </div>
-        </div>
-    </div>
->>>>>>> 8acb7eca1c331bd163913c22b08728e0c8c43e3b
     <div class="columns is-vcentered">
         <div class="column">
             <div class="card">
@@ -87,11 +54,7 @@
                             <br>
                             <br>
                             <div class="buttons has-addons is-centered">
-<<<<<<< HEAD
-                                <a class="button is-primary" style="text-decoration: none;">Mulai Try Out</a>
-=======
-                                <a href='/tryout' class="button is-primary">Mulai Try Out</a>
->>>>>>> 8acb7eca1c331bd163913c22b08728e0c8c43e3b
+                                <a href='/tryout' class="button is-primary" style="text-decoration: none;">Mulai Try Out</a>
                             </div>
                         </div>
                     </div>
