@@ -15,7 +15,6 @@ let PassingGrade = require('./siswa/PassingGrade.vue');
 
 let Paketsoal = require('./admin/Paketsoal.vue');
 let Soal = require('./admin/Soal.vue');
-let Pesan = require('./admin/Pesan.vue');
 let Universitas = require('./admin/Universitas.vue');
 
 // Routes
@@ -114,14 +113,6 @@ const routes = [
       path: '/soal',
       name: 'soal',
       component: Soal,
-      meta: {
-        auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
-      }
-    },
-    {
-      path: '/pesan',
-      name: 'pesan',
-      component: Pesan,
       meta: {
         auth: {roles: 2, redirect: {name: 'login'}, forbiddenRedirect: '/403'}
       }

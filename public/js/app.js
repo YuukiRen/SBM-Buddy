@@ -58551,7 +58551,6 @@ var PassingGrade = __webpack_require__(211);
 
 var Paketsoal = __webpack_require__(214);
 var Soal = __webpack_require__(223);
-var Pesan = __webpack_require__(229);
 var Universitas = __webpack_require__(231);
 
 // Routes
@@ -58640,13 +58639,6 @@ var routes = [{
   path: '/soal',
   name: 'soal',
   component: Soal,
-  meta: {
-    auth: { roles: 2, redirect: { name: 'login' }, forbiddenRedirect: '/403' }
-  }
-}, {
-  path: '/pesan',
-  name: 'pesan',
-  component: Pesan,
   meta: {
     auth: { roles: 2, redirect: { name: 'login' }, forbiddenRedirect: '/403' }
   }
@@ -59802,29 +59794,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -59864,90 +59833,60 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "container" }, [
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-content" }, [
-        _c("p", { staticClass: "title" }, [
-          _vm._v("\n            Halo, " + _vm._s(_vm.user.name) + "!\n        ")
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "subtitle" }, [
-          _vm._v(
-            "\n            Selamat datang kembali. Ayo semangat berlatih!\n        "
-          )
-        ])
-      ])
+    _c("p", { staticClass: "title has-text-centered" }, [
+      _c("br"),
+      _vm._v("\n            Halo, " + _vm._s(_vm.user.name) + "!\n        ")
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-content" }, [
-        _c("p", { staticClass: "subtitle" }, [
-          _vm._v("\n            Jurusanmu :\n        ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "field" }, [
-          _c("div", { staticClass: "select" }, [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.user.jurusan,
-                    expression: "user.jurusan"
-                  }
-                ],
-                on: {
-                  change: [
-                    function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.user,
-                        "jurusan",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    },
-                    function($event) {
-                      return _vm.updateTable(this.value)
-                    }
-                  ]
-                }
-              },
-              [
-                _c(
-                  "option",
-                  {
-                    attrs: { value: "", selected: "", disabled: "", hidden: "" }
-                  },
-                  [_vm._v("Choose here")]
-                ),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "IPA" } }, [_vm._v("IPA")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "IPS" } }, [_vm._v("IPS")])
-              ]
-            )
+    _c("p", { staticClass: "subtitle has-text-centered" }, [
+      _vm._v(
+        "\n            Selamat datang kembali. Ayo semangat berlatih!\n        "
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "columns is-vcentered" }, [
+      _c("div", { staticClass: "column" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-image" }, [
+            _c("figure", { staticClass: "image is-4by3" }, [
+              _c("img", {
+                attrs: { src: "img/siswa3.jpg", alt: "Placeholder image" }
+              })
+            ])
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "subtitle" }, [
-            _vm._v(
-              "\n                " + _vm._s(_vm.resp.status) + "\n            "
-            )
-          ])
+          _vm._m(0)
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-image" }, [
+            _c("figure", { staticClass: "image is-4by3" }, [
+              _c("img", {
+                attrs: { src: "img/siswa2.jpg", alt: "Placeholder image" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-image" }, [
+            _c("figure", { staticClass: "image is-4by3" }, [
+              _c("img", {
+                attrs: { src: "img/siswa1.jpg", alt: "Placeholder image" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(2)
         ])
       ])
-    ]),
-    _vm._v(" "),
-    _vm._m(0)
+    ])
   ])
 }
 var staticRenderFns = [
@@ -59955,133 +59894,97 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns is-vcentered" }, [
-      _c("div", { staticClass: "column" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-image" }, [
-            _c("figure", { staticClass: "image is-4by3" }, [
-              _c("img", {
-                attrs: {
-                  src: "https://bulma.io/images/placeholders/1280x960.png",
-                  alt: "Placeholder image"
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-content" }, [
-            _c("div", { staticClass: "media" }, [
-              _c("div", { staticClass: "media-content" }, [
-                _c("p", { staticClass: "title is-4" }, [_vm._v("Pemanasan")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "content" }, [
-              _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                        "
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("div", { staticClass: "buttons has-addons is-centered" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "button is-primary",
-                    attrs: { href: "/pilihmapel" }
-                  },
-                  [_vm._v("Mulai berlatih")]
-                )
-              ])
-            ])
-          ])
+    return _c("div", { staticClass: "card-content" }, [
+      _c("div", { staticClass: "media" }, [
+        _c("div", { staticClass: "media-content" }, [
+          _c("p", { staticClass: "title is-4" }, [_vm._v("Pemanasan")])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-image" }, [
-            _c("figure", { staticClass: "image is-4by3" }, [
-              _c("img", {
-                attrs: {
-                  src: "https://bulma.io/images/placeholders/1280x960.png",
-                  alt: "Placeholder image"
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-content" }, [
-            _c("div", { staticClass: "media" }, [
-              _c("div", { staticClass: "media-content" }, [
-                _c("p", { staticClass: "title is-4" }, [_vm._v("Try Out")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "content" }, [
-              _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                        "
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("div", { staticClass: "buttons has-addons is-centered" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "button is-primary",
-                    attrs: { href: "/tryout" }
-                  },
-                  [_vm._v("Mulai Try Out")]
-                )
-              ])
-            ])
-          ])
+      _c("div", { staticClass: "content" }, [
+        _vm._v(
+          "\n                        Kamu dapat berlatih mengerjakan soal per mata pelajaran yang kamu inginkan.\n                        "
+        ),
+        _c("br"),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "buttons has-addons is-centered" }, [
+          _c(
+            "a",
+            {
+              staticClass: "button is-primary",
+              staticStyle: { "text-decoration": "none" },
+              attrs: { href: "/pilihmapel" }
+            },
+            [_vm._v("Mulai berlatih")]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-content" }, [
+      _c("div", { staticClass: "media" }, [
+        _c("div", { staticClass: "media-content" }, [
+          _c("p", { staticClass: "title is-4" }, [_vm._v("Try Out")])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-image" }, [
-            _c("figure", { staticClass: "image is-4by3" }, [
-              _c("img", {
-                attrs: {
-                  src: "https://bulma.io/images/placeholders/1280x960.png",
-                  alt: "Placeholder image"
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-content" }, [
-            _c("div", { staticClass: "media" }, [
-              _c("div", { staticClass: "media-content" }, [
-                _c("p", { staticClass: "title is-4" }, [_vm._v("My Progress")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "content" }, [
-              _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.\n                        "
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("div", { staticClass: "buttons has-addons is-centered" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "button is-primary",
-                    attrs: { href: "/progress" }
-                  },
-                  [_vm._v("Lihat Progress")]
-                )
-              ])
-            ])
-          ])
+      _c("div", { staticClass: "content" }, [
+        _vm._v(
+          "\n                        Disini, kamu dapat mengerjakan satu paket soal SBMPTN, mirip seperti Try Out.\n                        "
+        ),
+        _c("br"),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "buttons has-addons is-centered" }, [
+          _c(
+            "a",
+            {
+              staticClass: "button is-primary",
+              staticStyle: { "text-decoration": "none" },
+              attrs: { href: "/tryout" }
+            },
+            [_vm._v("Mulai Try Out")]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-content" }, [
+      _c("div", { staticClass: "media" }, [
+        _c("div", { staticClass: "media-content" }, [
+          _c("p", { staticClass: "title is-4" }, [_vm._v("My Progress")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _vm._v(
+          "\n                        Ayo lihat bagaimana perkembangan kamu dalam mengerjakan soal-soal yang ada!\n                        "
+        ),
+        _c("br"),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "buttons has-addons is-centered" }, [
+          _c(
+            "a",
+            {
+              staticClass: "button is-primary",
+              staticStyle: { "text-decoration": "none" },
+              attrs: { href: "/progress" }
+            },
+            [_vm._v("Lihat Progress")]
+          )
         ])
       ])
     ])
@@ -60151,12 +60054,6 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_user_list_vue__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_user_list_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_user_list_vue__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -60361,11 +60258,11 @@ var render = function() {
   return _c("section", { staticClass: "section" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "card card-default" }, [
-      _c("div", { staticClass: "card-header" }, [_vm._v("Users list")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [_c("userList")], 1)
-    ])
+    _c("p", { staticClass: "subtitle has-text-centered" }, [
+      _vm._v("Welcome to the administrator dashboard.")
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [_c("userList")], 1)
   ])
 }
 var staticRenderFns = [
@@ -60373,14 +60270,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card card-default" }, [
-      _c("div", { staticClass: "card-header" }, [_vm._v("Admin Dashboard")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _vm._v(
-          "\n            Welcome to your administrator dashboard\n        "
-        )
-      ])
+    return _c("p", { staticClass: "title has-text-centered" }, [
+      _c("br"),
+      _vm._v("Admin Dashboard")
     ])
   }
 ]
@@ -60521,15 +60413,74 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var Pemanasan = __webpack_require__(18);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { Pemanasan: Pemanasan },
-  data: function data() {
-    return {
-      mapel: ''
-    };
-  }
+    components: { Pemanasan: Pemanasan },
+    data: function data() {
+        return {
+            mapel: '',
+            user: {}
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        axios.post('/getUser').then(function (response) {
+            _this.user = response.data;
+        }).catch(function (error) {
+            return _this.errors = error.response.data.errors;
+        });
+    }
 });
 
 /***/ }),
@@ -60925,129 +60876,274 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "container" }, [
     _c("br"),
+    _vm._v(" "),
     _c("br"),
     _vm._v(" "),
-    _c("div", { staticClass: "columns is-vcentered" }, [
-      _c("div", { staticClass: "column" }, [
-        _c("div", { staticClass: "notification is-primary" }, [
-          _c("br"),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticStyle: { "text-align": "center" } },
-            [
+    _vm.user.jurusan == "IPS"
+      ? _c("div", { staticClass: "columns is-vcentered" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "notification is-primary" }, [
+              _c("br"),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
               _c(
-                "router-link",
-                {
-                  staticClass:
-                    "button title is-primary is-inverted is-outlined",
-                  attrs: {
-                    to: { name: "pemanasan", params: { mapel: "biologi" } }
-                  }
-                },
-                [_vm._v("\n                    BIOLOGI\n                ")]
+                "div",
+                { staticStyle: { "text-align": "center" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "button title is-primary is-inverted is-outlined",
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: {
+                        to: { name: "pemanasan", params: { mapel: "geografi" } }
+                      }
+                    },
+                    [_vm._v("GEOGRAFI")]
+                  )
+                ],
+                1
               )
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _c("br"),
-        _vm._v(" "),
-        _c("div", { staticClass: "notification is-link" }, [
-          _c("br"),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticStyle: { "text-align": "center" } },
-            [
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "notification is-link" }, [
+              _c("br"),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
               _c(
-                "router-link",
-                {
-                  staticClass:
-                    "button title is-primary is-inverted is-outlined",
-                  attrs: {
-                    to: { name: "pemanasan", params: { mapel: "fisika" } }
-                  }
-                },
-                [_vm._v("\n                    FISIKA\n            ")]
+                "div",
+                { staticStyle: { "text-align": "center" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "button title is-primary is-inverted is-outlined",
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: {
+                        to: { name: "pemanasan", params: { mapel: "ekonomi" } }
+                      }
+                    },
+                    [_vm._v("EKONOMI")]
+                  )
+                ],
+                1
               )
-            ],
-            1
-          )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-1" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "notification is-warning" }, [
+              _c("br"),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { "text-align": "center" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "button title is-primary is-inverted is-outlined",
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: {
+                        to: { name: "pemanasan", params: { mapel: "sejarah" } }
+                      }
+                    },
+                    [_vm._v("SEJARAH")]
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "notification is-danger" }, [
+              _c("br"),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { "text-align": "center" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "button title is-primary is-inverted is-outlined",
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: {
+                        to: {
+                          name: "pemanasan",
+                          params: { mapel: "sosiologi" }
+                        }
+                      }
+                    },
+                    [_vm._v("SOSIOLOGI")]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column is-1" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("div", { staticClass: "notification is-warning" }, [
-          _c("br"),
-          _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticStyle: { "text-align": "center" } },
-            [
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.user.jurusan == "IPA"
+      ? _c("div", { staticClass: "columns is-vcentered" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "notification is-primary" }, [
+              _c("br"),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
               _c(
-                "router-link",
-                {
-                  staticClass:
-                    "button title is-primary is-inverted is-outlined",
-                  attrs: {
-                    to: { name: "pemanasan", params: { mapel: "matematika" } }
-                  }
-                },
-                [_vm._v("\n                    MATEMATIKA\n                ")]
+                "div",
+                { staticStyle: { "text-align": "center" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "button title is-primary is-inverted is-outlined",
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: {
+                        to: { name: "pemanasan", params: { mapel: "biologi" } }
+                      }
+                    },
+                    [_vm._v("BIOLOGI")]
+                  )
+                ],
+                1
               )
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _c("br"),
-        _vm._v(" "),
-        _c("div", { staticClass: "notification is-danger" }, [
-          _c("br"),
-          _vm._v(" "),
-          _vm._m(3),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticStyle: { "text-align": "center" } },
-            [
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "notification is-link" }, [
+              _c("br"),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
               _c(
-                "router-link",
-                {
-                  staticClass:
-                    "button title is-primary is-inverted is-outlined",
-                  attrs: {
-                    to: { name: "pemanasan", params: { mapel: "kimia" } }
-                  }
-                },
-                [_vm._v("\n                    KIMIA\n                ")]
+                "div",
+                { staticStyle: { "text-align": "center" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "button title is-primary is-inverted is-outlined",
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: {
+                        to: { name: "pemanasan", params: { mapel: "fisika" } }
+                      }
+                    },
+                    [_vm._v("FISIKA")]
+                  )
+                ],
+                1
               )
-            ],
-            1
-          )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-1" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "notification is-warning" }, [
+              _c("br"),
+              _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { "text-align": "center" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "button title is-primary is-inverted is-outlined",
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: {
+                        to: {
+                          name: "pemanasan",
+                          params: { mapel: "matematika" }
+                        }
+                      }
+                    },
+                    [_vm._v("MATEMATIKA")]
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "notification is-danger" }, [
+              _c("br"),
+              _vm._v(" "),
+              _vm._m(7),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { "text-align": "center" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "button title is-primary is-inverted is-outlined",
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: {
+                        to: { name: "pemanasan", params: { mapel: "kimia" } }
+                      }
+                    },
+                    [_vm._v("KIMIA")]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
         ])
-      ])
-    ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -61057,8 +61153,59 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("nav", { staticClass: "level" }, [
       _c("span", { staticClass: "icon level-item has-text-centered" }, [
+        _c("i", { staticClass: "fa fa-4x fa-globe" })
+      ]),
+      _vm._v(" "),
+      _c("br")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "level" }, [
+      _c("span", { staticClass: "icon level-item has-text-centered" }, [
+        _c("i", { staticClass: "fa fa-4x fa-money" })
+      ]),
+      _vm._v(" "),
+      _c("br")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "level" }, [
+      _c(
+        "span",
+        { staticClass: "icon has-text-white level-item has-text-centered" },
+        [_c("i", { staticClass: "fa fa-4x fa-flag" })]
+      ),
+      _vm._v(" "),
+      _c("br")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "level" }, [
+      _c("span", { staticClass: "icon level-item has-text-centered" }, [
+        _c("i", { staticClass: "fa fa-4x fa-users" })
+      ]),
+      _vm._v(" "),
+      _c("br")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "level" }, [
+      _c("span", { staticClass: "icon level-item has-text-centered" }, [
         _c("i", { staticClass: "fa fa-4x fa-pagelines" })
       ]),
+      _vm._v(" "),
       _c("br")
     ])
   },
@@ -61070,6 +61217,7 @@ var staticRenderFns = [
       _c("span", { staticClass: "icon level-item has-text-centered" }, [
         _c("i", { staticClass: "fa fa-4x fa-rocket" })
       ]),
+      _vm._v(" "),
       _c("br")
     ])
   },
@@ -61083,6 +61231,7 @@ var staticRenderFns = [
         { staticClass: "icon has-text-white level-item has-text-centered" },
         [_c("i", { staticClass: "fa fa-4x fa-calculator" })]
       ),
+      _vm._v(" "),
       _c("br")
     ])
   },
@@ -61094,6 +61243,7 @@ var staticRenderFns = [
       _c("span", { staticClass: "icon level-item has-text-centered" }, [
         _c("i", { staticClass: "fa fa-4x fa-flask" })
       ]),
+      _vm._v(" "),
       _c("br")
     ])
   }
@@ -64640,7 +64790,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "button is-primary is-outlined is-fullwidth",
+                staticClass: "button is-primary is-fullwidth",
                 on: { click: _vm.openAdd }
               },
               [
@@ -64817,145 +64967,8 @@ if (false) {
 }
 
 /***/ }),
-/* 229 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = null
-/* template */
-var __vue_template__ = __webpack_require__(230)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/admin/Pesan.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3a202a29", Component.options)
-  } else {
-    hotAPI.reload("data-v-3a202a29", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 230 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "section" }, [
-      _c("div", { staticClass: "box" }, [
-        _c("article", { staticClass: "media" }, [
-          _c("div", { staticClass: "media-left" }, [
-            _c("figure", { staticClass: "image is-64x64" }, [
-              _c("img", {
-                attrs: {
-                  src: "https://bulma.io/images/placeholders/128x128.png",
-                  alt: "Image"
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "media-content" }, [
-            _c("div", { staticClass: "content" }, [
-              _c("p", [
-                _c("strong", [_vm._v("John Smith")]),
-                _vm._v(" "),
-                _c("small", [_vm._v("@johnsmith")]),
-                _vm._v(" "),
-                _c("small", [_vm._v("31m")]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(
-                  "\r\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.\r\n                    "
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "media-right" }, [
-            _c("nav", { staticClass: "level is-mobile" }, [
-              _c("div", { staticClass: "level-left" }, [
-                _c("a", { staticClass: "level-item" }, [
-                  _c("span", { staticClass: "icon is-small" }, [
-                    _c("i", {
-                      staticClass: "fa fa-eye has-text-primary",
-                      attrs: { "aria-hidden": "true" }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "level-item" }, [
-                  _c("span", { staticClass: "icon is-small" }, [
-                    _c("i", {
-                      staticClass: "fa fa-reply has-text-info",
-                      attrs: { "aria-hidden": "true" }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "level-item" }, [
-                  _c("span", { staticClass: "icon is-small" }, [
-                    _c("i", {
-                      staticClass: "fa fa-trash has-text-danger",
-                      attrs: { "aria-hidden": "true" }
-                    })
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3a202a29", module.exports)
-  }
-}
-
-/***/ }),
+/* 229 */,
+/* 230 */,
 /* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -78462,9 +78475,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }, {
           name: 'Paket Soal',
           path: 'paketsoal'
-        }, {
-          name: 'Pesan',
-          path: 'pesan'
         }, {
           name: 'Universitas',
           path: 'universitas'

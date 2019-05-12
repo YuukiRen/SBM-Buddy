@@ -1,42 +1,19 @@
 
 <template>
-
     <section class="container">
-    <div class="card">
-        <div class="card-content">
-            <p class="title">
+            <p class="title has-text-centered">
+                <br>
                 Halo, {{user.name}}!
             </p>
-            <p class="subtitle">
+            <p class="subtitle has-text-centered">
                 Selamat datang kembali. Ayo semangat berlatih!
             </p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-content">
-            <p class="subtitle">
-                Jurusanmu :
-            </p>
-            <div class="field">
-                <div class="select">
-                <select v-model="user.jurusan" @change = updateTable(this.value)>
-                    <option value="" selected disabled hidden>Choose here</option>
-                    <option value="IPA">IPA</option>
-                    <option value="IPS">IPS</option>
-                </select>
-                </div>
-                <p class="subtitle">
-                    {{resp.status}}
-                </p>
-            </div>
-        </div>
-    </div>
     <div class="columns is-vcentered">
         <div class="column">
             <div class="card">
                 <div class="card-image">
                     <figure class="image is-4by3">
-                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                        <img :src="'img/siswa3.jpg'" alt="Placeholder image">
                     </figure>
                 </div>
                 <div class="card-content">
@@ -47,11 +24,11 @@
                     </div>
 
                     <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                            Kamu dapat berlatih mengerjakan soal per mata pelajaran yang kamu inginkan.
                             <br>
                             <br>
                             <div class="buttons has-addons is-centered">
-                                <a href='/pilihmapel' class="button is-primary">Mulai berlatih</a>
+                                <a href='/pilihmapel' class="button is-primary" style="text-decoration: none;">Mulai berlatih</a>
                             </div>
                         </div>
                     </div>
@@ -61,7 +38,7 @@
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                            <img :src="'img/siswa2.jpg'" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="card-content">
@@ -73,11 +50,11 @@
                         </div>
 
                         <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                            Disini, kamu dapat mengerjakan satu paket soal SBMPTN, mirip seperti Try Out.
                             <br>
                             <br>
                             <div class="buttons has-addons is-centered">
-                                <a href='/tryout' class="button is-primary">Mulai Try Out</a>
+                                <a href='/tryout' class="button is-primary" style="text-decoration: none;">Mulai Try Out</a>
                             </div>
                         </div>
                     </div>
@@ -87,7 +64,7 @@
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                            <img :src="'img/siswa1.jpg'" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="card-content">
@@ -99,11 +76,11 @@
                         </div>
 
                         <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                            Ayo lihat bagaimana perkembangan kamu dalam mengerjakan soal-soal yang ada!
                             <br>
                             <br>
                             <div class="buttons has-addons is-centered">
-                                <a href="/progress" class="button is-primary">Lihat Progress</a>
+                                <a href="/progress" class="button is-primary" style="text-decoration: none;">Lihat Progress</a>
                             </div>
                         </div>
                     </div>
