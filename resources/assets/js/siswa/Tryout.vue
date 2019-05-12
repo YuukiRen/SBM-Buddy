@@ -65,7 +65,6 @@
     <button class="button is-success" @click.prevent="submit">Submit all and finish</button>
   </div>
   </section>
-
 </template>
 
 <script>

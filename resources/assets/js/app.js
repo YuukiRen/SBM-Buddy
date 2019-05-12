@@ -16,10 +16,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from './Index'
 import moment from 'moment'
+import {Tabs, Tab} from 'vue-tabs-component';
 
 require('./bootstrap');
 // Set Vue globally
 window.Vue = Vue
+
 // moment
 Vue.filter('formatDate', function(value) {
     if (value) {
@@ -30,6 +32,8 @@ Vue.filter('formatDate', function(value) {
 // Set Vue router
 Vue.router = router
 Vue.use(VueRouter)
+Vue.component('tabs', Tabs);
+Vue.component('tab', Tab);
 
 let Myheadera = require('./admin/Myheader.vue');
 let Myheaders = require('./siswa/Myheader.vue');

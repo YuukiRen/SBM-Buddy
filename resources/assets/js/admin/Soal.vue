@@ -13,15 +13,16 @@
         </button>
     </div>
     
-    <p class="panel-tabs">
-    <a class="is-active">All</a>
-    <a>Biologi</a>
-    <a>Fisika</a>
-    <a>Kimia</a>
-    <a>Matematika</a>
+  <p class="tabs is-centered">
+    <ul>
+      <li v-on:click="activate(0)" v-bind:class="{ 'is-active': active_now==0 }"><a>All</a></li>
+      <li v-on:click="activate(1)" v-bind:class="{ 'is-active': active_now==1 }"><a>Biologi</a></li>
+      <li v-on:click="activate(2)" v-bind:class="{ 'is-active': active_now==2 }"><a>Fisika</a></li>
+      <li v-on:click="activate(3)" v-bind:class="{ 'is-active': active_now==3 }"><a>Kimia</a></li>
+    </ul>
   </p>
 
-    <a class="panel-block" v-for="item,key in lists" :key="item.id">
+    <a class="panel-block" v-for="item,key in lists" v-if="active_now==0 || item.mapel == maps[active_now-1] ">
         <span class="panel-icon">
             <i class="fa fa-book" aria-hidden="true"></i>
         </span>
@@ -41,7 +42,9 @@
       return{
         list:{},
         lists:{},
-        addActive:''
+        addActive:'',
+        active_now:0,
+        maps:["biologi","fisika","kimia","matematika"]
       }
     },
     mounted(){
@@ -58,6 +61,9 @@
       },
       close(){
         this.addActive = '';
+      },
+      activate(now){
+        this.active_now = now;
       }
     }
   }

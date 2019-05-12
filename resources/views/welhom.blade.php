@@ -13,6 +13,7 @@
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
   <!-- Styles -->
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.4/css/bulma.min.css" />
   <link href="{{ asset('css_ori/app.css') }}" rel="stylesheet">
@@ -22,5 +23,7 @@
     <Index></Index>
     <Myfooter></Myfooter>
 </div>
+
+  <!-- <script src="{{ mix('js/app.js') }}"></script> -->
 </body>
 </html>
