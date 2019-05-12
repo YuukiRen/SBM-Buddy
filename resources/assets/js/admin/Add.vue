@@ -21,7 +21,7 @@
             <select v-model="list.choiceJurusan">
               <option value="" default selected disabled hidden>Choose here</option>
               <option value="IPA">IPA</option>
-              <option value="Soshum">Soshum</option>
+              <option value="IPS">IPS</option>
             </select>
           </div>
         </div>

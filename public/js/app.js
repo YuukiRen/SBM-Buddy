@@ -33674,7 +33674,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(147);
-module.exports = __webpack_require__(257);
+module.exports = __webpack_require__(258);
 
 
 /***/ }),
@@ -33702,7 +33702,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__Index__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_vue_tabs_component__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_vue_tabs_component__ = __webpack_require__(251);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_vue_tabs_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_vue_tabs_component__);
 
 /**
@@ -33747,9 +33747,9 @@ __WEBPACK_IMPORTED_MODULE_7_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_8_vue_
 __WEBPACK_IMPORTED_MODULE_7_vue___default.a.component('tabs', __WEBPACK_IMPORTED_MODULE_11_vue_tabs_component__["Tabs"]);
 __WEBPACK_IMPORTED_MODULE_7_vue___default.a.component('tab', __WEBPACK_IMPORTED_MODULE_11_vue_tabs_component__["Tab"]);
 
-var Myheadera = __webpack_require__(251);
-var Myheaders = __webpack_require__(253);
-var Myfooter = __webpack_require__(255);
+var Myheadera = __webpack_require__(252);
+var Myheaders = __webpack_require__(254);
+var Myfooter = __webpack_require__(256);
 
 // Set Vue authentication
 __WEBPACK_IMPORTED_MODULE_7_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_axios___default.a, __WEBPACK_IMPORTED_MODULE_1_axios___default.a);
@@ -63158,9 +63158,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("option", { attrs: { value: "IPA" } }, [_vm._v("IPA")]),
                   _vm._v(" "),
-                  _c("option", { attrs: { value: "Soshum" } }, [
-                    _vm._v("Soshum")
-                  ])
+                  _c("option", { attrs: { value: "IPS" } }, [_vm._v("IPS")])
                 ]
               )
             ])
@@ -63780,27 +63778,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var Add = __webpack_require__(225);
+var Show = __webpack_require__(269);
+var Update = __webpack_require__(272);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { Add: Add },
+  components: { Add: Add, Show: Show, Update: Update },
   data: function data() {
     return {
       list: {},
       lists: {},
       addActive: '',
+      showActive: '',
+      updateActive: '',
       active_now: 0,
-      maps: ["biologi", "fisika", "kimia", "matematika"]
+      maps: [],
+      loading: false
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     this.list = this.$route.params.pack;
     if (this.list.penjurusan == "IPA") {
-      maps = ["biologi", "fisika", "kimia", "matematika"];
+      this.maps = ["biologi", "fisika", "kimia", "matematika"];
     } else {
-      maps = ["ekonomi", "sejarah", "sosiologi", "geografi"];
+      this.maps = ["ekonomi", "sejarah", "sosiologi", "geografi"];
     }
     axios.post('/getSoal', this.list).then(function (response) {
       return _this.lists = response.data;
@@ -63814,8 +63828,28 @@ var Add = __webpack_require__(225);
       this.$children[0].aidi = this.list.id;
       this.addActive = 'is-active';
     },
+    openShow: function openShow(key) {
+      this.$children[1].list = this.lists[key];
+      this.showActive = 'is-active';
+    },
+    openUpdate: function openUpdate(key) {
+      this.$children[2].list = this.lists[key];
+      this.updateActive = 'is-active';
+    },
+    del: function del(key, id) {
+      var _this2 = this;
+
+      if (confirm('are you sure?')) {
+        this.loading = !this.loading;
+        axios.delete('/soal/' + id).then(function (response) {
+          _this2.lists.splice(key, 1);_this2.loading = !_this2.loading;
+        }).catch(function (error) {
+          return _this2.errors = error.response.data.errors;
+        });
+      }
+    },
     close: function close() {
-      this.addActive = '';
+      this.addActive = this.updateActive = this.showActive = '';
     },
     activate: function activate(now) {
       this.active_now = now;
@@ -64265,8 +64299,6 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
         _c("br"),
         _vm._v(" "),
         _c("div", { staticClass: "field" }, [
@@ -64296,8 +64328,6 @@ var render = function() {
             })
           ])
         ]),
-        _vm._v(" "),
-        _vm._m(1),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
@@ -64329,8 +64359,6 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
         _c("br"),
         _vm._v(" "),
         _c("div", { staticClass: "field" }, [
@@ -64360,8 +64388,6 @@ var render = function() {
             })
           ])
         ]),
-        _vm._v(" "),
-        _vm._m(3),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
@@ -64393,8 +64419,6 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(4),
-        _vm._v(" "),
         _c("br"),
         _vm._v(" "),
         _c("div", { staticClass: "field" }, [
@@ -64424,8 +64448,6 @@ var render = function() {
             })
           ])
         ]),
-        _vm._v(" "),
-        _vm._m(5),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
@@ -64568,8 +64590,6 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(6),
-        _vm._v(" "),
         _c("br")
       ]),
       _vm._v(" "),
@@ -64587,211 +64607,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "file has-name is-fullwidth" }, [
-      _c("label", { staticClass: "file-label" }, [
-        _c("input", {
-          staticClass: "file-input",
-          attrs: { type: "file", name: "resume" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-cta" }, [
-          _c("span", { staticClass: "file-icon" }, [
-            _c("i", { staticClass: "fa fa-upload" })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "file-label" }, [
-            _vm._v("\r\n              Choose a file…\r\n            ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-name" }, [
-          _vm._v(
-            "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "file has-name is-fullwidth" }, [
-      _c("label", { staticClass: "file-label" }, [
-        _c("input", {
-          staticClass: "file-input",
-          attrs: { type: "file", name: "resume" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-cta" }, [
-          _c("span", { staticClass: "file-icon" }, [
-            _c("i", { staticClass: "fa fa-upload" })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "file-label" }, [
-            _vm._v("\r\n              Choose a file…\r\n            ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-name" }, [
-          _vm._v(
-            "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "file has-name is-fullwidth" }, [
-      _c("label", { staticClass: "file-label" }, [
-        _c("input", {
-          staticClass: "file-input",
-          attrs: { type: "file", name: "resume" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-cta" }, [
-          _c("span", { staticClass: "file-icon" }, [
-            _c("i", { staticClass: "fa fa-upload" })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "file-label" }, [
-            _vm._v("\r\n              Choose a file…\r\n            ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-name" }, [
-          _vm._v(
-            "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "file has-name is-fullwidth" }, [
-      _c("label", { staticClass: "file-label" }, [
-        _c("input", {
-          staticClass: "file-input",
-          attrs: { type: "file", name: "resume" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-cta" }, [
-          _c("span", { staticClass: "file-icon" }, [
-            _c("i", { staticClass: "fa fa-upload" })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "file-label" }, [
-            _vm._v("\r\n              Choose a file…\r\n            ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-name" }, [
-          _vm._v(
-            "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "file has-name is-fullwidth" }, [
-      _c("label", { staticClass: "file-label" }, [
-        _c("input", {
-          staticClass: "file-input",
-          attrs: { type: "file", name: "resume" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-cta" }, [
-          _c("span", { staticClass: "file-icon" }, [
-            _c("i", { staticClass: "fa fa-upload" })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "file-label" }, [
-            _vm._v("\r\n              Choose a file…\r\n            ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-name" }, [
-          _vm._v(
-            "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "file has-name is-fullwidth" }, [
-      _c("label", { staticClass: "file-label" }, [
-        _c("input", {
-          staticClass: "file-input",
-          attrs: { type: "file", name: "resume" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-cta" }, [
-          _c("span", { staticClass: "file-icon" }, [
-            _c("i", { staticClass: "fa fa-upload" })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "file-label" }, [
-            _vm._v("\r\n              Choose a file…\r\n            ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-name" }, [
-          _vm._v(
-            "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "file has-name is-fullwidth" }, [
-      _c("label", { staticClass: "file-label" }, [
-        _c("input", {
-          staticClass: "file-input",
-          attrs: { type: "file", name: "resume" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-cta" }, [
-          _c("span", { staticClass: "file-icon" }, [
-            _c("i", { staticClass: "fa fa-upload" })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "file-label" }, [
-            _vm._v("\r\n              Choose a file…\r\n            ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "file-name" }, [
-          _vm._v(
-            "\r\n            Screen Shot 2017-07-29 at 15.54.25.png\r\n          "
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -64911,7 +64727,43 @@ var render = function() {
               item.mapel == _vm.maps[_vm.active_now - 1]
               ? _c("a", { staticClass: "panel-block" }, [
                   _vm._m(1, true),
-                  _vm._v("\r\n        " + _vm._s(item.pertanyaan) + "\r\n    ")
+                  _vm._v(
+                    "\r\n        " + _vm._s(item.pertanyaan) + "\r\n        "
+                  ),
+                  _c("a", { staticClass: "icon" }, [
+                    _c("i", {
+                      staticClass: "fa fa-eye has-text-primary",
+                      on: {
+                        click: function($event) {
+                          return _vm.openShow(key)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("a", { staticClass: "icon" }, [
+                    _c("i", {
+                      staticClass: "fa fa-edit has-text-info",
+                      attrs: { "aria-hidden": "true" },
+                      on: {
+                        click: function($event) {
+                          return _vm.openUpdate(key)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("a", { staticClass: "icon" }, [
+                    _c("i", {
+                      staticClass: "fa fa-trash has-text-danger",
+                      attrs: { "aria-hidden": "true" },
+                      on: {
+                        click: function($event) {
+                          return _vm.del(key, item.id)
+                        }
+                      }
+                    })
+                  ])
                 ])
               : _vm._e()
           })
@@ -64921,6 +64773,16 @@ var render = function() {
       _vm._v(" "),
       _c("Add", {
         attrs: { openmodal: _vm.addActive },
+        on: { closeRequest: _vm.close }
+      }),
+      _vm._v(" "),
+      _c("Show", {
+        attrs: { openmodal: _vm.showActive },
+        on: { closeRequest: _vm.close }
+      }),
+      _vm._v(" "),
+      _c("Update", {
+        attrs: { openmodal: _vm.updateActive },
         on: { closeRequest: _vm.close }
       })
     ],
@@ -79100,421 +78962,6 @@ webpackContext.id = 250;
 /* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = null
-/* template */
-var __vue_template__ = __webpack_require__(252)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/admin/Myheader.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-469a784b", Component.options)
-  } else {
-    hotAPI.reload("data-v-469a784b", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 252 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "hero is-link is-bold" }, [
-    _c("nav", { staticClass: "navbar" }, [
-      _c("div", { staticClass: "container" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "navbar-menu", attrs: { id: "navbarMenuHeroA" } },
-          [
-            _c(
-              "div",
-              { staticClass: "navbar-end" },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "navbar-item", attrs: { to: "/paketsoal" } },
-                  [_vm._v("Paket Soal")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  { staticClass: "navbar-item", attrs: { to: "/pesan" } },
-                  [_vm._v("Pesan")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  { staticClass: "navbar-item", attrs: { to: "/universitas" } },
-                  [_vm._v("Universitas")]
-                ),
-                _vm._v(" "),
-                _vm._m(1)
-              ],
-              1
-            )
-          ]
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "navbar-brand" }, [
-      _c("a", { staticClass: "navbar-item" }, [
-        _c("img", {
-          attrs: {
-            src:
-              "https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png",
-            alt: "Logo"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "span",
-        {
-          staticClass: "navbar-burger burger",
-          attrs: { "data-target": "navbarMenuHeroA" }
-        },
-        [_c("span"), _vm._v(" "), _c("span"), _vm._v(" "), _c("span")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "navbar-item" }, [
-      _c("a", { staticClass: "button is-link is-inverted" }, [
-        _c("span", { staticClass: "icon" }, [
-          _c("i", { staticClass: "fa fa-sign-out" })
-        ]),
-        _vm._v(" "),
-        _c("span", [_vm._v("Admin")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-469a784b", module.exports)
-  }
-}
-
-/***/ }),
-/* 253 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = null
-/* template */
-var __vue_template__ = __webpack_require__(254)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/siswa/Myheader.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-67557a33", Component.options)
-  } else {
-    hotAPI.reload("data-v-67557a33", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 254 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "hero is-link is-bold" }, [
-    _c("nav", { staticClass: "navbar" }, [
-      _c("div", { staticClass: "container" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "navbar-menu", attrs: { id: "navbarMenuHeroA" } },
-          [
-            _c(
-              "div",
-              { staticClass: "navbar-end" },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "navbar-item", attrs: { to: "/paketsoal" } },
-                  [_vm._v("Paket Soal")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  { staticClass: "navbar-item", attrs: { to: "/pesan" } },
-                  [_vm._v("Pesan")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  { staticClass: "navbar-item", attrs: { to: "/universitas" } },
-                  [_vm._v("Universitas")]
-                ),
-                _vm._v(" "),
-                _vm._m(1)
-              ],
-              1
-            )
-          ]
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "navbar-brand" }, [
-      _c("a", { staticClass: "navbar-item" }, [
-        _c("img", {
-          attrs: {
-            src:
-              "https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png",
-            alt: "Logo"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "span",
-        {
-          staticClass: "navbar-burger burger",
-          attrs: { "data-target": "navbarMenuHeroA" }
-        },
-        [_c("span"), _vm._v(" "), _c("span"), _vm._v(" "), _c("span")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "navbar-item" }, [
-      _c("a", { staticClass: "button is-link is-inverted" }, [
-        _c("span", { staticClass: "icon" }, [
-          _c("i", { staticClass: "fa fa-sign-out" })
-        ]),
-        _vm._v(" "),
-        _c("span", [_vm._v("Siswa")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-67557a33", module.exports)
-  }
-}
-
-/***/ }),
-/* 255 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = null
-/* template */
-var __vue_template__ = __webpack_require__(256)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/admin/Myfooter.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-25681459", Component.options)
-  } else {
-    hotAPI.reload("data-v-25681459", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 256 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "footer" }, [
-      _c("div", { staticClass: "content has-text-centered" }, [
-        _c("p", [
-          _c("strong", [_vm._v("SBM-Buddy")]),
-          _vm._v(" by "),
-          _c("a", { attrs: { href: "https://github.com/YuukiRen" } }, [
-            _vm._v("Alvin Reinaldo")
-          ]),
-          _vm._v(",\r\n      "),
-          _c("a", { attrs: { href: "https://github.com/rafiqahsns" } }, [
-            _vm._v("Rafiqah Hasna")
-          ]),
-          _vm._v(", and "),
-          _c("a", { attrs: { href: "https://github.com/restutriadi" } }, [
-            _vm._v("Restu Triadi")
-          ]),
-          _vm._v(".\r\n    ")
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c(
-            "a",
-            {
-              staticClass: "icon",
-              attrs: { href: "https://github.com/YuukiRen/SBM-Buddy" }
-            },
-            [_c("i", { staticClass: "fa fa-github" })]
-          )
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-25681459", module.exports)
-  }
-}
-
-/***/ }),
-/* 257 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 258 */,
-/* 259 */,
-/* 260 */,
-/* 261 */,
-/* 262 */,
-/* 263 */,
-/* 264 */,
-/* 265 */,
-/* 266 */,
-/* 267 */,
-/* 268 */,
-/* 269 */,
-/* 270 */,
-/* 271 */
-/***/ (function(module, exports, __webpack_require__) {
-
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(true)
 		module.exports = factory();
@@ -80515,6 +79962,1273 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /***/ })
 /******/ ]);
 });
+
+/***/ }),
+/* 252 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(253)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/admin/Myheader.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-469a784b", Component.options)
+  } else {
+    hotAPI.reload("data-v-469a784b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 253 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "hero is-link is-bold" }, [
+    _c("nav", { staticClass: "navbar" }, [
+      _c("div", { staticClass: "container" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "navbar-menu", attrs: { id: "navbarMenuHeroA" } },
+          [
+            _c(
+              "div",
+              { staticClass: "navbar-end" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "navbar-item", attrs: { to: "/paketsoal" } },
+                  [_vm._v("Paket Soal")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  { staticClass: "navbar-item", attrs: { to: "/pesan" } },
+                  [_vm._v("Pesan")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  { staticClass: "navbar-item", attrs: { to: "/universitas" } },
+                  [_vm._v("Universitas")]
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ],
+              1
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "navbar-brand" }, [
+      _c("a", { staticClass: "navbar-item" }, [
+        _c("img", {
+          attrs: {
+            src:
+              "https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png",
+            alt: "Logo"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          staticClass: "navbar-burger burger",
+          attrs: { "data-target": "navbarMenuHeroA" }
+        },
+        [_c("span"), _vm._v(" "), _c("span"), _vm._v(" "), _c("span")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "navbar-item" }, [
+      _c("a", { staticClass: "button is-link is-inverted" }, [
+        _c("span", { staticClass: "icon" }, [
+          _c("i", { staticClass: "fa fa-sign-out" })
+        ]),
+        _vm._v(" "),
+        _c("span", [_vm._v("Admin")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-469a784b", module.exports)
+  }
+}
+
+/***/ }),
+/* 254 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(255)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/siswa/Myheader.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-67557a33", Component.options)
+  } else {
+    hotAPI.reload("data-v-67557a33", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 255 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "hero is-link is-bold" }, [
+    _c("nav", { staticClass: "navbar" }, [
+      _c("div", { staticClass: "container" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "navbar-menu", attrs: { id: "navbarMenuHeroA" } },
+          [
+            _c(
+              "div",
+              { staticClass: "navbar-end" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "navbar-item", attrs: { to: "/paketsoal" } },
+                  [_vm._v("Paket Soal")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  { staticClass: "navbar-item", attrs: { to: "/pesan" } },
+                  [_vm._v("Pesan")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  { staticClass: "navbar-item", attrs: { to: "/universitas" } },
+                  [_vm._v("Universitas")]
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ],
+              1
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "navbar-brand" }, [
+      _c("a", { staticClass: "navbar-item" }, [
+        _c("img", {
+          attrs: {
+            src:
+              "https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png",
+            alt: "Logo"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          staticClass: "navbar-burger burger",
+          attrs: { "data-target": "navbarMenuHeroA" }
+        },
+        [_c("span"), _vm._v(" "), _c("span"), _vm._v(" "), _c("span")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "navbar-item" }, [
+      _c("a", { staticClass: "button is-link is-inverted" }, [
+        _c("span", { staticClass: "icon" }, [
+          _c("i", { staticClass: "fa fa-sign-out" })
+        ]),
+        _vm._v(" "),
+        _c("span", [_vm._v("Siswa")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-67557a33", module.exports)
+  }
+}
+
+/***/ }),
+/* 256 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(257)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/admin/Myfooter.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-25681459", Component.options)
+  } else {
+    hotAPI.reload("data-v-25681459", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", { staticClass: "footer" }, [
+      _c("div", { staticClass: "content has-text-centered" }, [
+        _c("p", [
+          _c("strong", [_vm._v("SBM-Buddy")]),
+          _vm._v(" by "),
+          _c("a", { attrs: { href: "https://github.com/YuukiRen" } }, [
+            _vm._v("Alvin Reinaldo")
+          ]),
+          _vm._v(",\r\n      "),
+          _c("a", { attrs: { href: "https://github.com/rafiqahsns" } }, [
+            _vm._v("Rafiqah Hasna")
+          ]),
+          _vm._v(", and "),
+          _c("a", { attrs: { href: "https://github.com/restutriadi" } }, [
+            _vm._v("Restu Triadi")
+          ]),
+          _vm._v(".\r\n    ")
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c(
+            "a",
+            {
+              staticClass: "icon",
+              attrs: { href: "https://github.com/YuukiRen/SBM-Buddy" }
+            },
+            [_c("i", { staticClass: "fa fa-github" })]
+          )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-25681459", module.exports)
+  }
+}
+
+/***/ }),
+/* 258 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(270)
+/* template */
+var __vue_template__ = __webpack_require__(271)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/admin/ShowSoal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3cd287b6", Component.options)
+  } else {
+    hotAPI.reload("data-v-3cd287b6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 270 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['openmodal'],
+	data: function data() {
+		return {
+			list: ''
+		};
+	},
+
+	methods: {
+		close: function close() {
+			this.$emit('closeRequest');
+		}
+	}
+});
+
+/***/ }),
+/* 271 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal", class: _vm.openmodal }, [
+    _c("div", { staticClass: "modal-background" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal-card" }, [
+      _c("header", { staticClass: "modal-card-head" }, [
+        _c("p", { staticClass: "modal-card-title" }, [
+          _vm._v(_vm._s(_vm.list.pertanyaan))
+        ]),
+        _vm._v(" "),
+        _c("button", {
+          staticClass: "delete",
+          attrs: { "aria-label": "close" },
+          on: { click: _vm.close }
+        })
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "modal-card-body" }, [
+        _c("li", { staticClass: "panel-block" }, [
+          _c(
+            "label",
+            {
+              staticClass: "column",
+              class: {
+                "has-background-primary has-text-white": _vm.list.jawaban == "A"
+              }
+            },
+            [_vm._v("A)." + _vm._s(_vm.list.pilihana))]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "panel-block" }, [
+          _c(
+            "label",
+            {
+              staticClass: "column",
+              class: {
+                "has-background-primary has-text-white": _vm.list.jawaban == "B"
+              }
+            },
+            [_vm._v("B)." + _vm._s(_vm.list.pilihanb))]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "panel-block" }, [
+          _c(
+            "label",
+            {
+              staticClass: "column",
+              class: {
+                "has-background-primary has-text-white": _vm.list.jawaban == "C"
+              }
+            },
+            [_vm._v("C)." + _vm._s(_vm.list.pilihanc))]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "panel-block" }, [
+          _c(
+            "label",
+            {
+              staticClass: "column",
+              class: {
+                "has-background-primary has-text-white": _vm.list.jawaban == "D"
+              }
+            },
+            [_vm._v("D)." + _vm._s(_vm.list.pilihand))]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "panel-block" }, [
+          _c(
+            "label",
+            {
+              staticClass: "column",
+              class: {
+                "has-background-primary has-text-white": _vm.list.jawaban == "E"
+              }
+            },
+            [_vm._v("E)." + _vm._s(_vm.list.pilihane))]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("footer", { staticClass: "modal-card-foot" }, [
+        _c("button", { staticClass: "button", on: { click: _vm.close } }, [
+          _vm._v("Cancel")
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3cd287b6", module.exports)
+  }
+}
+
+/***/ }),
+/* 272 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(273)
+/* template */
+var __vue_template__ = __webpack_require__(274)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/admin/UpdateSoal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-63618302", Component.options)
+  } else {
+    hotAPI.reload("data-v-63618302", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 273 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['openmodal'],
+	data: function data() {
+		return {
+			list: ''
+		};
+	},
+
+	methods: {
+		close: function close() {
+			this.$emit('closeRequest');
+		},
+		update: function update() {
+			var _this = this;
+
+			axios.patch('/soal/' + this.list.id + ' ', this.$data.list).then(function (response) {
+				return _this.close();
+			}).catch(function (error) {
+				return _this.errors = error.response.data.errors;
+			});
+		}
+	}
+});
+
+/***/ }),
+/* 274 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal", class: _vm.openmodal }, [
+    _c("div", { staticClass: "modal-background" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal-card" }, [
+      _c("header", { staticClass: "modal-card-head" }, [
+        _c("p", { staticClass: "modal-card-title" }, [_vm._v("Update Soal")]),
+        _vm._v(" "),
+        _c("button", {
+          staticClass: "delete",
+          attrs: { "aria-label": "close" },
+          on: { click: _vm.close }
+        })
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "modal-card-body" }, [
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Mata Pelajaran")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("div", { staticClass: "select" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.list.mapel,
+                      expression: "list.mapel"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.list,
+                        "mapel",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "option",
+                    _vm._b(
+                      { attrs: { value: "biologi" } },
+                      "option",
+                      { selected: this.value == _vm.list.mapel },
+                      false
+                    ),
+                    [_vm._v("Biologi")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    _vm._b(
+                      { attrs: { value: "fisika" } },
+                      "option",
+                      { selected: this.value == _vm.list.mapel },
+                      false
+                    ),
+                    [_vm._v("Fisika")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    _vm._b(
+                      { attrs: { value: "kimia" } },
+                      "option",
+                      { selected: this.value == _vm.list.mapel },
+                      false
+                    ),
+                    [_vm._v("Kimia")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    _vm._b(
+                      { attrs: { value: "matematika" } },
+                      "option",
+                      { selected: this.value == _vm.list.mapel },
+                      false
+                    ),
+                    [_vm._v("Matematika")]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Soal")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.list.pertanyaan,
+                  expression: "list.pertanyaan"
+                }
+              ],
+              staticClass: "textarea",
+              attrs: { placeholder: "Tulis pertanyaan", rows: "10" },
+              domProps: { value: _vm.list.pertanyaan },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.list, "pertanyaan", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Pilihan A")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.list.pilihana,
+                  expression: "list.pilihana"
+                }
+              ],
+              staticClass: "textarea",
+              attrs: { placeholder: "Tulis jawaban untuk opsi A", rows: "2" },
+              domProps: { value: _vm.list.pilihana },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.list, "pilihana", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Pilihan B")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.list.pilihanb,
+                  expression: "list.pilihanb"
+                }
+              ],
+              staticClass: "textarea",
+              attrs: { placeholder: "Tulis jawaban untuk opsi B", rows: "2" },
+              domProps: { value: _vm.list.pilihanb },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.list, "pilihanb", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Pilihan C")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.list.pilihanc,
+                  expression: "list.pilihanc"
+                }
+              ],
+              staticClass: "textarea",
+              attrs: { placeholder: "Tulis jawaban untuk opsi C", rows: "2" },
+              domProps: { value: _vm.list.pilihanc },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.list, "pilihanc", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Pilihan D")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.list.pilihand,
+                  expression: "list.pilihand"
+                }
+              ],
+              staticClass: "textarea",
+              attrs: { placeholder: "Tulis jawaban untuk opsi D", rows: "2" },
+              domProps: { value: _vm.list.pilihand },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.list, "pilihand", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Pilihan E")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.list.pilihane,
+                  expression: "list.pilihane"
+                }
+              ],
+              staticClass: "textarea",
+              attrs: { placeholder: "Tulis jawaban untuk opsi E", rows: "2" },
+              domProps: { value: _vm.list.pilihane },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.list, "pilihane", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Kunci Jawaban")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("label", { staticClass: "radio" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.list.jawaban,
+                    expression: "list.jawaban"
+                  }
+                ],
+                attrs: { type: "radio", name: "a", value: "A" },
+                domProps: { checked: _vm._q(_vm.list.jawaban, "A") },
+                on: {
+                  change: function($event) {
+                    return _vm.$set(_vm.list, "jawaban", "A")
+                  }
+                }
+              }),
+              _vm._v("\n                    A\n                ")
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "radio" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.list.jawaban,
+                    expression: "list.jawaban"
+                  }
+                ],
+                attrs: { type: "radio", name: "b", value: "B" },
+                domProps: { checked: _vm._q(_vm.list.jawaban, "B") },
+                on: {
+                  change: function($event) {
+                    return _vm.$set(_vm.list, "jawaban", "B")
+                  }
+                }
+              }),
+              _vm._v("\n                    B\n                ")
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "radio" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.list.jawaban,
+                    expression: "list.jawaban"
+                  }
+                ],
+                attrs: { type: "radio", name: "c", value: "C" },
+                domProps: { checked: _vm._q(_vm.list.jawaban, "C") },
+                on: {
+                  change: function($event) {
+                    return _vm.$set(_vm.list, "jawaban", "C")
+                  }
+                }
+              }),
+              _vm._v("\n                    C\n                ")
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "radio" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.list.jawaban,
+                    expression: "list.jawaban"
+                  }
+                ],
+                attrs: { type: "radio", name: "d", value: "D" },
+                domProps: { checked: _vm._q(_vm.list.jawaban, "D") },
+                on: {
+                  change: function($event) {
+                    return _vm.$set(_vm.list, "jawaban", "D")
+                  }
+                }
+              }),
+              _vm._v("\n                    D\n                ")
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "radio" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.list.jawaban,
+                    expression: "list.jawaban"
+                  }
+                ],
+                attrs: { type: "radio", name: "e", value: "E" },
+                domProps: { checked: _vm._q(_vm.list.jawaban, "E") },
+                on: {
+                  change: function($event) {
+                    return _vm.$set(_vm.list, "jawaban", "E")
+                  }
+                }
+              }),
+              _vm._v("\n                    E\n                ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Pembahasan")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "control" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.list.pembahasan,
+                  expression: "list.pembahasan"
+                }
+              ],
+              staticClass: "textarea",
+              attrs: { placeholder: "Tulis pembahasan", rows: "10" },
+              domProps: { value: _vm.list.pembahasan },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.list, "pembahasan", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("footer", { staticClass: "modal-card-foot" }, [
+        _c(
+          "button",
+          { staticClass: "button is-success", on: { click: _vm.update } },
+          [_vm._v("Update")]
+        ),
+        _vm._v(" "),
+        _c("button", { staticClass: "button", on: { click: _vm.close } }, [
+          _vm._v("Cancel")
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-63618302", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

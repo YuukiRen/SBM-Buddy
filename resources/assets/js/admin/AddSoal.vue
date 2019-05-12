@@ -27,7 +27,7 @@
           <textarea class="textarea" placeholder="Tulis pertanyaan" rows=10 v-model="list.soal"></textarea>
         </div>
       </div>
-      <div class="file has-name is-fullwidth">
+      <!-- <div class="file has-name is-fullwidth">
         <label class="file-label">
           <input class="file-input" type="file" name="resume">
           <span class="file-cta">
@@ -42,7 +42,7 @@
             Screen Shot 2017-07-29 at 15.54.25.png
           </span>
         </label>
-      </div>
+      </div> -->
       <br>
       <div class="field">
     	  <label class="label">Pilihan A</label>
@@ -50,7 +50,7 @@
           <textarea class="textarea" placeholder="Tulis jawaban untuk opsi A" rows=2 v-model="list.A"></textarea>
         </div>
       </div>
-      <div class="file has-name is-fullwidth">
+      <!-- <div class="file has-name is-fullwidth">
         <label class="file-label">
           <input class="file-input" type="file" name="resume">
           <span class="file-cta">
@@ -65,7 +65,7 @@
             Screen Shot 2017-07-29 at 15.54.25.png
           </span>
         </label>
-      </div>
+      </div> -->
       <br>
       <div class="field">
     	  <label class="label">Pilihan B</label>
@@ -73,7 +73,7 @@
           <textarea class="textarea" placeholder="Tulis jawaban untuk opsi B" rows=2 v-model="list.B"></textarea>
         </div>
       </div>
-      <div class="file has-name is-fullwidth">
+      <!-- <div class="file has-name is-fullwidth">
         <label class="file-label">
           <input class="file-input" type="file" name="resume">
           <span class="file-cta">
@@ -88,7 +88,7 @@
             Screen Shot 2017-07-29 at 15.54.25.png
           </span>
         </label>
-      </div>
+      </div> -->
       <br>
       <div class="field">
     	  <label class="label">Pilihan C</label>
@@ -96,7 +96,7 @@
           <textarea class="textarea" placeholder="Tulis jawaban untuk opsi C" rows=2 v-model="list.C"></textarea>
         </div>
       </div>
-      <div class="file has-name is-fullwidth">
+      <!-- <div class="file has-name is-fullwidth">
         <label class="file-label">
           <input class="file-input" type="file" name="resume">
           <span class="file-cta">
@@ -111,7 +111,7 @@
             Screen Shot 2017-07-29 at 15.54.25.png
           </span>
         </label>
-      </div>
+      </div> -->
       <br>
       <div class="field">
     	  <label class="label">Pilihan D</label>
@@ -119,7 +119,7 @@
           <textarea class="textarea" placeholder="Tulis jawaban untuk opsi D" rows=2 v-model="list.D"></textarea>
         </div>
       </div>
-      <div class="file has-name is-fullwidth">
+      <!-- <div class="file has-name is-fullwidth">
         <label class="file-label">
           <input class="file-input" type="file" name="resume">
           <span class="file-cta">
@@ -134,7 +134,7 @@
             Screen Shot 2017-07-29 at 15.54.25.png
           </span>
         </label>
-      </div>
+      </div> -->
       <br>
       <div class="field">
     	  <label class="label">Pilihan E</label>
@@ -142,7 +142,7 @@
           <textarea class="textarea" placeholder="Tulis jawaban untuk opsi E" rows=2 v-model="list.E"></textarea>
         </div>
       </div>
-      <div class="file has-name is-fullwidth">
+      <!-- <div class="file has-name is-fullwidth">
         <label class="file-label">
           <input class="file-input" type="file" name="resume">
           <span class="file-cta">
@@ -157,7 +157,7 @@
             Screen Shot 2017-07-29 at 15.54.25.png
           </span>
         </label>
-      </div>
+      </div> -->
       <br>
       <div class="field">
         <label class="label">Kunci Jawaban</label>
@@ -190,7 +190,7 @@
           <textarea class="textarea" placeholder="Tulis pembahasan" rows=10 v-model="list.ans"></textarea>
         </div>
       </div>
-      <div class="file has-name is-fullwidth">
+      <!-- <div class="file has-name is-fullwidth">
         <label class="file-label">
           <input class="file-input" type="file" name="resume">
           <span class="file-cta">
@@ -205,7 +205,7 @@
             Screen Shot 2017-07-29 at 15.54.25.png
           </span>
         </label>
-      </div>
+      </div> -->
       <br>
     </section>
     <footer class="modal-card-foot">

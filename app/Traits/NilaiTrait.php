@@ -7,7 +7,6 @@ class NilaiTrait{
         $this->nilai = 0;
     }
     public function getNilai(){
-
         return $this->nilai;
     }
     public function addNilai(int $add){

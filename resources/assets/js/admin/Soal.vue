@@ -28,33 +28,49 @@
             <i class="fa fa-book" aria-hidden="true"></i>
         </span>
         {{item.pertanyaan}}
+        <a class="icon">
+            <i class="fa fa-eye has-text-primary" @click='openShow(key)'></i>
+        </a>
+        <a class="icon">
+            <i class="fa fa-edit has-text-info" aria-hidden="true" @click='openUpdate(key)'></i>
+        </a>
+        <a class="icon">
+            <i class="fa fa-trash has-text-danger" aria-hidden="true" @click="del(key,item.id)"></i>
+        </a>
     </a>
   </nav>
 
   <Add :openmodal='addActive' @closeRequest='close'></Add>
+  <Show :openmodal='showActive' @closeRequest='close'></Show>
+  <Update :openmodal='updateActive' @closeRequest='close'></Update>
 </div>
 </template>
 
 <script>
   let Add = require('./AddSoal.vue');
+  let Show = require('./ShowSoal.vue');
+  let Update = require('./UpdateSoal.vue');
   export default{
-    components:{Add},
+    components:{Add,Show,Update},
     data(){
       return{
         list:{},
         lists:{},
         addActive:'',
+        showActive:'',
+        updateActive:'',
         active_now:0,
-        maps:["biologi","fisika","kimia","matematika"]
+        maps:[],
+        loading:false
       }
     },
-    mounted(){
+    created(){
         this.list = this.$route.params.pack;
         if(this.list.penjurusan == "IPA"){
-          maps = ["biologi","fisika","kimia","matematika"]
+          this.maps = ["biologi","fisika","kimia","matematika"]
         }
         else{
-          maps = ["ekonomi","sejarah","sosiologi","geografi"]
+          this.maps = ["ekonomi","sejarah","sosiologi","geografi"]
         }
         axios.post('/getSoal',this.list)
           .then((response)=>this.lists = response.data)
@@ -65,8 +81,24 @@
         this.$children[0].aidi=this.list.id;
         this.addActive = 'is-active';
       },
+      openShow(key){
+        this.$children[1].list = this.lists[key]
+        this.showActive = 'is-active';
+      },
+      openUpdate(key){
+        this.$children[2].list = this.lists[key]
+        this.updateActive = 'is-active';
+      },
+      del(key,id){
+        if(confirm('are you sure?')){
+          this.loading = !this.loading
+          axios.delete(`/soal/${id}`)
+          .then((response)=>{this.lists.splice(key,1);this.loading=!this.loading})
+          .catch((error) => this.errors = error.response.data.errors)  
+        }
+      },
       close(){
-        this.addActive = '';
+        this.addActive = this.updateActive = this.showActive = '';
       },
       activate(now){
         this.active_now = now;

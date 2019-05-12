@@ -127,8 +127,8 @@ export default {
     axios.post('/getUser')
     .then((response)=>{
 			this.user = response.data
-		})
-		.catch((error) => this.errors = error.response.data.errors)
+    })
+    .catch((error) => this.errors = error.response.data.errors)
   },
   methods:{
     updateTable(event){

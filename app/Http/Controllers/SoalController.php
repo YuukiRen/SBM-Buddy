@@ -53,10 +53,6 @@ class SoalController extends Controller
     public function math(){
         return $this->getSoalMath(15);
     }
-    public function create(){
-
-    }
-
     public function store(SoalRequest $request){
         echo "Hello World";
         $soal = new Soal;
@@ -81,9 +77,6 @@ class SoalController extends Controller
     public function readSoal(Soal $soal){
         return Soal::where('id',$soal->id)->get();
         // Pastikan ga dibalikin semua
-    }
-    public function edit(){
-        
     }
     public function update(SoalRequest $request){
         $soal = Soal::find($request->id);
