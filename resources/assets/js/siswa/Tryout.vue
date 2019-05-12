@@ -20,8 +20,10 @@
         <div class="card-header title">
           <div v-for="data in soal" v-if="no == data.id ">
             {{data.pertanyaan}}
-            <span>{{data.mapel}}</span>
           </div>
+        </div>
+        <div class="card-header" v-for="data in soal" v-if="no == data.id ">
+          {{data.mapel}}
         </div>
 
         <div class="card-content">
@@ -63,7 +65,6 @@
     <button class="button is-success" @click.prevent="submit">Submit all and finish</button>
   </div>
   </section>
-
 </template>
 
 <script>
@@ -73,32 +74,13 @@ export default {
       no: 1,
       soal:{},
       ans:{},
-      mapel:this.$route.params.mapel,
       sum:0
     }
   },
   mounted(){
-    this.mapel = this.$route.params.mapel
-    if(this.mapel == 'fisika'){
-      axios.post('/getSoalFisika')
-        .then((response)=>this.soal = response.data)
-        .catch((error) => this.errors = error.response.data.errors)
-    }
-    else if(this.mapel == 'kimia'){
-      axios.post('/getSoalKimia')
-        .then((response)=>this.soal = response.data)
-        .catch((error) => this.errors = error.response.data.errors)
-    }
-    else if(this.mapel == 'matematika'){
-      axios.post('/getSoalMath')
-        .then((response)=>this.soal = response.data)
-        .catch((error) => this.errors = error.response.data.errors)
-    }
-    else if(this.mapel == 'biologi'){
-      axios.post('/getSoalBiologi')
-        .then((response)=>this.soal = response.data)
-        .catch((error) => this.errors = error.response.data.errors)
-    }
+    axios.post('/getSoalTryout')
+    .then((response)=>this.soal = response.data)
+    .catch((error) => this.errors = error.response.data.errors)
     
   },
   methods:{

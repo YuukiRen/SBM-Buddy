@@ -16865,6 +16865,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_router__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Index__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__Index__);
+throw new Error("Cannot find module \"moment\"");
+throw new Error("Cannot find module \"vue-tabs-component\"");
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -16883,13 +16885,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
+
 __webpack_require__(11);
 // Set Vue globally
 window.Vue = __WEBPACK_IMPORTED_MODULE_7_vue___default.a;
 
+// moment
+__WEBPACK_IMPORTED_MODULE_7_vue___default.a.filter('formatDate', function (value) {
+    if (value) {
+        return __WEBPACK_IMPORTED_MODULE_10_moment___default()(String(value)).format('DD-MM-YYYY');
+    }
+});
+__WEBPACK_IMPORTED_MODULE_7_vue___default.a.filter('dayOfWeeks', function (value) {
+    if (value) {
+        var nameWeeks = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        return nameWeeks[__WEBPACK_IMPORTED_MODULE_10_moment___default()(String(value)).day()];
+    }
+});
+
 // Set Vue router
 __WEBPACK_IMPORTED_MODULE_7_vue___default.a.router = __WEBPACK_IMPORTED_MODULE_6__router__["a" /* default */];
 __WEBPACK_IMPORTED_MODULE_7_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_8_vue_router__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_7_vue___default.a.component('tabs', __WEBPACK_IMPORTED_MODULE_11_vue_tabs_component__["Tabs"]);
+__WEBPACK_IMPORTED_MODULE_7_vue___default.a.component('tab', __WEBPACK_IMPORTED_MODULE_11_vue_tabs_component__["Tab"]);
 
 var Myheadera = __webpack_require__(118);
 var Myheaders = __webpack_require__(120);
@@ -16903,9 +16922,9 @@ __WEBPACK_IMPORTED_MODULE_7_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3__web
 __WEBPACK_IMPORTED_MODULE_7_vue___default.a.component('index', __WEBPACK_IMPORTED_MODULE_9__Index___default.a);
 
 var app = new __WEBPACK_IMPORTED_MODULE_7_vue___default.a({
-  el: '#app',
-  router: __WEBPACK_IMPORTED_MODULE_6__router__["a" /* default */],
-  components: { Myheadera: Myheadera, Myheaders: Myheaders, Myfooter: Myfooter }
+    el: '#app',
+    router: __WEBPACK_IMPORTED_MODULE_6__router__["a" /* default */],
+    components: { Myheadera: Myheadera, Myheaders: Myheaders, Myfooter: Myfooter }
 });
 
 /***/ }),
@@ -41715,6 +41734,7 @@ module.exports = {
 
 
 var PilihMapel = __webpack_require__(68);
+var Tryout = __webpack_require__(136);
 var Pemanasan = __webpack_require__(16);
 var Pembahasan = __webpack_require__(73);
 var Progress = __webpack_require__(76);
@@ -41774,6 +41794,13 @@ var routes = [{
   path: '/pilihmapel',
   name: 'pilihmapel',
   component: PilihMapel,
+  meta: {
+    auth: true
+  }
+}, {
+  path: '/tryout',
+  name: 'Tryout',
+  component: Tryout,
   meta: {
     auth: true
   }
@@ -42084,6 +42111,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -42092,6 +42130,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       email: '',
       password: '',
       password_confirmation: '',
+      jurusan: '',
       has_error: false,
       error: '',
       errors: {},
@@ -42107,7 +42146,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           name: app.name,
           email: app.email,
           password: app.password,
-          password_confirmation: app.password_confirmation
+          password_confirmation: app.password_confirmation,
+          jurusan: app.jurusan
         },
         success: function success() {
           app.success = true;
@@ -42345,6 +42385,81 @@ var render = function() {
                       _vm.has_error && _vm.errors.password
                         ? _c("p", { staticClass: "help is-danger" }, [
                             _vm._v(_vm._s(_vm.errors.password))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "field" }, [
+                      _c("label", { staticClass: "label" }, [
+                        _vm._v("Jurusan")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "select",
+                          class: {
+                            "is-danger": _vm.has_error && _vm.errors.jurusan
+                          }
+                        },
+                        [
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.jurusan,
+                                  expression: "jurusan"
+                                }
+                              ],
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.jurusan = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "",
+                                    selected: "",
+                                    disabled: "",
+                                    hidden: ""
+                                  }
+                                },
+                                [_vm._v("Choose here")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "IPA" } }, [
+                                _vm._v("IPA")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "IPS" } }, [
+                                _vm._v("IPS")
+                              ])
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm.has_error && _vm.errors.jurusan
+                        ? _c("p", { staticClass: "help is-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.jurusan))
                           ])
                         : _vm._e()
                     ]),
@@ -42739,7 +42854,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(135)
 /* template */
 var __vue_template__ = __webpack_require__(61)
 /* template functional */
@@ -42788,14 +42903,98 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "container" }, [
+    _vm._v("\n<<<<<<< HEAD\n\n            "),
     _vm._m(0),
-    _vm._v(" "),
-    _c("p", { staticClass: "subtitle has-text-centered" }, [
-      _vm._v(
-        "\n            Selamat datang kembali. Ayo semangat berlatih!\n        "
-      )
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-content" }, [
+        _c("p", { staticClass: "title" }, [
+          _vm._v(
+            "\n                Halo, " +
+              _vm._s(_vm.user.name) +
+              "!\n>>>>>>> 8acb7eca1c331bd163913c22b08728e0c8c43e3b\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "subtitle has-text-centered" }, [
+          _vm._v(
+            "\n                Selamat datang kembali. Ayo semangat berlatih!\n            "
+          )
+        ]),
+        _vm._v("\n<<<<<<< HEAD\n\n=======\n        ")
+      ])
     ]),
     _vm._v(" "),
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-content" }, [
+        _c("p", { staticClass: "subtitle" }, [
+          _vm._v("\n                Jurusanmu :\n            ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("div", { staticClass: "select" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.jurusan,
+                    expression: "user.jurusan"
+                  }
+                ],
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.user,
+                        "jurusan",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    },
+                    function($event) {
+                      return _vm.updateTable(this.value)
+                    }
+                  ]
+                }
+              },
+              [
+                _c(
+                  "option",
+                  {
+                    attrs: { value: "", selected: "", disabled: "", hidden: "" }
+                  },
+                  [_vm._v("Choose here")]
+                ),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "IPA" } }, [_vm._v("IPA")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "IPS" } }, [_vm._v("IPS")])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "subtitle" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.resp.status) +
+                "\n                "
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v("\n>>>>>>> 8acb7eca1c331bd163913c22b08728e0c8c43e3b\n    "),
     _c("div", { staticClass: "columns is-vcentered" }, [
       _c("div", { staticClass: "column" }, [
         _c("div", { staticClass: "card" }, [
@@ -42848,7 +43047,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "title has-text-centered" }, [
       _c("br"),
-      _vm._v("\n            Halo, Siswa!\n        ")
+      _vm._v("\n                Halo, Siswa!\n=======\n    ")
     ])
   },
   function() {
@@ -42864,7 +43063,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "content" }, [
         _vm._v(
-          "\n                        Kamu dapat berlatih mengerjakan soal per mata pelajaran yang kamu inginkan.\n                        "
+          "\n                            Kamu dapat berlatih mengerjakan soal per mata pelajaran yang kamu inginkan.\n                            "
         ),
         _c("br"),
         _vm._v(" "),
@@ -42897,13 +43096,14 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "content" }, [
         _vm._v(
-          "\n                        Disini, kamu dapat mengerjakan satu paket soal SBMPTN, mirip seperti Try Out.\n                        "
+          "\n                            Disini, kamu dapat mengerjakan satu paket soal SBMPTN, mirip seperti Try Out.\n                            "
         ),
         _c("br"),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
         _c("div", { staticClass: "buttons has-addons is-centered" }, [
+          _vm._v("\n<<<<<<< HEAD\n                                "),
           _c(
             "a",
             {
@@ -42911,6 +43111,15 @@ var staticRenderFns = [
               staticStyle: { "text-decoration": "none" }
             },
             [_vm._v("Mulai Try Out")]
+          ),
+          _vm._v("\n=======\n                                "),
+          _c(
+            "a",
+            { staticClass: "button is-primary", attrs: { href: "/tryout" } },
+            [_vm._v("Mulai Try Out")]
+          ),
+          _vm._v(
+            "\n>>>>>>> 8acb7eca1c331bd163913c22b08728e0c8c43e3b\n                            "
           )
         ])
       ])
@@ -42929,7 +43138,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "content" }, [
         _vm._v(
-          "\n                        Ayo lihat bagaimana perkembangan kamu dalam mengerjakan soal-soal yang ada!\n                        "
+          "\n                            Ayo lihat bagaimana perkembangan kamu dalam mengerjakan soal-soal yang ada!\n                            "
         ),
         _c("br"),
         _vm._v(" "),
@@ -43468,6 +43677,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -43590,8 +43800,9 @@ var render = function() {
               return _vm.no == data.id
                 ? _c("div", [
                     _vm._v(
-                      "\n          " + _vm._s(data.pertanyaan) + "\n        "
-                    )
+                      "\n          " + _vm._s(data.pertanyaan) + "\n          "
+                    ),
+                    _c("span", [_vm._v(_vm._s(data.mapel))])
                   ])
                 : _vm._e()
             }),
@@ -44738,97 +44949,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       prog: {},
-      errors: {}
+      errors: {},
+      weeks: [],
+      loading: false
     };
   },
   mounted: function mounted() {
     var _this = this;
 
+    if (this.loading == true) {
+      return;
+    }
+    this.loading = true;
     axios.post('/getProgress').then(function (response) {
       _this.prog = response.data;
     }).catch(function (error) {
@@ -44850,18 +44987,10 @@ var render = function() {
       _c("div", { staticClass: "column is-1" }),
       _vm._v(" "),
       _c("div", { staticClass: "column" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("h3", [_vm._v("Detail")]),
-        _vm._v(" "),
-        _vm._m(2),
+        _c("h3", [_vm._v("Details")]),
         _vm._v(" "),
         _c("table", { staticClass: "table" }, [
-          _vm._m(3),
+          _vm._m(0),
           _vm._v(" "),
           _c(
             "tbody",
@@ -44871,7 +45000,17 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(_vm.prog[data - 1].paketsoal))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(_vm.prog[data - 1].created_at))]),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(
+                      _vm._f("dayOfWeeks")(_vm.prog[data - 1].created_at)
+                    ) +
+                      "/" +
+                      _vm._s(
+                        _vm._f("formatDate")(_vm.prog[data - 1].created_at)
+                      )
+                  )
+                ]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(_vm.prog[data - 1].score))])
               ])
@@ -44886,177 +45025,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tabs" }, [
-      _c("ul", [
-        _c("li", { staticClass: "is-active" }, [_c("a", [_vm._v("Harian")])]),
-        _vm._v(" "),
-        _c("li", [_c("a", [_vm._v("Mingguan")])]),
-        _vm._v(" "),
-        _c("li", [_c("a", [_vm._v("Bulanan")])])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns" }, [
-      _c("div", { staticClass: "column is-1" }, [
-        _c("p", [_vm._v("Senin")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Selasa")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Rabu")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Kamis")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Jumat")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Sabtu")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column is-7" }, [
-        _c(
-          "progress",
-          {
-            staticClass: "progress is-primary",
-            attrs: { value: "15", max: "100" }
-          },
-          [_vm._v("15%")]
-        ),
-        _vm._v(" "),
-        _c(
-          "progress",
-          {
-            staticClass: "progress is-primary",
-            attrs: { value: "30", max: "100" }
-          },
-          [_vm._v("30%")]
-        ),
-        _vm._v(" "),
-        _c(
-          "progress",
-          {
-            staticClass: "progress is-primary",
-            attrs: { value: "45", max: "100" }
-          },
-          [_vm._v("45%")]
-        ),
-        _vm._v(" "),
-        _c(
-          "progress",
-          {
-            staticClass: "progress is-primary",
-            attrs: { value: "60", max: "100" }
-          },
-          [_vm._v("60%")]
-        ),
-        _vm._v(" "),
-        _c(
-          "progress",
-          {
-            staticClass: "progress is-primary",
-            attrs: { value: "75", max: "100" }
-          },
-          [_vm._v("75%")]
-        ),
-        _vm._v(" "),
-        _c(
-          "progress",
-          {
-            staticClass: "progress is-primary",
-            attrs: { value: "90", max: "100" }
-          },
-          [_vm._v("90%")]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "dropdown is-hoverable" }, [
-      _c("div", { staticClass: "dropdown-trigger" }, [
-        _c(
-          "button",
-          { staticClass: "button", attrs: { "aria-haspopup": "true" } },
-          [
-            _c("span", [_vm._v("Hari")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "icon is-small" }, [
-              _c("i", {
-                staticClass: "fa fa-angle-down",
-                attrs: { "aria-hidden": "true" }
-              })
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "dropdown-menu" }, [
-        _c("div", { staticClass: "dropdown-content" }, [
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _c("label", { staticClass: "checkbox" }, [
-              _c("input", { attrs: { type: "checkbox" } }),
-              _vm._v(
-                "\r\n                            Senin\r\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _c("label", { staticClass: "checkbox" }, [
-              _c("input", { attrs: { type: "checkbox" } }),
-              _vm._v(
-                "\r\n                            Selasa\r\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _c("label", { staticClass: "checkbox" }, [
-              _c("input", { attrs: { type: "checkbox" } }),
-              _vm._v(
-                "\r\n                            Rabu\r\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _c("label", { staticClass: "checkbox" }, [
-              _c("input", { attrs: { type: "checkbox" } }),
-              _vm._v(
-                "\r\n                            Kamis\r\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _c("label", { staticClass: "checkbox" }, [
-              _c("input", { attrs: { type: "checkbox" } }),
-              _vm._v(
-                "\r\n                            Jumat\r\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-            _c("label", { staticClass: "checkbox" }, [
-              _c("input", { attrs: { type: "checkbox" } }),
-              _vm._v(
-                "\r\n                            Sabtu\r\n                        "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -46455,6 +46423,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 var Add = __webpack_require__(93);
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -46463,14 +46433,20 @@ var Add = __webpack_require__(93);
     return {
       list: {},
       lists: {},
-      addActive: ''
+      addActive: '',
+      active_now: 0,
+      maps: ["biologi", "fisika", "kimia", "matematika"]
     };
   },
   mounted: function mounted() {
     var _this = this;
 
     this.list = this.$route.params.pack;
-
+    if (this.list.penjurusan == "IPA") {
+      maps = ["biologi", "fisika", "kimia", "matematika"];
+    } else {
+      maps = ["ekonomi", "sejarah", "sosiologi", "geografi"];
+    }
     axios.post('/getSoal', this.list).then(function (response) {
       return _this.lists = response.data;
     }).catch(function (error) {
@@ -46485,6 +46461,9 @@ var Add = __webpack_require__(93);
     },
     close: function close() {
       this.addActive = '';
+    },
+    activate: function activate(now) {
+      this.active_now = now;
     }
   }
 });
@@ -47503,13 +47482,83 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(1),
+          _c("p", { staticClass: "tabs is-centered" }, [
+            _c("ul", [
+              _c(
+                "li",
+                {
+                  class: { "is-active": _vm.active_now == 0 },
+                  on: {
+                    click: function($event) {
+                      return _vm.activate(0)
+                    }
+                  }
+                },
+                [_c("a", [_vm._v("All")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  class: { "is-active": _vm.active_now == 1 },
+                  on: {
+                    click: function($event) {
+                      return _vm.activate(1)
+                    }
+                  }
+                },
+                [_c("a", [_vm._v("Biologi")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  class: { "is-active": _vm.active_now == 2 },
+                  on: {
+                    click: function($event) {
+                      return _vm.activate(2)
+                    }
+                  }
+                },
+                [_c("a", [_vm._v("Fisika")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  class: { "is-active": _vm.active_now == 3 },
+                  on: {
+                    click: function($event) {
+                      return _vm.activate(3)
+                    }
+                  }
+                },
+                [_c("a", [_vm._v("Kimia")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  class: { "is-active": _vm.active_now == 4 },
+                  on: {
+                    click: function($event) {
+                      return _vm.activate(4)
+                    }
+                  }
+                },
+                [_c("a", [_vm._v("Matematika")])]
+              )
+            ])
+          ]),
           _vm._v(" "),
           _vm._l(_vm.lists, function(item, key) {
-            return _c("a", { key: item.id, staticClass: "panel-block" }, [
-              _vm._m(2, true),
-              _vm._v("\r\n        " + _vm._s(item.pertanyaan) + "\r\n    ")
-            ])
+            return _vm.active_now == 0 ||
+              item.mapel == _vm.maps[_vm.active_now - 1]
+              ? _c("a", { staticClass: "panel-block" }, [
+                  _vm._m(1, true),
+                  _vm._v("\r\n        " + _vm._s(item.pertanyaan) + "\r\n    ")
+                ])
+              : _vm._e()
           })
         ],
         2
@@ -47530,22 +47579,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon" }, [
       _c("i", { staticClass: "fa fa-plus has-text-white" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "panel-tabs" }, [
-      _c("a", { staticClass: "is-active" }, [_vm._v("All")]),
-      _vm._v(" "),
-      _c("a", [_vm._v("Biologi")]),
-      _vm._v(" "),
-      _c("a", [_vm._v("Fisika")]),
-      _vm._v(" "),
-      _c("a", [_vm._v("Kimia")]),
-      _vm._v(" "),
-      _c("a", [_vm._v("Matematika")])
     ])
   },
   function() {
@@ -61833,6 +61866,613 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      user: {},
+      errors: {},
+      resp: {}
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.post('/getUser').then(function (response) {
+      _this.user = response.data;
+    }).catch(function (error) {
+      return _this.errors = error.response.data.errors;
+    });
+  },
+
+  methods: {
+    updateTable: function updateTable(event) {
+      var _this2 = this;
+
+      axios.post('/updJurusan', this.$data.user).then(function (response) {
+        return _this2.resp = response.data;
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 136 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(137)
+/* template */
+var __vue_template__ = __webpack_require__(138)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/siswa/Tryout.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-55f0ce2d", Component.options)
+  } else {
+    hotAPI.reload("data-v-55f0ce2d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 137 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      no: 1,
+      soal: {},
+      ans: {},
+      sum: 0
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.post('/getSoalTryout').then(function (response) {
+      return _this.soal = response.data;
+    }).catch(function (error) {
+      return _this.errors = error.response.data.errors;
+    });
+  },
+
+  methods: {
+    getIndex: function getIndex(value) {
+      this.no = value.id;
+    },
+    submit: function submit() {
+      var _this2 = this;
+
+      axios.post('/grading', this.$data.ans).then(function (response) {
+        _this2.$data.sum = response.data;
+        _this2.$router.push({ name: "pembahasan", params: { sum: _this2.sum, soal: _this2.soal, ans: _this2.ans } });
+      }).catch(function (error) {
+        return _this2.errors = error.response.data.errors;
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 138 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "container" }, [
+    _c("br"),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "columns" }, [
+      _c(
+        "div",
+        { staticClass: "column is-0 is-one-fifth" },
+        [
+          _c("h3", [_vm._v("Soal")]),
+          _vm._v(" "),
+          _vm._l(_vm.soal.length, function(data) {
+            return _c("div", { staticStyle: { width: "100%" } }, [
+              _vm.ans[_vm.soal[data - 1].id] == _vm.NULL
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "button is-outlined",
+                      staticStyle: { float: "left", width: "15%" },
+                      on: {
+                        click: function($event) {
+                          return _vm.getIndex(_vm.soal[data - 1])
+                        }
+                      }
+                    },
+                    [_vm._v("\n        " + _vm._s(data) + "\n      ")]
+                  )
+                : _c(
+                    "div",
+                    {
+                      staticClass: "button is-info is-outlined",
+                      staticStyle: { float: "left", width: "15%" },
+                      on: {
+                        click: function($event) {
+                          return _vm.getIndex(_vm.soal[data - 1])
+                        }
+                      }
+                    },
+                    [_vm._v("\n        " + _vm._s(data) + "\n      ")]
+                  )
+            ])
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "column is-four-fifth" }, [
+        _c(
+          "div",
+          { staticClass: "card" },
+          [
+            _c(
+              "div",
+              { staticClass: "card-header title" },
+              _vm._l(_vm.soal, function(data) {
+                return _vm.no == data.id
+                  ? _c("div", [
+                      _vm._v(
+                        "\n          " + _vm._s(data.pertanyaan) + "\n        "
+                      )
+                    ])
+                  : _vm._e()
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.soal, function(data) {
+              return _vm.no == data.id
+                ? _c("div", { staticClass: "card-header" }, [
+                    _vm._v("\n        " + _vm._s(data.mapel) + "\n      ")
+                  ])
+                : _vm._e()
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-content" }, [
+              _c(
+                "div",
+                { staticClass: "control" },
+                _vm._l(_vm.soal, function(data) {
+                  return _vm.no == data.id
+                    ? _c("div", [
+                        _c("label", { staticClass: "radio is-size-4" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.ans[data.id],
+                                expression: "ans[data.id]"
+                              }
+                            ],
+                            attrs: { type: "radio", value: "A" },
+                            domProps: {
+                              checked: _vm._q(_vm.ans[data.id], "A")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.ans, data.id, "A")
+                              }
+                            }
+                          }),
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(data.pilihana) +
+                              "\n            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("label", { staticClass: "radio is-size-4" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.ans[data.id],
+                                expression: "ans[data.id]"
+                              }
+                            ],
+                            attrs: { type: "radio", value: "B" },
+                            domProps: {
+                              checked: _vm._q(_vm.ans[data.id], "B")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.ans, data.id, "B")
+                              }
+                            }
+                          }),
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(data.pilihanb) +
+                              "\n            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("label", { staticClass: "radio is-size-4" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.ans[data.id],
+                                expression: "ans[data.id]"
+                              }
+                            ],
+                            attrs: { type: "radio", value: "C" },
+                            domProps: {
+                              checked: _vm._q(_vm.ans[data.id], "C")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.ans, data.id, "C")
+                              }
+                            }
+                          }),
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(data.pilihanc) +
+                              "\n            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("label", { staticClass: "radio is-size-4" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.ans[data.id],
+                                expression: "ans[data.id]"
+                              }
+                            ],
+                            attrs: { type: "radio", value: "D" },
+                            domProps: {
+                              checked: _vm._q(_vm.ans[data.id], "D")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.ans, data.id, "D")
+                              }
+                            }
+                          }),
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(data.pilihand) +
+                              "\n            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("label", { staticClass: "radio is-size-4" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.ans[data.id],
+                                expression: "ans[data.id]"
+                              }
+                            ],
+                            attrs: { type: "radio", value: "E" },
+                            domProps: {
+                              checked: _vm._q(_vm.ans[data.id], "E")
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.$set(_vm.ans, data.id, "E")
+                              }
+                            }
+                          }),
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(data.pilihane) +
+                              "\n            "
+                          )
+                        ])
+                      ])
+                    : _vm._e()
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _c("br")
+            ])
+          ],
+          2
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "buttons level-right" }, [
+      _c(
+        "button",
+        {
+          staticClass: "button is-success",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.submit($event)
+            }
+          }
+        },
+        [_vm._v("Submit all and finish")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-55f0ce2d", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

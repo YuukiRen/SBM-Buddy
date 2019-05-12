@@ -59,7 +59,18 @@
                       </p>
                       <p class="help is-danger" v-if="has_error && errors.password">{{ errors.password }}</p>
                     </div>
-                    
+                    <!--  -->
+                    <div class="field">
+                      <label class="label">Jurusan</label>
+                      <div class="select" v-bind:class="{ 'is-danger': has_error && errors.jurusan }">
+                        <select v-model="jurusan">
+                          <option value="" selected disabled hidden>Choose here</option>
+                          <option value="IPA">IPA</option>
+                          <option value="IPS">IPS</option>
+                        </select>
+                      </div>
+                      <p class="help is-danger" v-if="has_error && errors.jurusan">{{ errors.jurusan }}</p>
+                    </div>
                     <div class="field">
                       <p class="control">
                         <button type="submit" class="button is-success">
@@ -81,6 +92,7 @@
         email: '',
         password: '',
         password_confirmation: '',
+        jurusan:'',
         has_error: false,
         error: '',
         errors: {},
@@ -95,7 +107,8 @@
             name: app.name,
             email: app.email,
             password: app.password,
-            password_confirmation: app.password_confirmation
+            password_confirmation: app.password_confirmation,
+            jurusan: app.jurusan,
           },
           success: function () {
             app.success = true

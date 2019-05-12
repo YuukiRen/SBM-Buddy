@@ -15,20 +15,35 @@ import router from './router'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from './Index'
+import moment from 'moment'
+import {Tabs, Tab} from 'vue-tabs-component';
 
 require('./bootstrap');
 // Set Vue globally
 window.Vue = Vue
 
+// moment
+Vue.filter('formatDate', function(value) {
+    if (value) {
+        return moment(String(value)).format('DD-MM-YYYY')
+    }
+});
+Vue.filter('dayOfWeeks', function(value) {
+    if (value) {
+        var nameWeeks = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu']
+        return nameWeeks[moment(String(value)).day()]
+    }
+});
+    
 // Set Vue router
 Vue.router = router
 Vue.use(VueRouter)
+Vue.component('tabs', Tabs);
+Vue.component('tab', Tab);
 
 let Myheadera = require('./admin/Myheader.vue');
 let Myheaders = require('./siswa/Myheader.vue');
 let Myfooter = require('./admin/Myfooter.vue');
-
-
 
 // Set Vue authentication
 Vue.use(VueAxios, axios)

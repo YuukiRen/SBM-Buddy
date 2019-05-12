@@ -12,6 +12,7 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password'  => 'required|min:3|confirmed',
+            'jurusan' => 'required'
         ]);
         if ($v->fails())
         {
@@ -20,12 +21,22 @@ class AuthController extends Controller
                 'errors' => $v->errors()
             ], 422);
         }
-        $user = new User;
-        $user->email = $request->email;
-        $user->name = $request->name;
-        $user->password = bcrypt($request->password);
-        $user->save();
-        return response()->json(['status' => 'success'], 200);
+        if($request->jurusan =="IPA" or $request->jurusan =="IPS"){
+                
+            $user = new User;
+            $user->email = $request->email;
+            $user->name = $request->name;
+            $user->password = bcrypt($request->password);
+            $user->jurusan = $request->jurusan;
+            $user->save();
+            return response()->json(['status' => 'success'], 200);
+        }
+        else{
+            return response()->json([
+                'error' => 'registration_validation_error',
+                'errors' => $request->jurusan
+            ], 423);
+        }
     }
     public function login(Request $request)
     {
