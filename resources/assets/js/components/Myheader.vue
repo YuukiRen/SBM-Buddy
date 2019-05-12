@@ -95,10 +95,6 @@
               path: 'paketsoal'
             },
             {
-              name: 'Pesan',
-              path: 'pesan'
-            },
-            {
               name: 'Universitas',
               path: 'universitas'
             }

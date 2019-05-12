@@ -41744,7 +41744,6 @@ var PassingGrade = __webpack_require__(79);
 
 var Paketsoal = __webpack_require__(82);
 var Soal = __webpack_require__(91);
-var Pesan = __webpack_require__(97);
 var Universitas = __webpack_require__(99);
 
 // Routes
@@ -41833,13 +41832,6 @@ var routes = [{
   path: '/soal',
   name: 'soal',
   component: Soal,
-  meta: {
-    auth: { roles: 2, redirect: { name: 'login' }, forbiddenRedirect: '/403' }
-  }
-}, {
-  path: '/pesan',
-  name: 'pesan',
-  component: Pesan,
   meta: {
     auth: { roles: 2, redirect: { name: 'login' }, forbiddenRedirect: '/403' }
   }
@@ -43136,12 +43128,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -43336,11 +43322,11 @@ var render = function() {
   return _c("section", { staticClass: "section" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "card card-default" }, [
-      _c("div", { staticClass: "card-header" }, [_vm._v("Users list")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [_c("userList")], 1)
-    ])
+    _c("p", { staticClass: "subtitle has-text-centered" }, [
+      _vm._v("Welcome to the administrator dashboard.")
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [_c("userList")], 1)
   ])
 }
 var staticRenderFns = [
@@ -43348,14 +43334,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card card-default" }, [
-      _c("div", { staticClass: "card-header" }, [_vm._v("Admin Dashboard")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _vm._v(
-          "\n            Welcome to your administrator dashboard\n        "
-        )
-      ])
+    return _c("p", { staticClass: "title has-text-centered" }, [
+      _c("br"),
+      _vm._v("Admin Dashboard")
     ])
   }
 ]
@@ -47626,7 +47607,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "button is-primary is-outlined is-fullwidth",
+                staticClass: "button is-primary is-fullwidth",
                 on: { click: _vm.openAdd }
               },
               [
@@ -47757,145 +47738,8 @@ if (false) {
 }
 
 /***/ }),
-/* 97 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = null
-/* template */
-var __vue_template__ = __webpack_require__(98)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/admin/Pesan.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3a202a29", Component.options)
-  } else {
-    hotAPI.reload("data-v-3a202a29", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "section" }, [
-      _c("div", { staticClass: "box" }, [
-        _c("article", { staticClass: "media" }, [
-          _c("div", { staticClass: "media-left" }, [
-            _c("figure", { staticClass: "image is-64x64" }, [
-              _c("img", {
-                attrs: {
-                  src: "https://bulma.io/images/placeholders/128x128.png",
-                  alt: "Image"
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "media-content" }, [
-            _c("div", { staticClass: "content" }, [
-              _c("p", [
-                _c("strong", [_vm._v("John Smith")]),
-                _vm._v(" "),
-                _c("small", [_vm._v("@johnsmith")]),
-                _vm._v(" "),
-                _c("small", [_vm._v("31m")]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(
-                  "\r\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.\r\n                    "
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "media-right" }, [
-            _c("nav", { staticClass: "level is-mobile" }, [
-              _c("div", { staticClass: "level-left" }, [
-                _c("a", { staticClass: "level-item" }, [
-                  _c("span", { staticClass: "icon is-small" }, [
-                    _c("i", {
-                      staticClass: "fa fa-eye has-text-primary",
-                      attrs: { "aria-hidden": "true" }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "level-item" }, [
-                  _c("span", { staticClass: "icon is-small" }, [
-                    _c("i", {
-                      staticClass: "fa fa-reply has-text-info",
-                      attrs: { "aria-hidden": "true" }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "level-item" }, [
-                  _c("span", { staticClass: "icon is-small" }, [
-                    _c("i", {
-                      staticClass: "fa fa-trash has-text-danger",
-                      attrs: { "aria-hidden": "true" }
-                    })
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3a202a29", module.exports)
-  }
-}
-
-/***/ }),
+/* 97 */,
+/* 98 */,
 /* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -61402,9 +61246,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }, {
           name: 'Paket Soal',
           path: 'paketsoal'
-        }, {
-          name: 'Pesan',
-          path: 'pesan'
         }, {
           name: 'Universitas',
           path: 'universitas'

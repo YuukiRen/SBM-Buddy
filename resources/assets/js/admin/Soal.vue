@@ -5,7 +5,7 @@
         {{list.kode}}
     </div>
     <div class="panel-block">
-        <button class="button is-primary is-outlined is-fullwidth" @click="openAdd">
+        <button class="button is-primary is-fullwidth" @click="openAdd">
           <span class="icon">
               <i class="fa fa-plus has-text-white"></i>
           </span>
