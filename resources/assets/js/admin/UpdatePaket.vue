@@ -19,9 +19,8 @@
         <div class="control">
           <div class="select">
             <select v-model="list.penjurusan">
-              <option value="" default selected disabled hidden>Choose here</option>
-              <option value="IPA">IPA</option>
-              <option value="Soshum">Soshum</option>
+              <option value="IPA" v-bind="{'selected': list.penjurusan == 'IPA'}">IPA</option>
+              <option value="IPS" v-bind="{'selected': list.penjurusan == 'IPS'}">IPS</option>
             </select>
           </div>
         </div>

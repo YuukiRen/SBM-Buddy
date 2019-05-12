@@ -47,7 +47,7 @@
                     <i class="fa fa-edit has-text-info" aria-hidden="true" @click='openUpdate(key)'></i>
                 </a>
                 <a class="icon">
-                    <i class="fa fa-trash has-text-danger" aria-hidden="true"></i>
+                    <i class="fa fa-trash has-text-danger" aria-hidden="true" @click="del(key,item.id)"></i>
                 </a>
             </td>
         </tr>
@@ -106,6 +106,7 @@
         addActive:'',
         updateActive : '',
         lists:{},
+        loading:false,
         errors:{}
       }
     },
@@ -157,6 +158,14 @@
       openUpdate(key){
         this.$children[1].list=this.lists[key];
         this.updateActive='is-active';
+      },
+      del(key,id){
+        if(confirm('are you sure?')){
+          this.loading = !this.loading
+          axios.delete(`/paket/${id}`)
+          .then((response)=>{this.lists.splice(key,1);this.loading=!this.loading})
+          .catch((error) => this.errors = error.response.data.errors)  
+        }
       },
       // changePage(page) {
       //   this.pagination.current_page = page;

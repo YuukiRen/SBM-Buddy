@@ -26,6 +26,7 @@ class CreateSoalsTable extends Migration
             $table->string('pilihane');
             $table->string('pembahasan');
             $table->timestamps();
+            $table->foreign('idPaket')->references('id')->on('pakets')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
