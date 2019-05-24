@@ -16,10 +16,10 @@
   <p class="tabs is-centered">
     <ul>
       <li v-on:click="activate(0)" v-bind:class="{ 'is-active': active_now==0 }"><a>All</a></li>
-      <li v-on:click="activate(1)" v-bind:class="{ 'is-active': active_now==1 }"><a>Biologi</a></li>
-      <li v-on:click="activate(2)" v-bind:class="{ 'is-active': active_now==2 }"><a>Fisika</a></li>
-      <li v-on:click="activate(3)" v-bind:class="{ 'is-active': active_now==3 }"><a>Kimia</a></li>
-      <li v-on:click="activate(4)" v-bind:class="{ 'is-active': active_now==4 }"><a>Matematika</a></li>
+      <li v-on:click="activate(1)" v-bind:class="{ 'is-active': active_now==1 }"><a>{{this.maps[0]}}</a></li>
+      <li v-on:click="activate(2)" v-bind:class="{ 'is-active': active_now==2 }"><a>{{this.maps[1]}}</a></li>
+      <li v-on:click="activate(3)" v-bind:class="{ 'is-active': active_now==3 }"><a>{{this.maps[2]}}</a></li>
+      <li v-on:click="activate(4)" v-bind:class="{ 'is-active': active_now==4 }"><a>{{this.maps[3]}}</a></li>
     </ul>
   </p>
 
