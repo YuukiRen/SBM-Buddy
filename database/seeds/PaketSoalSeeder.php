@@ -17,5 +17,10 @@ class PaketSoalSeeder extends Seeder
             'kode'=>'A1314',
             'tahun'=>2013
         ]);
+        Paket::create([
+            'penjurusan'=>'IPS',
+            'kode'=>'B11',
+            'tahun'=>2019
+        ]);
     }
 }

@@ -7,7 +7,7 @@ use App\Http\Requests\PaketRequest;
 use App\Paket;
 class PaketController extends Controller
 {
-    
+    // get all paket soal database with ascending order
     public function getData()
     {
         return Paket::orderBy('kode','ASC')->get();

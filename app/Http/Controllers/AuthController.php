@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
+    // Register
     public function register(Request $request)
     {
         $v = Validator::make($request->all(), [
@@ -38,6 +39,7 @@ class AuthController extends Controller
             ], 423);
         }
     }
+    // Login function
     public function login(Request $request)
     {
         $v = Validator::make($request->all(), [
@@ -57,6 +59,7 @@ class AuthController extends Controller
         }
         return response()->json(['error' => 'login_error'], 401);
     }
+    // Logout function
     public function logout()
     {
         $this->guard()->logout();
@@ -65,6 +68,7 @@ class AuthController extends Controller
             'msg' => 'Logged out Successfully.'
         ], 200);
     }
+    // function to get user data
     public function user(Request $request)
     {
         $user = User::find(Auth::user()->id);
@@ -73,6 +77,7 @@ class AuthController extends Controller
             'data' => $user
         ]);
     }
+    // function to prelong token auth
     public function refresh()
     {
         if ($token = $this->guard()->refresh()) {
@@ -82,6 +87,7 @@ class AuthController extends Controller
         }
         return response()->json(['error' => 'refresh_token_error'], 401);
     }
+    // middleware for guard auth with token
     private function guard()
     {
         return Auth::guard();

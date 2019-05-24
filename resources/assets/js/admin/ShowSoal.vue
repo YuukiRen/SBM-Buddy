@@ -22,6 +22,9 @@
 	    	<li class="panel-block">
 	    		<label class="column" v-bind:class="{'has-background-primary has-text-white': list.jawaban == 'E'}">E).{{list.pilihane}}</label> 
 	    	</li>
+	    	<li class="panel-block">
+	    		<label class="column">Pembahasan</label> {{list.pembahasan}}
+	    	</li>
 				<!-- Content ... -->
 	    </section>
 	    <footer class="modal-card-foot">
