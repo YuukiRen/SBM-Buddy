@@ -13,9 +13,13 @@ use App\Rapor;
 class SoalController extends Controller
 {
     use SoalTrait;
+    // function to get all soal in a paket
     public function getData(Request $request){
         return Soal::where('idPaket',$request->id)->get();
     }
+    // function to check how many correct answer and return the score
+    // with settings :
+    // if correct + 4, if wrong answer -1, if no answer 0
     public function checkAns(Request $request){
         $score = new NilaiTrait;
         $dt = array();
@@ -35,26 +39,28 @@ class SoalController extends Controller
         $report->save();
         return $score->getNilai();
     }
-    public function index(){
-        
-    }
+    // function to return Tryout Soal from traits
     public function TryOut(){
         return $this->getSoalTryOut();
     }
+    // function to return fisika Soal from traits
     public function fisika(){
         return $this->getSoalFisika(15);
     }
+    // function to return kimia Soal from traits
     public function kimia(){
         return $this->getSoalKimia(15);
     }
+    // function to return biologi Soal from traits
     public function biologi(){
         return $this->getSoalBio(15);
     }
+    // function to return math Soal from traits
     public function math(){
         return $this->getSoalMath(15);
     }
+    // function to store soal in database
     public function store(SoalRequest $request){
-        echo "Hello World";
         $soal = new Soal;
         $soal->idPaket = $request->idPaket;
         $soal->pertanyaan = $request->soal;
@@ -66,18 +72,18 @@ class SoalController extends Controller
         $soal->pilihand=$request->D;
         $soal->pilihane=$request->E;
         $soal->jawaban = $request->ansUser;
-        echo "Done";
-        
         $soal->save();
         return $soal;
     }
+    // function to delete soal in database
     public function destroy(Soal $soal){
         Soal::where('id',$soal->id)->delete();
     }
+    // function to get the detail of a soal in database
     public function readSoal(Soal $soal){
         return Soal::where('id',$soal->id)->get();
-        // Pastikan ga dibalikin semua
     }
+    // function to update detail of soal in database
     public function update(SoalRequest $request){
         $soal = Soal::find($request->id);
         $soal->pertanyaan = $request->pertanyaan;

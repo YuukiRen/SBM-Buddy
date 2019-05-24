@@ -8,18 +8,16 @@ use App\Jurusan;
 
 class JurusanController extends Controller
 {
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
+    /* 
+    * function to get all data of jurusan by specific
+    * univ with passing grade, and packing the data
+    * with descending order
+    */ 
     public function getData(Request $request)
     {
         return Jurusan::where('univ',$request->univ)->orderBy('passing_grade','DESC')->get();
     }
-
+    // Storing data to jurusan database
     public function store(JurusanRequest $request)
     {
         $jurusan = new Jurusan;
@@ -56,6 +54,7 @@ class JurusanController extends Controller
     {
         Jurusan::where('id',$jurusan->id)->delete();
     }
+    // get all jurusan in database with ascending order
     public function readAll(Jurusan $jurusan)
     {
         return Jurusan::orderBy('univ','ASC')->get();

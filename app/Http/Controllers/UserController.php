@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 class UserController extends Controller
 {
-    public function index()
+    public function showAllUser()
     {
         $users = User::all();
         return response()->json(
@@ -14,7 +14,7 @@ class UserController extends Controller
                 'users' => $users->toArray()
             ], 200);
     }
-    public function show(Request $request, $id)
+    public function showSomeUser(Request $request, $id)
     {
         $user = User::find($id);
         return response()->json(
