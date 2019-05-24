@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'APP_URL=https://sbmbuddy.herokuapp.com'),
 
     /*
     |--------------------------------------------------------------------------
