@@ -65002,7 +65002,6 @@ var normalizeComponent = __webpack_require__(1)
 var __vue_script__ = __webpack_require__(229)
 /* template */
 var __vue_template__ = __webpack_require__(233)
-var __vue_template__ = __webpack_require__(230)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -65020,7 +65019,6 @@ var Component = normalizeComponent(
   __vue_module_identifier__
 )
 Component.options.__file = "resources/assets/js/admin/UpdateSoal.vue"
-Component.options.__file = "resources/assets/js/admin/ShowSoal.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -65032,7 +65030,6 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-63618302", Component.options)
   } else {
     hotAPI.reload("data-v-63618302", Component.options)
-    hotAPI.createRecord("data-v-3cd287b6", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -65115,189 +65112,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['openmodal'],
-	data: function data() {
-		return {
-			list: ''
-		};
-	},
-
-	methods: {
-		close: function close() {
-			this.$emit('closeRequest');
-		}
-	}
-});
-
-/***/ }),
-/* 230 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "modal", class: _vm.openmodal }, [
-    _c("div", { staticClass: "modal-background" }),
-    _vm._v(" "),
-    _c("div", { staticClass: "modal-card" }, [
-      _c("header", { staticClass: "modal-card-head" }, [
-        _c("p", { staticClass: "modal-card-title" }, [
-          _vm._v(_vm._s(_vm.list.pertanyaan))
-        ]),
-        _vm._v(" "),
-        _c("button", {
-          staticClass: "delete",
-          attrs: { "aria-label": "close" },
-          on: { click: _vm.close }
-        })
-      ]),
-      _vm._v(" "),
-      _c("section", { staticClass: "modal-card-body" }, [
-        _c("li", { staticClass: "panel-block" }, [
-          _c(
-            "label",
-            {
-              staticClass: "column",
-              class: {
-                "has-background-primary has-text-white": _vm.list.jawaban == "A"
-              }
-            },
-            [_vm._v("A)." + _vm._s(_vm.list.pilihana))]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "panel-block" }, [
-          _c(
-            "label",
-            {
-              staticClass: "column",
-              class: {
-                "has-background-primary has-text-white": _vm.list.jawaban == "B"
-              }
-            },
-            [_vm._v("B)." + _vm._s(_vm.list.pilihanb))]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "panel-block" }, [
-          _c(
-            "label",
-            {
-              staticClass: "column",
-              class: {
-                "has-background-primary has-text-white": _vm.list.jawaban == "C"
-              }
-            },
-            [_vm._v("C)." + _vm._s(_vm.list.pilihanc))]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "panel-block" }, [
-          _c(
-            "label",
-            {
-              staticClass: "column",
-              class: {
-                "has-background-primary has-text-white": _vm.list.jawaban == "D"
-              }
-            },
-            [_vm._v("D)." + _vm._s(_vm.list.pilihand))]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "panel-block" }, [
-          _c(
-            "label",
-            {
-              staticClass: "column",
-              class: {
-                "has-background-primary has-text-white": _vm.list.jawaban == "E"
-              }
-            },
-            [_vm._v("E)." + _vm._s(_vm.list.pilihane))]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "panel-block" }, [
-          _c("label", { staticClass: "column" }, [_vm._v("Pembahasan")]),
-          _vm._v(" " + _vm._s(_vm.list.pembahasan) + "\n    \t")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("footer", { staticClass: "modal-card-foot" }, [
-        _c("button", { staticClass: "button", on: { click: _vm.close } }, [
-          _vm._v("Cancel")
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3cd287b6", module.exports)
-  }
-}
-
-/***/ }),
-/* 231 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(232)
-/* template */
-var __vue_template__ = __webpack_require__(233)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/admin/UpdateSoal.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-63618302", Component.options)
-  } else {
-    hotAPI.reload("data-v-63618302", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 232 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
