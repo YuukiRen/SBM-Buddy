@@ -65033,8 +65033,6 @@ if (false) {(function () {
   } else {
     hotAPI.reload("data-v-63618302", Component.options)
     hotAPI.createRecord("data-v-3cd287b6", Component.options)
-  } else {
-    hotAPI.reload("data-v-3cd287b6", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
