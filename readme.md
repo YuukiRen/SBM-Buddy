@@ -214,7 +214,7 @@ Terdapat 7 kelas dan 2 kelas asosiasi pada aplikasi ini. Kelas user merupakan ke
 
 # Sequence Diagram
 [`^ kembali ke atas ^`](#)
-<h1 align="center"><img src="documentations/sequence diagram.png"></h1>
+<h1 align="center"><img src="documentations/Sequence diagram.png"></h1>
 Sequence diagram di atas menunjukan bahwa terdapat 2 aktor pada sistem yakni siswa dan admin, dan terdapat 3 objek pada sistem yakni soal, program studi, dan nilai. Jika siswa memulai aktivitas dengan tanda panah (→) doPemanasan maka akan diberikan soal soal yang akan dikerjakan oleh siswa sesuai dengan jurusannya dan kemudian akan dijalankan modul gradeSoal yang akan menilai soal sesuai dengan tingkat kebenarannya dan mengembalikan nilai nya kepada user.
 
 # Design Pattern
