@@ -26,8 +26,8 @@ Route::prefix('auth')->group(function () {
 });
 Route::group(['middleware' => 'auth:api'], function(){
     // Users
-    Route::get('users', 'UserController@index')->middleware('isAdmin');
-    Route::get('users/{id}', 'UserController@show')->middleware('isAdminOrSelf');
+    Route::get('users', 'UserController@showAllUser')->middleware('isAdmin');
+    Route::get('users/{id}', 'UserController@showSomeUser')->middleware('isAdminOrSelf');
     // Testing Area
     // Route::get('/coba','PaketController@nangis');
     // Admin Function
