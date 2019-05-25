@@ -220,14 +220,21 @@ Sequence diagram di atas menunjukan bahwa terdapat 2 aktor pada sistem yakni sis
 # Design Pattern
 [`^ kembali ke atas ^`](#)
 1. Private Class Data
+
 Design pattern ini digunakan mengurangi keterbukaan atribut dengan membatasi visibilitasnya. Private Class Data mengatasi masalah di atas dengan mengekstraksi kelas data untuk kelas target dan memberikan instance kelas target instance kelas data yang di ekstraksi. Terdapat fungsi guard() untuk memeriksa apakah akun tersebut terverifikasi sebagai user atau admin. Guard() bersifat rahasia, sehingga hanya bisa diakses dengan AuthController saja.
+
 2. Singleton
+
 Singleton adalah kelas yang anggota instancenya hanya satu. Terdapat kelas admin pada sistem SBM Buddy. Admin yang dibutuhkan untuk mengatur keseluruhan sistem hanya satu, sehingga kelas admin hanya terdiri dari satu user, yaitu admin itu sendiri.
 
 # Anti Pattern
 [`^ kembali ke atas ^`](#)
 1. Functional Decomposition
-AntiPattern ini merupakan hasil dari developer nonobject-oriented yang mengimplementasikan aplikasi di bahasa pemrograman yang object oriented. AntiPattern berakibat pada developer yang mengabaikan hirarki kelas atau bahkan konsep object-oriented pada produk. Antipattern ini terjadi pada saat membuat kelas User. User terbagi menjadi dua subclass, admin dan siswa. Namun, pada tahap implementasinya, tidak ada perbedaan yang signifikan terhadap admin dan siswa. 
+
+AntiPattern ini merupakan hasil dari developer nonobject-oriented yang mengimplementasikan aplikasi di bahasa pemrograman yang object oriented. AntiPattern berakibat pada developer yang mengabaikan hirarki kelas atau bahkan konsep object-oriented pada produk.
+Antipattern ini terjadi pada saat membuat kelas User. User terbagi menjadi dua subclass, admin dan siswa. Namun, pada tahap implementasinya, tidak ada perbedaan yang signifikan terhadap admin dan siswa. 
+
 2. Smoke and Mirrors
+
 Smoke and Mirrors adalah salah satu antipattern dimana developer mempromosikan dan menjanjikan fitur-fitur di luar kemampuan developer tersebut. Smoke and Mirror terjadi karena demonstrasi sistem adalah strategi pemasaran yang penting. Demonstrasi sering diinterpretasikan oleh end user sebagai representasi kualitas produksinya, sehingga developer  berani menjanjikan sesuatu agar dapat meyakinkan end user untuk memakai atau membeli produknya. 
 Antipattern yang terjadi pada projek SBM Buddy adalah ketika developer menjanjikan fitur rekomendasi program studi berdasarkan nilai per mata kuliah dan passing grade. Awalnya, developer mencoba untuk mengembangkan fitur ini, namun terdapat banyak bug pada fitur dan seiring berjalannya waktu, bug tidak kunjung dapat diatasi, sehingga fitur dihilangkan.
