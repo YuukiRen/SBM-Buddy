@@ -1,7 +1,7 @@
 <h1 align="center"><img src="documentations/logo.png"></h1>
 
 [Tentang Aplikasi](#tentang-aplikasi) | [Use Case Diagram](#use-case-diagram) | [Activity Diagram](#activity-diagram) | [Class Diagram](#class-diagram) | [Sequence Diagram](#sequence-diagram) | [Design Pattern](#design-pattern)  | [Anti Pattern](#anti-pattern) 
-:---:|:---:|:---:|:---:|:---:
+:---:|:---:|:---:|:---:|:---:|:---:|:---:
 
 
 
